@@ -1,0 +1,1086 @@
+WEBVTT
+
+1
+00:00:05.900 --> 00:00:08.640
+A pivot table is
+a way of summarizing
+
+2
+00:00:08.640 --> 00:00:10.890
+data in a DataFrame for
+a particular purpose.
+
+3
+00:00:10.890 --> 00:00:12.270
+It makes heavy use of
+
+4
+00:00:12.270 --> 00:00:14.955
+this aggregation function
+we've been talking about.
+
+5
+00:00:14.955 --> 00:00:17.790
+A pivot table is in
+itself a DataFrame,
+
+6
+00:00:17.790 --> 00:00:19.050
+where the rows represent
+
+7
+00:00:19.050 --> 00:00:21.060
+one variable that
+you're interested in,
+
+8
+00:00:21.060 --> 00:00:22.760
+the columns another, and
+
+9
+00:00:22.760 --> 00:00:25.050
+then the cells
+some aggregate value.
+
+10
+00:00:25.050 --> 00:00:27.030
+A pivot table also tends to
+
+11
+00:00:27.030 --> 00:00:28.920
+include marginal values as well,
+
+12
+00:00:28.920 --> 00:00:31.230
+which are sum for
+each column and row.
+
+13
+00:00:31.230 --> 00:00:33.470
+This allows you to be able
+to see the relationship
+
+14
+00:00:33.470 --> 00:00:36.515
+between two variables
+at just a glance.
+
+15
+00:00:36.515 --> 00:00:39.550
+Let's take a look at
+pivot tables in Pandas.
+
+16
+00:00:39.550 --> 00:00:43.760
+So we'll import Pandas as
+pd and import NumPy as np.
+
+17
+00:00:43.760 --> 00:00:45.830
+So here we have the Times Higher
+
+18
+00:00:45.830 --> 00:00:48.490
+Education World University
+Ranking dataset,
+
+19
+00:00:48.490 --> 00:00:51.920
+one of the most influential
+dataset for universities.
+
+20
+00:00:51.920 --> 00:00:54.440
+So let's import this dataset
+and see what it looks like.
+
+21
+00:00:54.440 --> 00:00:57.470
+So DataFrame is pd.read_csv
+
+22
+00:00:57.470 --> 00:01:00.000
+and we can find this in
+datasets/cwurData.csv.
+
+23
+00:01:02.020 --> 00:01:04.805
+Let's look at the head of that.
+
+24
+00:01:04.805 --> 00:01:08.945
+So here we can see that each
+institutions rank, country,
+
+25
+00:01:08.945 --> 00:01:11.120
+quality of education
+and other metrics,
+
+26
+00:01:11.120 --> 00:01:13.100
+and overall score are shown.
+
+27
+00:01:13.100 --> 00:01:14.510
+Let's say we wanted to create a
+
+28
+00:01:14.510 --> 00:01:16.055
+new column called Rank_Level,
+
+29
+00:01:16.055 --> 00:01:17.990
+where institutions
+with world rankings
+
+30
+00:01:17.990 --> 00:01:21.620
+1-100 are categorized
+as first tier,
+
+31
+00:01:21.620 --> 00:01:25.400
+and those with world rankings
+101 to 200 are second tier,
+
+32
+00:01:25.400 --> 00:01:28.220
+and ranking 201 to
+300 are third tier.
+
+33
+00:01:28.220 --> 00:01:30.140
+Then after 301, we'll just bucket
+
+34
+00:01:30.140 --> 00:01:32.560
+those as other top universities.
+
+35
+00:01:32.560 --> 00:01:34.520
+Now, you actually already
+
+36
+00:01:34.520 --> 00:01:36.185
+have enough knowledge to do this.
+
+37
+00:01:36.185 --> 00:01:39.720
+So why don't you pause
+the video and give it a try?
+
+38
+00:01:40.610 --> 00:01:42.995
+So here's my solution.
+
+39
+00:01:42.995 --> 00:01:44.060
+I'm going to create a function
+
+40
+00:01:44.060 --> 00:01:45.740
+called create_category which will
+
+41
+00:01:45.740 --> 00:01:47.090
+operate on the first column in
+
+42
+00:01:47.090 --> 00:01:48.875
+the data frame, world_rank.
+
+43
+00:01:48.875 --> 00:01:51.410
+So I'll def create_category
+
+44
+00:01:51.410 --> 00:01:53.510
+with some and it'll
+take some ranking.
+
+45
+00:01:53.510 --> 00:01:55.415
+So since the rank
+is just an integer,
+
+46
+00:01:55.415 --> 00:01:57.350
+I'll just do a bunch
+of if/elif statements.
+
+47
+00:01:57.350 --> 00:01:58.790
+So if it's greater than or equal
+
+48
+00:01:58.790 --> 00:02:00.590
+to one or less than a 100,
+
+49
+00:02:00.590 --> 00:02:03.125
+we'll make it a first tier.
+
+50
+00:02:03.125 --> 00:02:06.500
+For greater than or equal
+to 101 but less than 200,
+
+51
+00:02:06.500 --> 00:02:08.645
+we'll say it's a second top tier,
+
+52
+00:02:08.645 --> 00:02:11.470
+and we'll do our third
+tier here as well,
+
+53
+00:02:11.470 --> 00:02:13.370
+and then the default will
+
+54
+00:02:13.370 --> 00:02:16.190
+just be return
+other top university.
+
+55
+00:02:16.190 --> 00:02:18.230
+So now we can apply this to
+
+56
+00:02:18.230 --> 00:02:21.020
+a single column of data
+to create a new series.
+
+57
+00:02:21.020 --> 00:02:23.050
+So df sub Rank_Level,
+
+58
+00:02:23.050 --> 00:02:24.880
+remember this creates
+a new column,
+
+59
+00:02:24.880 --> 00:02:28.425
+equals df sub world_rank.apply.
+
+60
+00:02:28.425 --> 00:02:31.160
+Then we're going to pass
+in a Lambda function.
+
+61
+00:02:31.160 --> 00:02:33.380
+The Lambda function
+will just call
+
+62
+00:02:33.380 --> 00:02:36.500
+create_category on
+our particular row.
+
+63
+00:02:36.500 --> 00:02:39.815
+Let's take a look at
+the results, so df.head.
+
+64
+00:02:39.815 --> 00:02:42.410
+So a pivot table allows us to
+
+65
+00:02:42.410 --> 00:02:44.840
+pivot out one of
+these columns into
+
+66
+00:02:44.840 --> 00:02:46.895
+new column headers and
+compare it against
+
+67
+00:02:46.895 --> 00:02:49.430
+another column as row indices.
+
+68
+00:02:49.430 --> 00:02:51.560
+Let's say we want to
+compare the rank level
+
+69
+00:02:51.560 --> 00:02:53.440
+versus country of the university.
+
+70
+00:02:53.440 --> 00:02:56.435
+So we want to compare it
+in terms of overall score.
+
+71
+00:02:56.435 --> 00:02:58.250
+So to do this, we tell Pandas
+
+72
+00:02:58.250 --> 00:02:59.720
+we want the values to be score,
+
+73
+00:02:59.720 --> 00:03:01.310
+and the index to be the country,
+
+74
+00:03:01.310 --> 00:03:03.170
+and the columns to
+be the rank levels.
+
+75
+00:03:03.170 --> 00:03:05.150
+So there's three things
+at play here.
+
+76
+00:03:05.150 --> 00:03:07.970
+Then we specify
+the aggregation function.
+
+77
+00:03:07.970 --> 00:03:09.980
+Here we use the NumPy mean to get
+
+78
+00:03:09.980 --> 00:03:12.020
+an average rating
+for universities
+
+79
+00:03:12.020 --> 00:03:14.295
+in that country. 
+
+80
+00:03:14.295 --> 00:03:17.060
+So df.pivot_table, it's
+a top-level function
+
+81
+00:03:17.060 --> 00:03:18.215
+right on the DataFrame.
+
+82
+00:03:18.215 --> 00:03:20.495
+We say the values are
+going to be the score,
+
+83
+00:03:20.495 --> 00:03:22.160
+the index is going to be country,
+
+84
+00:03:22.160 --> 00:03:24.755
+and the columns we're
+going to use rank level.
+
+85
+00:03:24.755 --> 00:03:28.714
+Then we pass in our actual
+aggregation function
+
+86
+00:03:28.714 --> 00:03:30.860
+which is the NumPy mean function.
+
+87
+00:03:30.860 --> 00:03:32.840
+Let's look at the head of this.
+
+88
+00:03:32.840 --> 00:03:35.920
+So we can see
+a hierarchical DataFrame,
+
+89
+00:03:35.920 --> 00:03:37.790
+where the index or rows are by
+
+90
+00:03:37.790 --> 00:03:40.130
+country and the columns
+have two levels.
+
+91
+00:03:40.130 --> 00:03:42.590
+The top level indicating
+that the mean value is being
+
+92
+00:03:42.590 --> 00:03:45.185
+used and the second level
+being our ranks.
+
+93
+00:03:45.185 --> 00:03:47.480
+In this example, we
+only have one variable,
+
+94
+00:03:47.480 --> 00:03:49.085
+the mean, that we're looking at.
+
+95
+00:03:49.085 --> 00:03:52.280
+So we don't really need
+a hierarchical index.
+
+96
+00:03:52.280 --> 00:03:55.280
+We notice that there are
+some Not a Number values.
+
+97
+00:03:55.280 --> 00:03:57.875
+For example, the first
+row for Argentina.
+
+98
+00:03:57.875 --> 00:04:00.890
+The NaN values indicate
+that Argentina only
+
+99
+00:04:00.890 --> 00:04:04.925
+has observations in the other
+top university category.
+
+100
+00:04:04.925 --> 00:04:07.910
+Now, pivot tables aren't limited
+
+101
+00:04:07.910 --> 00:04:10.370
+to one function that you
+might want to apply.
+
+102
+00:04:10.370 --> 00:04:13.295
+You can pass a named
+parameter aggfunk,
+
+103
+00:04:13.295 --> 00:04:16.250
+which is a list of the different
+functions to apply,
+
+104
+00:04:16.250 --> 00:04:17.630
+and pandas will provide you with
+
+105
+00:04:17.630 --> 00:04:20.360
+the result using
+hierarchical column names.
+
+106
+00:04:20.360 --> 00:04:21.990
+Let's try that same query,
+
+107
+00:04:21.990 --> 00:04:24.195
+but passing the max function too.
+
+108
+00:04:24.195 --> 00:04:25.755
+So I'm just going to do df.
+
+109
+00:04:25.755 --> 00:04:27.825
+pivot_table, values again,
+
+110
+00:04:27.825 --> 00:04:29.060
+we're going to call that score,
+
+111
+00:04:29.060 --> 00:04:31.760
+index is country, and
+columns is Rank_Level.
+
+112
+00:04:31.760 --> 00:04:33.700
+But now we're going
+to pass in aggfunc is
+
+113
+00:04:33.700 --> 00:04:36.130
+a list and we're going
+to pass in two values,
+
+114
+00:04:36.130 --> 00:04:39.200
+np.mean which is
+a definition of a function.
+
+115
+00:04:39.200 --> 00:04:40.970
+So remember were not
+invoking the function here,
+
+116
+00:04:40.970 --> 00:04:43.730
+but passing a reference
+to it and np.max.
+
+117
+00:04:43.730 --> 00:04:45.170
+So both of these in our list,
+
+118
+00:04:45.170 --> 00:04:47.015
+let's look at the head of that.
+
+119
+00:04:47.015 --> 00:04:50.765
+So now we see that we have
+both the mean and the max.
+
+120
+00:04:50.765 --> 00:04:52.925
+As mentioned earlier, we can also
+
+121
+00:04:52.925 --> 00:04:56.105
+summarize the values within
+a given top-level group.
+
+122
+00:04:56.105 --> 00:04:59.480
+For instance, if we wanted to
+see an overall average for
+
+123
+00:04:59.480 --> 00:05:01.535
+the country with the mean
+
+124
+00:05:01.535 --> 00:05:03.635
+and we wanted to see
+the max of the max,
+
+125
+00:05:03.635 --> 00:05:05.810
+we can indicate that
+we want Pandas to do
+
+126
+00:05:05.810 --> 00:05:07.940
+this by providing
+marginal values.
+
+127
+00:05:07.940 --> 00:05:10.700
+So our function looks
+basically the same.
+
+128
+00:05:10.700 --> 00:05:13.830
+We pass in aggfunc
+with our two values,
+
+129
+00:05:13.830 --> 00:05:15.890
+but then we just add
+an extra parameter
+
+130
+00:05:15.890 --> 00:05:18.030
+to the end called
+margins equals true.
+
+131
+00:05:18.030 --> 00:05:20.690
+Let's take a look at
+what that looks like.
+
+132
+00:05:20.690 --> 00:05:24.650
+So a pivot table is
+just a multi-level dataframe,
+
+133
+00:05:24.650 --> 00:05:26.630
+and we can access
+series or cells in
+
+134
+00:05:26.630 --> 00:05:30.040
+that dataframe in a similar way
+as a regular dataframe.
+
+135
+00:05:30.040 --> 00:05:31.945
+So let's create a new dataframe
+
+136
+00:05:31.945 --> 00:05:33.260
+from our previous example.
+
+137
+00:05:33.260 --> 00:05:34.610
+So I'm just going to
+take the previous
+
+138
+00:05:34.610 --> 00:05:35.840
+example and assign that to
+
+139
+00:05:35.840 --> 00:05:39.030
+a new variable called the new_df.
+
+140
+00:05:39.030 --> 00:05:40.490
+Then let's take a look at
+
+141
+00:05:40.490 --> 00:05:42.230
+the index and see
+what that looks like.
+
+142
+00:05:42.230 --> 00:05:44.735
+So I'll just print out the
+index of this dataframe,
+
+143
+00:05:44.735 --> 00:05:46.340
+and let's take a look
+at the columns and
+
+144
+00:05:46.340 --> 00:05:48.695
+just print out the column values.
+
+145
+00:05:48.695 --> 00:05:52.115
+So we can see that the
+columns are hierarchical.
+
+146
+00:05:52.115 --> 00:05:53.930
+The top-level column indices
+
+147
+00:05:53.930 --> 00:05:56.075
+have two categories,
+mean and max.
+
+148
+00:05:56.075 --> 00:05:58.025
+The lower level
+column indices have
+
+149
+00:05:58.025 --> 00:06:00.790
+four categories which are
+the four rank levels.
+
+150
+00:06:00.790 --> 00:06:02.910
+So how would we query this,
+
+151
+00:06:02.910 --> 00:06:05.090
+if we wanted to get
+the average scores of
+
+152
+00:06:05.090 --> 00:06:08.260
+the first top tier university
+levels in each country?
+
+153
+00:06:08.260 --> 00:06:11.225
+We would just need to make
+to dataframe projections.
+
+154
+00:06:11.225 --> 00:06:14.225
+The first for the mean and
+the second for the top tier.
+
+155
+00:06:14.225 --> 00:06:17.675
+So for instance, we could
+do new_df sub mean.
+
+156
+00:06:17.675 --> 00:06:20.525
+So this is projecting
+just the mean that we want.
+
+157
+00:06:20.525 --> 00:06:21.770
+Then from that, we get
+
+158
+00:06:21.770 --> 00:06:23.510
+another dataframe
+and we just project
+
+159
+00:06:23.510 --> 00:06:26.990
+the First Top Tier
+University column.
+
+160
+00:06:26.990 --> 00:06:28.870
+Let's look at the head of that.
+
+161
+00:06:28.870 --> 00:06:31.460
+So we can see that
+the output here is
+
+162
+00:06:31.460 --> 00:06:33.110
+a series object which we can
+
+163
+00:06:33.110 --> 00:06:35.045
+confirm by printing the type.
+
+164
+00:06:35.045 --> 00:06:38.390
+Remember that when you project
+a single column of values,
+
+165
+00:06:38.390 --> 00:06:39.830
+which is what we're
+doing here after we
+
+166
+00:06:39.830 --> 00:06:41.600
+make the two projections,
+
+167
+00:06:41.600 --> 00:06:44.330
+out of the DataFrame,
+you get a series object.
+
+168
+00:06:44.330 --> 00:06:47.125
+So let's just look
+at the type of this.
+
+169
+00:06:47.125 --> 00:06:48.855
+We see it's a panda core.
+
+170
+00:06:48.855 --> 00:06:51.290
+series. series. So what
+
+171
+00:06:51.290 --> 00:06:52.910
+if we wanted to find
+the country that has
+
+172
+00:06:52.910 --> 00:06:54.770
+the maximum average score
+
+173
+00:06:54.770 --> 00:06:57.350
+on First Tier Top
+University level?
+
+174
+00:06:57.350 --> 00:07:00.515
+For this, we can use
+the idxmax function.
+
+175
+00:07:00.515 --> 00:07:03.515
+So again, I'll take
+our new df, project mean,
+
+176
+00:07:03.515 --> 00:07:06.935
+and then project
+our First Tier Top University,
+
+177
+00:07:06.935 --> 00:07:08.690
+and on the series object,
+
+178
+00:07:08.690 --> 00:07:11.005
+we'll just call idxmax.
+
+179
+00:07:11.005 --> 00:07:13.910
+So now, the idxmax function
+
+180
+00:07:13.910 --> 00:07:16.730
+isn't actually a special value
+for pivot tables.
+
+181
+00:07:16.730 --> 00:07:19.010
+It's a built-in function
+to the series object.
+
+182
+00:07:19.010 --> 00:07:20.960
+We don't have time to go over
+
+183
+00:07:20.960 --> 00:07:23.780
+all the pandas functions and
+attributes in this course.
+
+184
+00:07:23.780 --> 00:07:25.700
+I want to really
+encourage you to explore
+
+185
+00:07:25.700 --> 00:07:29.390
+the API to learn more deeply
+what is available to you.
+
+186
+00:07:29.390 --> 00:07:31.940
+If you wanted to achieve
+a different shape
+
+187
+00:07:31.940 --> 00:07:32.990
+of your pivot table,
+
+188
+00:07:32.990 --> 00:07:36.440
+you can do so with the stack
+and unstack functions.
+
+189
+00:07:36.440 --> 00:07:39.530
+Stacking is pivoting
+the lowest column index
+
+190
+00:07:39.530 --> 00:07:41.780
+to become the
+innermost row index,
+
+191
+00:07:41.780 --> 00:07:44.540
+and unstacking is
+just the inverse of stacking,
+
+192
+00:07:44.540 --> 00:07:46.730
+pivoting the innermost
+row index to
+
+193
+00:07:46.730 --> 00:07:49.145
+become the lowermost
+column index.
+
+194
+00:07:49.145 --> 00:07:52.250
+An example will help make
+this a little bit more clear.
+
+195
+00:07:52.250 --> 00:07:54.275
+So let's look at our pivot table
+
+196
+00:07:54.275 --> 00:07:55.865
+first to refresh
+what it looks like.
+
+197
+00:07:55.865 --> 00:07:57.440
+So new_df.head.
+
+198
+00:07:57.440 --> 00:07:59.015
+That's our pivot table.
+
+199
+00:07:59.015 --> 00:08:00.890
+So now let's try stacking,
+
+200
+00:08:00.890 --> 00:08:02.870
+and this should move
+the lowermost columns.
+
+201
+00:08:02.870 --> 00:08:04.910
+So the tiers of
+the university rankings
+
+202
+00:08:04.910 --> 00:08:06.965
+to the inner most row.
+
+203
+00:08:06.965 --> 00:08:09.440
+So we'll just create
+a new DataFrame and new
+
+204
+00:08:09.440 --> 00:08:12.500
+df.stack and let's look
+at the head of that.
+
+205
+00:08:12.500 --> 00:08:14.840
+So here we can see that column
+
+206
+00:08:14.840 --> 00:08:17.875
+just transposed
+essentially into the rows.
+
+207
+00:08:17.875 --> 00:08:20.055
+In the original pivot table,
+
+208
+00:08:20.055 --> 00:08:22.200
+the rank levels are
+the lowermost column.
+
+209
+00:08:22.200 --> 00:08:25.770
+After stacking, rank levels
+become the innermost index,
+
+210
+00:08:25.770 --> 00:08:28.415
+appearing to the right
+just after the country.
+
+211
+00:08:28.415 --> 00:08:30.765
+Now let's try unstacking this.
+
+212
+00:08:30.765 --> 00:08:34.140
+So new_df.unstack.head.
+
+213
+00:08:34.140 --> 00:08:36.595
+So that seems to restore
+
+214
+00:08:36.595 --> 00:08:38.965
+our DataFrame to
+its original shape.
+
+215
+00:08:38.965 --> 00:08:40.720
+So what do you think
+would happen if
+
+216
+00:08:40.720 --> 00:08:43.360
+we unstack twice in a row?
+
+217
+00:08:43.360 --> 00:08:48.500
+Let's try it,
+new_df.unstack.unstack.head.
+
+218
+00:08:49.530 --> 00:08:52.075
+So we actually end up
+
+219
+00:08:52.075 --> 00:08:54.700
+unstacking all the way
+to just a single column.
+
+220
+00:08:54.700 --> 00:08:57.385
+So we get a series object
+being returned.
+
+221
+00:08:57.385 --> 00:08:59.440
+This column is just a value,
+
+222
+00:08:59.440 --> 00:09:01.240
+the meaning of
+which is denoted by
+
+223
+00:09:01.240 --> 00:09:06.020
+the hierarchical index of
+operation, rank, and country.
+
+224
+00:09:06.860 --> 00:09:09.465
+So that's pivot tables.
+
+225
+00:09:09.465 --> 00:09:11.465
+This has been a pretty
+short description,
+
+226
+00:09:11.465 --> 00:09:12.940
+but they're incredibly useful
+
+227
+00:09:12.940 --> 00:09:14.530
+in dealing with numeric data,
+
+228
+00:09:14.530 --> 00:09:15.610
+especially if you're trying to
+
+229
+00:09:15.610 --> 00:09:17.760
+summarize the data in some form.
+
+230
+00:09:17.760 --> 00:09:19.880
+You'll regularly be creating
+
+231
+00:09:19.880 --> 00:09:23.390
+new pivot tables on
+different slices of data,
+
+232
+00:09:23.390 --> 00:09:25.160
+whether you're exploring
+the data yourself or
+
+233
+00:09:25.160 --> 00:09:27.695
+preparing that data for
+others to report on.
+
+234
+00:09:27.695 --> 00:09:28.910
+Of course, you can pass
+
+235
+00:09:28.910 --> 00:09:31.355
+any functions you want to
+the aggregate function,
+
+236
+00:09:31.355 --> 00:09:34.500
+including those that
+you define yourself.

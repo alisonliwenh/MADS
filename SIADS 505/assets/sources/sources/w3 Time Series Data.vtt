@@ -1,0 +1,1269 @@
+WEBVTT
+
+1
+00:00:05.270 --> 00:00:07.860
+In this short video,
+we're going to talk about
+
+2
+00:00:07.860 --> 00:00:10.365
+a really common task in
+applied data science,
+
+3
+00:00:10.365 --> 00:00:12.900
+which is the resampling
+of time data.
+
+4
+00:00:12.900 --> 00:00:14.940
+This is often done
+when you have say,
+
+5
+00:00:14.940 --> 00:00:16.260
+intermittent data
+which you want to
+
+6
+00:00:16.260 --> 00:00:17.970
+make more regular
+or when you have
+
+7
+00:00:17.970 --> 00:00:19.680
+really fine-grained
+data and you want to
+
+8
+00:00:19.680 --> 00:00:21.780
+get more general
+trends out of it.
+
+9
+00:00:21.780 --> 00:00:23.280
+So we're going to bring in Pandas
+
+10
+00:00:23.280 --> 00:00:24.630
+and we're going to
+bring in numpy,
+
+11
+00:00:24.630 --> 00:00:26.270
+and I also want to
+bring in matplotlib,
+
+12
+00:00:26.270 --> 00:00:28.220
+which is a plotting library
+and you'll learn
+
+13
+00:00:28.220 --> 00:00:31.470
+more about that in
+a subsequent lecture.
+
+14
+00:00:33.880 --> 00:00:37.040
+So resampling refers
+to the process of
+
+15
+00:00:37.040 --> 00:00:40.355
+converting a time series from
+one frequency to another.
+
+16
+00:00:40.355 --> 00:00:42.200
+Converting from
+a higher frequency to
+
+17
+00:00:42.200 --> 00:00:44.195
+lower frequency is
+called down-sampling,
+
+18
+00:00:44.195 --> 00:00:46.585
+and the other way around
+is called up-sampling.
+
+19
+00:00:46.585 --> 00:00:48.710
+There's another type of
+sampling as well which is
+
+20
+00:00:48.710 --> 00:00:50.855
+neither up-sampling
+or down-sampling,
+
+21
+00:00:50.855 --> 00:00:53.390
+and it's changing
+a weekly Wednesday value
+
+22
+00:00:53.390 --> 00:00:56.630
+into a weekly Sunday value
+for instance.
+
+23
+00:00:56.630 --> 00:00:58.790
+Resampling is useful and
+
+24
+00:00:58.790 --> 00:01:01.385
+commonly used in manipulating
+time-related data.
+
+25
+00:01:01.385 --> 00:01:03.625
+So let's see how
+it's done in Pandas.
+
+26
+00:01:03.625 --> 00:01:06.350
+So first, let's create
+some date-time index
+
+27
+00:01:06.350 --> 00:01:08.300
+using the date range function.
+
+28
+00:01:08.300 --> 00:01:10.400
+We can either set
+the start or end
+
+29
+00:01:10.400 --> 00:01:12.860
+and specify the frequency
+and number of periods.
+
+30
+00:01:12.860 --> 00:01:14.870
+So I'm going to set
+it to January 21st,
+
+31
+00:01:14.870 --> 00:01:17.280
+2018 in the end to May 31st,
+
+32
+00:01:17.280 --> 00:01:19.210
+2018, and use the dates in
+
+33
+00:01:19.210 --> 00:01:21.650
+creating series with
+random numbers.
+
+34
+00:01:21.650 --> 00:01:23.750
+So here, we just use this nice
+
+35
+00:01:23.750 --> 00:01:27.335
+pd.date range to get our index,
+
+36
+00:01:27.335 --> 00:01:28.865
+and then we create a new series.
+
+37
+00:01:28.865 --> 00:01:32.435
+I'll just put in some random data
+
+38
+00:01:32.435 --> 00:01:34.370
+and set our index
+
+39
+00:01:34.370 --> 00:01:36.740
+to the dates and let's
+look at the head of that.
+
+40
+00:01:36.740 --> 00:01:39.560
+So let's try some down-sampling.
+
+41
+00:01:39.560 --> 00:01:40.910
+Two important things need to
+
+42
+00:01:40.910 --> 00:01:42.620
+be considered when down-sampling.
+
+43
+00:01:42.620 --> 00:01:45.875
+First, which side of
+the interval is closed?
+
+44
+00:01:45.875 --> 00:01:48.110
+Let's say that we want to convert
+
+45
+00:01:48.110 --> 00:01:50.740
+daily frequency to
+weekly frequency,
+
+46
+00:01:50.740 --> 00:01:54.065
+you need to chop up the data
+into one-week intervals.
+
+47
+00:01:54.065 --> 00:01:56.645
+Each interval is said
+to be half open.
+
+48
+00:01:56.645 --> 00:01:59.750
+A data point can only
+belong to one interval and
+
+49
+00:01:59.750 --> 00:02:01.025
+the union of the intervals
+
+50
+00:02:01.025 --> 00:02:03.370
+must make up
+the whole time frame.
+
+51
+00:02:03.370 --> 00:02:05.720
+Secondly, we need to decide how
+
+52
+00:02:05.720 --> 00:02:07.985
+the new aggregated bins
+should be labeled.
+
+53
+00:02:07.985 --> 00:02:09.650
+Either from the start
+of the interval
+
+54
+00:02:09.650 --> 00:02:11.510
+or the end of the interval.
+
+55
+00:02:11.510 --> 00:02:13.370
+So let's look at an example
+
+56
+00:02:13.370 --> 00:02:15.350
+using the series that
+we just created.
+
+57
+00:02:15.350 --> 00:02:17.495
+Here we want to convert
+daily to weekly.
+
+58
+00:02:17.495 --> 00:02:19.700
+We can use the resample function.
+
+59
+00:02:19.700 --> 00:02:21.170
+The resample function has
+
+60
+00:02:21.170 --> 00:02:23.600
+parameters for specifying
+the new frequency,
+
+61
+00:02:23.600 --> 00:02:25.355
+which side is closed.
+
+62
+00:02:25.355 --> 00:02:28.110
+After that, we have
+to decide what kind
+
+63
+00:02:28.110 --> 00:02:30.970
+of aggregate function we want
+to do with the interval.
+
+64
+00:02:30.970 --> 00:02:34.550
+So I'm going to specify
+the frequency as weekly,
+
+65
+00:02:34.550 --> 00:02:37.295
+which is w, and at
+the close side is right,
+
+66
+00:02:37.295 --> 00:02:39.670
+and use the aggregation
+function as mean.
+
+67
+00:02:39.670 --> 00:02:42.180
+So just do ts.resample,
+
+68
+00:02:42.180 --> 00:02:44.285
+I want w for weekly frequency.
+
+69
+00:02:44.285 --> 00:02:45.820
+I want it to be
+closed on the right,
+
+70
+00:02:45.820 --> 00:02:49.040
+and then on that I'm going
+to run the mean function,
+
+71
+00:02:49.040 --> 00:02:52.255
+and then let's just look
+at the head of that.
+
+72
+00:02:52.255 --> 00:02:54.985
+So let's just take
+a look under the hood.
+
+73
+00:02:54.985 --> 00:02:56.395
+What is this object that's
+
+74
+00:02:56.395 --> 00:02:58.440
+actually being
+returned by resample?
+
+75
+00:02:58.440 --> 00:03:00.160
+So let's take a look at the type
+
+76
+00:03:00.160 --> 00:03:03.340
+of this ts.resample object.
+
+77
+00:03:03.340 --> 00:03:07.330
+So it's a date time
+index resampler.
+
+78
+00:03:07.330 --> 00:03:10.210
+So this object allows us
+to resample pretty much
+
+79
+00:03:10.210 --> 00:03:13.570
+however we want through
+the use of the agg() function,
+
+80
+00:03:13.570 --> 00:03:14.980
+but it also holds many of
+
+81
+00:03:14.980 --> 00:03:17.050
+the common functions
+we might want to use,
+
+82
+00:03:17.050 --> 00:03:18.880
+such as mean as we just saw.
+
+83
+00:03:18.880 --> 00:03:21.100
+For instance, if we just
+wanted to count all
+
+84
+00:03:21.100 --> 00:03:23.125
+of the data values that
+were being re-sampled,
+
+85
+00:03:23.125 --> 00:03:25.430
+we could use len and
+write our own Lambda.
+
+86
+00:03:25.430 --> 00:03:29.280
+So let's, ts.resample, again
+weekly closed on the right,
+
+87
+00:03:29.280 --> 00:03:31.065
+and now I'm going to run.agg(),
+
+88
+00:03:31.065 --> 00:03:33.955
+and in that, I'm just going
+to pass in my own Lambda.
+
+89
+00:03:33.955 --> 00:03:38.240
+So Lambda x, and we'll just
+emit the length of x.head.
+
+90
+00:03:39.090 --> 00:03:42.030
+So we see that they're all seven,
+
+91
+00:03:42.030 --> 00:03:43.910
+which makes sense based on how we
+
+92
+00:03:43.910 --> 00:03:47.270
+created our time series.
+
+93
+00:03:47.270 --> 00:03:50.150
+If we pay attention to
+the bottom of the output,
+
+94
+00:03:50.150 --> 00:03:52.715
+where it says the
+frequency is "W.Sun",
+
+95
+00:03:52.715 --> 00:03:54.500
+it means weekly on a Sunday.
+
+96
+00:03:54.500 --> 00:03:56.450
+If we wanted to do
+another day, for instance,
+
+97
+00:03:56.450 --> 00:03:59.935
+Wednesday, we could do "W.Wed."
+
+98
+00:03:59.935 --> 00:04:02.400
+After converting the frequency,
+
+99
+00:04:02.400 --> 00:04:04.310
+Pandas also allows us to adjust
+
+100
+00:04:04.310 --> 00:04:06.650
+the labels with
+the loffset parameter.
+
+101
+00:04:06.650 --> 00:04:10.069
+If we changed the daily
+frequency to monthly frequency,
+
+102
+00:04:10.069 --> 00:04:12.200
+and set the loffset to -1d,
+
+103
+00:04:12.200 --> 00:04:14.700
+which is a month backward.
+
+104
+00:04:16.760 --> 00:04:19.020
+Let's see an example.  
+Actually it's -1m. 
+
+105
+00:04:19.020 --> 00:04:23.170
+So ts.resample monthly, we
+want it closed on the right,
+
+106
+00:04:23.170 --> 00:04:24.680
+but now we can
+actually tell it that
+
+107
+00:04:24.680 --> 00:04:26.270
+we want the labels
+to change as well.
+
+108
+00:04:26.270 --> 00:04:27.800
+So we want to take
+the label on the right,
+
+109
+00:04:27.800 --> 00:04:30.230
+and then we want to offset
+by minus one month,
+
+110
+00:04:30.230 --> 00:04:32.225
+and let's look at
+the mean of that.
+
+111
+00:04:32.225 --> 00:04:34.880
+Another popular and
+useful approach to
+
+112
+00:04:34.880 --> 00:04:37.805
+aggregate is to compute four
+values for each bucket.
+
+113
+00:04:37.805 --> 00:04:41.495
+The first, last, maximum,
+and minimum values.
+
+114
+00:04:41.495 --> 00:04:44.360
+By using the ohlc() function,
+
+115
+00:04:44.360 --> 00:04:47.225
+we can get a data-frame with
+the new frequency indices
+
+116
+00:04:47.225 --> 00:04:48.620
+and four columns containing
+
+117
+00:04:48.620 --> 00:04:50.480
+the four values at each period.
+
+118
+00:04:50.480 --> 00:04:54.765
+So ts.resample monthly,
+closed on the right,
+
+119
+00:04:54.765 --> 00:04:57.260
+we're going to take
+our label and offset and
+
+120
+00:04:57.260 --> 00:04:59.780
+then we're going to
+call .oh lc() on it,
+
+121
+00:04:59.780 --> 00:05:01.490
+and this is going to
+run a function on
+
+122
+00:05:01.490 --> 00:05:03.920
+the resample object and
+
+123
+00:05:03.920 --> 00:05:07.375
+create for us four
+different aggregate values.
+
+124
+00:05:07.375 --> 00:05:10.210
+So here we can see
+open, high, low,
+
+125
+00:05:10.210 --> 00:05:11.450
+and close for each of
+
+126
+00:05:11.450 --> 00:05:15.860
+the monthly cadences that we
+set. So this is pretty cool.
+
+127
+00:05:15.860 --> 00:05:17.870
+We were able to
+resample it and create
+
+128
+00:05:17.870 --> 00:05:21.140
+these four different values
+right off the get-go.
+
+129
+00:05:21.140 --> 00:05:23.900
+This is actually pretty
+common financial data
+
+130
+00:05:23.900 --> 00:05:26.375
+routine as you might guess
+from the names of the columns.
+
+131
+00:05:26.375 --> 00:05:28.250
+But you can of course
+write your own functions
+
+132
+00:05:28.250 --> 00:05:29.420
+and pass them to agg,
+
+133
+00:05:29.420 --> 00:05:31.490
+or apply as you see fit.
+
+134
+00:05:31.490 --> 00:05:33.050
+So when you're doing resampling,
+
+135
+00:05:33.050 --> 00:05:36.860
+you don't have to do manual
+groupbys yourself,
+
+136
+00:05:36.860 --> 00:05:39.725
+and instead you can have
+the resample routines
+
+137
+00:05:39.725 --> 00:05:41.870
+in Pandas take care
+of it for you,
+
+138
+00:05:41.870 --> 00:05:43.310
+but you can add your aggregation
+
+139
+00:05:43.310 --> 00:05:45.055
+functions as you see fit.
+
+140
+00:05:45.055 --> 00:05:47.560
+So now let's talk
+about up-sampling.
+
+141
+00:05:47.560 --> 00:05:49.550
+Since we're converting
+lower-frequency
+
+142
+00:05:49.550 --> 00:05:50.660
+to higher-frequency,
+
+143
+00:05:50.660 --> 00:05:52.415
+there's no need to aggregate.
+
+144
+00:05:52.415 --> 00:05:55.415
+We can use the asfreq method to
+
+145
+00:05:55.415 --> 00:05:58.520
+convert to a higher frequency
+without any aggregation.
+
+146
+00:05:58.520 --> 00:06:00.315
+So let's create a data-frame with
+
+147
+00:06:00.315 --> 00:06:03.000
+two weekly indices
+and four columns.
+
+148
+00:06:03.000 --> 00:06:04.815
+So first the indices,
+
+149
+00:06:04.815 --> 00:06:08.275
+we're going to set
+our start to 1/1/2018,
+
+150
+00:06:08.275 --> 00:06:11.885
+every two and we'll set
+the frequency to w,
+
+151
+00:06:11.885 --> 00:06:14.750
+and now let's fill
+in the dataframe.
+
+152
+00:06:14.750 --> 00:06:20.360
+So df= pd.DataFrame,
+and just as per normal,
+
+153
+00:06:20.360 --> 00:06:21.560
+we're just going to
+create a bunch of
+
+154
+00:06:21.560 --> 00:06:23.965
+fake data and let's look
+at the head of this.
+
+155
+00:06:23.965 --> 00:06:25.910
+Now, we up-sample from
+
+156
+00:06:25.910 --> 00:06:28.355
+weekly frequency to
+daily frequency.
+
+157
+00:06:28.355 --> 00:06:30.575
+We would use the
+resample function with
+
+158
+00:06:30.575 --> 00:06:33.800
+frequency to "D" and
+the asfreq method.
+
+159
+00:06:33.800 --> 00:06:38.000
+So df=df.resample
+('D') and.asfreq,
+
+160
+00:06:38.000 --> 00:06:40.150
+and let's look at
+the head of that.
+
+161
+00:06:40.150 --> 00:06:41.700
+So as you notice,
+there's going to be
+
+162
+00:06:41.700 --> 00:06:43.925
+all these NaN values
+in some cells
+
+163
+00:06:43.925 --> 00:06:45.710
+because we're up-sampling
+and we do not have
+
+164
+00:06:45.710 --> 00:06:47.825
+any data for the new intervals.
+
+165
+00:06:47.825 --> 00:06:50.690
+If you want to build
+the NaN values,
+
+166
+00:06:50.690 --> 00:06:52.475
+and this is called interpolation,
+
+167
+00:06:52.475 --> 00:06:53.660
+you can either use ffill,
+
+168
+00:06:53.660 --> 00:06:54.950
+which we've talked about and is
+
+169
+00:06:54.950 --> 00:06:57.000
+forward filling, or bfill,
+
+170
+00:06:57.000 --> 00:06:58.485
+which is backward filling,
+
+171
+00:06:58.485 --> 00:07:01.200
+or you can use
+fillna or re-index methods
+
+172
+00:07:01.200 --> 00:07:03.420
+of course afterwards.
+
+173
+00:07:03.420 --> 00:07:05.390
+In our data-frame,
+it makes sense to do
+
+174
+00:07:05.390 --> 00:07:07.565
+forward filling now. So
+let's give it a try.
+
+175
+00:07:07.565 --> 00:07:10.070
+So df.resample ('D'), and then we
+
+176
+00:07:10.070 --> 00:07:12.600
+can just call ffill
+on this. There we go.
+
+177
+00:07:12.600 --> 00:07:15.110
+We've see that the
+values are propagated.
+
+178
+00:07:15.110 --> 00:07:17.000
+We can also choose to only fill
+
+179
+00:07:17.000 --> 00:07:18.320
+a certain number of periods
+
+180
+00:07:18.320 --> 00:07:21.635
+by using the limit parameter
+and the ffill function.
+
+181
+00:07:21.635 --> 00:07:23.630
+For instance, I
+might want to limit
+
+182
+00:07:23.630 --> 00:07:25.670
+to interpolating
+just three observations.
+
+183
+00:07:25.670 --> 00:07:29.670
+So at resample.ffill
+limit equals three.
+
+184
+00:07:31.120 --> 00:07:34.340
+An important group of
+manipulation techniques
+
+185
+00:07:34.340 --> 00:07:35.900
+on time series are focused
+
+186
+00:07:35.900 --> 00:07:37.820
+on over a sliding window or
+
+187
+00:07:37.820 --> 00:07:40.205
+with exponentially
+decaying weights.
+
+188
+00:07:40.205 --> 00:07:41.690
+Now I'm not going to
+talk about the latter,
+
+189
+00:07:41.690 --> 00:07:43.085
+but I'm going to talk
+about the former,
+
+190
+00:07:43.085 --> 00:07:45.020
+and this is very
+useful for smoothing
+
+191
+00:07:45.020 --> 00:07:47.255
+noisy or gappy data.
+
+192
+00:07:47.255 --> 00:07:48.965
+Note that these kinds
+of functions
+
+193
+00:07:48.965 --> 00:07:51.230
+automatically exclude
+missing data.
+
+194
+00:07:51.230 --> 00:07:52.720
+So keep that in mind.
+
+195
+00:07:52.720 --> 00:07:55.905
+Now, let's look examples
+using the stock market.
+
+196
+00:07:55.905 --> 00:07:58.755
+This is a very common data
+for time series analysis,
+
+197
+00:07:58.755 --> 00:07:59.750
+and we are going to
+look at Apple and
+
+198
+00:07:59.750 --> 00:08:01.535
+Microsoft's daily stock prices
+
+199
+00:08:01.535 --> 00:08:04.040
+from 2012 to 2018.
+
+200
+00:08:04.040 --> 00:08:08.710
+So Apple is "datasets/ APPL.csv"
+
+201
+00:08:08.710 --> 00:08:14.100
+and Microsoft is in
+"datasets/ MSFT.csv."
+
+202
+00:08:14.100 --> 00:08:17.030
+Let's look at the head of
+what Apple's looks like.
+
+203
+00:08:17.030 --> 00:08:20.510
+As we see here, we have
+these different pricing for
+
+204
+00:08:20.510 --> 00:08:24.385
+different times of the opening
+and closing and so forth.
+
+205
+00:08:24.385 --> 00:08:26.330
+For the analysis that
+we're going to do,
+
+206
+00:08:26.330 --> 00:08:27.890
+we're going to use
+the close price.
+
+207
+00:08:27.890 --> 00:08:29.180
+So let's combine Apple and
+
+208
+00:08:29.180 --> 00:08:31.925
+Microsoft's daily prices
+together into one data-frame.
+
+209
+00:08:31.925 --> 00:08:34.100
+So I'll create
+some new data-frame, Apple,
+
+210
+00:08:34.100 --> 00:08:35.330
+I just want to be
+
+211
+00:08:35.330 --> 00:08:36.590
+the close price and
+we'll just name
+
+212
+00:08:36.590 --> 00:08:37.850
+that up to the ticker label,
+
+213
+00:08:37.850 --> 00:08:40.160
+APPL, and Microsoft,
+I just wanted to be
+
+214
+00:08:40.160 --> 00:08:43.460
+their close price and we'll
+name that after MSFT,
+
+215
+00:08:43.460 --> 00:08:44.815
+and let's look at
+the head of that.
+
+216
+00:08:44.815 --> 00:08:48.900
+Okay. So now we just have
+these two stock closing prices.
+
+217
+00:08:48.900 --> 00:08:51.545
+Now, let's plot those prices
+over the years.
+
+218
+00:08:51.545 --> 00:08:55.190
+So I'm going to use a
+df.plot and plt.show.
+
+219
+00:08:55.190 --> 00:08:56.885
+We haven't talked about these.
+
+220
+00:08:56.885 --> 00:09:00.970
+You'll learn more about
+plotting in subsequent course.
+
+221
+00:09:00.970 --> 00:09:04.030
+Okay. So there we can
+see our two plots,
+
+222
+00:09:04.030 --> 00:09:06.110
+Apple much higher throughout
+
+223
+00:09:06.110 --> 00:09:08.465
+the period and higher
+volatility as well,
+
+224
+00:09:08.465 --> 00:09:10.055
+and then Microsoft is below.
+
+225
+00:09:10.055 --> 00:09:12.920
+So now we're going to learn
+the rolling operator,
+
+226
+00:09:12.920 --> 00:09:16.280
+which behaves similarly
+to resample and groupby.
+
+227
+00:09:16.280 --> 00:09:18.060
+So there's a lot of
+parallelism here.
+
+228
+00:09:18.060 --> 00:09:19.790
+It can be called on a series
+
+229
+00:09:19.790 --> 00:09:22.010
+or on a data-frame
+along with a window,
+
+230
+00:09:22.010 --> 00:09:24.155
+which is the number
+of periods to cover.
+
+231
+00:09:24.155 --> 00:09:27.050
+The number we specify in
+the rolling function means
+
+232
+00:09:27.050 --> 00:09:30.020
+the sliding window that we're
+actually going to group by.
+
+233
+00:09:30.020 --> 00:09:31.985
+So for example, if
+we're going to do
+
+234
+00:09:31.985 --> 00:09:34.595
+100 that is grouping
+over 100 days
+
+235
+00:09:34.595 --> 00:09:37.700
+sliding window because
+our current data
+
+236
+00:09:37.700 --> 00:09:39.645
+is in day periods.
+
+237
+00:09:39.645 --> 00:09:40.970
+If they were on second periods,
+
+238
+00:09:40.970 --> 00:09:43.315
+that would be a 100
+seconds and so forth.
+
+239
+00:09:43.315 --> 00:09:46.145
+So here, let's say
+100 day rolling window
+
+240
+00:09:46.145 --> 00:09:47.510
+and we're going to
+average values.
+
+241
+00:09:47.510 --> 00:09:50.465
+So we'd say df.rolling over 100.
+
+242
+00:09:50.465 --> 00:09:52.390
+So this is essentially groupby
+
+243
+00:09:52.390 --> 00:09:55.300
+or resampling into new periods.
+
+244
+00:09:55.300 --> 00:09:57.440
+We're going to take
+the mean values over those 100,
+
+245
+00:09:57.440 --> 00:09:59.090
+and we're just going to
+plot that right away,
+
+246
+00:09:59.090 --> 00:10:01.380
+and so let's show that plot.
+
+247
+00:10:03.760 --> 00:10:07.180
+So you can see that this
+not only smooth the data,
+
+248
+00:10:07.180 --> 00:10:08.830
+but then we lost the big drop at
+
+249
+00:10:08.830 --> 00:10:10.420
+the end of the time period for
+
+250
+00:10:10.420 --> 00:10:12.535
+Apple because of
+the size of our window.
+
+251
+00:10:12.535 --> 00:10:14.050
+So try playing around with
+
+252
+00:10:14.050 --> 00:10:16.360
+a few window values
+yourself to get a sense for
+
+253
+00:10:16.360 --> 00:10:18.010
+how that might
+change the insights
+
+254
+00:10:18.010 --> 00:10:20.760
+that you might derive
+from the data.
+
+255
+00:10:20.760 --> 00:10:23.890
+Now, we've just touched
+on the very basics of
+
+256
+00:10:23.890 --> 00:10:26.350
+manipulating time
+series data in Python.
+
+257
+00:10:26.350 --> 00:10:28.420
+These techniques will be
+useful for conducting
+
+258
+00:10:28.420 --> 00:10:30.130
+further time
+series analysis and for
+
+259
+00:10:30.130 --> 00:10:33.280
+more advanced data visualization
+on time-related data,
+
+260
+00:10:33.280 --> 00:10:34.495
+as well as when dealing with
+
+261
+00:10:34.495 --> 00:10:37.345
+feature engineering from
+time series sources.
+
+262
+00:10:37.345 --> 00:10:39.955
+If you continue to
+use time series data,
+
+263
+00:10:39.955 --> 00:10:42.249
+maybe you've got a project
+with one of our capstones,
+
+264
+00:10:42.249 --> 00:10:44.055
+where you want to use
+time series data,
+
+265
+00:10:44.055 --> 00:10:45.590
+you'll be spending
+a lot of time with
+
+266
+00:10:45.590 --> 00:10:48.680
+the Pandas libraries
+for time series,
+
+267
+00:10:48.680 --> 00:10:49.940
+and I really encourage you to
+
+268
+00:10:49.940 --> 00:10:51.170
+check out the documentation.
+
+269
+00:10:51.170 --> 00:10:53.405
+It's quite significant.
+
+270
+00:10:53.405 --> 00:10:55.850
+It's one of the biggest
+features within
+
+271
+00:10:55.850 --> 00:10:58.610
+Pandas for data science,
+
+272
+00:10:58.610 --> 00:11:02.370
+and really brought
+it to the forefront.

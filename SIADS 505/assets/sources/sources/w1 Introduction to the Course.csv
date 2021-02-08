@@ -1,0 +1,119 @@
+1,"00:00:05 Hi. I'm Chris Brooks,"
+2,00:00:08 faculty here at the University of
+3,00:00:10 Michigan School of Information.
+4,"00:00:13 This class is about data manipulation,"
+5,00:00:15 and data manipulation is really
+6,00:00:19 the foundation of what you'll do as a data scientist.
+7,00:00:22 And that doesn't really change even as you deepen a lot
+8,00:00:26 of your investigation and your skills in the area.
+9,"00:00:28 So in this course, we're going to teach you"
+10,00:00:30 the excellent Pandas library.
+11,00:00:32 It's wonderful for data manipulation it is
+12,00:00:35 the de facto standard for Python.
+13,"00:00:36 When you come out of this class,"
+14,00:00:40 you should be quite masterful on the use of that library.
+15,"00:00:42 We're going to teach you about how to acquire data,"
+16,"00:00:43 how to clean data,"
+17,"00:00:45 how to manipulate and joined data together,"
+18,00:00:49 and to make basic inferences about that data.
+19,00:00:51 Now we expect that you already have
+20,"00:00:54 some Python skills and some statistics skills,"
+21,00:00:56 but this course is really a place where you're
+22,00:00:59 going to get to build those skills through practice.
+23,00:01:04 There'll be some course resources off to the sidebar in
+24,00:01:06 the course shell that describe
+25,00:01:10 other ways that you can get some experience with Python.
+26,00:01:12 I filmed the lectures for this course
+27,00:01:14 in very specific manner.
+28,"00:01:16 I'm using a tutorial style,"
+29,00:01:17 where most of what you'll be
+30,00:01:19 watching is actually screen captures
+31,00:01:24 of me typing into Jupyter Notebooks code.
+32,00:01:27 I'm doing a couple of unique things with this.
+33,"00:01:30 One, you'll see all of my texts,"
+34,00:01:34 all my comments in that code live.
+35,00:01:36 So you'll be able to read as well as listen.
+36,00:01:39 But I wanted to share with you a strategy that I think is
+37,00:01:41 powerful for learning and
+38,00:01:43 learning using the Jupyter Notebooks.
+39,00:01:47 So let's take a look at some of the core shell right now.
+40,"00:01:51 So this is the coursera core shell here on the left,"
+41,00:01:52 and on the right-hand side I've opened
+42,00:01:55 up the Jupyter Notebooks.
+43,00:01:57 So this is actually a MOOC that I
+44,00:02:00 taught and I'm going to use to demonstrate.
+45,"00:02:02 When you go to a video on the course,"
+46,00:02:04 let's say this one on DataFrames.
+47,"00:02:08 You'll see that it's a regular instructional video,"
+48,00:02:09 I'll just mute that.
+49,00:02:10 You can seek around in
+50,00:02:12 the video and there's some talking head.
+51,"00:02:16 But the majority of it is going to look like this,"
+52,00:02:19 and let's just close the notes and close the sidebar.
+53,00:02:21 The majority of it's actually going to look like this.
+54,00:02:23 It's going to be me working through
+55,00:02:26 examples in a Jupyter Notebook.
+56,00:02:29 And I think the most powerful way to learn in
+57,"00:02:32 this course is actually to go into your Jupyter system,"
+58,"00:02:34 so I've got that here on the right-hand side,"
+59,00:02:36 and there'll be a separate video
+60,00:02:39 about the Coursera Jupyter platform.
+61,"00:02:43 But to actually create a new Python Notebook,"
+62,"00:02:49 it's empty and maybe name it after the lecture,"
+63,00:02:53 so this was dataframes I think.
+64,00:02:58 And to follow from the beginning what I'm
+65,"00:03:00 doing and type it in yourself,"
+66,00:03:04 so here we'll maybe seek to the beginning.
+67,00:03:06 So here you can see I'm looking at
+68,00:03:09 some cricket loving countries in this example.
+69,"00:03:11 So you can just type here,"
+70,"00:03:14 cricket loving countries, and"
+71,00:03:18 just follow the example as you go.
+72,00:03:21 The power of doing it this way is that at
+73,"00:03:23 any time you can pause the video,"
+74,"00:03:24 and you can explore,"
+75,"00:03:26 and you can start to look at alternatives,"
+76,00:03:28 and you can start to form questions.
+77,00:03:30 And this is really powerful to be
+78,00:03:33 doing as you're watching a video to
+79,00:03:35 be actively learning instead of
+80,00:03:38 just watching passively this video.
+81,00:03:40 The video has a number of
+82,"00:03:42 other opportunities in it, in particular,"
+83,"00:03:46 you can increase or decrease the speed of the video,"
+84,00:03:48 and that can be useful too for review.
+85,"00:03:52 I actually think high-speed video playback is wonderful,"
+86,"00:03:55 I listen to a lot of educational video this way,"
+87,00:03:57 largely after I've already done
+88,"00:03:59 the practice and I've already experienced at once,"
+89,"00:04:02 and I just want a quick review of the content,"
+90,00:04:05 I'll flip it on at maybe one and a half or two
+91,00:04:08 times speed and try and absorb that content.
+92,"00:04:12 The way we've built the videos for you for this class,"
+93,00:04:13 which isn't frankly new to
+94,00:04:15 me and I'd love to get your feedback
+95,00:04:17 on is with that whole transcript
+96,00:04:18 within the video as well.
+97,00:04:19 So you should be able to read
+98,00:04:22 and listen to the video at the same time.
+99,00:04:25 We've got a number of different supports
+100,00:04:27 for you as you're learning in this course.
+101,"00:04:29 We've got office hours,"
+102,"00:04:32 we've got slack communications,"
+103,"00:04:35 and we've got Piazza discussion forums,"
+104,00:04:36 and so I'd encourage you to take
+105,00:04:38 advantage of all of these.
+106,00:04:40 I'll be in the office hours or
+107,"00:04:41 the instructor of this course will,"
+108,"00:04:43 along with other people,"
+109,00:04:48 such as graduate students or staff persons.
+110,00:04:49 And you really can't go wrong with
+111,00:04:52 practicing over and over again.
+112,00:04:55 So please grab the educational videos
+113,"00:04:56 as you're watching them,"
+114,"00:04:59 engage with a blank notebook,"
+115,00:05:00 and just follow along and
+116,"00:05:04 see how you've maybe misinterpreted things,"
+117,"00:05:07 different investigations that you've gone off on,"
+118,00:05:10 and share what you found or questions
+119,00:05:12 you have with the rest of the class.

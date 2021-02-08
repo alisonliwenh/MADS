@@ -1,0 +1,2358 @@
+WEBVTT
+
+1
+00:00:06.363 --> 00:00:10.066
+NumPy is the fundamental package for
+numeric computing with Python.
+
+2
+00:00:10.066 --> 00:00:14.105
+It provides powerful ways to
+create store and manipulate data,
+
+3
+00:00:14.105 --> 00:00:16.423
+which makes it able to seamlessly and
+
+4
+00:00:16.423 --> 00:00:20.938
+speedily integrate with a wide
+variety of databases and data formats.
+
+5
+00:00:20.938 --> 00:00:25.408
+This is also the foundation that Pandas
+is built on which is a high performance
+
+6
+00:00:25.408 --> 00:00:29.902
+data-centric package that we're going
+to learn more about in this course.
+
+7
+00:00:29.902 --> 00:00:34.735
+In this lecture, we're going to talk about
+creating arrays with certain data types,
+
+8
+00:00:34.735 --> 00:00:38.046
+manipulating arrays ,selecting
+elements from arrays and
+
+9
+00:00:38.046 --> 00:00:39.847
+loading data sets into arrays.
+
+10
+00:00:39.847 --> 00:00:43.270
+Such functions are useful for
+manipulating data and
+
+11
+00:00:43.270 --> 00:00:48.259
+understanding the functionalities of
+other common python data packages.
+
+12
+00:00:48.259 --> 00:00:52.377
+So, you'll recall that we import
+a library using the import keyword and
+
+13
+00:00:52.377 --> 00:00:54.550
+numpy's common abbreviation is np.
+
+14
+00:00:54.550 --> 00:01:00.795
+So let's import numpy as np and
+import math.
+
+15
+00:01:03.627 --> 00:01:06.988
+Right, arrays are displayed as a list or
+lists of lists and
+
+16
+00:01:06.988 --> 00:01:09.194
+can be created through lists as well.
+
+17
+00:01:09.194 --> 00:01:13.442
+When creating an array, we pass into it
+a list as an argument in a numpy array.
+
+18
+00:01:13.442 --> 00:01:17.789
+So, a equals np.array and I'm just
+going to create a list here, 1, 2,
+
+19
+00:01:17.789 --> 00:01:20.277
+3 and we'll print out what a looks like.
+
+20
+00:01:20.277 --> 00:01:24.896
+And we can print out the number of
+dimensions of a list using this ndim
+
+21
+00:01:24.896 --> 00:01:27.584
+attribute, so, print[a.ndim].
+
+22
+00:01:27.584 --> 00:01:30.922
+If we pass in a list of
+lists into a numpy array,
+
+23
+00:01:30.922 --> 00:01:35.559
+we create a multi-dimensional array,
+for instance a matrix.
+
+24
+00:01:35.559 --> 00:01:39.854
+So, here I'll say b equals mp.array and
+I'm going to create a list and
+
+25
+00:01:39.854 --> 00:01:42.298
+inside of it I'll pass two other lists.
+
+26
+00:01:42.298 --> 00:01:48.567
+So, 1, 2, 3 is the first list and 4, 5,
+6 is the second list and let's look at b.
+
+27
+00:01:48.567 --> 00:01:53.029
+So, we can print out the length of each
+dimension by calling the shape attribute,
+
+28
+00:01:53.029 --> 00:01:55.240
+which returns a tuple, so, b.shape.
+
+29
+00:01:55.240 --> 00:02:00.964
+And we can also check the type of
+items in the array, so, a.dtype.
+
+30
+00:02:00.964 --> 00:02:06.116
+Now, beside integers,
+floats are also accepted in numpy array,
+
+31
+00:02:06.116 --> 00:02:12.280
+so, c equals mp.array and we can just
+put in some floating point numbers here,
+
+32
+00:02:12.280 --> 00:02:17.351
+2.2, maybe 5, maybe 1.1 and
+let's do c.dtype.name.
+
+33
+00:02:17.351 --> 00:02:20.001
+All right, so
+let's look at the data in our array.
+
+34
+00:02:20.001 --> 00:02:24.861
+So c, note that numpy automatically
+converts integers like
+
+35
+00:02:24.861 --> 00:02:29.254
+five up to floats since
+there's no loss of precision.
+
+36
+00:02:29.254 --> 00:02:33.906
+Numpy will try and give you the best data
+type format possible to keep your data
+
+37
+00:02:33.906 --> 00:02:38.358
+types homogeneous, which means that
+they're all the same in the array.
+
+38
+00:02:38.358 --> 00:02:41.768
+Sometimes we know the shape of
+an array that we want to create, but
+
+39
+00:02:41.768 --> 00:02:43.196
+not what we want to be in it.
+
+40
+00:02:43.196 --> 00:02:45.261
+Numpy offers several functions,
+
+41
+00:02:45.261 --> 00:02:49.258
+to create arrays with initial
+placeholders such as zeros or ones.
+
+42
+00:02:49.258 --> 00:02:52.928
+Let's create two arrays, both the same
+shape, but with different filler values.
+
+43
+00:02:52.928 --> 00:02:55.744
+So, I'm going to say d equals np.zeros and
+
+44
+00:02:55.744 --> 00:02:59.255
+I'll give it a shape of (2,3) and
+we'll print d.
+
+45
+00:02:59.255 --> 00:03:04.732
+And then e equals np.ones and
+we'll give it the same shape (2,3) and
+
+46
+00:03:04.732 --> 00:03:07.621
+print e and there we can see our arrays.
+
+47
+00:03:07.621 --> 00:03:09.995
+We can also generate an array
+with random numbers.
+
+48
+00:03:09.995 --> 00:03:15.618
+So, np.random.rand and
+we give it a shape, (2,3).
+
+49
+00:03:15.618 --> 00:03:20.726
+You'll see zeros, ones and rand used
+quite often to create example arrays,
+
+50
+00:03:20.726 --> 00:03:25.140
+especially in stack overflow posts and
+other discussion forums.
+
+51
+00:03:25.140 --> 00:03:29.451
+We can also create a sequence of numbers
+in an array with the arrange function.
+
+52
+00:03:29.451 --> 00:03:31.819
+The first argument is
+the starting bound and
+
+53
+00:03:31.819 --> 00:03:34.123
+the second argument is
+the ending bound and
+
+54
+00:03:34.123 --> 00:03:38.037
+the third argument is the difference
+between each consecutive number.
+
+55
+00:03:38.037 --> 00:03:44.109
+So, let's create an array of every even
+number from 10 inclusive to 50, exclusive.
+
+56
+00:03:44.109 --> 00:03:49.608
+So, f equals np.arrange, we're going to
+start at 10, we're going to end at 50.
+
+57
+00:03:49.608 --> 00:03:55.656
+Remember this is exclusive and we're going
+to jump by twos and let's look at f.
+
+58
+00:03:55.656 --> 00:03:59.532
+If we want to generate a sequence of
+floats, we use something called linspace.
+
+59
+00:03:59.532 --> 00:04:04.081
+In this function, the third argument isn't
+the difference between two numbers, but
+
+60
+00:04:04.081 --> 00:04:07.148
+it's the total number of items
+that you want to generate.
+
+61
+00:04:07.148 --> 00:04:12.346
+So you want to watch out for that,
+so, np.linspace( 0, 2, 15 ] and
+
+62
+00:04:12.346 --> 00:04:18.305
+what this really means is we want 15
+numbers from 0, inclusive to 2, inclusive.
+
+63
+00:04:21.447 --> 00:04:25.863
+So, we can do many things on arrays, such
+as mathematical manipulation, addition,
+
+64
+00:04:25.863 --> 00:04:30.529
+subtraction, square, exponents, as well as
+Boolean arrays, which are binary values.
+
+65
+00:04:30.529 --> 00:04:34.774
+And we can also do matrix manipulations,
+such as product transpose, inverse and
+
+66
+00:04:34.774 --> 00:04:35.338
+so forth.
+
+67
+00:04:35.338 --> 00:04:41.105
+So, let's see some of these, arithmetic
+operators on arrays apply elementwise.
+
+68
+00:04:41.105 --> 00:04:44.975
+So let's create a couple of arrays,
+I'll create a is np.array.
+
+69
+00:04:44.975 --> 00:04:49.768
+I'll just pass in a list 10,
+20, 30, 40 and then b,
+
+70
+00:04:49.768 --> 00:04:55.220
+we'll do np.array[1, 2, 3,
+4] now let's look at a minus b.
+
+71
+00:04:55.220 --> 00:05:01.482
+So c is equal to a minus b and let's look
+at a times b, so d equals a times b.
+
+72
+00:05:03.155 --> 00:05:05.799
+So, with arithmetic manipulation
+
+73
+00:05:05.799 --> 00:05:09.524
+we can convert current data
+to the way we want it to be.
+
+74
+00:05:09.524 --> 00:05:11.931
+So here's a real world
+problem that I faced.
+
+75
+00:05:11.931 --> 00:05:15.060
+I moved down to the United States
+about six years ago from Canada.
+
+76
+00:05:15.060 --> 00:05:17.598
+In Canada, we use Celsius for
+temperatures and
+
+77
+00:05:17.598 --> 00:05:21.605
+my wife still hasn't converted to
+the US system, which uses Fahrenheit.
+
+78
+00:05:21.605 --> 00:05:25.483
+With numpy I could easily convert
+a number of Fahrenheit values, say,
+
+79
+00:05:25.483 --> 00:05:27.760
+the weather forecast to Celsius for her.
+
+80
+00:05:27.760 --> 00:05:31.826
+So, let's create an array of typical
+Ann Arbor winter Fahrenheit values.
+
+81
+00:05:31.826 --> 00:05:36.424
+So, fahrenheit equals np.array and
+sometimes it'll be zero degrees
+
+82
+00:05:36.424 --> 00:05:40.110
+Fahrenheit, may be minus
+10 minus 5 minus 15 or 0.
+
+83
+00:05:40.110 --> 00:05:44.190
+These are not a typical
+Ann Arbor winter values.
+
+84
+00:05:44.190 --> 00:05:48.726
+And the formula for conversion is the
+temperature in fahrenheit minus 32 times 5
+
+85
+00:05:48.726 --> 00:05:51.858
+over 9, and
+this gives you the temperature in celsius.
+
+86
+00:05:51.858 --> 00:05:55.968
+So, we'll just say
+celsius equals fahrenheit
+
+87
+00:05:55.968 --> 00:06:00.702
+minus 31 times 5 over 9 and
+let's look at Celsius.
+
+88
+00:06:00.702 --> 00:06:04.959
+Okay, great, so, now she knows it's
+a little chilly outside this week, but
+
+89
+00:06:04.959 --> 00:06:05.936
+it's not so bad.
+
+90
+00:06:05.936 --> 00:06:09.808
+Another useful and important
+manipulation is the Boolean array.
+
+91
+00:06:09.808 --> 00:06:14.377
+We can apply an operator on an array and
+a Boolean array will be returned for
+
+92
+00:06:14.377 --> 00:06:19.258
+any element in the original with true
+being emitted if it meets the condition.
+
+93
+00:06:19.258 --> 00:06:23.712
+For instance, if we want to get a Boolean
+array to check the Celsius degrees that
+
+94
+00:06:23.712 --> 00:06:28.781
+are greater than minus 20 degrees, we will
+just say Celsius is greater than minus 20.
+
+95
+00:06:28.781 --> 00:06:32.942
+And there's our Boolean array,
+True, False, False, False and True.
+
+96
+00:06:32.942 --> 00:06:37.556
+Here's another example,
+we could use the modulus operator to check
+
+97
+00:06:37.556 --> 00:06:42.419
+numbers in array to see if they're even,
+so, celsius mod 2 equals 0.
+
+98
+00:06:44.307 --> 00:06:46.518
+Beside elementwise manipulation,
+
+99
+00:06:46.518 --> 00:06:50.588
+it's important to know that numpy
+supports matrix manipulation.
+
+100
+00:06:50.588 --> 00:06:54.764
+Let's look at the matrix product,
+if we wanted to do elementwise product,
+
+101
+00:06:54.764 --> 00:06:56.214
+we use the asterisk sign.
+
+102
+00:06:56.214 --> 00:07:00.775
+So A equals np.array,
+we'll create an array here and
+
+103
+00:07:00.775 --> 00:07:04.456
+B equals np.array, and we'll create it.
+
+104
+00:07:04.456 --> 00:07:08.694
+And let's print out
+the product of A times B.
+
+105
+00:07:08.694 --> 00:07:10.929
+If we want to do the matrix product,
+
+106
+00:07:10.929 --> 00:07:14.443
+we're going to use the @ sign
+instead of the asterisk.
+
+107
+00:07:14.443 --> 00:07:17.814
+So the asterisks is for elementwise and
+this is really important.
+
+108
+00:07:17.814 --> 00:07:21.119
+Actually, the asterisks is for
+element wise and
+
+109
+00:07:21.119 --> 00:07:26.611
+you can think of just the default is
+elementwise comparisons or modifications.
+
+110
+00:07:26.611 --> 00:07:34.007
+But the @ sign is going to use
+the dot product, so we'll print A@B.
+
+111
+00:07:34.007 --> 00:07:37.398
+So, you don't have to worry about complex
+matrix operations for this course.
+
+112
+00:07:37.398 --> 00:07:41.095
+But it's important to know that numpy is
+the underpinning of scientific computing
+
+113
+00:07:41.095 --> 00:07:42.163
+libraries of Python.
+
+114
+00:07:42.163 --> 00:07:45.751
+And that is capable of doing
+both element wise operations, so
+
+115
+00:07:45.751 --> 00:07:49.615
+the asterisks as well as matrix
+level operations, so the @ sign.
+
+116
+00:07:49.615 --> 00:07:53.196
+And there's more on this
+in subsequent courses.
+
+117
+00:07:53.196 --> 00:07:57.269
+So a few more linear algebra
+concepts are worth layering in here.
+
+118
+00:07:57.269 --> 00:08:01.289
+You might recall that the product of
+two matrices is only plausible when
+
+119
+00:08:01.289 --> 00:08:04.371
+the inner dimensions of
+the two matrices are the same.
+
+120
+00:08:04.371 --> 00:08:07.475
+The dimensions refer to the number
+of elements, both horizontal and
+
+121
+00:08:07.475 --> 00:08:10.483
+vertical in the rendered matrices
+that you've been seeing here.
+
+122
+00:08:10.483 --> 00:08:15.354
+So, we can use numpy to quickly
+see the shape of the matrix.
+
+123
+00:08:15.354 --> 00:08:20.392
+So, a.shape, for instance,
+will give us this one a two by two matrix.
+
+124
+00:08:20.392 --> 00:08:24.789
+When manipulating arrays of different
+types, the type of the resulting array
+
+125
+00:08:24.789 --> 00:08:27.794
+will correspond to the more
+general of the two types.
+
+126
+00:08:27.794 --> 00:08:31.303
+And this is called upcasting and
+you saw an example of that before, but
+
+127
+00:08:31.303 --> 00:08:32.560
+let's see another one.
+
+128
+00:08:32.560 --> 00:08:37.165
+So, let's create an array of integers,
+so, array1 equals np.array,
+
+129
+00:08:37.165 --> 00:08:39.648
+we'll do 1, 2, 3 and 4, 5, 6 and
+
+130
+00:08:39.648 --> 00:08:44.198
+let's print out its data type to make
+sure that it's actually integers.
+
+131
+00:08:44.198 --> 00:08:50.123
+Now, let's create an array of floats,
+so, array2 equals np.array 7.1,
+
+132
+00:08:50.123 --> 00:08:56.498
+8.2, 9.1 and then we'll give
+a second list 10.4, 11.2 and 12.3.
+
+133
+00:08:56.498 --> 00:08:58.535
+And let's print out its data type.
+
+134
+00:08:58.535 --> 00:09:02.281
+So, integers,
+int are whole numbers only and floating,
+
+135
+00:09:02.281 --> 00:09:07.257
+point numbers float, can have a whole
+number portion and a decimal portion.
+
+136
+00:09:07.257 --> 00:09:11.762
+The 64 in this example refers to the
+number of bits that the operating system
+
+137
+00:09:11.762 --> 00:09:15.576
+is reserving to represent the number
+which determines the size or
+
+138
+00:09:15.576 --> 00:09:18.790
+the precision of the numbers
+that can be represented.
+
+139
+00:09:18.790 --> 00:09:24.239
+So, let's do addition for the two arrays,
+so, array3 is equal to array1
+
+140
+00:09:24.239 --> 00:09:29.712
+plus array2 and we'll print array3 and
+then we'll print array3 dtype.
+
+141
+00:09:29.712 --> 00:09:34.212
+So, notice how the items in the resulting
+arrays have been upcast into
+
+142
+00:09:34.212 --> 00:09:35.895
+floating point numbers.
+
+143
+00:09:35.895 --> 00:09:40.528
+Now, numpy arrays also have an interesting
+aggregation functions on them,
+
+144
+00:09:40.528 --> 00:09:42.535
+such as sum, max, min and mean.
+
+145
+00:09:42.535 --> 00:09:45.450
+So, we can print out array3 sum,
+
+146
+00:09:45.450 --> 00:09:50.288
+array3 max, array3 min and
+let's try array3 mean.
+
+147
+00:09:50.288 --> 00:09:54.819
+For two dimensional arrays, we could do
+the same thing for each row or column.
+
+148
+00:09:54.819 --> 00:09:59.570
+So, let's create an array with 15
+elements ranging from 1 to 15,
+
+149
+00:09:59.570 --> 00:10:01.638
+with the dimension of 3 by 5.
+
+150
+00:10:01.638 --> 00:10:06.484
+So b equals np.arrang 1,16,
+and 1 and 
+
+151
+00:10:06.484 --> 00:10:13.263
+we're going to reshape this immediately
+to 3 by 5 and let's print b.
+
+152
+00:10:13.263 --> 00:10:17.717
+Now, we often think about two dimensional
+arrays being made up of rows and columns.
+
+153
+00:10:17.717 --> 00:10:22.695
+But you can also think of these arrays as
+just giant ordered lists of numbers and
+
+154
+00:10:22.695 --> 00:10:24.214
+the shape of the array.
+
+155
+00:10:24.214 --> 00:10:28.151
+The number of rows and columns is
+just an abstraction that we have for
+
+156
+00:10:28.151 --> 00:10:29.544
+a particular purpose.
+
+157
+00:10:29.544 --> 00:10:34.410
+Actually, this is exactly how basic images
+are stored in computer environments.
+
+158
+00:10:34.410 --> 00:10:36.720
+So, let's take a look at an example and
+
+159
+00:10:36.720 --> 00:10:40.014
+see how numpy comes into play
+in something like images.
+
+160
+00:10:40.014 --> 00:10:44.034
+For this demonstration, I'm going to
+use the Python Imaging Library, PIL and
+
+161
+00:10:44.034 --> 00:10:46.801
+a function to display images
+in the Jupyter notebook.
+
+162
+00:10:46.801 --> 00:10:52.696
+So, from PIL, import image and
+from IPython.display, import display.
+
+163
+00:10:52.696 --> 00:10:55.547
+And let's just look at the image
+that I'm going to talk about.
+
+164
+00:10:55.547 --> 00:11:01.057
+So, I'm just going to open this image
+called Chris.tiff and display this image.
+
+165
+00:11:01.057 --> 00:11:05.472
+Now, we could convert this
+PIL image to a numpy array.
+
+166
+00:11:05.472 --> 00:11:10.152
+So, array equals np.array and
+we just pass in the PIL image and
+
+167
+00:11:10.152 --> 00:11:15.118
+we're going to print array.shape and
+then let's look at array.
+
+168
+00:11:15.118 --> 00:11:22.368
+So, we see the shape is 200 by 200 and
+then we see the values are all uint8.
+
+169
+00:11:22.368 --> 00:11:25.541
+The uint means that they're
+unsigned integer, so,
+
+170
+00:11:25.541 --> 00:11:29.289
+there's no negative numbers and
+the 8 means 8 bits per byte.
+
+171
+00:11:29.289 --> 00:11:33.059
+This means that each value
+can be up to two by two by,
+
+172
+00:11:33.059 --> 00:11:35.443
+well 2 to the 8, 256th in size.
+
+173
+00:11:35.443 --> 00:11:39.202
+But it's actually only 255,
+because we start at zero, right,
+
+174
+00:11:39.202 --> 00:11:40.717
+that's computer science.
+
+175
+00:11:40.717 --> 00:11:45.422
+For black and white images, black is
+stored at zero and white is stored is 255.
+
+176
+00:11:45.422 --> 00:11:47.795
+So, if we just wanted
+to invert this image,
+
+177
+00:11:47.795 --> 00:11:49.921
+we can just use the numpy array to do so.
+
+178
+00:11:49.921 --> 00:11:52.699
+Okay, so,
+let's create an array the same shape.
+
+179
+00:11:52.699 --> 00:11:56.677
+So I'm going to create a mask,
+I'll call it an np.full and
+
+180
+00:11:56.677 --> 00:12:00.831
+array.shape, so,
+I want it the same as our existing array.
+
+181
+00:12:00.831 --> 00:12:07.435
+But I want it to be full of 255 valued
+uints, let's take a look at mask.
+
+182
+00:12:07.435 --> 00:12:10.516
+Okay, so, this is like zeros or
+ones, but full
+
+183
+00:12:10.516 --> 00:12:14.393
+basically let's set the value
+that you want everywhere.
+
+184
+00:12:14.393 --> 00:12:18.271
+Now, let's subtract that
+from the modified array.
+
+185
+00:12:18.271 --> 00:12:21.586
+So, we'll create a modified array,
+we'll take our main array and
+
+186
+00:12:21.586 --> 00:12:23.283
+we'll subtract the mask from it.
+
+187
+00:12:23.283 --> 00:12:26.886
+Remember this is going to
+do elementwise subtraction.
+
+188
+00:12:26.886 --> 00:12:32.556
+So, all of the values in an array,
+let's say, first values, 100 minus mask,
+
+189
+00:12:32.556 --> 00:12:37.173
+255 means that we'll be left
+with negative 155 in that cell.
+
+190
+00:12:37.173 --> 00:12:39.806
+And we're going to do that for
+all cells in the array and
+
+191
+00:12:39.806 --> 00:12:43.084
+let's just convert all of the negative
+values to positive values.
+
+192
+00:12:43.084 --> 00:12:47.446
+So, modified array is equal to
+modified array times negative one.
+
+193
+00:12:47.446 --> 00:12:53.249
+So, it's going to take that negative one
+and do, again, elementwise multiplication.
+
+194
+00:12:53.249 --> 00:12:57.304
+So, negative one times the first cell,
+negative one times the second cell and
+
+195
+00:12:57.304 --> 00:12:57.867
+so forth.
+
+196
+00:12:57.867 --> 00:13:02.755
+And as a last step, let's tell numpy to
+set the value of the data type correctly.
+
+197
+00:13:02.755 --> 00:13:07.412
+So, we're going to say modified array
+is equal to modified array.astype.
+
+198
+00:13:07.412 --> 00:13:10.773
+So this is going to tell numpy,
+you should really trust us.
+
+199
+00:13:10.773 --> 00:13:15.008
+We know what the data type is in here and
+we're going to say,
+
+200
+00:13:15.008 --> 00:13:18.422
+np.uint8 and let's look at modified array.
+
+201
+00:13:18.422 --> 00:13:21.837
+All right, so,
+that looks maybe as we expect.
+
+202
+00:13:21.837 --> 00:13:24.742
+Lastly, let's display this new array.
+
+203
+00:13:24.742 --> 00:13:29.132
+So, we can do this using the from array
+function in the Python Imaging Library to
+
+204
+00:13:29.132 --> 00:13:32.617
+convert the numpy array into
+an object that Jupyter can render.
+
+205
+00:13:32.617 --> 00:13:37.234
+So, display
+Image.fromarray(modified_array),
+
+206
+00:13:37.234 --> 00:13:38.392
+cool, okay.
+
+207
+00:13:38.392 --> 00:13:42.550
+Remember how I started talking about how
+this could just be thought of as a giant
+
+208
+00:13:42.550 --> 00:13:45.143
+array of bytes and
+its shape was an abstraction?
+
+209
+00:13:45.143 --> 00:13:50.276
+Well, we could just decide to reshape
+the array and still try and render.
+
+210
+00:13:50.276 --> 00:13:53.774
+PIL is interpreting
+the individual rows as lines, so,
+
+211
+00:13:53.774 --> 00:13:57.598
+we can change the number of lines and
+columns if we want to.
+
+212
+00:13:57.598 --> 00:14:00.315
+So, what do you think
+that would look like?
+
+213
+00:14:00.315 --> 00:14:01.475
+Well, let's take a look.
+
+214
+00:14:01.475 --> 00:14:05.266
+So, we'll create something new
+reshaped equals np.reshape and
+
+215
+00:14:05.266 --> 00:14:07.646
+we're going to take our modified array.
+
+216
+00:14:07.646 --> 00:14:13.342
+So, this is just our array from above,
+before we've done the inversion and
+
+217
+00:14:13.342 --> 00:14:16.908
+we're going to reshape it to 100 by 400.
+
+218
+00:14:16.908 --> 00:14:19.456
+Now remember it was 200 by 200.
+
+219
+00:14:19.456 --> 00:14:22.669
+So, we're changing both the width and
+the height here, but
+
+220
+00:14:22.669 --> 00:14:25.385
+we're keeping the total
+number of cells the same.
+
+221
+00:14:25.385 --> 00:14:31.704
+And let's print out, just to convince
+ourselves that we've actually changed it,
+
+222
+00:14:31.704 --> 00:14:35.810
+the reshaped shape and
+then let's display it in line.
+
+223
+00:14:35.810 --> 00:14:39.942
+All right, so, I can't say I find that
+particularly flattering by reshaping
+
+224
+00:14:39.942 --> 00:14:42.963
+the array to be only 100 rows high but
+400 columns.
+
+225
+00:14:42.963 --> 00:14:46.542
+We've essentially doubled the image
+by taking every other line and
+
+226
+00:14:46.542 --> 00:14:48.055
+stacking them out in width.
+
+227
+00:14:48.055 --> 00:14:51.386
+And this makes the image look
+more stretched out too and
+
+228
+00:14:51.386 --> 00:14:53.786
+maybe adds a little bit of weight to me.
+
+229
+00:14:53.786 --> 00:14:58.114
+So, this is an image manipulation course,
+but the point was to show you
+
+230
+00:14:58.114 --> 00:15:02.316
+that these numpy arrays are really
+just abstractions on top of data.
+
+231
+00:15:02.316 --> 00:15:06.362
+And that data has an underlying format,
+in this case uint8.
+
+232
+00:15:06.362 --> 00:15:11.281
+But further, we can build abstractions
+on top of that, such as computer code
+
+233
+00:15:11.281 --> 00:15:15.987
+which renders a bite as either black or
+white which has meaning to people.
+
+234
+00:15:15.987 --> 00:15:18.871
+And in some ways,
+this whole degree is all data and
+
+235
+00:15:18.871 --> 00:15:22.041
+the abstractions that we can
+build on top of that data.
+
+236
+00:15:22.041 --> 00:15:24.373
+From Individual bite representations,
+
+237
+00:15:24.373 --> 00:15:29.112
+through the complex neural networks of
+functions or interactive visualizations.
+
+238
+00:15:29.112 --> 00:15:33.426
+Your role as a data scientist is
+to understand what the data means,
+
+239
+00:15:33.426 --> 00:15:37.664
+it's context in a collection and
+to transform it into a different
+
+240
+00:15:37.664 --> 00:15:40.760
+representation to be used for
+sense-making.
+
+241
+00:15:40.760 --> 00:15:45.841
+Okay, let's get back to
+the mechanics of numpy.
+
+242
+00:15:45.841 --> 00:15:49.587
+So, indexing, slicing and
+iterating are extremely important for
+
+243
+00:15:49.587 --> 00:15:51.503
+data manipulation and analysis.
+
+244
+00:15:51.503 --> 00:15:56.615
+Because these techniques allow us to
+select data based on conditions and
+
+245
+00:15:56.615 --> 00:15:58.384
+copy or update the data.
+
+246
+00:15:58.384 --> 00:16:01.624
+So, first we're going to
+look at integer indexing,
+
+247
+00:16:01.624 --> 00:16:05.162
+a one-dimensional array works
+in similar ways to a list.
+
+248
+00:16:05.162 --> 00:16:08.300
+To get an element in a one-dimensional
+array, we just use an offset index.
+
+249
+00:16:08.300 --> 00:16:12.318
+So, we'll create some array,
+bunch of elements and
+
+250
+00:16:12.318 --> 00:16:16.084
+then we'll say a sub 2 and
+we get the value 5 out.
+
+251
+00:16:16.084 --> 00:16:20.443
+For multidimensional arrays,
+we need to use integer array indexing.
+
+252
+00:16:20.443 --> 00:16:22.520
+So, let's create a new
+multi-dimensional array.
+
+253
+00:16:22.520 --> 00:16:27.970
+So, we'll create this one two by three and
+let's look at a.
+
+254
+00:16:27.970 --> 00:16:31.839
+If we want to select one certain element,
+we can do so by entering the index,
+
+255
+00:16:31.839 --> 00:16:33.719
+which is comprised of two integers.
+
+256
+00:16:33.719 --> 00:16:38.445
+The first being the row and the second
+being the column, so, a sub 1 comma 1,
+
+257
+00:16:38.445 --> 00:16:41.316
+remember in Python,
+we're starting at zero.
+
+258
+00:16:41.316 --> 00:16:45.515
+All right, so there is the value of 4,
+if we want to get multiple elements, for
+
+259
+00:16:45.515 --> 00:16:49.278
+example, one four and six and
+put them into a one-dimensional array,
+
+260
+00:16:49.278 --> 00:16:52.439
+we can enter the indices
+directly into the array function.
+
+261
+00:16:52.439 --> 00:16:55.480
+So, we can create some new
+array np.array and in that,
+
+262
+00:16:55.480 --> 00:16:57.175
+we're going to pass it a list.
+
+263
+00:16:57.175 --> 00:17:01.283
+And from that list,
+we're actually taking our other array and
+
+264
+00:17:01.283 --> 00:17:04.706
+plucking out the values
+that we're interested in.
+
+265
+00:17:04.706 --> 00:17:08.376
+We can also do that using
+another form of array indexing,
+
+266
+00:17:08.376 --> 00:17:12.360
+which essentially zips the first list and
+the second list up.
+
+267
+00:17:12.360 --> 00:17:17.764
+So, we can take a and
+we can actually pass it to lists and
+
+268
+00:17:17.764 --> 00:17:21.182
+it will zip these values up for us.
+
+269
+00:17:21.182 --> 00:17:25.750
+And so we get the one, four and six.
+
+270
+00:17:25.750 --> 00:17:30.908
+Boolean indexing allows us to select
+arbitrary elements based on conditions.
+
+271
+00:17:30.908 --> 00:17:33.518
+For example,
+in the matrix that we just talked about,
+
+272
+00:17:33.518 --> 00:17:36.034
+we want to find elements
+that are greater than five.
+
+273
+00:17:36.034 --> 00:17:38.735
+So, we set up a condition,
+a greater than five.
+
+274
+00:17:38.735 --> 00:17:41.796
+So, let's just print,
+what is a greater than five?
+
+275
+00:17:41.796 --> 00:17:46.618
+This returns a Boolean array showing
+the values in the corresponding index
+
+276
+00:17:46.618 --> 00:17:48.462
+that are greater than five.
+
+277
+00:17:48.462 --> 00:17:52.698
+And so, here we get a bunch of Falses and
+a bunch of Trues.
+
+278
+00:17:52.698 --> 00:17:56.345
+So, we can then place this array
+of Boolean values like a mask
+
+279
+00:17:56.345 --> 00:18:01.136
+over the original array to return a
+one-dimensional array relating to the true
+
+280
+00:18:01.136 --> 00:18:01.722
+values.
+
+281
+00:18:01.722 --> 00:18:06.663
+So, if we do a sub a greater than five,
+what's happening here is we'll take
+
+282
+00:18:06.663 --> 00:18:10.463
+the greater than five operator,
+we'll broadcast that.
+
+283
+00:18:10.463 --> 00:18:16.949
+So, we'll compare that across all of the
+elements of a, creating a new matrix and
+
+284
+00:18:16.949 --> 00:18:22.411
+then we'll apply that as a mask over
+the outer a and emit the results.
+
+285
+00:18:22.411 --> 00:18:26.859
+So as we can see, this functionality
+is essential in the Pandas tool kit,
+
+286
+00:18:26.859 --> 00:18:30.831
+which is the bulk of this course,
+so, we'll be using this a lot.
+
+287
+00:18:30.831 --> 00:18:35.426
+So, slicing is a way to create a sub
+array based on the original array.
+
+288
+00:18:35.426 --> 00:18:39.120
+For one-dimensional array slicing
+works in similar ways to a list.
+
+289
+00:18:39.120 --> 00:18:43.967
+To slice, we use the colon, for instance,
+if we want to put : 3 in
+
+290
+00:18:43.967 --> 00:18:48.993
+the indexing brackets, we get the elements
+from index 0 to index 3.
+
+291
+00:18:48.993 --> 00:18:51.255
+So, remember, excluding index 3.
+
+292
+00:18:51.255 --> 00:18:55.817
+So, we'll create some array,
+just numbers 0 through 5.
+
+293
+00:18:55.817 --> 00:19:00.378
+So, that's six numbers and
+then we'll print a sub :3.
+
+294
+00:19:00.378 --> 00:19:04.120
+And so, we just get the first
+few elements, the first three.
+
+295
+00:19:04.120 --> 00:19:06.885
+By putting 2 : 4 in the brackets,
+though,
+
+296
+00:19:06.885 --> 00:19:09.868
+we could get elements from
+index 2 to index 4.
+
+297
+00:19:09.868 --> 00:19:14.685
+So, again, excluding index 4, so
+print a sub 2 : 4, instead of just
+
+298
+00:19:14.685 --> 00:19:19.439
+giving us the length, now that will
+actually give us just those indexes.
+
+299
+00:19:19.439 --> 00:19:24.800
+For multi-dimensional arrays,
+it works similarly, Let's see an example,
+
+300
+00:19:24.800 --> 00:19:28.811
+so a equals np.array and
+we're going to create a new list.
+
+301
+00:19:28.811 --> 00:19:31.373
+And in here we're going to
+put three lists and so,
+
+302
+00:19:31.373 --> 00:19:35.468
+let's take a look at this and we see that
+we've got three rows and four columns.
+
+303
+00:19:35.468 --> 00:19:39.747
+So, first,
+if we put one argument in the array, for
+
+304
+00:19:39.747 --> 00:19:45.585
+example a sub : 2, then we get
+all of the elements from the first,
+
+305
+00:19:45.585 --> 00:19:49.109
+the zeroth and the second row, the oneth.
+
+306
+00:19:49.109 --> 00:19:54.184
+If we add another argument to the array,
+for example a :2 comma,
+
+307
+00:19:54.184 --> 00:19:59.779
+so, second argument 1 : 3 ,
+we're going to get the first two rows.
+
+308
+00:19:59.779 --> 00:20:03.053
+But then the second and
+third column values only.
+
+309
+00:20:03.053 --> 00:20:06.069
+So, let's give that a try, a, so
+
+310
+00:20:06.069 --> 00:20:11.689
+we want all of the first two rows and
+then we want 1 : 3.
+
+311
+00:20:11.689 --> 00:20:15.935
+So, in multi-dimensional arrays,
+the first argument is for
+
+312
+00:20:15.935 --> 00:20:20.433
+selecting rows and the second
+argument is for selecting columns.
+
+313
+00:20:20.433 --> 00:20:25.102
+It's important to realize that a slice of
+an array is a view into the same data.
+
+314
+00:20:25.102 --> 00:20:28.401
+This is really important,
+this is called passing by reference.
+
+315
+00:20:28.401 --> 00:20:32.729
+So, modifying the sub array will
+consequently modify the original array
+
+316
+00:20:32.729 --> 00:20:33.300
+as well.
+
+317
+00:20:33.300 --> 00:20:38.019
+Here I'll change the element at
+position (0,0) which is 2 to 50.
+
+318
+00:20:38.019 --> 00:20:42.136
+Then we can see that the value in the
+original array is changed to 50 as well.
+
+319
+00:20:42.136 --> 00:20:45.592
+So I'm going to create a sub array and
+I'm going to just use what we use before.
+
+320
+00:20:45.592 --> 00:20:50.095
+So a sub colon two, so grab a couple
+of rows and then 1 : 3.
+
+321
+00:20:50.095 --> 00:20:55.042
+So, grab a couple of columns and
+I'll print out the value of the sub-array,
+
+322
+00:20:55.042 --> 00:20:58.249
+sub 0,0 and
+then I'm going to set that to 50.
+
+323
+00:20:58.249 --> 00:20:59.593
+I'm going to change it to 50 and
+
+324
+00:20:59.593 --> 00:21:01.756
+then we'll print out what
+the subarray thinks it is.
+
+325
+00:21:01.756 --> 00:21:06.743
+So, that should be 50, but
+then we're actually going to
+
+326
+00:21:06.743 --> 00:21:10.848
+print our original array,
+so that's a as well.
+
+327
+00:21:10.848 --> 00:21:15.450
+And remember a here is 0 comma 1,
+because we've
+
+328
+00:21:15.450 --> 00:21:20.676
+changed which columns that we've
+taken out for our sub array.
+
+329
+00:21:20.676 --> 00:21:24.521
+So, when we took our sub array and
+we did 1 : 3,
+
+330
+00:21:24.521 --> 00:21:26.778
+we got rid of the 0th column in a.
+
+331
+00:21:26.778 --> 00:21:32.524
+So, zero column in sub array is
+the first or the one column in a.
+
+332
+00:21:36.256 --> 00:21:39.015
+Okay, now that we've learned
+the essentials of numpy,
+
+333
+00:21:39.015 --> 00:21:40.978
+by let's use it on a couple of datasets.
+
+334
+00:21:40.978 --> 00:21:44.528
+So, here we have a very popular
+data set on wine quality.
+
+335
+00:21:44.528 --> 00:21:49.736
+And we're going to only look at red wines,
+the data fields include
+
+336
+00:21:49.736 --> 00:21:55.701
+fixed acidity volatile acids,
+residual sugars, chlorides and so forth.
+
+337
+00:21:55.701 --> 00:22:00.214
+The important one here is
+the alcohol content and
+
+338
+00:22:00.214 --> 00:22:04.408
+the quality, that's how I buy wine anyway.
+
+339
+00:22:04.408 --> 00:22:09.106
+To load a dataset into numpy,
+we can use the genfrom text function.
+
+340
+00:22:09.106 --> 00:22:13.026
+We can specify data file name,
+the delimiter which is optional but
+
+341
+00:22:13.026 --> 00:22:16.957
+we often use it and the number of
+rows to skip if we have a header row.
+
+342
+00:22:16.957 --> 00:22:22.477
+It's one here, so, the genfrom text
+function has a parameter called d-type for
+
+343
+00:22:22.477 --> 00:22:27.280
+specifying data types for each column and
+this parameter is optional.
+
+344
+00:22:27.280 --> 00:22:29.674
+Without specifying the type,
+
+345
+00:22:29.674 --> 00:22:34.192
+all types will be casted to
+a more general or precise type.
+
+346
+00:22:34.192 --> 00:22:36.509
+So there will be some inference done.
+
+347
+00:22:36.509 --> 00:22:41.405
+So, wines equals np.genfromtxt,
+we'll take in our CSV file,
+
+348
+00:22:41.405 --> 00:22:44.437
+we'll set our delimiter to semicolon.
+
+349
+00:22:44.437 --> 00:22:47.636
+And we're going to skip our header right
+now and let's take a look at wines.
+
+350
+00:22:47.636 --> 00:22:51.626
+All right, so
+a whole bunch of data here about wines.
+
+351
+00:22:51.626 --> 00:22:56.717
+So, recall that we can use integer
+indexing to get a certain column or row.
+
+352
+00:22:56.717 --> 00:22:59.910
+For example, if we wanted to
+select the fixed acidity column,
+
+353
+00:22:59.910 --> 00:23:03.782
+which is the first column, we can do so
+by entering the index into the array.
+
+354
+00:23:03.782 --> 00:23:06.492
+Also remember that for
+multi-dimensional arrays,
+
+355
+00:23:06.492 --> 00:23:10.657
+the first argument refers to the row and
+the second argument refers to the column.
+
+356
+00:23:10.657 --> 00:23:15.652
+And if we just give one argument, then
+we'll get a single dimensional list back.
+
+357
+00:23:15.652 --> 00:23:20.063
+Okay, so all rows are combined, but
+only the first column from them.
+
+358
+00:23:20.063 --> 00:23:24.230
+That will be print integer 0 for
+slicing, so,
+
+359
+00:23:24.230 --> 00:23:28.807
+wines sub colon, 
+that means we want all rows, right.
+
+360
+00:23:28.807 --> 00:23:32.293
+We haven't given any numbers
+to that parameter, comma 0,
+
+361
+00:23:32.293 --> 00:23:34.416
+we just want to get the first columns.
+
+362
+00:23:34.416 --> 00:23:37.892
+But if we want to get the same values, but
+
+363
+00:23:37.892 --> 00:23:42.492
+we wanted to preserve that
+they sit in their own rows,
+
+364
+00:23:42.492 --> 00:23:48.645
+we can actually write wines colon and
+then the second is 0 : 1.
+
+365
+00:23:48.645 --> 00:23:53.180
+So, take a look at these two statements
+for a moment before we run them.
+
+366
+00:23:53.180 --> 00:23:58.307
+In the first one,
+we say we want one column, the 0th column.
+
+367
+00:23:58.307 --> 00:24:00.158
+In the second statement,
+
+368
+00:24:00.158 --> 00:24:04.210
+we say we want all the columns
+between index 0 and 1.
+
+369
+00:24:04.210 --> 00:24:08.263
+Which happens to only b in the 0th
+column because we never include the end.
+
+370
+00:24:08.263 --> 00:24:14.092
+But the result that numpy gives us after
+we execute that, actually looks different.
+
+371
+00:24:14.092 --> 00:24:17.260
+All the numbers are the same,
+the first one though,
+
+372
+00:24:17.260 --> 00:24:19.354
+gives us a single list of numbers.
+
+373
+00:24:19.354 --> 00:24:25.142
+And the second one preserves the general
+shape that this is a single column.
+
+374
+00:24:25.142 --> 00:24:28.244
+So, this is another great example
+of how the shape of data is
+
+375
+00:24:28.244 --> 00:24:29.931
+actually just an abstraction.
+
+376
+00:24:29.931 --> 00:24:33.985
+Which we can layer intentionally on top
+of the data that were working with.
+
+377
+00:24:33.985 --> 00:24:38.214
+If we want a range of columns in order,
+say, column 0 through 3 and
+
+378
+00:24:38.214 --> 00:24:42.053
+recall this means first second and
+third, since we started zero.
+
+379
+00:24:42.053 --> 00:24:45.903
+And we don't include the training
+index value, we could do that too.
+
+380
+00:24:45.903 --> 00:24:49.561
+So, wines sub colon comma 0 comma 3 and
+
+381
+00:24:49.561 --> 00:24:54.308
+what if we want several
+non-consecutive columns?
+
+382
+00:24:54.308 --> 00:24:58.028
+Well, we can place the indices of
+the columns that we want into an array and
+
+383
+00:24:58.028 --> 00:25:00.080
+past that array as the second argument.
+
+384
+00:25:00.080 --> 00:25:04.457
+So here's an example, we can take wines,
+we want all rows so, colon.
+
+385
+00:25:04.457 --> 00:25:08.586
+And then our second argument is actually
+a list of the indexes that we're
+
+386
+00:25:08.586 --> 00:25:09.540
+interested in.
+
+387
+00:25:09.540 --> 00:25:14.586
+So, we can also do some basic
+summarization of this data set.
+
+388
+00:25:14.586 --> 00:25:18.598
+For example, if we wanted to find
+out the average quality of red wine,
+
+389
+00:25:18.598 --> 00:25:20.570
+we can select the quality column.
+
+390
+00:25:20.570 --> 00:25:22.715
+We could do this in a couple of ways, but
+
+391
+00:25:22.715 --> 00:25:26.225
+the most appropriate is to use
+the -1 value for the index,
+
+392
+00:25:26.225 --> 00:25:29.413
+as negative numbers means
+slicing from the back of a list.
+
+393
+00:25:29.413 --> 00:25:32.601
+And then we just call the aggregation
+functions on this data.
+
+394
+00:25:32.601 --> 00:25:37.147
+So, we could say wines,
+the first parameter is colon,
+
+395
+00:25:37.147 --> 00:25:39.487
+the second one is minus one.
+
+396
+00:25:39.487 --> 00:25:42.147
+Because we just want the last column and
+then we'll take the mean.
+
+397
+00:25:42.147 --> 00:25:45.246
+And just pause this for
+a minute and think,
+
+398
+00:25:45.246 --> 00:25:48.184
+do you understand what the -1 is?
+
+399
+00:25:48.184 --> 00:25:55.242
+So, if not, you'll want to revisit some
+of the basics on Python slicing and
+
+400
+00:25:55.242 --> 00:25:59.117
+string slicing, all right, so 5.6.
+
+401
+00:25:59.117 --> 00:26:03.038
+And let's take a look at another dataset,
+this time on graduate school admissions.
+
+402
+00:26:03.038 --> 00:26:07.555
+So it is field such as GRE score,
+TOEFL score, university rating and so
+
+403
+00:26:07.555 --> 00:26:10.654
+forth and
+it has a chance of admission at the end.
+
+404
+00:26:10.654 --> 00:26:14.591
+With this dataset, we can do data
+manipulation and basic analysis to infer
+
+405
+00:26:14.591 --> 00:26:18.164
+what conditions are associated
+with higher chances of admission.
+
+406
+00:26:18.164 --> 00:26:20.192
+So, let's take a look, so
+
+407
+00:26:20.192 --> 00:26:25.772
+we can specify data field names using
+genfromtext as it loads the CSV data.
+
+408
+00:26:25.772 --> 00:26:29.996
+And also we can have numpy try and infer
+this type of the column by setting the d
+
+409
+00:26:29.996 --> 00:26:32.306
+type parameter to none, as we've seen.
+
+410
+00:26:32.306 --> 00:26:36.098
+So graduate admission
+equals np.genfromtxt,
+
+411
+00:26:36.098 --> 00:26:41.004
+we reload the data from
+dataset/admission-predict.csv.
+
+412
+00:26:41.004 --> 00:26:45.684
+We'll set the d-type to none, we're going
+to set the delimiter here to a comma.
+
+413
+00:26:45.684 --> 00:26:48.572
+We're going to skip our header and
+instead,
+
+414
+00:26:48.572 --> 00:26:52.374
+we're just going to pass it
+the actual names of the column.
+
+415
+00:26:52.374 --> 00:26:58.157
+So, I'm going to write them here, serial
+number GRE Score, TOEFL Score Ranking,
+
+416
+00:26:58.157 --> 00:27:03.710
+SOP, Letters of recommendation GPAs,
+Research and the Chance of Admissions.
+
+417
+00:27:03.710 --> 00:27:06.802
+And let's take a look at what that
+graduate admission looks like.
+
+418
+00:27:06.802 --> 00:27:10.371
+So, notice that the resulting
+array is actually
+
+419
+00:27:10.371 --> 00:27:14.211
+a one-dimensional array
+with 400 tuples in it.
+
+420
+00:27:14.211 --> 00:27:17.877
+So let's look at the shape,
+it's actually got 400 tuples and
+
+421
+00:27:17.877 --> 00:27:19.291
+it's just one dimension.
+
+422
+00:27:19.291 --> 00:27:24.186
+So, we can retrieve a column from the
+array using the columns name, for example.
+
+423
+00:27:24.186 --> 00:27:28.848
+Let's get the CGPA column and
+only the first five values,
+
+424
+00:27:28.848 --> 00:27:32.668
+so we'll take graduate_admission sub CGPA.
+
+425
+00:27:32.668 --> 00:27:36.952
+So, this tells us we only want
+to get that one column and
+
+426
+00:27:36.952 --> 00:27:41.810
+then we want to get the first five values,
+so 0 : 5.
+
+427
+00:27:41.810 --> 00:27:45.730
+So, since the GPA in the data
+set range from 1 to 10 and
+
+428
+00:27:45.730 --> 00:27:50.653
+in the US it's more common to use
+a scale of 4, a common task might be
+
+429
+00:27:50.653 --> 00:27:55.342
+to convert the GPA by dividing by 10 and
+then multiplying by 4.
+
+430
+00:27:55.342 --> 00:27:57.449
+So, graduate admission
+
+431
+00:27:57.449 --> 00:28:03.410
+CGPA is equal to the graduate_admission
+sub CGPA divided by 10 times 4.
+
+432
+00:28:03.410 --> 00:28:07.811
+And let's look at the output
+of like 20 values there.
+
+433
+00:28:07.811 --> 00:28:13.407
+And it's important to keep in mind that
+we've actually changed now this data,
+
+434
+00:28:13.407 --> 00:28:14.000
+right?
+
+435
+00:28:14.000 --> 00:28:17.684
+So, we actually assigned
+graduate admissions sub CGPA,
+
+436
+00:28:17.684 --> 00:28:20.321
+that changes it on the underlying array.
+
+437
+00:28:20.321 --> 00:28:26.331
+So we've normalized this to a four-point
+scale, remember Boolean masking?
+
+438
+00:28:26.331 --> 00:28:30.974
+Well, we can use this to find out how many
+students have had research experience by
+
+439
+00:28:30.974 --> 00:28:35.029
+creating a Boolean mask and
+passing it to the array indexing operator.
+
+440
+00:28:35.029 --> 00:28:40.532
+So, we'll take the graduate_admission
+sub research will compare that to 1,
+
+441
+00:28:40.532 --> 00:28:45.650
+if it's one, a True will be admitted,
+otherwise a False will be admitted.
+
+442
+00:28:45.650 --> 00:28:47.300
+That creates us a mask,
+
+443
+00:28:47.300 --> 00:28:52.431
+which we then pass into graduate
+admission using the indexing operator.
+
+444
+00:28:52.431 --> 00:28:56.595
+So, that will now just emit
+certain values that are true and
+
+445
+00:28:56.595 --> 00:28:59.361
+it will not admit all the false values.
+
+446
+00:28:59.361 --> 00:29:03.365
+And then we're just going to calculate
+the length and so we just, the len of
+
+447
+00:29:03.365 --> 00:29:07.081
+that array or the length of that,
+it's just the same as if it were a list.
+
+448
+00:29:08.703 --> 00:29:12.246
+So, since we've got the data
+field chance of admission,
+
+449
+00:29:12.246 --> 00:29:14.920
+which ranges from 0 to 1,
+we can try and
+
+450
+00:29:14.920 --> 00:29:19.692
+see if students with high chance of
+admission, let's say 80% on average,
+
+451
+00:29:19.692 --> 00:29:24.933
+have hired GRE scores than those with
+lower chance of admission, let's say 40%.
+
+452
+00:29:24.933 --> 00:29:28.455
+So first we're going to use
+Boolean masking to pull out only
+
+453
+00:29:28.455 --> 00:29:33.114
+those students that we're interested
+in based on their chance of admission.
+
+454
+00:29:33.114 --> 00:29:35.646
+And then we pull out
+only their GPA scores and
+
+455
+00:29:35.646 --> 00:29:38.186
+then we're going to print the mean values.
+
+456
+00:29:38.186 --> 00:29:40.947
+So let's print the values, so,
+
+457
+00:29:40.947 --> 00:29:46.977
+we'll take graduate admission sub
+chance of admit compared to 0.8.
+
+458
+00:29:46.977 --> 00:29:50.750
+We're going to broadcast this out,
+take the GRE score and look at the mean.
+
+459
+00:29:50.750 --> 00:29:56.299
+And we're going to do the same thing for
+the 0.4.
+
+460
+00:29:58.154 --> 00:30:01.472
+So, take it a moment here to reflect,
+
+461
+00:30:01.472 --> 00:30:06.465
+do you understand what's
+happening in the calls above?
+
+462
+00:30:06.465 --> 00:30:08.571
+When we do the Boolean masking,
+
+463
+00:30:08.571 --> 00:30:11.770
+we are left with an array
+with tuples in it still.
+
+464
+00:30:11.770 --> 00:30:16.835
+And numpy holds underneath this a list
+of the columns we specified and
+
+465
+00:30:16.835 --> 00:30:18.678
+their name and indexes.
+
+466
+00:30:18.678 --> 00:30:23.658
+And so, we can do graduate_admission
+sub graduate_admission sub chance of
+
+467
+00:30:23.658 --> 00:30:25.473
+admit greater than 0.8.
+
+468
+00:30:25.473 --> 00:30:30.211
+In this case, we're taking that
+we're creating the Boolean mask and
+
+469
+00:30:30.211 --> 00:30:34.147
+then we're applying it to
+the graduate admission data and
+
+470
+00:30:34.147 --> 00:30:37.627
+we see that the output is
+actually still in tuples.
+
+471
+00:30:37.627 --> 00:30:42.778
+Because there's many different
+columns being kept here.
+
+472
+00:30:42.778 --> 00:30:47.452
+And this I think is a little
+bit more clear in Pandas,
+
+473
+00:30:47.452 --> 00:30:51.609
+which we'll talk about
+later in this course.
+
+474
+00:30:51.609 --> 00:30:53.537
+So, let's also do this with GPA.
+
+475
+00:30:53.537 --> 00:30:56.909
+So, I'm just going to copy and
+paste the above, but
+
+476
+00:30:56.909 --> 00:30:59.447
+I'm going to change the values to GPA.
+
+477
+00:31:01.577 --> 00:31:05.794
+Well, I guess one could have expected
+this, the GPA and the GRE for
+
+478
+00:31:05.794 --> 00:31:09.183
+students who have a higher
+chance of being admitted,
+
+479
+00:31:09.183 --> 00:31:12.812
+at least based on our cursory
+look here seem to be higher.
+
+480
+00:31:15.725 --> 00:31:18.442
+So that's a bit of
+a whirlwind tour of numpy,
+
+481
+00:31:18.442 --> 00:31:21.529
+the core scientific
+Computing library in Python.
+
+482
+00:31:21.529 --> 00:31:25.616
+Now, you're going to see a lot more
+of this kind of discussion using this
+
+483
+00:31:25.616 --> 00:31:26.225
+library.
+
+484
+00:31:26.225 --> 00:31:28.645
+And we'll be focusing on this
+in this course on Pandas,
+
+485
+00:31:28.645 --> 00:31:30.403
+which is actually built on top of numpy.
+
+486
+00:31:30.403 --> 00:31:35.115
+Don't worry if this didn't all
+make sense the first time through,
+
+487
+00:31:35.115 --> 00:31:40.252
+we're going to dig in a lot more over
+the next couple of weeks with pandas.
+
+488
+00:31:40.252 --> 00:31:44.084
+But it's useful and
+the point of this lecture is so
+
+489
+00:31:44.084 --> 00:31:48.656
+that you know that underneath,
+numpy is used as a library.
+
+490
+00:31:48.656 --> 00:31:53.642
+And the capabilities of numpy
+are available to you within Pandas as
+
+491
+00:31:53.642 --> 00:31:54.805
+we go forward.

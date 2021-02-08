@@ -1,0 +1,774 @@
+WEBVTT
+
+1
+00:00:05.120 --> 00:00:07.650
+Hi. I want to show you
+a little bit about
+
+2
+00:00:07.650 --> 00:00:09.420
+the Jupyter Notebook
+System that we've
+
+3
+00:00:09.420 --> 00:00:11.650
+built with Coursera
+into this course.
+
+4
+00:00:11.650 --> 00:00:13.140
+It's a great feature.
+
+5
+00:00:13.140 --> 00:00:14.460
+It lets you explore
+
+6
+00:00:14.460 --> 00:00:16.665
+your assignments and
+your programming,
+
+7
+00:00:16.665 --> 00:00:18.345
+the lecture content even,
+
+8
+00:00:18.345 --> 00:00:20.340
+all within the web browser.
+
+9
+00:00:20.340 --> 00:00:21.570
+I think it's really
+
+10
+00:00:21.570 --> 00:00:23.640
+quite a wonderful addition
+to the degree,
+
+11
+00:00:23.640 --> 00:00:26.895
+to our platform, and
+to your experience.
+
+12
+00:00:26.895 --> 00:00:28.365
+So let's take a look.
+
+13
+00:00:28.365 --> 00:00:30.930
+So this is what the
+Jupyter Notebook will look
+
+14
+00:00:30.930 --> 00:00:33.465
+like when you log
+into it on Coursera.
+
+15
+00:00:33.465 --> 00:00:35.190
+And at anytime, you can get back to
+
+16
+00:00:35.190 --> 00:00:37.800
+this screen by clicking
+on Coursera logo.
+
+17
+00:00:37.800 --> 00:00:39.540
+And this is called the tree or the
+
+18
+00:00:39.540 --> 00:00:42.315
+directory tree and you can
+see here it's at slash,
+
+19
+00:00:42.315 --> 00:00:44.250
+which means we're
+at the root of it.
+
+20
+00:00:44.250 --> 00:00:47.800
+In this one, I've got
+three folders created and I've
+
+21
+00:00:47.800 --> 00:00:51.380
+actually got a text file
+here, Readme markdown file.
+
+22
+00:00:51.380 --> 00:00:54.160
+Now, if you want to create
+a new Jupyter Notebook,
+
+23
+00:00:54.160 --> 00:00:55.940
+you just go over
+to the new button,
+
+24
+00:00:55.940 --> 00:00:58.330
+click the little down
+disclosure triangle
+
+25
+00:00:58.330 --> 00:00:59.695
+and you can create a folder,
+
+26
+00:00:59.695 --> 00:01:01.090
+text file, a terminal,
+
+27
+00:01:01.090 --> 00:01:02.200
+we'll talk about that,
+
+28
+00:01:02.200 --> 00:01:04.060
+or a new Python three notebook.
+
+29
+00:01:04.060 --> 00:01:07.010
+So let's go ahead and create
+a python three notebook.
+
+30
+00:01:07.010 --> 00:01:10.515
+So this is the core of
+the Jupyter system,
+
+31
+00:01:10.515 --> 00:01:12.895
+the Python three notebook.
+
+32
+00:01:12.895 --> 00:01:15.850
+This single line here
+is called a cell.
+
+33
+00:01:15.850 --> 00:01:17.785
+You can have two kinds of cells.
+
+34
+00:01:17.785 --> 00:01:20.590
+You can have code cells
+and markdowns cells.
+
+35
+00:01:20.590 --> 00:01:24.705
+So let's just say x equals five,
+
+36
+00:01:24.705 --> 00:01:27.830
+print x, just something simple.
+
+37
+00:01:27.830 --> 00:01:29.780
+So we can just write
+our Python in here.
+
+38
+00:01:29.780 --> 00:01:33.490
+And then you can run this cell by
+hitting the button up here.
+
+39
+00:01:33.490 --> 00:01:36.995
+And you can see we get the output
+right below the cell.
+
+40
+00:01:36.995 --> 00:01:40.805
+You can move cells around so
+we can move them up or down.
+
+41
+00:01:40.805 --> 00:01:42.770
+You can delete, cut, copy,
+
+42
+00:01:42.770 --> 00:01:44.765
+and paste, and so forth cells.
+
+43
+00:01:44.765 --> 00:01:46.565
+So it's really handy.
+
+44
+00:01:46.565 --> 00:01:49.130
+What's happening underneath
+is actually all of
+
+45
+00:01:49.130 --> 00:01:51.980
+the code that your writing
+is being sent to
+
+46
+00:01:51.980 --> 00:01:53.840
+a virtual server that Coursera
+
+47
+00:01:53.840 --> 00:01:55.700
+hosts and it's being run
+
+48
+00:01:55.700 --> 00:01:57.710
+against a Python
+interpreter there.
+
+49
+00:01:57.710 --> 00:02:00.169
+Now, after you run a statement,
+
+50
+00:02:00.169 --> 00:02:02.450
+it's not like just finished
+running a program,
+
+51
+00:02:02.450 --> 00:02:04.340
+that interpreter still exists,
+
+52
+00:02:04.340 --> 00:02:06.710
+and so the state still exists.
+
+53
+00:02:06.710 --> 00:02:10.160
+So if we've printed, for
+instance, X plus one,
+
+54
+00:02:10.160 --> 00:02:13.925
+that interpreter still knows
+what the value of x was.
+
+55
+00:02:13.925 --> 00:02:15.665
+So now we have six.
+
+56
+00:02:15.665 --> 00:02:18.155
+Up here in the upper
+right-hand corner,
+
+57
+00:02:18.155 --> 00:02:20.030
+you'll actually see a reference
+
+58
+00:02:20.030 --> 00:02:22.100
+to your Python interpreter state.
+
+59
+00:02:22.100 --> 00:02:24.890
+It tells you here that
+the Kernel is idle.
+
+60
+00:02:24.890 --> 00:02:33.630
+Um, let's try something else for
+I in range, 0 and 1,000.
+
+61
+00:02:39.560 --> 00:02:42.935
+i equals. Well, we won't do
+that. We'll just say M
+
+62
+00:02:42.935 --> 00:02:46.650
+equals I times I,
+
+63
+00:02:46.650 --> 00:02:49.730
+minus one and we'll
+just run this.
+
+64
+00:02:49.730 --> 00:02:51.650
+Now, watch that little circle
+
+65
+00:02:51.650 --> 00:02:54.020
+in the upper right
+as we run this.
+
+66
+00:02:54.020 --> 00:02:58.550
+You see it very
+quickly, flashed black.
+
+67
+00:02:58.550 --> 00:03:01.370
+That shows you that
+the interpreter is working.
+
+68
+00:03:01.370 --> 00:03:02.960
+So if you're looking at
+
+69
+00:03:02.960 --> 00:03:06.020
+your system wondering why
+nothing is responding,
+
+70
+00:03:06.020 --> 00:03:08.915
+take a look at
+that interpreter working.
+
+71
+00:03:08.915 --> 00:03:15.560
+In fact, why don't we do
+something really nasty here.
+
+72
+00:03:15.560 --> 00:03:19.010
+So why don't we just say, for I,
+
+73
+00:03:19.010 --> 00:03:28.855
+less than 100, I equals one.
+
+74
+00:03:28.855 --> 00:03:31.680
+We'll just say I
+equal to one right
+
+75
+00:03:31.680 --> 00:03:35.230
+above that and we'll
+run this cell.
+
+76
+00:03:35.460 --> 00:03:38.050
+This a great example of
+
+77
+00:03:38.050 --> 00:03:42.020
+some syntax error that
+comes up right here.
+
+78
+00:03:50.540 --> 00:03:53.700
+All right. So this is
+an infinite loop, right?
+
+79
+00:03:53.700 --> 00:03:57.970
+We can see here that the
+asterisk here, by the output,
+
+80
+00:03:57.970 --> 00:04:00.940
+actually tells us
+that the kernel is
+
+81
+00:04:00.940 --> 00:04:02.260
+running and we can see here
+
+82
+00:04:02.260 --> 00:04:04.270
+the little black circle
+is filled in,
+
+83
+00:04:04.270 --> 00:04:06.260
+showing that
+the kernel is running.
+
+84
+00:04:06.260 --> 00:04:08.300
+If you get into
+this kind of state,
+
+85
+00:04:08.300 --> 00:04:10.100
+you can just interrupt
+that kernel.
+
+86
+00:04:10.100 --> 00:04:12.260
+It's like hitting Control C
+on the keyboards.
+
+87
+00:04:12.260 --> 00:04:13.640
+You just say kernel,
+
+88
+00:04:13.640 --> 00:04:17.540
+interrupt and it'll will
+just stop at anytime.
+
+89
+00:04:17.540 --> 00:04:20.405
+Other things you can do,
+you can restart the kernel.
+
+90
+00:04:20.405 --> 00:04:22.295
+It's just like restarting Python.
+
+91
+00:04:22.295 --> 00:04:23.990
+So actually, if we restart
+
+92
+00:04:23.990 --> 00:04:28.400
+the kernel and then
+we try and print x,
+
+93
+00:04:31.190 --> 00:04:34.630
+we see that we get an error.
+
+94
+00:04:35.240 --> 00:04:37.560
+You can clear the output,
+
+95
+00:04:37.560 --> 00:04:41.885
+you can restart and
+run all, and so forth.
+
+96
+00:04:41.885 --> 00:04:44.465
+There's lots of cell functions
+that you can do too.
+
+97
+00:04:44.465 --> 00:04:47.390
+I'll often use this one
+cell Run All Above.
+
+98
+00:04:47.390 --> 00:04:50.750
+So I'll restart the kernel
+and then I want to run all
+
+99
+00:04:50.750 --> 00:04:54.905
+of the content of my notebook
+up until this point.
+
+100
+00:04:54.905 --> 00:04:59.539
+If you want to switch
+to a cell to markdown,
+
+101
+00:04:59.539 --> 00:05:02.030
+you can do that and then this is
+
+102
+00:05:02.030 --> 00:05:05.170
+just regular text
+with a few extras.
+
+103
+00:05:05.170 --> 00:05:10.040
+So if you wanted a big heading
+and then you can do things
+
+104
+00:05:10.040 --> 00:05:15.695
+like special text to bold it.
+
+105
+00:05:15.695 --> 00:05:18.065
+And then when you run that cell,
+
+106
+00:05:18.065 --> 00:05:20.450
+it'll actually render
+what the text looks like.
+
+107
+00:05:20.450 --> 00:05:24.565
+And you'll see that in the notebooks
+throughout this course.
+
+108
+00:05:24.565 --> 00:05:27.760
+Let's go back to the tree.
+
+109
+00:05:27.830 --> 00:05:30.280
+In the tree, one of
+the other things
+
+110
+00:05:30.280 --> 00:05:31.360
+you can do is actually
+
+111
+00:05:31.360 --> 00:05:34.420
+open up a terminal and
+this is pretty powerful.
+
+112
+00:05:34.420 --> 00:05:36.865
+So you now have a terminal,
+
+113
+00:05:36.865 --> 00:05:39.595
+you're logged in
+as the user Jovian
+
+114
+00:05:39.595 --> 00:05:44.170
+and this is just a Linux
+machine underneath.
+
+115
+00:05:44.170 --> 00:05:46.060
+It's actually a
+virtualized Linux machine,
+
+116
+00:05:46.060 --> 00:05:47.425
+a dockerized one.
+
+117
+00:05:47.425 --> 00:05:49.570
+So you can do things
+like LS to take
+
+118
+00:05:49.570 --> 00:05:51.985
+a list of the files system.
+
+119
+00:05:51.985 --> 00:05:54.130
+You can do things like look.
+
+120
+00:05:54.130 --> 00:05:56.065
+What is this Untitled Notebook?
+
+121
+00:05:56.065 --> 00:05:57.775
+So if we wanted to look at that,
+
+122
+00:05:57.775 --> 00:06:01.815
+cat Untitled and we can look
+
+123
+00:06:01.815 --> 00:06:04.735
+Oh it's just a giant JSON
+string and so-forth.
+
+124
+00:06:04.735 --> 00:06:08.980
+We can install new packages
+as well as needed.
+
+125
+00:06:08.980 --> 00:06:15.095
+So you can use Conda or Pip
+to install new packages.
+
+126
+00:06:15.095 --> 00:06:18.680
+Now, you probably won't have
+to use the terminal much,
+
+127
+00:06:18.680 --> 00:06:20.720
+certainly not in
+this first course,
+
+128
+00:06:20.720 --> 00:06:22.880
+but you should know
+it's there and be
+
+129
+00:06:22.880 --> 00:06:26.760
+aware of its functionality.
+
+130
+00:06:27.550 --> 00:06:29.600
+So go back to the tree.
+
+131
+00:06:29.600 --> 00:06:31.400
+The last thing that I
+wanted to show you in
+
+132
+00:06:31.400 --> 00:06:34.370
+just this quick overview
+of the notebook,
+
+133
+00:06:34.370 --> 00:06:36.560
+is what an assignment
+might look like.
+
+134
+00:06:36.560 --> 00:06:39.215
+So if you load
+this assignment here,
+
+135
+00:06:39.215 --> 00:06:42.320
+so this is just a
+sample assignment,
+
+136
+00:06:42.320 --> 00:06:43.940
+you'll see that there's actually
+
+137
+00:06:43.940 --> 00:06:46.130
+a rendered blue button here that
+
+138
+00:06:46.130 --> 00:06:49.820
+actually submits it to
+Coursera when you press it.
+
+139
+00:06:49.820 --> 00:06:51.140
+So that's how you'll submit to
+
+140
+00:06:51.140 --> 00:06:53.755
+the programming portion
+of the assignments.
+
+141
+00:06:53.755 --> 00:06:55.630
+Now, we built into
+
+142
+00:06:55.630 --> 00:06:59.440
+the assignments
+some unit tests to help you.
+
+143
+00:06:59.440 --> 00:07:01.525
+So as you're doing an assignment,
+
+144
+00:07:01.525 --> 00:07:04.780
+you can hit the validate button
+and it'll actually run
+
+145
+00:07:04.780 --> 00:07:06.460
+some of those unit tests for
+
+146
+00:07:06.460 --> 00:07:08.210
+you and give you
+an idea that wait,
+
+147
+00:07:08.210 --> 00:07:11.095
+there's a couple of cells
+here that needs some work.
+
+148
+00:07:11.095 --> 00:07:14.175
+Of course, when you go in
+and submit the assignment,
+
+149
+00:07:14.175 --> 00:07:16.660
+you're also given this URL to
+
+150
+00:07:16.660 --> 00:07:19.960
+go back and to look at
+the status of the assignment.
+
+151
+00:07:19.960 --> 00:07:22.540
+So that's a really quick overview
+
+152
+00:07:22.540 --> 00:07:24.430
+of the Jupyter Notebooks System.
+
+153
+00:07:24.430 --> 00:07:27.910
+Now, there's a lot of
+shortcuts key commands.
+
+154
+00:07:27.910 --> 00:07:29.980
+There's plugins that you
+can get for Jupyter.
+
+155
+00:07:29.980 --> 00:07:33.640
+You can absolutely install
+Jupyter on your home PC,
+
+156
+00:07:33.640 --> 00:07:36.600
+or work PC, or wherever you're
+doing this course from.
+
+157
+00:07:36.600 --> 00:07:38.660
+But I think using it in
+
+158
+00:07:38.660 --> 00:07:42.350
+this capacity built into
+the course is really powerful.
+
+159
+00:07:42.350 --> 00:07:46.290
+The folder, the storage for
+
+160
+00:07:46.290 --> 00:07:48.245
+your Jupyter Docker instance
+
+161
+00:07:48.245 --> 00:07:50.915
+is on a course-by-course level.
+
+162
+00:07:50.915 --> 00:07:55.010
+But you can download those
+files just from that tree.
+
+163
+00:07:55.010 --> 00:07:57.110
+So there's an option
+to download files
+
+164
+00:07:57.110 --> 00:08:00.095
+and move them around to
+other courses as well.
+
+165
+00:08:00.095 --> 00:08:02.840
+I hope you enjoy
+this added feature of
+
+166
+00:08:02.840 --> 00:08:04.910
+the course in
+the Coursera product
+
+167
+00:08:04.910 --> 00:08:06.830
+and look forward to
+hearing from you,
+
+168
+00:08:06.830 --> 00:08:08.910
+what you think of it.

@@ -1,0 +1,826 @@
+WEBVTT
+
+1
+00:00:05.210 --> 00:00:07.500
+In this course, we've talked
+
+2
+00:00:07.500 --> 00:00:09.330
+primarily about structuring data
+
+3
+00:00:09.330 --> 00:00:12.735
+in a tabular form using
+the DataFrame as our construct.
+
+4
+00:00:12.735 --> 00:00:14.430
+This builds off
+of spreadsheets,
+
+5
+00:00:14.430 --> 00:00:16.190
+which have been used
+for the last 30 years.
+
+6
+00:00:16.190 --> 00:00:17.430
+It's an excellent way to
+
+7
+00:00:17.430 --> 00:00:19.650
+show relationships
+between instances,
+
+8
+00:00:19.650 --> 00:00:22.340
+which are sometimes called
+the observations, entities,
+
+9
+00:00:22.340 --> 00:00:24.305
+or in the case of Pandas, rows,
+
+10
+00:00:24.305 --> 00:00:26.760
+and the attributes that
+these instances have,
+
+11
+00:00:26.760 --> 00:00:28.050
+which are often called features,
+
+12
+00:00:28.050 --> 00:00:30.030
+or in Pandas, columns.
+
+13
+00:00:30.030 --> 00:00:31.890
+But it's important
+to recognize that
+
+14
+00:00:31.890 --> 00:00:33.570
+there's nothing
+innate to the data,
+
+15
+00:00:33.570 --> 00:00:35.305
+which is structured this way.
+
+16
+00:00:35.305 --> 00:00:37.400
+This tabular
+representation of data
+
+17
+00:00:37.400 --> 00:00:39.545
+is an abstraction that
+we as data scientists,
+
+18
+00:00:39.545 --> 00:00:41.660
+have applied to allow
+us to more easily
+
+19
+00:00:41.660 --> 00:00:44.705
+build manipulation routines
+with certain properties.
+
+20
+00:00:44.705 --> 00:00:46.700
+It's an abstraction
+that allows us
+
+21
+00:00:46.700 --> 00:00:48.349
+to quickly do operations,
+
+22
+00:00:48.349 --> 00:00:50.090
+such as summarizing
+data fields or
+
+23
+00:00:50.090 --> 00:00:52.265
+applying a machine-learning
+algorithm.
+
+24
+00:00:52.265 --> 00:00:54.170
+But there are
+many different forms of
+
+25
+00:00:54.170 --> 00:00:56.280
+abstractions that you
+should be aware of,
+
+26
+00:00:56.280 --> 00:00:58.610
+and I want to touch on
+a few of those here.
+
+27
+00:00:58.610 --> 00:01:00.860
+I think one of
+the most common forms of
+
+28
+00:01:00.860 --> 00:01:03.620
+abstractions that we use
+is a network diagram.
+
+29
+00:01:03.620 --> 00:01:05.570
+You could think of
+a network being made up
+
+30
+00:01:05.570 --> 00:01:07.715
+of individuals, which
+have attributes,
+
+31
+00:01:07.715 --> 00:01:09.050
+and that those individuals are
+
+32
+00:01:09.050 --> 00:01:10.700
+connected to other individuals,
+
+33
+00:01:10.700 --> 00:01:13.210
+and the connection itself
+also has attributes.
+
+34
+00:01:13.210 --> 00:01:15.725
+So let's take Twitter
+data as an example.
+
+35
+00:01:15.725 --> 00:01:17.760
+Individual users have attributes,
+
+36
+00:01:17.760 --> 00:01:19.380
+such as their Twitter user ID,
+
+37
+00:01:19.380 --> 00:01:20.850
+their picture, and their name.
+
+38
+00:01:20.850 --> 00:01:22.985
+They can be connected
+to other individuals.
+
+39
+00:01:22.985 --> 00:01:25.700
+For instance, I might be
+connected to Paul Resnik,
+
+40
+00:01:25.700 --> 00:01:27.260
+because I follow him on Twitter,
+
+41
+00:01:27.260 --> 00:01:28.760
+and he might be connected back to
+
+42
+00:01:28.760 --> 00:01:30.845
+me because he blocks
+me on Twitter.
+
+43
+00:01:30.845 --> 00:01:32.630
+So we see that
+these connections could
+
+44
+00:01:32.630 --> 00:01:34.355
+even have a direction.
+
+45
+00:01:34.355 --> 00:01:36.170
+That the attribute
+on the connections,
+
+46
+00:01:36.170 --> 00:01:38.090
+such as whether Paul
+blocks someone,
+
+47
+00:01:38.090 --> 00:01:39.829
+is important to distinguish
+
+48
+00:01:39.829 --> 00:01:41.420
+when connecting the individuals,
+
+49
+00:01:41.420 --> 00:01:42.680
+because we want to represent that
+
+50
+00:01:42.680 --> 00:01:45.140
+the inferences that
+Paul is blocking me,
+
+51
+00:01:45.140 --> 00:01:46.655
+and not the other way around.
+
+52
+00:01:46.655 --> 00:01:49.905
+I adore Paul. More
+generally, though,
+
+53
+00:01:49.905 --> 00:01:52.730
+we could think of networks
+as being made up of nodes,
+
+54
+00:01:52.730 --> 00:01:54.320
+and that these could
+represent anything,
+
+55
+00:01:54.320 --> 00:01:56.735
+people, sports teams, planets.
+
+56
+00:01:56.735 --> 00:01:58.985
+It all depends on
+what your data is.
+
+57
+00:01:58.985 --> 00:02:01.220
+The nodes are connected
+through edges,
+
+58
+00:02:01.220 --> 00:02:03.515
+which may be directed
+or undirected.
+
+59
+00:02:03.515 --> 00:02:06.125
+Sometimes a network is
+referred to as a graph,
+
+60
+00:02:06.125 --> 00:02:08.570
+and sometimes nodes are
+referred to as vertices.
+
+61
+00:02:08.570 --> 00:02:11.255
+But conceptually these
+are all the same things.
+
+62
+00:02:11.255 --> 00:02:13.970
+What's really important
+for you to know is that we
+
+63
+00:02:13.970 --> 00:02:16.735
+can convert between
+representations.
+
+64
+00:02:16.735 --> 00:02:18.860
+Being a solid data scientist
+
+65
+00:02:18.860 --> 00:02:19.960
+means that you're able to take
+
+66
+00:02:19.960 --> 00:02:21.940
+one representation
+and change it to
+
+67
+00:02:21.940 --> 00:02:25.405
+another to apply techniques
+that you may already know.
+
+68
+00:02:25.405 --> 00:02:27.790
+This is especially
+important when talking to
+
+69
+00:02:27.790 --> 00:02:29.950
+different kinds of clients
+and collaborators,
+
+70
+00:02:29.950 --> 00:02:32.710
+who might have different
+disciplinary backgrounds.
+
+71
+00:02:32.710 --> 00:02:35.650
+For networks, a common
+second representation
+
+72
+00:02:35.650 --> 00:02:37.180
+is an adjacency matrix,
+
+73
+00:02:37.180 --> 00:02:39.385
+and you'll learn more
+about that in this degree.
+
+74
+00:02:39.385 --> 00:02:41.370
+In this case, we might
+have two matrices,
+
+75
+00:02:41.370 --> 00:02:43.410
+one for following and
+one for blocking.
+
+76
+00:02:43.410 --> 00:02:44.920
+The rows and columns list
+
+77
+00:02:44.920 --> 00:02:46.330
+all the potential people that we
+
+78
+00:02:46.330 --> 00:02:48.040
+might have linkages between.
+
+79
+00:02:48.040 --> 00:02:50.440
+In the following matrix
+we might have a value
+
+80
+00:02:50.440 --> 00:02:52.645
+of "true" between my row
+and Paul's column,
+
+81
+00:02:52.645 --> 00:02:54.460
+indicating that I follow Paul.
+
+82
+00:02:54.460 --> 00:02:55.890
+While in the blocking matrix,
+
+83
+00:02:55.890 --> 00:02:57.210
+you might have a value
+of "true" between
+
+84
+00:02:57.210 --> 00:02:58.965
+Paul's row and my column.
+
+85
+00:02:58.965 --> 00:03:01.310
+We could just represent
+these matrices in
+
+86
+00:03:01.310 --> 00:03:03.965
+NumPy as we did in
+the first week of this course.
+
+87
+00:03:03.965 --> 00:03:05.390
+We can then use libraries,
+
+88
+00:03:05.390 --> 00:03:09.050
+such as NetworkX in Python
+to visualize these networks.
+
+89
+00:03:09.050 --> 00:03:11.150
+We we can apply
+certain algorithms to
+
+90
+00:03:11.150 --> 00:03:13.490
+answer interesting
+questions, such as,
+
+91
+00:03:13.490 --> 00:03:15.140
+is there an indirect
+connection between
+
+92
+00:03:15.140 --> 00:03:16.820
+myself and one of the deans
+
+93
+00:03:16.820 --> 00:03:19.025
+I maybe don't follow,
+like Beth Yake.
+
+94
+00:03:19.025 --> 00:03:20.900
+This is heavily used in
+
+95
+00:03:20.900 --> 00:03:22.520
+social science research to
+
+96
+00:03:22.520 --> 00:03:25.235
+understand influence
+and social connections.
+
+97
+00:03:25.235 --> 00:03:26.360
+I actually use this in
+
+98
+00:03:26.360 --> 00:03:28.730
+my own educational
+technology research to
+
+99
+00:03:28.730 --> 00:03:30.800
+understand how
+learners study habits
+
+100
+00:03:30.800 --> 00:03:33.115
+might impact those whom
+they're friends with.
+
+101
+00:03:33.115 --> 00:03:35.750
+But I'm not going to
+deep dive into networks here,
+
+102
+00:03:35.750 --> 00:03:36.920
+I just want to foreshadow that
+
+103
+00:03:36.920 --> 00:03:38.240
+this is a kind of abstraction
+
+104
+00:03:38.240 --> 00:03:40.820
+that will be in your toolkit
+as a data scientist,
+
+105
+00:03:40.820 --> 00:03:44.035
+and that moving between
+these abstractions is important.
+
+106
+00:03:44.035 --> 00:03:46.610
+There's actually
+some specific subtypes
+
+107
+00:03:46.610 --> 00:03:48.590
+of networks that you'll
+run into as well.
+
+108
+00:03:48.590 --> 00:03:51.800
+Perhaps the most common of
+these is the tree structure.
+
+109
+00:03:51.800 --> 00:03:53.750
+In a general form,
+a tree can be thought
+
+110
+00:03:53.750 --> 00:03:55.610
+of as a network with a hierarchy,
+
+111
+00:03:55.610 --> 00:03:56.900
+where there's a node at the top;
+
+112
+00:03:56.900 --> 00:03:58.040
+we could call this the root,
+
+113
+00:03:58.040 --> 00:04:01.160
+and subsequent nodes appear
+in underneath in levels,
+
+114
+00:04:01.160 --> 00:04:03.215
+and they're connected
+to the nodes above.
+
+115
+00:04:03.215 --> 00:04:05.150
+Sometimes the connections
+are singular,
+
+116
+00:04:05.150 --> 00:04:08.450
+where a given node can only
+connect to one node above it,
+
+117
+00:04:08.450 --> 00:04:10.085
+and sometimes the
+connections are multiple,
+
+118
+00:04:10.085 --> 00:04:11.555
+such as in a family tree,
+
+119
+00:04:11.555 --> 00:04:13.415
+where a node can
+connect to two parents,
+
+120
+00:04:13.415 --> 00:04:15.925
+often used to represent
+genetic lineage.
+
+121
+00:04:15.925 --> 00:04:18.560
+Actually, despite calling
+this structure a tree,
+
+122
+00:04:18.560 --> 00:04:21.140
+we really don't model it
+much after living trees.
+
+123
+00:04:21.140 --> 00:04:23.900
+Usually those have roots at
+the bottom, not at the top.
+
+124
+00:04:23.900 --> 00:04:26.570
+But we do use nomenclature
+from family trees,
+
+125
+00:04:26.570 --> 00:04:28.670
+and we refer to nodes
+as having siblings,
+
+126
+00:04:28.670 --> 00:04:30.800
+parents, and children
+of their own.
+
+127
+00:04:30.800 --> 00:04:33.440
+All of this language is
+used only to describe
+
+128
+00:04:33.440 --> 00:04:36.320
+the relationship a node has
+with other nodes in the tree,
+
+129
+00:04:36.320 --> 00:04:38.510
+as far as the levels
+of the node go,
+
+130
+00:04:38.510 --> 00:04:40.280
+and not to infer anything else,
+
+131
+00:04:40.280 --> 00:04:42.230
+such as attributes a node has.
+
+132
+00:04:42.230 --> 00:04:43.610
+We do call the nodes at
+
+133
+00:04:43.610 --> 00:04:45.950
+the bottom of
+a tree leaf nodes though.
+
+134
+00:04:45.950 --> 00:04:47.450
+So it's sort of odd reference
+
+135
+00:04:47.450 --> 00:04:50.090
+back to the forestry
+notion of a tree.
+
+136
+00:04:50.090 --> 00:04:52.770
+Trees, like graphs and matrices,
+
+137
+00:04:52.770 --> 00:04:54.950
+just give us a language
+for describing
+
+138
+00:04:54.950 --> 00:04:56.360
+relationships which we can then
+
+139
+00:04:56.360 --> 00:04:58.105
+apply to different domains.
+
+140
+00:04:58.105 --> 00:05:00.350
+An example of trees
+which you'll learn about
+
+141
+00:05:00.350 --> 00:05:03.640
+is from natural language
+processing, or NLP.
+
+142
+00:05:03.640 --> 00:05:05.690
+In NLP, it's common to represent
+
+143
+00:05:05.690 --> 00:05:07.630
+a chunk of text as a parse tree,
+
+144
+00:05:07.630 --> 00:05:10.340
+which helps to
+contextualize ambiguity.
+
+145
+00:05:10.340 --> 00:05:12.680
+Here's an example from
+the docs of one of
+
+146
+00:05:12.680 --> 00:05:15.529
+the most popular Python
+libraries for text processing,
+
+147
+00:05:15.529 --> 00:05:18.535
+the Natural Language
+Toolkit, or NLTK.
+
+148
+00:05:18.535 --> 00:05:20.900
+In it, they've taken
+a sentence "The little
+
+149
+00:05:20.900 --> 00:05:23.030
+bears saw a fine fat trout
+
+150
+00:05:23.030 --> 00:05:24.530
+in the brook" and built
+
+151
+00:05:24.530 --> 00:05:27.410
+parse tree based on
+the English language grammar.
+
+152
+00:05:27.410 --> 00:05:28.220
+You could see that
+
+153
+00:05:28.220 --> 00:05:30.050
+the leaf nodes are
+the words themselves,
+
+154
+00:05:30.050 --> 00:05:31.700
+which each have one parent node,
+
+155
+00:05:31.700 --> 00:05:33.755
+which is a part of speech tag.
+
+156
+00:05:33.755 --> 00:05:37.595
+For instance, little is
+an adjective and bear is a noun,
+
+157
+00:05:37.595 --> 00:05:40.510
+and these nodes each
+have a common parent.
+
+158
+00:05:40.510 --> 00:05:42.930
+In this case, it's been
+classified as a nominal,
+
+159
+00:05:42.930 --> 00:05:44.880
+which has a parent
+of a noun phrase.
+
+160
+00:05:44.880 --> 00:05:46.805
+The data scientist can then use
+
+161
+00:05:46.805 --> 00:05:50.150
+this parse tree to find out
+relationships between words,
+
+162
+00:05:50.150 --> 00:05:52.880
+such as which adjectives
+refer to specific nouns,
+
+163
+00:05:52.880 --> 00:05:54.500
+and important task
+in the analytics
+
+164
+00:05:54.500 --> 00:05:56.900
+of product reviews, for instance.
+
+165
+00:05:56.900 --> 00:05:59.270
+These are just a few
+of the data structures
+
+166
+00:05:59.270 --> 00:06:01.100
+you'll be exploring
+in this degree.
+
+167
+00:06:01.100 --> 00:06:02.930
+If there's one conceptual piece
+
+168
+00:06:02.930 --> 00:06:04.760
+I hope you take away
+from this lecture,
+
+169
+00:06:04.760 --> 00:06:07.070
+is that these structures
+are representations that
+
+170
+00:06:07.070 --> 00:06:09.280
+we impose on the underlying data.
+
+171
+00:06:09.280 --> 00:06:10.700
+The meaning of the data that we
+
+172
+00:06:10.700 --> 00:06:12.590
+derived from these
+representations can
+
+173
+00:06:12.590 --> 00:06:16.735
+change based on how we decide
+to apply a representation.
+
+174
+00:06:16.735 --> 00:06:19.400
+A data scientist needs
+to be able to interact
+
+175
+00:06:19.400 --> 00:06:21.935
+with a broad array of
+other stakeholders and,
+
+176
+00:06:21.935 --> 00:06:24.290
+as such, needs to be
+able to be flexible with
+
+177
+00:06:24.290 --> 00:06:27.930
+how they conceive of
+and represent data.

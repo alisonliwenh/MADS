@@ -1,0 +1,994 @@
+WEBVTT
+
+1
+00:00:05.510 --> 00:00:08.055
+In this course, we'll
+largely be using
+
+2
+00:00:08.055 --> 00:00:10.020
+smaller or
+moderate-sized datasets.
+
+3
+00:00:10.020 --> 00:00:12.480
+A common workflow is to
+read the dataset in,
+
+4
+00:00:12.480 --> 00:00:14.090
+usually from an external file,
+
+5
+00:00:14.090 --> 00:00:15.160
+then begin to clean and
+
+6
+00:00:15.160 --> 00:00:17.260
+manipulate the dataset
+for analysis.
+
+7
+00:00:17.260 --> 00:00:18.880
+In this lecture, I'm going to
+
+8
+00:00:18.880 --> 00:00:20.260
+demonstrate how you can load
+
+9
+00:00:20.260 --> 00:00:24.205
+data from a comma separated
+file and into a DataFrame.
+
+10
+00:00:24.205 --> 00:00:26.140
+Let's just jump right in and
+
+11
+00:00:26.140 --> 00:00:28.135
+talk about comma-separated files.
+
+12
+00:00:28.135 --> 00:00:29.695
+You've undoubtedly used these.
+
+13
+00:00:29.695 --> 00:00:31.240
+Any Spreadsheet software like
+
+14
+00:00:31.240 --> 00:00:34.975
+Excel or Google sheets can
+save output in CSV format.
+
+15
+00:00:34.975 --> 00:00:36.310
+It's a pretty loose as
+
+16
+00:00:36.310 --> 00:00:38.560
+a format and it's
+incredibly lightweight,
+
+17
+00:00:38.560 --> 00:00:40.670
+and it's totally ubiquitous.
+
+18
+00:00:40.670 --> 00:00:42.400
+Now, I'm going to make a quick
+
+19
+00:00:42.400 --> 00:00:44.240
+aside because it's
+convenient here.
+
+20
+00:00:44.240 --> 00:00:46.630
+The Jupyter Notebooks use iPython
+
+21
+00:00:46.630 --> 00:00:47.840
+as the kernel underneath
+
+22
+00:00:47.840 --> 00:00:49.490
+which provides convenient ways to
+
+23
+00:00:49.490 --> 00:00:51.770
+integrate lower-level
+shell commands,
+
+24
+00:00:51.770 --> 00:00:52.880
+which are programs run in
+
+25
+00:00:52.880 --> 00:00:54.725
+the underlying operating system.
+
+26
+00:00:54.725 --> 00:00:56.390
+If you're not familiar
+with the shell,
+
+27
+00:00:56.390 --> 00:00:57.785
+don't worry too much about this.
+
+28
+00:00:57.785 --> 00:01:00.140
+But if you are, this
+is super handy for
+
+29
+00:01:00.140 --> 00:01:02.720
+integration of
+your data science workflows.
+
+30
+00:01:02.720 --> 00:01:04.520
+I want to use
+one shell command here
+
+31
+00:01:04.520 --> 00:01:06.294
+called cat' for concatenate,
+
+32
+00:01:06.294 --> 00:01:08.980
+which just outputs
+the contents of a file.
+
+33
+00:01:08.980 --> 00:01:11.000
+In iPython, if we prepend
+
+34
+00:01:11.000 --> 00:01:12.920
+the line with
+an exclamation mark,
+
+35
+00:01:12.920 --> 00:01:14.300
+it will execute the remainder
+
+36
+00:01:14.300 --> 00:01:15.920
+of the line as a shell command.
+
+37
+00:01:15.920 --> 00:01:18.680
+So let's look at that in
+the contents of a CSV file.
+
+38
+00:01:18.680 --> 00:01:21.305
+So I'll just type !cat
+
+39
+00:01:21.305 --> 00:01:25.470
+datasets and I'll use the
+admission_predictions.csv.
+
+40
+00:01:26.810 --> 00:01:30.200
+We see from the output that
+there's a list of columns,
+
+41
+00:01:30.200 --> 00:01:32.170
+and that the column
+identifiers are listed
+
+42
+00:01:32.170 --> 00:01:34.735
+as strings on the first
+line of the file.
+
+43
+00:01:34.735 --> 00:01:36.385
+Then, we have rows of the data,
+
+44
+00:01:36.385 --> 00:01:39.095
+all columns are
+separated by commas.
+
+45
+00:01:39.095 --> 00:01:42.780
+Now, there's lots of oddities
+with the CSV file format,
+
+46
+00:01:42.780 --> 00:01:46.450
+and there's no one agreed upon
+specification or standard.
+
+47
+00:01:46.450 --> 00:01:48.910
+So you should be prepared
+to do a little bit of
+
+48
+00:01:48.910 --> 00:01:51.940
+work when you pull down
+CSV files to explore.
+
+49
+00:01:51.940 --> 00:01:55.210
+But this lecture isn't
+focused on CSV files per say,
+
+50
+00:01:55.210 --> 00:01:57.040
+and is more about
+Pandas DataFrames.
+
+51
+00:01:57.040 --> 00:01:59.620
+So let's jump into
+that. Let's bring
+
+52
+00:01:59.620 --> 00:02:00.820
+in Pandas to work with.
+
+53
+00:02:00.820 --> 00:02:03.805
+So I'll import Pandas as pd.
+
+54
+00:02:03.805 --> 00:02:07.345
+Pandas makes it easy to turn
+a CSV into a DataFrame.
+
+55
+00:02:07.345 --> 00:02:09.975
+We just called
+the read CSV function.
+
+56
+00:02:09.975 --> 00:02:13.800
+So df equals pd.read_csv and
+
+57
+00:02:13.800 --> 00:02:17.310
+we'll pass in datasets and
+the Admission_Predict.csv.
+
+58
+00:02:17.310 --> 00:02:19.480
+Note here we're not calling
+anything on the DataFrame,
+
+59
+00:02:19.480 --> 00:02:21.985
+we're calling it on
+the Pandas module.
+
+60
+00:02:21.985 --> 00:02:24.030
+And let's look at a few of
+
+61
+00:02:24.030 --> 00:02:27.820
+the first rows,
+that's just df.head.
+
+62
+00:02:28.300 --> 00:02:30.919
+We notice that by default,
+
+63
+00:02:30.919 --> 00:02:32.420
+the index starts with zero while
+
+64
+00:02:32.420 --> 00:02:35.290
+the students serial numbers
+starts from one.
+
+65
+00:02:35.290 --> 00:02:37.275
+If you jump back
+to the CSV output,
+
+66
+00:02:37.275 --> 00:02:40.360
+you'll deduce the Pandas
+has created a new index.
+
+67
+00:02:40.360 --> 00:02:42.920
+Instead, we can set
+the serial number as
+
+68
+00:02:42.920 --> 00:02:46.055
+the index if we want to
+by using the index call.
+
+69
+00:02:46.055 --> 00:02:49.595
+So we can say df
+equals pd.read_csv.
+
+70
+00:02:49.595 --> 00:02:52.565
+We pass in our string to
+our admissions predictions,
+
+71
+00:02:52.565 --> 00:02:54.860
+then we pass in
+a parameter index call,
+
+72
+00:02:54.860 --> 00:02:56.900
+and we tell it which column
+we're interested in.
+
+73
+00:02:56.900 --> 00:03:00.420
+In this case, zero. Let's
+print the head of that.
+
+74
+00:03:00.420 --> 00:03:02.800
+Notice that we have two columns,
+
+75
+00:03:02.800 --> 00:03:04.835
+SOP and LOR, and
+
+76
+00:03:04.835 --> 00:03:07.220
+probably not everybody
+knows what they mean.
+
+77
+00:03:07.220 --> 00:03:10.025
+So let's change our column names
+to make it more clear.
+
+78
+00:03:10.025 --> 00:03:12.740
+In Pandas, we can use
+the rename function.
+
+79
+00:03:12.740 --> 00:03:14.540
+It takes a parameter
+called columns,
+
+80
+00:03:14.540 --> 00:03:16.790
+and we need to pass in a
+dictionary which are the keys of
+
+81
+00:03:16.790 --> 00:03:18.170
+the old column name and
+
+82
+00:03:18.170 --> 00:03:20.405
+the value of the
+corresponding new name.
+
+83
+00:03:20.405 --> 00:03:22.760
+So I'll create
+some new DataFrame variable,
+
+84
+00:03:22.760 --> 00:03:24.965
+new_df and df.rename,
+
+85
+00:03:24.965 --> 00:03:26.450
+and then I'll just inline pass
+
+86
+00:03:26.450 --> 00:03:28.025
+in a dictionary for columns.
+
+87
+00:03:28.025 --> 00:03:31.610
+So GRE score, we'll leave
+it the same, TOEFL score,
+
+88
+00:03:31.610 --> 00:03:32.930
+we'll leave it the same,
+
+89
+00:03:32.930 --> 00:03:35.690
+university rating, we'll
+leave it the same.
+
+90
+00:03:35.690 --> 00:03:37.455
+Here's our statement of purpose,
+
+91
+00:03:37.455 --> 00:03:40.735
+SOP and our LOR, letter
+of recommendation.
+
+92
+00:03:40.735 --> 00:03:42.165
+So we'll change those,
+
+93
+00:03:42.165 --> 00:03:45.080
+we'll leave the cumulative GPA,
+
+94
+00:03:45.080 --> 00:03:47.135
+and the research experience,
+
+95
+00:03:47.135 --> 00:03:49.715
+and we'll leave the
+chance of admit as well.
+
+96
+00:03:49.715 --> 00:03:52.915
+So let's take a look
+at this new DataFrame.
+
+97
+00:03:52.915 --> 00:03:55.235
+From the output, we can see that
+
+98
+00:03:55.235 --> 00:03:58.100
+only the SOP has
+changed, but not LOR.
+
+99
+00:03:58.100 --> 00:03:59.320
+So why is that?
+
+100
+00:03:59.320 --> 00:04:01.070
+So let's investigate this a bit.
+
+101
+00:04:01.070 --> 00:04:02.375
+First, we need to
+make sure we've got
+
+102
+00:04:02.375 --> 00:04:03.950
+all the column names correct.
+
+103
+00:04:03.950 --> 00:04:05.285
+We can use the columns
+
+104
+00:04:05.285 --> 00:04:08.075
+attribute of the DataFrame
+to get a list.
+
+105
+00:04:08.075 --> 00:04:10.100
+So we'll type new_df.columns.
+
+106
+00:04:10.100 --> 00:04:11.765
+And I'll be honest, I often
+
+107
+00:04:11.765 --> 00:04:13.700
+on the DataFrame call
+this as a function,
+
+108
+00:04:13.700 --> 00:04:16.105
+but it's not, it's an attribute.
+
+109
+00:04:16.105 --> 00:04:19.035
+If we look closely at the output,
+
+110
+00:04:19.035 --> 00:04:22.040
+we can see that there's
+actually a space right after
+
+111
+00:04:22.040 --> 00:04:26.225
+LOR and a space right
+after chance of admit.
+
+112
+00:04:26.225 --> 00:04:29.270
+So this is why
+our renamed dictionary does
+
+113
+00:04:29.270 --> 00:04:31.575
+not work for LOR because
+
+114
+00:04:31.575 --> 00:04:34.070
+the key that we used is
+just three characters
+
+115
+00:04:34.070 --> 00:04:37.590
+instead of four
+characters, LOR space.
+
+116
+00:04:37.590 --> 00:04:40.580
+There's a couple of ways
+that we could address this.
+
+117
+00:04:40.580 --> 00:04:42.350
+One way would be
+the change a column by
+
+118
+00:04:42.350 --> 00:04:44.510
+including the space
+in the new name.
+
+119
+00:04:44.510 --> 00:04:47.915
+So the new_df equals
+new_df.rename.
+
+120
+00:04:47.915 --> 00:04:49.880
+And we pass in the
+columns dictionary.
+
+121
+00:04:49.880 --> 00:04:50.990
+Here we're just going to pass in
+
+122
+00:04:50.990 --> 00:04:52.325
+the one that we want changed,
+
+123
+00:04:52.325 --> 00:04:54.860
+so you don't have to pass
+in the full dictionary each
+
+124
+00:04:54.860 --> 00:04:58.220
+time LOR space and letter
+of recommendation.
+
+125
+00:04:58.220 --> 00:05:00.415
+Let's look at the head of that.
+
+126
+00:05:00.415 --> 00:05:02.270
+So that works well,
+
+127
+00:05:02.270 --> 00:05:03.845
+but it's a bit fragile.
+
+128
+00:05:03.845 --> 00:05:07.460
+What if that was a tab instead
+of a space or two spaces?
+
+129
+00:05:07.460 --> 00:05:08.975
+Another way is to create
+
+130
+00:05:08.975 --> 00:05:10.760
+some function that
+does the cleaning,
+
+131
+00:05:10.760 --> 00:05:12.470
+and then tell renamed to apply
+
+132
+00:05:12.470 --> 00:05:14.915
+that function across
+all of the data.
+
+133
+00:05:14.915 --> 00:05:17.240
+Python comes with
+a handy string function
+
+134
+00:05:17.240 --> 00:05:19.490
+to strip white space
+called strip.
+
+135
+00:05:19.490 --> 00:05:21.590
+When we pass this into rename,
+
+136
+00:05:21.590 --> 00:05:24.259
+we pass the function as
+the mapper parameter,
+
+137
+00:05:24.259 --> 00:05:27.140
+and then indicate whether
+the axis should be the columns,
+
+138
+00:05:27.140 --> 00:05:29.720
+or the index, that's
+the row labels.
+
+139
+00:05:29.720 --> 00:05:31.280
+So here's an example.
+
+140
+00:05:31.280 --> 00:05:34.220
+So new_df equals new_df.rename.
+
+141
+00:05:34.220 --> 00:05:35.930
+We pass in the mapper,
+
+142
+00:05:35.930 --> 00:05:37.100
+and in this case we're passing in
+
+143
+00:05:37.100 --> 00:05:39.125
+a reference to a function.
+
+144
+00:05:39.125 --> 00:05:40.685
+So str.strip.
+
+145
+00:05:40.685 --> 00:05:42.260
+We're not calling the function,
+
+146
+00:05:42.260 --> 00:05:44.825
+we're just passing
+a reference to that function,
+
+147
+00:05:44.825 --> 00:05:46.295
+and Pandas will call it.
+
+148
+00:05:46.295 --> 00:05:49.070
+We tell the axis that
+we want it to call this
+
+149
+00:05:49.070 --> 00:05:52.325
+on is across
+the columns not rows.
+
+150
+00:05:52.325 --> 00:05:54.410
+Now, let's take a look
+at the results.
+
+151
+00:05:54.410 --> 00:05:57.180
+So new_df.head.
+
+152
+00:05:57.290 --> 00:06:01.050
+All right. Now, we've
+got it. Both SOP and LOR
+
+153
+00:06:01.050 --> 00:06:04.325
+had been renamed and chance
+of admit has been trimmed up.
+
+154
+00:06:04.325 --> 00:06:06.365
+Remember though that
+the rename function
+
+155
+00:06:06.365 --> 00:06:08.105
+isn't modifying the DataFrame.
+
+156
+00:06:08.105 --> 00:06:11.120
+In this case, df is the
+same as it always was.
+
+157
+00:06:11.120 --> 00:06:14.450
+There's just a copy of new_df
+with the change names.
+
+158
+00:06:14.450 --> 00:06:16.265
+So if we do df.columns,
+
+159
+00:06:16.265 --> 00:06:19.040
+we can see that those
+still include our columns
+
+160
+00:06:19.040 --> 00:06:22.205
+that are poorly named with
+lots of extra white space.
+
+161
+00:06:22.205 --> 00:06:25.220
+And I'll be honest, these white
+spaces in column names,
+
+162
+00:06:25.220 --> 00:06:27.005
+this is really common.
+
+163
+00:06:27.005 --> 00:06:29.270
+You'll be doing this anytime
+you're importing
+
+164
+00:06:29.270 --> 00:06:33.160
+a CSV having to tweak
+out extra white space.
+
+165
+00:06:33.160 --> 00:06:37.100
+We can also use the df.columns
+attribute by assigning it
+
+166
+00:06:37.100 --> 00:06:38.690
+to a list of column names which
+
+167
+00:06:38.690 --> 00:06:41.000
+will directly rename the columns.
+
+168
+00:06:41.000 --> 00:06:43.910
+This will directly modify
+the original DataFrame,
+
+169
+00:06:43.910 --> 00:06:46.220
+and it's very efficient
+especially when you have
+
+170
+00:06:46.220 --> 00:06:49.010
+a lot of columns and you
+only want to change a few.
+
+171
+00:06:49.010 --> 00:06:51.290
+This technique is
+also not affected
+
+172
+00:06:51.290 --> 00:06:53.285
+by subtle errors in
+the column names,
+
+173
+00:06:53.285 --> 00:06:55.175
+a problem that we
+just encountered.
+
+174
+00:06:55.175 --> 00:06:58.105
+With a list, you could just
+use the list index to change
+
+175
+00:06:58.105 --> 00:06:59.270
+a certain value or use
+
+176
+00:06:59.270 --> 00:07:02.135
+a list comprehension to
+change all of the values.
+
+177
+00:07:02.135 --> 00:07:04.460
+So as an example,
+let's change all of
+
+178
+00:07:04.460 --> 00:07:07.145
+the values of the column
+names to lowercase.
+
+179
+00:07:07.145 --> 00:07:08.870
+So first, we need
+to get our lists.
+
+180
+00:07:08.870 --> 00:07:11.090
+So I'll make some
+new attribute calls,
+
+181
+00:07:11.090 --> 00:07:13.775
+is equal to the list
+of df.columns.
+
+182
+00:07:13.775 --> 00:07:16.280
+So df.columns is actually
+an indexing variable,
+
+183
+00:07:16.280 --> 00:07:17.875
+and I just want to
+convert it to a list.
+
+184
+00:07:17.875 --> 00:07:21.380
+Then, I'm going to write
+a little list comprehension.
+
+185
+00:07:21.380 --> 00:07:23.420
+So I'll make calls
+is equal to and then
+
+186
+00:07:23.420 --> 00:07:25.175
+I start my list comprehension.
+
+187
+00:07:25.175 --> 00:07:27.395
+And in there, I want to
+say x.lower.strip.
+
+188
+00:07:27.395 --> 00:07:29.930
+So I'm going to convert
+X to lowercase,
+
+189
+00:07:29.930 --> 00:07:31.670
+then call strip on it where x is
+
+190
+00:07:31.670 --> 00:07:33.710
+a string and for x and calls.
+
+191
+00:07:33.710 --> 00:07:36.160
+So we're just iterating
+over everything in calls.
+
+192
+00:07:36.160 --> 00:07:37.910
+Then, we just want
+to overwrite what is
+
+193
+00:07:37.910 --> 00:07:39.860
+already in the .columns
+attributes.
+
+194
+00:07:39.860 --> 00:07:42.170
+So df.columns equals calls,
+
+195
+00:07:42.170 --> 00:07:44.090
+and then let's take
+a look at our results.
+
+196
+00:07:44.090 --> 00:07:46.170
+So df.head.
+
+197
+00:07:46.580 --> 00:07:48.830
+In this lecture,
+you've learned how to
+
+198
+00:07:48.830 --> 00:07:50.180
+import a CSV file into
+
+199
+00:07:50.180 --> 00:07:52.430
+a Pandas DataFrame object
+and how to do
+
+200
+00:07:52.430 --> 00:07:55.055
+some basic data manipulation
+with the column names.
+
+201
+00:07:55.055 --> 00:07:57.230
+The CSV file import mechanisms
+
+202
+00:07:57.230 --> 00:07:59.120
+in Pandas have lots
+of different options,
+
+203
+00:07:59.120 --> 00:08:00.890
+and you really need to
+learn these in order to be
+
+204
+00:08:00.890 --> 00:08:03.290
+proficient at data manipulation.
+
+205
+00:08:03.290 --> 00:08:05.180
+Once you've set up the format and
+
+206
+00:08:05.180 --> 00:08:06.785
+change the shape of a DataFrame,
+
+207
+00:08:06.785 --> 00:08:08.870
+you have a solid foundation to
+
+208
+00:08:08.870 --> 00:08:10.100
+further actions such as
+
+209
+00:08:10.100 --> 00:08:12.730
+conducting data analysis
+and modeling.
+
+210
+00:08:12.730 --> 00:08:15.890
+Now, there are other data
+sources that you can load
+
+211
+00:08:15.890 --> 00:08:19.369
+directly into DataFrames as
+well including HTML webpages,
+
+212
+00:08:19.369 --> 00:08:21.740
+databases, and
+other file formats.
+
+213
+00:08:21.740 --> 00:08:23.750
+But the CSV is by far the most
+
+214
+00:08:23.750 --> 00:08:26.060
+common data format
+you'll run into,
+
+215
+00:08:26.060 --> 00:08:27.290
+and it's an important
+one to know how
+
+216
+00:08:27.290 --> 00:08:29.610
+to manipulate in Pandas.

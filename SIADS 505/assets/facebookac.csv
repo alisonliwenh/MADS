@@ -1,0 +1,890 @@
+Status,No Friend,education,about me,family,gender,relationship,phototag*,photopost*,video,checkin,sport,player,music,film,series,book,game,restaurant,like,group,note,post shared/post posted rate
+real,170,university,yes,yes,male,complicate,29,59,8,10,1,18,1,3,6,0,6,2,101,2,yes,0.1
+real,353,university,yes,yes,male,alone,1,13,0,15,1,1,11,6,10,1,1,6,550,19,no,0.1
+real,517,university,no,yes,male,alone,112,236,3,86,5,11,0,8,3,1,5,17,318,23,yes,0.5
+real,460,university,no,yes,male,alone,74,142,3,98,33,96,16,14,17,6,19,0,900,32,yes,0.3
+real,240,university,no,yes,female,complicate,23,13,1,9,0,0,0,0,0,0,0,0,15,2,no,0.1
+real,340,high school,no,yes,male,complicate,12,120,1,26,0,0,0,0,0,0,0,0,44,3,no,0.5
+real,460,no,no,yes,male,married,6,13,1,20,1,3,2,11,4,0,0,0,42,2,no,0.2
+real,534,university,no,yes,male, ,7,35,2,37,3,2,5,2,1,1,0,0,140,4,no,0
+real,957,university,no,yes,male,alone,32,10,4,60,7,6,10,8,6,1,10,0,130,122,yes,0.1
+real,452,university,no,yes,male,alone,4,27,1,35,7,28,16,13,5,4,5,0,454,36,yes,0
+real,779,university,yes,yes,male,complicate,48,44,0,48,2,1,0,29,2,0,1,2,274,78,no,0.1
+real,516,university,yes,no,male,alone,29,3,3,32,18,52,15,4,6,2,8,0,591,34,yes,0.3
+real,267,university,yes,yes,female,married,44,206,33,170,3,0,23,42,21,1,3,7,831,84,no,0.9
+real,418,university,yes,no,male,alone,29,93,3,48,15,30,37,12,42,4,5,1,561,3,yes,0.5
+real,445,high school,no,no,female,alone,3,31,0,11,0,0,5,44,2,0,1,0,104,22,no,0.1
+real,205,university,yes,yes,male,alone,23,6,1,5,1,1,0,0,4,0,0,0,43,0,no,0.2
+real,575,university,yes,yes,male,alone,1,7,2,182,0,0,10,0,1,0,1,0,23,33,yes,0.3
+real,507,university,yes,yes,female,alone,48,73,2,23,0,0,106,12,0,10,0,7,817,19,no,0.3
+real,130,university,yes,no,male,alone,51,72,0,4,7,5,0,1,1,0,0,0,80,1,yes,0.4
+real,527,university,yes,yes,male,alone,63,744,18,42,15,4,8,11,4,7,0,2,841,36,no,0.2
+real,346,university,yes,no,male,alone,41,14,1,21,1,0,1,0,2,0,0,1,54,6,no,0.1
+real,348,university,yes,no,male,alone,48,44,1,6,1,0,4,2,1,1,5,0,91,7,no,0.2
+real,452,university,yes,no,female,alone,44,188,2,46,4,13,38,10,5,1,2,7,435,3,no,0.1
+real,603,university,yes,yes,male,alone,80,15,5,116,9,17,11,30,9,12,3,2,306,16,yes,0
+real,1031,university,yes,yes,male, ,35,180,10,51,0,2,0,2,0,0,0,1,71,20,yes,0.2
+real,1806,no,yes,yes,male,alone,2,7,0,4,4,2,62,48,52,22,47,0,4149,199,no,0.4
+real,686,university,yes,yes,male,alone,6,3,2,52,3,0,2,2,2,2,5,0,282,4,no,0.4
+real,582,university,yes,yes,male,alone,24,172,12,186,3,4,20,51,13,27,3,3,406,13,yes,0.1
+real,875,university,yes,yes,male,alone,33,24,8,113,23,75,22,13,11,7,18,7,873,31,yes,0.2
+real,875,university,yes,no,male,alone,8,18,9,122,1,0,1,0,0,0,0,0,164,31,no,0.2
+real,1257,university,yes,yes,male,alone,9,12,5,53,4,9,74,29,22,5,3,8,1327,45,yes,0.4
+real,875,no,no,yes,male,alone,16,15,16,33,0,0,0,0,0,0,0,0,412,32,yes,0.2
+real,600,university,yes,yes,male,alone,24,25,0,30,0,1,0,1,3,0,1,0,99,4,no,0.1
+real,655,university,yes,yes,male,complicate,16,14,11,31,1,0,2,0,0,1,1,0,421,11,no,0.1
+real,497,university,yes,no,male, ,13,12,1,20,0,0,0,0,0,0,0,0,67,2,no,0.2
+real,875,university,yes,yes,female,alone,8,2,2,114,1,0,15,44,18,3,4,44,971,7,yes,0.1
+real,582,university,yes,yes,male,married,8,213,1,29,1,1,10,10,15,5,10,3,849,7,no,0.2
+real,712,university,yes,yes,male,alone,1,7,2,44,0,0,2,2,2,1,2,0,199,12,yes,0.2
+real,875,university,yes,yes,female,alone,123,288,11,118,0,0,10,1,0,12,0,3,535,57,yes,0.1
+real,436,university,yes,no,male,alone,22,1,5,17,2,0,24,0,19,0,0,1,706,3,no,0.2
+real,400,university,yes,yes,female,alone,36,185,5,50,0,0,18,9,12,10,1,2,569,31,yes,0
+real,514,university,yes,yes,female,alone,10,13,2,68,2,0,8,5,0,1,0,10,337,10,yes,0.2
+real,186,no,yes,no,male,alone,1,3,0,0,11,4,7,6,40,0,3,1,169,7,no,0.5
+real,551,university,yes,yes,male,alone,11,1,1,9,7,13,4,1,6,1,4,0,202,10,yes,0.8
+real,334,university,yes,no,male,alone,16,7,1,5,4,8,6,2,4,2,0,2,646,15,no,0.2
+real,875,university,yes,no,male,alone,2,5,3,19,11,21,20,4,5,2,13,18,748,60,no,0.2
+real,491,university,yes,no,male,alone,0,148,37,2,2,0,2,1,1,0,1,0,174,12,yes,0.5
+real,711,university,yes,yes,male,alone,4,16,2,12,4,15,4,3,7,1,0,5,482,15,yes,0.4
+real,518,university,yes,yes,male,alone,0,5,2,23,3,2,7,19,3,1,0,1,248,13,yes,0.4
+real,921,university,yes,no,male,alone,5,52,1,97,2,0,13,2,5,2,5,18,645,179,yes,0.2
+real,1588,university,yes,yes,male,alone,11,10,8,28,7,5,30,4,6,2,3,1,715,17,yes,0.2
+real,868,university,yes,no,male,alone,0,86,2,75,1,3,5,2,2,2,2,0,254,35,yes,0.3
+real,371,no,yes,no,female,alone,3,5,0,4,0,0,13,0,3,0,0,0,157,11,no,0.8
+real,875,university,yes,no,female, ,0,31,14,1,1,0,149,5,5,8,0,0,442,2,no,0.3
+real,715,university,yes,no,male,alone,11,28,1,18,5,1,3,2,7,2,1,0,366,15,no,0.3
+real,452,university,yes,yes,male,alone,20,1,2,26,2,0,0,0,0,0,0,1,2,2,yes,0.6
+real,401,university,yes,yes,female,alone,36,232,5,28,0,0,18,9,21,11,1,2,571,30,yes,0.6
+real,445,university,yes,yes,male,alone,1,1,0,4,1,0,1,0,0,0,0,0,49,10,yes,0
+real,846,university,yes,yes,female,alone,68,1,2,24,0,0,3,32,3,0,1,3,300,13,no,0.7
+real,875,no,no,no,male,alone,0,2,0,0,0,0,0,2,0,0,0,1,90,15,no,0
+real,658,university,yes,yes,male,alone,19,1,3,34,4,0,2,3,1,0,0,4,382,33,yes,0.6
+real,875,university,yes,yes,male,alone,0,76,8,37,0,0,0,0,10,15,1,0,24,0,no,0.9
+real,673,high school,yes,yes,female,alone,0,2,1,34,6,2,21,15,16,7,0,470,556,47,yes,0.3
+real,875,university,yes,yes,female,alone,7,1,2,90,1,1,15,44,20,1,4,0,977,11,yes,0.6
+real,143,university,yes,no,male,married,4,0,2,12,1,0,0,0,0,0,0,0,26,1,no,1
+real,255,university,yes,no,male,alone,6,7,1,1,2,0,6,4,4,0,0,1,116,8,no,0.5
+real,875,no,yes,no,male,complicate,24,16,15,17,1,0,0,0,0,0,0,0,16,12,yes,0.5
+real,257,university,yes,yes,male,alone,0,3,1,8,1,1,3,3,2,1,11,0,198,29,no,0.5
+real,875,university,yes,yes,male,alone,96,11,7,30,3,10,42,14,15,12,4,0,518,19,yes,0.5
+real,875,university,yes,yes,male,alone,42,12,4,2,1,4,4,5,5,1,1,4,921,21,no,1
+real,651,university,yes,no,male,complicate,192,752,11,0,1,0,23,11,1,2,0,1,178,34,yes,0
+real,1373,university,yes,no,female,alone,4,28,1,39,4,1,11,3,2,4,2,16,1021,76,no,0.5
+real,510,university,yes,no,male,alone,5,3,7,42,2,0,1,1,3,0,0,23,469,21,no,0.3
+real,432,university,yes,yes,male,alone,20,56,0,0,2,10,86,49,4,7,22,2,1247,4,yes,0.5
+real,875,university,no,yes,female, ,136,796,3,96,1,0,8,2,4,5,16,16,1194,74,yes,0.3
+real,431,no,yes,yes,male,alone,16,100,3,19,0,0,7,0,1,2,2,1,360,5,no,0.5
+real,432,high school,yes,no,male,alone,0,36,2,19,37,73,16,0,11,2,0,2,910,38,no,0.5
+real,420,high school,yes,no,male,alone,1,211,6,9,4,4,13,1,4,0,19,5,487,22,no,0.1
+real,704,university,no,yes,male,alone,4,12,3,59,0,0,4,1,1,0,1,0,134,14,no,0.7
+real,421,university,yes,yes,male,alone,36,40,2,12,0,0,4,1,1,2,4,1,450,12,no,0
+real,553,no,no,yes,female, ,0,284,6,188,0,1,6,2,5,2,0,34,939,130,yes,0.3
+real,621,university,no,yes,male,alone,9,22,6,33,2,3,11,9,2,1,0,0,403,37,yes,0.4
+real,479,university,yes,yes,male,complicate,0,160,4,36,2,6,2,2,1,1,0,1,125,0,no,0.2
+real,112,no,no,no,male,complicate,0,16,7,1,5,0,0,0,0,0,0,1,69,22,no,0.3
+real,858,university,no,no,female, ,0,232,9,48,3,1,39,14,6,1,0,21,493,11,yes,0.3
+real,234,university,no,no,male,alone,44,92,2,47,0,23,72,15,51,3,8,1,663,11,no,0.4
+real,354,no,no,yes,female,alone,20,3,1,26,0,0,4,0,9,0,0,4,271,5,no,0.2
+real,1381,university,no,yes,female,alone,20,144,4,54,3,1,45,11,15,14,3,1,999,46,no,0.3
+real,1110,high school,no,yes,male,alone,8,120,8,43,1,0,1,3,1,3,0,0,153,18,yes,0.3
+real,873,university,yes,yes,female,alone,6,16,15,0,1,3,181,104,6,2,2,12,3710,13,yes,0
+real,985,university,no,yes,male,alone,2,13,1,29,4,2,5,8,1,1,0,3,219,35,yes,0.5
+real,591,university,no,no,male,complicate,0,1,6,0,0,3,1,0,1,0,0,0,82,27,no,0.5
+real,237,university,yes,yes,male,alone,0,104,1,17,0,0,2,3,3,1,0,0,147,6,no,0.2
+real,369,university,no,no,female,alone,16,20,1,18,0,0,7,1,1,1,0,1,83,3,no,0.2
+real,559,university,no,no,male,alone,16,20,5,76,1,1,2,0,2,0,0,1,118,7,yes,0.4
+real,1072,university,no,yes,male,alone,16,0,2,54,2,0,3,1,2,0,0,0,263,38,no,1
+real,229,university,yes,no,male,alone,1,7,6,6,0,0,2,2,0,0,0,0,7,3,no,0.4
+real,793,high school,no,no,male,complicate,0,44,19,87,0,1,5,2,1,0,0,0,96,27,no,0.1
+real,857,university,no,no,female,complicate,15,1024,28,15,0,0,1,0,4,0,0,1,136,0,yes,0
+real,766,university,yes,yes,female,alone,128,340,3,89,2,0,30,12,17,5,0,34,1242,28,no,0.3
+real,1239,university,no,yes,male,alone,56,128,1,0,0,0,12,23,2,1,0,0,287,21,no,0.1
+real,956,university,yes,yes,female,alone,48,176,10,17,1,1,9,4,10,0,1,0,302,40,no,0.4
+real,1093,university,no,yes,male,complicate,3,8,12,42,4,0,27,2,2,2,2,0,693,19,yes,0.7
+real,687,university,no,yes,male,alone,8,12,6,37,0,0,1,0,0,0,0,1,148,13,no,0.9
+real,88,high school,no,no,male,alone,0,21,3,3,0,0,0,0,1,0,0,0,16,0,no,0.4
+real,439,high school,yes,yes,male,alone,7,6,0,49,2,1,2,2,1,10,0,0,95,8,yes,0.5
+real,423,no,no,no,male,complicate,8,16,4,43,2,4,0,2,0,0,0,0,7,18,no,0
+real,530,university,yes,yes,male,alone,56,64,21,16,0,0,2,0,0,0,0,1,41,13,no,0.6
+real,558,university,no,no,male,alone,7,6,5,13,2,2,4,0,1,1,0,1,247,9,no,0.5
+real,1487,university,no,yes,male,alone,60,40,6,8,1,1,0,0,0,0,0,0,63,16,no,0.4
+real,342,university,yes,yes,male,alone,96,120,18,17,0,0,1,0,0,0,1,0,43,12,no,0.4
+real,816,university,yes,yes,male,alone,16,56,1,83,15,42,24,16,58,1,12,8,2247,42,no,0.8
+real,1385,high school,yes,no,male,alone,16,64,1,10,4,14,16,5,3,0,23,0,722,78,no,0.8
+real,487,no,no,no,male,alone,7,36,1,18,2,1,0,0,0,0,0,0,52,4,yes,0.8
+real,671,high school,no,yes,female,alone,2,2,1,34,6,2,21,15,18,7,0,0,570,46,no,0.5
+real,1729,university,no,no,male,alone,7,16,2,54,0,0,6,0,1,0,1,0,453,46,no,0.2
+real,412,high school,no,yes,male,alone,8,42,3,105,8,12,2,0,2,0,0,0,669,38,no,0.4
+real,220,no,no,no,female,alone,4,60,2,14,0,0,0,0,3,0,0,0,21,3,no,0.8
+real,2592,university,no,yes,male,complicate,0,116,8,26,2,4,17,78,38,1,1,0,515,106,no,0.3
+real,731,university,no,yes,female,alone,4,4,0,81,4,0,1,0,10,2,11,2,500,15,no,0
+real,620,no,no,yes,male,alone,1,121,10,12,1,4,4,2,4,1,2,0,154,0,no,0.3
+real,588,university,no,no,male,alone,7,20,2,8,1,0,10,1,0,0,0,0,851,11,no,0.5
+real,726,university,no,yes,male,alone,7,16,7,34,0,0,2,2,2,1,0,0,206,19,yes,0
+real,680,university,no,yes,female,alone,4,2,1,16,0,0,1,1,2,3,0,0,155,6,no,0
+real,259,university,no,no,female,complicate,12,64,3,65,0,0,11,21,22,4,0,0,311,11,yes,0.4
+real,1270,high school,yes,no,male,married,0,216,20,57,6,0,12,4,3,0,5,0,1015,264,no,0.4
+real,238,no,no,no,male,complicate,32,84,1,16,0,0,6,0,2,0,1,0,71,11,no,0.6
+real,341,university,no,yes,male,alone,56,32,1,40,0,0,0,0,0,0,0,0,142,2,yes,0.3
+real,1081,university,no,no,male,alone,24,18,10,63,8,0,8,40,53,23,18,0,2326,121,yes,0.4
+real,1275,university,yes,yes,male,complicate,36,248,4,138,2,3,20,60,20,13,1,7,379,34,yes,0.1
+real,1011,high school,yes,yes,male,alone,0,144,10,57,2,1,87,10,50,12,2,0,8,57,no,0.4
+real,634,university,yes,yes,male,alone,21,208,10,17,10,38,8,4,4,1,1,4,556,58,no,0.5
+real,356,high school,no,no,male,complicate,16,4,4,18,0,0,8,81,1,0,0,2,76,6,no,1
+real,462,university,no,no,male,complicate,36,40,4,17,0,0,0,0,0,0,0,1,787,25,no,0.1
+real,288,university,no,yes,female,alone,48,0,2,13,0,0,0,1,1,1,1,0,81,12,no,1
+real,327,no,no,no,male,alone,0,264,15,4,3,0,0,0,0,0,0,0,2,6,no,0.2
+real,207,university,no,yes,male,alone,36,3,2,79,0,0,0,2,1,1,0,0,44,5,no,0.1
+real,383,high school,no,no,female,complicate,160,273,2,67,0,0,1,0,0,0,0,0,52,5,no,0.2
+real,340,university,no,no,male,complicate,4,20,1,4,0,0,0,0,0,0,0,0,30,3,no,0.1
+real,472,university,yes,no,male,alone,24,39,4,38,20,29,39,18,0,1,13,7,1384,36,no,0.5
+real,294,no,yes,yes,female,alone,18,268,0,94,3,2,53,2,1,22,2,14,2492,68,no,0.3
+real,580,university,no,yes,male,alone,1,0,1,4,1,0,4,5,0,0,0,0,124,4,yes,0
+real,295,university,yes,yes,female,alone,128,180,1,10,0,0,15,14,12,0,4,1,482,4,no,0.5
+real,898,university,no,yes,female, ,51,164,8,216,3,0,26,22,18,5,7,26,948,45,yes,0.1
+real,763,university,no,no,male,alone,0,1,0,12,203,249,28,24,58,26,18,12,3494,150,no,0
+real,477,university,no,yes,male,alone,4,2,10,22,3,0,3,13,8,3,4,1,275,21,yes,0
+real,393,no,no,yes,male,alone,0,4,0,0,7,6,5,0,2,0,0,2,143,5,no,0.7
+real,457,high school,no,no,male,alone,16,3,10,42,5,5,2,1,1,0,1,0,189,25,yes,0
+real,727,university,no,no,female,alone,72,1,3,36,1,2,0,0,2,1,0,0,200,14,yes,0.8
+real,1882,no,yes,yes,male,alone,39,96,10,345,10,25,37,12,17,0,0,5,1304,125,yes,0.5
+real,671,university,no,yes,female,alone,268,140,4,144,0,0,0,0,0,0,0,0,52,19,yes,0.8
+real,530,university,no,yes,male,complicate,0,3,0,28,1,0,0,1,5,0,3,92,1,9,no,0.7
+real,2082,university,no,yes,male,alone,0,47,12,41,2,0,3,2,1,0,0,2,431,85,no,0.6
+real,315,university,yes,yes,male,alone,24,1,0,8,5,10,2,7,5,5,0,0,257,3,no,0.3
+real,326,no,no,no,female,married,0,20,4,66,0,0,1,0,0,0,0,0,25,14,no,0.1
+real,501,university,no,no,male,alone,8,8,0,3,0,0,1,0,2,0,0,0,63,2,no,0
+real,180,university,yes,yes,female,married,0,56,0,15,2,1,0,0,5,7,0,0,110,12,no,0.1
+real,1000,university,no,yes,female,alone,64,128,6,48,11,0,4,0,7,0,0,0,431,49,no,0.7
+real,3343,university,yes,yes,female,complicate,76,480,20,34,2,1,0,0,2,4,0,0,469,112,no,0.2
+real,613,university,yes,no,female, ,4,135,8,62,1,1,113,61,11,26,6,0,1182,35,no,0.4
+real,473,no,no,yes,female,alone,12,32,1,15,0,0,0,0,0,1,0,0,83,7,no,0.9
+real,993,university,no,no,female,alone,12,62,0,26,5,0,0,12,3,4,0,0,386,98,no,0.9
+real,451,no,no,no,female,complicate,4,4,1,26,0,0,2,2,0,0,3,0,245,21,yes,0.7
+real,445,university,no,yes,female,alone,8,28,1,35,0,0,15,34,14,15,1,0,900,9,no,0.5
+real,329,university,yes,no,female,alone,32,96,5,4,0,0,0,0,0,0,2,0,377,56,no,0.9
+real,530,university,no,yes,female,alone,1,4,4,22,0,0,0,0,0,0,0,0,1,19,no,0
+real,344,university,no,no,female,alone,0,2,0,3,16,0,18,11,16,0,0,3,466,25,no,0
+real,284,no,no,no,female,alone,16,48,0,6,0,0,0,0,2,0,0,0,91,2,no,0.6
+real,490,no,yes,no,female,alone,12,42,9,4,2,0,0,0,5,1,0,0,138,8,no,0.3
+real,2263,high school,yes,no,female,complicate,0,16,4,8,1,0,0,0,4,1,2,0,142,28,no,0.7
+real,59,no,no,no,female,alone,3,1,0,0,0,0,0,0,1,0,0,0,1,0,no,0.2
+real,239,university,no,no,female,alone,1,3,2,1,0,0,1,0,0,0,0,1,59,2,no,0.4
+real,239,no,no,no,female,alone,3,4,1,0,0,0,0,0,0,0,0,0,15,14,no,0.6
+real,1089,university,no,yes,female,alone,0,10,8,4,0,0,3,0,2,0,0,1,102,25,no,0.4
+real,394,no,no,no,female,alone,3,29,8,0,0,0,0,0,0,0,0,0,30,12,no,0.8
+real,1000,university,no,yes,female,alone,20,48,13,56,5,0,15,1,4,0,0,0,706,73,yes,0.6
+real,600,university,yes,yes,female,alone,8,45,17,3,1,0,15,2,4,1,0,0,255,6,no,0.1
+real,651,no,no,no,female,alone,28,112,12,30,4,0,4,1,0,0,0,0,121,29,no,0.5
+real,540,no,no,yes,female,alone,12,4,0,6,16,24,0,0,0,0,37,7,1137,45,no,0.4
+real,995,no,no,yes,female,alone,2,136,17,59,2,1,55,38,33,21,10,0,2089,52,yes,0.2
+real,478,no,no,yes,female,alone,0,8,0,16,0,16,10,3,13,3,0,2,574,46,no,0
+real,930,no,no,no,female,alone,1,2,0,0,4,3,0,0,0,0,0,0,82,0,no,0
+real,571,university,no,yes,female,alone,0,4,2,60,0,4,14,3,5,13,0,14,1175,47,no,0.6
+real,512,university,no,yes,female,alone,96,116,0,11,0,0,0,0,0,0,0,0,56,16,no,0.2
+real,379,no,no,no,female,alone,4,3,0,37,0,0,16,2,3,5,0,0,785,31,yes,0
+real,3602,university,no,yes,female,complicate,160,160,336,49,120,1,2,0,0,1,0,0,725,131,yes,0.2
+real,550,university,no,yes,female,alone,0,16,12,3,4,10,0,0,0,0,0,0,112,114,yes,0.3
+real,450,university,no,yes,female,alone,8,28,6,11,7,12,10,0,0,1,1,0,421,57,no,0.2
+real,730,university,no,yes,female,alone,4,92,14,111,1,1,51,0,2,10,0,0,1551,6,yes,0.6
+real,2110,high school,yes,no,female,alone,12,60,0,4,0,0,1,1,0,0,1,0,665,65,no,0.7
+real,420,no,no,no,female,alone,48,48,0,40,4,0,3,0,0,0,0,0,207,6,no,0.9
+real,356,university,no,no,female,alone,0,8,6,11,1,1,6,3,0,0,0,0,208,7,no,0.6
+real,798,no,no,no,female,alone,0,12,3,8,1,0,0,0,0,0,0,0,47,0,no,0.3
+real,232,no,no,yes,female,complicate,204,120,48,171,0,0,0,2,3,2,0,5,312,28,yes,0.1
+real,281,no,no,no,female,alone,4,8,7,19,2,0,11,5,0,1,0,6,555,15,no,0.5
+real,344,university,no,yes,female,alone,2,2,1,28,0,0,63,6,13,6,0,2,397,6,no,0.5
+real,299,high school,no,no,female,alone,16,4,2,39,4,16,12,0,2,2,0,0,172,11,no,0.3
+real,318,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,16,3,no,0
+real,520,no,no,no,female,alone,0,0,0,11,0,0,0,0,0,0,0,0,21,3,no,0
+real,135,high school,no,no,female,alone,0,1,1,1,0,0,0,0,0,0,0,0,15,1,no,0
+real,130,no,no,no,female,alone,0,3,0,0,0,0,6,0,3,2,0,0,173,23,no,0.3
+real,353,no,no,no,female,alone,1,0,0,5,0,0,1,0,0,2,0,1,96,2,no,1
+real,907,university,no,no,male,complicate,11,8,4,43,0,3,7,1,0,0,0,4,383,35,yes,0.5
+real,4982,high school,yes,yes,male,complicate,20,120,5,57,5,5,0,0,0,1,0,0,1134,48,no,0.3
+fake,676,no,no,no,female,alone,0,8,0,0,0,0,0,0,0,0,0,0,51,0,no,1
+fake,4998,university,yes,no,male,alone,0,11,0,47,0,0,0,0,0,0,0,0,197,234,no,0.3
+fake,49,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,159,high school,yes,no,male,alone,0,0,0,1,0,0,0,1,0,0,5,0,178,17,no,1
+fake,82,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,42,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,375,no,no,no,female,alone,2,0,0,0,0,0,0,0,0,0,0,0,19,0,no,0
+fake,595,no,yes,no,male,alone,0,5,0,1,0,0,0,0,0,0,0,0,15,23,no,0
+fake,722,university,yes,no,female,alone,0,1,0,1,0,0,0,0,0,0,0,0,15,2,no,1
+fake,5,high school,no,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,0,0,no,0
+fake,485,university,yes,no,female,alone,6,5,0,1,0,0,0,0,0,0,0,0,12,37,no,0
+fake,463,high school,yes,no,female,alone,0,6,0,3,0,0,0,1,1,0,0,0,257,68,no,0.8
+fake,1160,university,yes,no,female,complicate,2,240,0,1,0,0,0,0,0,0,0,0,49,118,no,0.7
+fake,136,no,yes,no,male,alone,0,1,0,0,0,0,0,0,0,0,0,0,6,0,no,0.8
+fake,4717,high school,yes,no,male,alone,0,10,1,20,3,0,1,0,0,0,0,0,774,427,no,0.2
+fake,431,university,yes,no,female,alone,9,12,1,12,0,0,1,0,0,0,0,0,183,87,no,0.5
+fake,3332,university,yes,no,female,complicate,0,576,0,0,0,0,0,0,0,0,0,0,137,38,no,0
+fake,4390,no,yes,no,male,alone,0,21,0,12,0,0,0,0,0,0,0,0,223,88,no,0.9
+fake,3219,no,no,no,female,alone,4,0,0,4,0,0,0,0,0,0,0,0,56,55,no,0.6
+fake,4699,no,no,no,female,alone,0,100,0,20,0,0,4,0,0,0,1,0,559,186,no,1
+fake,519,high school,yes,no,male,alone,0,1,0,1,0,0,0,0,0,0,0,0,46,29,no,0.5
+fake,231,no,yes,no,male,alone,0,0,0,0,0,0,0,0,0,0,2,0,21,0,no,1
+fake,1491,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,89,0,no,1
+fake,710,no,no,no,male,alone,0,0,0,0,0,0,0,0,0,0,0,0,29,1,no,1
+fake,825,no,yes,no,male,alone,0,1,0,0,0,0,2,0,0,0,9,0,570,1,no,1
+fake,1716,no,no,no,male,alone,0,0,0,0,0,0,0,0,0,1,0,0,88,75,no,1
+fake,1895,no,yes,no,male,alone,0,0,0,0,0,0,0,0,0,0,0,0,105,35,no,1
+fake,2464,no,yes,no,male,alone,0,0,0,9,0,0,1,0,0,0,4,0,140,69,no,1
+fake,2609,no,no,no,male,alone,0,0,0,0,0,0,0,0,0,0,1,0,41,6,no,1
+fake,1478,no,no,no,female,alone,0,0,0,0,0,0,3,2,4,0,0,0,79,47,no,1
+fake,1602,no,yes,no,female,complicate,1,0,0,0,0,0,0,4,7,4,0,0,4,0,no,1
+fake,1591,no,yes,no,female,alone,0,0,0,7,0,0,0,1,0,0,0,0,34,65,no,1
+fake,2464,no,yes,no,female,alone,0,0,0,0,0,0,1,0,0,0,0,0,140,69,no,1
+fake,2230,no,yes,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,0,59,no,1
+fake,1920,no,yes,no,male,alone,0,0,0,1,0,5,0,0,0,0,0,7,450,29,no,1
+fake,1652,university,yes,no,male,alone,2,0,1,11,0,0,0,0,0,0,8,1,357,1941,no,1
+fake,160,high school,yes,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,11,1,no,1
+fake,847,university,yes,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,23,1,no,1
+fake,189,high school,yes,no,male,alone,0,0,0,0,0,0,0,0,1,0,4,0,16,0,no,1
+fake,1355,high school,yes,no,female,alone,0,1008,0,0,0,0,0,0,0,0,0,0,125,25,no,0.3
+fake,769,no,yes,no,female,alone,0,0,0,0,0,0,3,0,0,0,0,0,80,21,no,1
+fake,1951,no,no,no,female,alone,0,0,1,2,0,0,2,0,0,0,0,0,62,22,no,1
+fake,24,no,no,no,male,alone,0,0,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,2472,high school,yes,no,female,alone,3,132,0,0,0,0,72,9,10,0,0,0,1032,1572,no,0.8
+fake,502,university,yes,no,female,alone,0,7,0,0,0,0,0,1,0,0,0,0,40,11,no,0
+fake,130,no,yes,no,female,alone,0,1,0,0,0,0,2,0,0,0,0,1,91,1,no,0
+fake,140,high school,yes,no,male,alone,0,1,0,0,0,0,0,0,1,1,0,1,46,0,no,0
+fake,23,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,4830,no,yes,no,male,complicate,0,248,2,4,0,0,0,0,0,0,0,0,768,176,no,0
+fake,2245,high school,yes,no,male,alone,0,27,0,28,0,0,0,0,0,0,1,0,476,445,no,0
+fake,2872,no,no,no,male,alone,0,9,0,0,0,0,0,0,0,0,0,0,404,25,no,0
+fake,169,no,yes,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,0,240,no,0
+fake,4448,university,yes,no,female,alone,1,1,0,25,3,0,0,0,0,0,0,0,507,20,no,1
+fake,4529,no,yes,no,female,alone,0,2128,0,68,0,0,0,0,0,0,0,0,422,181,no,0.2
+fake,4732,no,yes,no,male,alone,1,400,0,43,0,0,0,0,0,0,2,0,446,238,no,0.1
+fake,386,university,no,no,female,alone,1,1,0,4,0,0,0,1,0,0,0,0,179,317,no,0
+fake,510,no,yes,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,98,2,no,0.6
+fake,207,no,yes,no,female,alone,0,4,0,0,0,0,0,0,0,0,0,0,32,4,no,0.9
+fake,559,no,no,no,female,alone,0,0,0,0,0,0,1,0,0,1,0,0,112,0,no,1
+fake,452,no,yes,no,female,alone,1,0,0,0,0,0,0,0,1,0,0,0,210,3,no,1
+fake,321,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,56,0,no,1
+fake,475,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,122,1,no,1
+fake,299,no,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,64,1,no,1
+fake,378,no,no,no,female,alone,0,2,0,0,0,0,0,1,0,0,0,0,76,0,no,1
+fake,524,no,no,no,male,alone,0,0,0,0,0,0,0,1,0,0,0,0,98,1,no,1
+fake,559,no,no,no,female,alone,0,0,0,0,0,0,0,1,0,0,0,0,112,0,no,1
+fake,459,no,no,no,female,alone,0,8,0,0,0,0,0,1,0,0,0,0,84,5,yes,1
+fake,189,no,yes,no,female,alone,0,0,0,0,0,0,0,1,0,0,0,0,28,1,yes,1
+fake,301,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,42,1,yes,1
+fake,331,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,42,1,no,1
+fake,421,no,yes,yes,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,74,4,no,1
+fake,467,no,no,yes,female,alone,0,1,0,0,0,0,0,1,1,0,0,0,70,1,no,1
+fake,825,no,no,yes,female,alone,0,12,0,0,0,0,0,0,0,0,0,0,114,5,no,1
+fake,397,no,no,yes,female,alone,0,0,0,0,0,0,0,1,0,0,0,0,70,1,no,1
+fake,336,no,no,yes,male,alone,0,9,0,0,0,0,0,1,1,0,0,0,50,3,no,0.9
+fake,302,no,yes,yes,male,alone,0,1,0,0,0,0,0,0,0,0,0,0,52,4,no,1
+fake,331,high school,yes,yes,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,47,1,no,1
+fake,589,no,yes,yes,female,alone,0,9,0,0,0,0,0,0,2,1,0,0,98,6,no,0.8
+fake,575,no,yes,no,female,alone,0,1,0,0,0,0,0,0,1,1,0,0,92,3,no,1
+fake,151,no,yes,no,female,alone,0,1,0,0,0,0,0,0,1,0,0,0,10,0,no,0
+fake,312,no,yes,no,female,alone,0,1,0,0,0,0,0,0,0,1,0,0,61,3,no,1
+fake,403,secondary school,yes,no,female,alone,0,1,0,0,0,0,0,1,0,0,0,0,81,3,no,1
+fake,441,no,yes,no,female,alone,0,2,0,0,0,0,0,1,1,1,0,0,85,2,no,1
+fake,406,no,yes,no,female,alone,0,1,0,0,0,0,0,0,1,1,0,0,76,1,no,1
+fake,396,no,yes,no,female,alone,0,2,0,0,0,0,0,1,0,1,1,0,76,2,no,1
+fake,482,no,yes,no,female,alone,0,1,0,0,0,0,0,1,1,1,0,0,72,0,no,1
+fake,479,no,no,no,female,alone,0,2,0,0,0,0,0,0,0,3,0,0,22,0,yes,0.8
+fake,502,high school,yes,no,female,alone,0,8,0,0,0,0,0,0,1,0,4,0,154,1,no,0.8
+fake,278,no,yes,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,14,0,no,0.9
+fake,451,university,yes,no,female,alone,0,0,1,0,0,0,0,2,2,2,0,0,196,7,no,1
+fake,1475,no,yes,no,female,alone,0,19,0,0,0,0,0,1,3,0,0,0,140,1,no,0.9
+fake,280,no,yes,no,male,alone,0,0,0,0,0,0,0,1,0,4,0,0,138,0,no,0.9
+fake,465,secondary school,yes,no,male,alone,0,10,0,0,0,0,0,2,0,3,1,0,168,1,no,0.8
+fake,1721,no,yes,no,female,alone,0,14,0,1,0,0,9,1,0,1,1,0,143,1,no,0.6
+fake,488,no,yes,no,female,alone,0,15,0,0,0,0,0,1,1,0,0,0,77,3,no,0.7
+fake,346,no,yes,no,male,alone,0,2,0,1,0,0,0,1,2,0,0,0,98,1,no,0.9
+fake,372,no,yes,no,female,alone,0,3,0,0,0,0,0,1,2,0,0,0,162,6,no,0.9
+fake,923,secondary school,yes,no,female,alone,0,10,0,1,0,0,0,2,3,0,0,0,162,1,no,0.7
+fake,84,university,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,9,3,no,0.8
+fake,216,no,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,13,3,no,0.8
+fake,988,high school,yes,no,female,alone,0,3,0,0,0,0,0,1,0,0,0,0,70,13,no,0.6
+fake,1022,high school,yes,no,female,alone,0,6,0,1,0,0,0,1,0,0,0,0,68,23,no,0.7
+fake,562,high school,yes,no,female,alone,0,6,0,1,0,0,0,1,0,0,0,0,50,14,no,0.5
+fake,528,university,yes,no,male,alone,0,4,0,0,0,0,0,1,0,0,0,0,36,7,no,0.4
+fake,165,no,yes,yes,male,alone,2,2,0,0,3,0,0,0,3,3,0,0,260,5,no,0.7
+fake,387,university,yes,no,male,alone,0,3,0,0,0,0,0,1,0,0,0,0,36,5,no,0.8
+fake,1143,university,yes,no,female,alone,0,3,0,2,0,0,0,0,0,1,0,0,90,17,no,0.6
+fake,769,university,yes,no,male,alone,0,5,1,0,0,0,0,1,0,0,0,0,58,10,no,0.6
+fake,649,university,yes,no,female,alone,0,6,0,0,0,0,0,1,0,0,0,0,41,13,no,0.5
+fake,723,university,yes,no,male,alone,0,7,0,1,1,0,0,1,0,0,0,0,54,6,no,0.5
+fake,371,no,yes,no,male,alone,0,2,0,1,0,0,0,2,3,0,0,0,174,1,no,0.9
+fake,283,university,yes,no,male,alone,0,2,0,0,0,0,0,1,2,0,0,0,78,1,no,0.9
+fake,1824,no,yes,no,female,alone,0,2,0,0,0,0,0,1,2,0,0,0,70,2,no,0.9
+fake,291,university,yes,no,female,alone,0,2,0,0,0,0,0,1,1,0,0,0,98,3,no,0.9
+fake,14,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,15,0,no,0
+fake,46,no,no,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,0,0,no,0
+fake,5,no,no,no,male,alone,0,2,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,20,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,10,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,0,0,no,0
+fake,12,no,no,no,female,alone,0,3,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,2,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,0,0,no,0
+fake,35,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,21,no,no,no,female,alone,0,2,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,1,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,9,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,13,no,no,no,male,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,241,high school,yes,no,female,alone,0,5,2,0,0,0,0,0,0,0,1,0,56,0,no,0.9
+fake,324,university,yes,no,female,alone,0,2,2,0,0,0,0,0,0,0,1,0,64,0,no,0.9
+fake,281,no,no,no,female,alone,0,1,2,0,0,0,0,0,0,0,1,0,60,0,no,0.9
+fake,338,no,yes,no,female,alone,0,3,2,0,0,0,0,0,0,0,1,0,64,0,no,0.8
+fake,257,no,yes,no,female,alone,0,6,2,0,0,0,0,0,0,0,1,0,65,0,no,0.9
+fake,214,no,no,no,female,alone,0,1,2,0,0,0,0,0,0,0,1,0,59,0,no,0.8
+fake,204,no,yes,no,female,alone,0,1,2,0,0,0,0,0,0,0,1,0,64,0,no,0.9
+fake,259,no,yes,no,female,alone,0,2,2,0,0,0,0,0,0,0,1,0,60,0,no,0.9
+fake,356,university,yes,no,male,alone,0,5,2,0,0,0,0,0,0,0,1,0,79,2,no,0.3
+fake,218,no,no,no,male,alone,0,1,2,0,0,0,0,0,0,0,1,0,60,0,no,0.9
+fake,469,university,yes,no,female,alone,0,7,0,0,0,0,1,0,0,0,2,0,78,0,no,0.6
+fake,574,high school,yes,no,female,alone,0,8,2,0,0,0,1,0,0,0,1,0,82,0,yes,0.7
+fake,271,no,no,yes,female,alone,0,6,1,0,0,0,0,0,0,0,1,0,67,0,no,0.9
+fake,226,high school,yes,yes,female,alone,0,2,0,0,0,0,0,0,0,0,1,0,55,0,no,0.9
+fake,230,no,no,yes,male,alone,0,2,3,0,0,0,0,0,0,0,1,0,57,0,no,0.9
+fake,250,high school,yes,yes,female,alone,0,1,2,0,0,0,0,0,0,0,0,0,54,0,no,0.8
+fake,210,no,no,yes,female,alone,0,4,2,0,0,0,0,0,0,0,1,0,30,0,no,0.6
+fake,191,university,yes,yes,male, ,0,3,2,0,0,0,0,0,0,0,1,0,38,0,no,0.6
+fake,230,no,yes,yes,male,alone,0,3,2,0,0,0,0,0,0,0,1,0,34,0,no,0.6
+fake,187,no,yes,no,female,alone,0,0,2,0,0,0,0,0,0,0,1,0,28,0,no,0.6
+fake,186,no,yes,no,male,alone,0,2,3,0,0,0,0,0,0,0,1,0,31,0,no,0.6
+fake,206,no,yes,no,male,alone,0,4,3,0,0,0,0,0,0,0,1,0,30,0,no,0.5
+fake,183,no,yes,no,male,alone,0,5,2,0,0,0,0,0,0,0,1,0,28,0,no,0.5
+fake,183,no,yes,no,female,alone,0,2,2,0,0,0,0,0,0,0,1,0,29,0,no,0.5
+fake,201,university,yes,no,male,alone,0,2,2,0,0,0,0,0,0,0,1,0,26,0,no,0.5
+fake,171,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,26,0,no,0.6
+fake,81,no,yes,no,female,alone,0,5,0,0,0,0,0,0,0,0,1,0,17,0,no,0.4
+fake,157,no,yes,no,male,alone,0,4,2,0,0,0,0,0,0,0,1,0,22,0,no,0.5
+fake,213,no,yes,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,23,0,no,0.7
+fake,139,no,yes,no,female,alone,0,4,0,0,0,0,0,0,0,0,1,0,22,0,no,0.5
+fake,66,university,yes,no,male,complicate,0,5,0,0,0,0,0,0,0,0,1,0,27,0,no,0.5
+fake,140,university,yes,no,male,alone,0,4,0,0,0,0,0,0,0,0,1,0,25,0,no,0.5
+fake,153,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,0,0,20,0,no,0.5
+fake,156,no,yes,no,male,alone,0,2,0,0,0,0,0,0,0,0,1,0,23,0,no,0.9
+fake,139,no,no,no,male,alone,0,4,0,0,0,0,0,0,0,0,1,0,21,0,no,0.7
+fake,46,no,no,no,female,alone,0,5,0,0,0,0,0,0,0,0,1,0,4,0,no,0.4
+fake,126,no,no,no,male,alone,0,2,0,0,0,0,0,0,0,0,1,0,21,0,no,0.5
+fake,123,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,23,0,no,0.5
+fake,131,no,no,no,female,alone,0,8,0,0,0,0,0,0,0,0,1,0,18,0,no,0.5
+fake,118,high school,yes,no,female,alone,0,8,0,0,0,0,0,0,0,0,1,0,21,0,no,0.2
+fake,3,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,4,0,no,0.3
+fake,10,no,no,no,male,alone,0,2,0,0,0,0,0,0,0,0,1,0,6,0,no,0.7
+fake,305,university,yes,no,male,alone,0,28,2,0,0,0,0,0,1,0,3,0,154,3,no,0.1
+fake,31,no,yes,no,female,alone,0,4,0,0,0,0,0,0,0,0,0,0,0,2,no,0
+fake,1362,no,yes,no,female,alone,0,20,1,2,0,0,0,1,0,0,1,0,195,16,no,0.5
+fake,473,no,no,no,female,alone,0,76,3,1,0,0,2,0,3,0,2,0,586,3,no,0
+fake,215,no,no,no,female,alone,0,2,0,0,0,0,0,1,1,0,1,0,43,2,no,0.1
+fake,133,no,no,yes,male,alone,0,7,2,0,0,0,0,1,1,0,1,0,75,2,no,0
+fake,393,no,no,yes,female,alone,0,7,0,0,0,0,0,1,1,0,0,0,60,2,no,0
+fake,294,no,no,no,female,alone,0,2,2,0,0,0,1,1,0,1,1,0,57,3,no,0
+fake,234,university,yes,no,female,alone,0,2,1,0,0,0,0,1,1,0,0,0,41,0,no,0
+fake,230,no,no,no,female,alone,0,2,3,0,0,0,0,1,2,0,1,0,125,1,no,0.1
+fake,183,no,no,no,male,alone,0,4,1,0,0,0,0,1,1,0,1,0,54,0,no,0
+fake,372,university,yes,no,male,alone,0,4,0,0,0,0,0,1,0,0,0,0,72,0,no,0
+fake,313,no,yes,no,male,complicate,0,0,0,0,1,0,0,1,0,0,1,0,49,2,no,0
+fake,257,no,no,no,female,alone,0,2,0,0,0,0,0,0,0,0,1,0,45,0,yes,0
+fake,629,no,yes,no,female,alone,0,2,0,0,0,0,1,0,0,0,1,0,94,3,no,0.7
+fake,524,high school,yes,no,female,complicate,0,4,2,0,1,6,0,0,3,0,3,4,311,1,no,0.9
+fake,472,high school,yes,no,female,alone,0,3,2,0,0,0,1,0,1,0,0,0,79,0,no,0.8
+real,334,university,yes,no,male,alone,16,7,1,5,4,8,6,2,4,2,0,2,646,15,no,0.2
+real,875,university,yes,no,male,alone,2,5,3,19,11,21,20,4,5,2,13,18,748,60,no,0.2
+real,491,university,yes,no,male,alone,0,12,37,2,2,0,2,1,1,0,1,0,174,12,yes,0.5
+real,711,university,yes,yes,male,alone,4,16,2,12,4,15,4,3,7,1,0,5,482,15,yes,0.4
+real,518,university,yes,yes,male,alone,0,5,2,23,3,2,7,19,3,1,0,1,248,13,yes,0.4
+real,921,university,yes,no,male,alone,5,52,1,97,2,0,13,2,5,2,5,18,645,179,yes,0.2
+real,1588,university,yes,yes,male,alone,11,10,8,28,7,5,30,4,6,2,3,1,715,17,yes,0.2
+real,868,university,yes,no,male,alone,0,1,2,75,1,3,5,2,2,2,2,0,254,35,yes,0.3
+real,371,no,yes,no,female,alone,3,5,0,4,0,0,13,0,3,0,0,0,157,11,no,0.8
+real,875,university,yes,no,female, ,0,31,14,1,1,0,149,5,5,8,0,0,442,2,no,0.3
+real,715,university,yes,no,male,alone,11,28,1,18,5,1,3,2,7,2,1,0,366,15,no,0.3
+real,452,university,yes,yes,male,alone,20,1,2,26,2,0,0,0,0,0,0,1,2,2,yes,0.6
+real,401,university,yes,yes,female,alone,36,91,5,28,0,0,18,9,21,11,1,4,571,30,yes,0.6
+real,445,university,yes,yes,male,alone,1,1,0,4,1,0,1,0,0,0,0,0,49,10,yes,0
+real,846,university,yes,yes,female,alone,68,1,2,24,0,0,3,32,3,0,1,3,300,13,no,0.7
+real,875,no,no,no,male,alone,0,2,0,0,0,0,0,2,0,0,0,1,90,15,no,0
+real,658,university,yes,yes,male,alone,19,1,3,34,4,0,2,3,1,0,0,4,382,33,yes,0.6
+real,875,university,yes,yes,male,alone,0,76,8,37,0,0,0,0,10,15,1,0,24,0,no,0.9
+real,673,high school,yes,yes,female,alone,0,2,1,34,6,2,21,15,16,7,0,121,556,47,yes,0.3
+real,875,university,yes,yes,female,alone,7,1,2,90,1,1,15,44,20,1,4,0,977,11,yes,0.6
+real,143,university,yes,no,male,married,4,0,2,12,1,0,0,0,0,0,0,0,26,1,no,1
+real,255,university,yes,no,male,alone,6,7,1,1,2,0,6,4,4,0,0,1,116,8,no,0.5
+real,875,no,yes,no,male,complicate,24,16,15,17,1,0,0,0,0,0,0,0,16,12,yes,0.5
+real,257,university,yes,yes,male,alone,0,3,1,8,1,1,3,3,2,1,11,0,198,29,no,0.5
+real,875,university,yes,yes,male,alone,96,11,7,30,3,10,42,14,15,12,4,0,518,19,yes,0.5
+real,875,university,yes,yes,male,alone,42,12,4,2,1,4,4,5,5,1,1,4,921,21,no,1
+real,651,university,yes,no,male,complicate,192,752,11,0,1,0,23,11,1,2,0,1,178,34,yes,0
+real,1373,university,yes,no,female,alone,4,28,1,39,4,1,11,3,2,4,2,16,1021,76,no,0.5
+real,510,university,yes,no,male,alone,5,3,7,42,2,0,1,1,3,0,0,23,469,21,no,0.3
+real,432,university,yes,yes,male,alone,20,56,0,0,2,10,86,49,4,7,22,2,1247,4,yes,0.5
+real,875,university,no,yes,female, ,136,796,3,96,1,0,8,2,4,5,16,16,1194,74,yes,0.3
+real,431,no,yes,yes,male,alone,16,100,3,19,0,0,7,0,1,2,2,1,360,5,no,0.5
+real,432,high school,yes,no,male,alone,0,36,2,19,37,73,16,0,11,2,0,2,910,38,no,0.5
+real,420,high school,yes,no,male,alone,1,211,6,9,4,4,13,1,4,0,19,5,487,22,no,0.1
+real,704,university,no,yes,male,alone,4,12,3,59,0,0,4,1,1,0,1,0,134,14,no,0.7
+real,421,university,yes,yes,male,alone,36,40,2,12,0,0,4,1,1,2,4,1,450,12,no,0
+real,553,no,no,yes,female, ,0,284,6,188,0,1,6,2,5,2,0,34,939,130,yes,0.3
+real,621,university,no,yes,male,alone,9,22,6,33,2,3,11,9,2,1,0,0,403,37,yes,0.4
+real,479,university,yes,yes,male,complicate,0,160,4,36,2,6,2,2,1,1,0,1,125,0,no,0.2
+real,112,no,no,no,male,complicate,0,16,7,1,5,0,0,0,0,0,0,1,69,22,no,0.3
+real,858,university,no,no,female, ,0,232,9,48,3,1,39,14,6,1,0,21,493,11,yes,0.3
+real,234,university,no,no,male,alone,44,92,2,47,0,23,72,15,51,3,8,1,663,11,no,0.4
+real,354,no,no,yes,female,alone,20,3,1,26,0,0,4,0,9,0,0,4,271,5,no,0.2
+real,1381,university,no,yes,female,alone,20,144,4,54,3,1,45,11,15,14,3,1,999,46,no,0.3
+real,1110,high school,no,yes,male,alone,8,120,8,43,1,0,1,3,1,3,0,0,153,18,yes,0.3
+real,873,university,yes,yes,female,alone,6,16,15,0,1,3,142,12,2,2,2,12,3710,13,yes,0
+fake,1475,no,yes,no,female,alone,0,19,0,0,0,0,0,1,3,0,0,0,140,1,no,0.3
+fake,280,no,yes,no,male,alone,0,0,0,0,0,0,0,1,1,4,0,0,138,0,no,1
+fake,465,secondary school,yes,no,male,alone,0,10,0,0,0,0,0,2,0,3,1,0,168,1,no,0.5
+fake,1721,no,yes,no,female,alone,0,14,0,1,0,0,9,1,0,1,1,0,143,1,no,0.3
+fake,488,no,yes,no,female,alone,0,15,0,0,0,0,0,1,1,0,0,0,77,3,no,1
+fake,346,no,yes,no,male,alone,0,2,0,1,0,0,0,1,2,0,0,0,98,1,no,0.3
+fake,372,no,yes,no,female,alone,0,3,0,0,0,0,0,1,2,0,0,0,162,6,no,1
+fake,923,secondary school,yes,no,female,alone,0,10,0,1,0,0,0,2,3,0,0,0,162,1,no,1
+fake,84,university,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,9,3,no,1
+fake,216,no,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,13,3,no,1
+fake,988,high school,yes,no,female,alone,0,3,0,0,0,0,0,1,0,0,0,0,70,13,no,0
+fake,1022,high school,yes,no,female,alone,0,6,0,1,0,0,0,1,0,0,0,0,68,23,no,0
+fake,562,high school,yes,no,female,alone,0,6,0,1,0,0,0,1,0,0,0,0,50,14,no,1
+fake,528,university,yes,no,male,alone,0,4,0,0,0,0,0,1,0,0,0,0,36,7,no,0
+fake,165,no,yes,yes,male,alone,2,2,0,0,3,0,0,0,14,3,0,0,260,5,no,0
+fake,387,university,yes,no,male,alone,0,3,0,0,0,0,0,1,0,0,0,0,36,5,no,0.8
+fake,1143,university,yes,no,female,alone,0,3,0,2,0,0,0,0,0,1,0,0,90,17,no,0.7
+fake,769,university,yes,no,male,alone,0,5,1,0,0,0,0,1,0,0,0,0,58,10,no,0.8
+fake,649,university,yes,no,female,alone,0,6,0,0,0,0,0,1,0,0,0,0,41,13,no,0.2
+fake,723,university,yes,no,male,alone,0,7,0,1,1,0,0,1,0,0,0,0,54,6,no,0.5
+fake,371,no,yes,no,male,alone,0,2,0,1,0,0,0,2,3,0,0,0,174,1,no,0
+fake,283,university,yes,no,male,alone,0,2,0,0,0,0,0,1,2,0,0,0,78,1,no,0.9
+fake,1846,no,yes,no,female,alone,0,2,0,0,0,0,0,1,2,0,0,0,70,2,no,0.6
+fake,291,university,yes,no,female,alone,0,2,0,0,0,0,0,1,1,0,0,0,98,3,no,1
+fake,14,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,15,0,no,0.5
+fake,46,no,no,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,5,no,no,no,male,alone,0,2,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,20,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,10,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,12,no,no,no,female,alone,0,3,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,2,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,35,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,21,no,no,no,female,alone,0,2,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,1,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,9,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,13,no,no,no,male,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,241,high school,yes,no,female,alone,0,5,2,0,0,0,0,0,0,0,1,0,56,0,no,1
+fake,324,university,yes,no,female,alone,0,2,2,0,0,0,0,0,0,0,1,0,64,0,no,1
+fake,281,no,no,no,female,alone,0,1,2,0,0,0,0,0,0,0,1,0,60,0,no,1
+fake,338,no,yes,no,female,alone,0,3,2,0,0,0,0,0,0,0,1,0,64,0,no,1
+fake,257,no,yes,no,female,alone,0,6,2,0,0,0,0,0,0,0,1,0,65,0,no,1
+fake,214,no,no,no,female,alone,0,1,2,0,0,0,0,0,0,0,1,0,59,0,no,1
+fake,204,no,yes,no,female,alone,0,1,2,0,0,0,0,0,0,0,1,0,64,0,no,1
+fake,259,no,yes,no,female,alone,0,2,2,0,0,0,0,0,0,0,1,0,60,0,no,0.3
+fake,356,university,yes,no,male,alone,0,5,2,0,0,0,0,0,0,0,1,0,79,2,no,1
+fake,218,no,no,no,male,alone,0,1,2,0,0,0,0,0,0,0,1,0,60,0,no,1
+fake,469,university,yes,no,female,alone,0,7,0,0,0,0,1,0,0,0,2,0,78,0,no,1
+fake,574,high school,yes,no,female,alone,0,8,2,0,0,0,12,0,0,0,1,0,82,0,yes,0.8
+fake,271,no,no,yes,female,alone,0,6,1,0,0,0,0,0,0,0,1,0,67,0,no,0
+fake,226,high school,yes,yes,female,alone,0,2,0,0,0,0,0,0,0,0,1,0,55,0,no,0
+fake,230,no,no,yes,male,alone,0,2,3,0,0,0,0,17,0,0,1,0,57,0,no,0
+fake,250,high school,yes,yes,female,alone,0,1,2,0,0,0,0,0,0,0,0,0,54,0,no,1
+fake,210,no,no,yes,female,alone,0,4,2,0,0,0,0,0,0,0,1,0,30,0,no,0
+fake,191,university,yes,yes,male, ,0,3,2,0,0,0,0,0,0,19,1,0,38,0,no,0
+fake,230,no,yes,yes,male,alone,0,3,2,0,0,0,0,0,0,0,1,0,34,0,no,0
+fake,187,no,yes,no,female,alone,0,0,2,0,0,0,0,0,0,0,1,0,28,0,no,0
+fake,186,no,yes,no,male,alone,0,2,3,0,0,0,0,0,0,0,1,0,31,0,no,1
+fake,206,no,yes,no,male,alone,0,4,3,0,0,0,0,0,0,0,1,0,30,0,no,0.2
+fake,183,no,yes,no,male,alone,0,5,2,0,0,0,0,0,0,0,1,0,28,0,no,0.1
+fake,183,no,yes,no,female,alone,0,2,2,0,0,0,0,0,0,0,1,0,29,0,no,0
+fake,201,university,yes,no,male,alone,0,2,2,0,0,0,0,0,0,0,1,0,26,0,no,0.6
+fake,171,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,26,0,no,0.9
+fake,81,no,yes,no,female,alone,0,5,0,0,0,0,0,0,0,0,1,0,17,0,no,1
+fake,157,no,yes,no,male,alone,0,4,2,0,0,0,0,0,0,0,1,0,22,0,no,1
+fake,213,no,yes,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,23,0,no,1
+real,170,university,yes,yes,male,complicate,29,59,8,10,1,18,1,3,6,0,6,2,101,2,yes,0.1
+real,353,university,yes,yes,male,alone,1,13,0,15,1,1,11,6,10,1,1,6,550,19,no,0.1
+real,517,university,no,yes,male,alone,112,236,3,86,5,11,0,8,3,1,5,17,318,23,yes,0.5
+real,460,university,no,yes,male,alone,74,142,3,98,33,96,16,14,17,6,19,0,900,32,yes,0.3
+real,240,university,no,yes,female,complicate,23,13,1,9,0,0,0,0,0,0,0,0,15,2,no,0.1
+real,340,high school,no,yes,male,complicate,12,120,1,26,0,0,0,0,0,0,0,0,44,3,no,0.5
+real,460,no,no,yes,male,married,6,13,1,20,1,3,2,11,4,0,0,0,42,2,no,0.2
+real,534,university,no,yes,male, ,7,35,2,37,3,2,5,2,1,1,0,0,140,4,no,0
+real,957,university,no,yes,male,alone,32,10,4,60,7,6,10,8,6,1,10,0,130,122,yes,0.1
+real,452,university,no,yes,male,alone,4,27,1,35,7,21,16,13,5,4,5,0,454,36,yes,0
+real,779,university,yes,yes,male,complicate,48,44,0,48,2,1,0,29,2,0,1,2,274,78,no,0.1
+real,516,university,yes,no,male,alone,29,3,3,32,18,52,15,4,6,2,8,0,591,34,yes,0.3
+real,267,university,yes,yes,female,married,44,206,33,1,3,0,23,42,21,1,3,7,831,84,no,0.9
+real,418,university,yes,no,male,alone,29,93,3,48,15,30,37,12,42,4,5,1,561,3,yes,0.5
+real,445,high school,no,no,female,alone,3,31,0,11,0,0,5,44,2,0,1,0,104,22,no,0.1
+real,205,university,yes,yes,male,alone,23,6,1,5,1,1,0,0,4,0,0,0,43,0,no,0.2
+real,575,university,yes,yes,male,alone,1,7,2,182,0,0,10,0,1,0,1,0,23,33,yes,0.3
+real,507,university,yes,yes,female,alone,48,73,2,23,0,0,12,12,0,10,0,7,817,19,no,0.3
+real,130,university,yes,no,male,alone,51,72,0,4,7,5,0,1,1,0,0,0,80,1,yes,0.4
+real,527,university,yes,yes,male,alone,63,744,18,42,15,4,8,11,4,7,0,2,841,36,no,0.2
+real,346,university,yes,no,male,alone,41,14,1,21,1,0,1,0,2,0,0,1,54,6,no,0.1
+real,348,university,yes,no,male,alone,48,44,1,6,1,0,4,2,1,1,5,0,91,7,no,0.2
+real,452,university,yes,no,female,alone,12,123,2,46,4,13,38,10,5,1,2,7,435,3,no,0.1
+real,603,university,yes,yes,male,alone,80,15,5,116,9,17,11,30,9,12,3,2,306,16,yes,0
+real,1031,university,yes,yes,male, ,35,180,10,51,0,2,0,2,0,0,0,1,71,20,yes,0.2
+real,1924,no,yes,yes,male,alone,2,7,0,4,4,2,0,48,52,22,47,0,4149,199,no,0.4
+real,686,university,yes,yes,male,alone,6,3,2,52,3,0,2,2,2,2,5,0,282,4,no,0.4
+real,582,university,yes,yes,male,alone,24,172,12,186,3,4,20,51,13,27,3,3,406,13,yes,0.1
+real,875,university,yes,yes,male,alone,33,24,8,113,23,75,22,13,11,7,18,7,873,31,yes,0.2
+real,875,university,yes,no,male,alone,8,18,9,122,1,0,1,0,0,0,0,0,164,31,no,0.2
+real,1257,university,yes,yes,male,alone,9,12,5,53,4,9,74,29,22,5,3,8,1327,45,yes,0.4
+real,875,no,no,yes,male,alone,16,15,16,33,0,0,0,0,0,0,0,0,412,32,yes,0.2
+real,600,university,yes,yes,male,alone,24,25,0,30,0,1,0,1,3,0,1,0,99,4,no,0.1
+real,655,university,yes,yes,male,complicate,16,14,11,31,1,0,2,0,0,1,1,0,421,11,no,0.1
+real,497,university,yes,no,male, ,13,12,1,20,0,0,0,0,0,0,0,0,67,2,no,0.2
+real,875,university,yes,yes,female,alone,8,2,2,114,1,0,15,44,18,3,4,44,971,7,yes,0.1
+real,582,university,yes,yes,male,married,8,213,1,29,1,1,10,10,15,5,10,3,849,7,no,0.2
+real,712,university,yes,yes,male,alone,1,7,2,44,0,0,2,2,2,1,2,0,199,12,yes,0.2
+real,875,university,yes,yes,female,alone,123,288,11,118,0,0,10,1,0,12,0,3,535,57,yes,0.1
+real,436,university,yes,no,male,alone,22,1,5,17,2,0,24,0,19,0,0,1,706,3,no,0.2
+real,400,university,yes,yes,female,alone,36,185,5,50,0,0,18,9,12,10,1,2,569,31,yes,0
+real,514,university,yes,yes,female,alone,10,13,2,68,2,0,8,5,0,1,0,10,337,10,yes,0.2
+real,186,no,yes,no,male,alone,1,3,0,0,11,4,7,6,40,0,3,1,169,7,no,0.5
+real,551,university,yes,yes,male,alone,11,1,1,9,7,13,4,1,6,1,4,0,202,10,yes,0.8
+real,334,university,yes,no,male,alone,16,7,1,5,4,8,6,2,4,2,0,2,646,15,no,0.2
+real,875,university,yes,no,male,alone,2,5,3,19,11,21,20,4,5,2,13,18,748,60,no,0.2
+real,491,university,yes,no,male,alone,0,148,37,2,2,0,2,1,1,0,1,0,174,12,yes,0.5
+real,711,university,yes,yes,male,alone,4,16,2,12,4,15,4,3,7,1,0,5,482,15,yes,0.4
+real,518,university,yes,yes,male,alone,0,5,2,23,3,2,7,19,3,1,0,1,248,13,yes,0.4
+real,921,university,yes,no,male,alone,5,52,1,97,2,0,13,2,5,2,5,18,645,179,yes,0.2
+real,1588,university,yes,yes,male,alone,11,10,8,28,7,5,30,4,6,2,3,1,715,17,yes,0.2
+real,868,university,yes,no,male,alone,0,86,2,75,1,3,5,2,2,2,2,0,254,35,yes,0.3
+real,371,no,yes,no,female,alone,3,5,0,4,0,0,13,0,3,0,0,0,157,11,no,0.8
+real,875,university,yes,no,female, ,0,31,14,1,1,0,149,5,5,8,0,0,442,2,no,0.3
+real,715,university,yes,no,male,alone,11,28,1,18,5,1,3,2,7,2,1,0,366,15,no,0.3
+real,452,university,yes,yes,male,alone,20,1,2,26,2,0,0,0,0,0,0,1,2,2,yes,0.6
+real,401,university,yes,yes,female,alone,36,124,5,28,0,0,18,9,21,11,1,2,571,30,yes,0.6
+real,445,university,yes,yes,male,alone,1,1,0,4,1,0,1,0,0,0,0,0,49,10,yes,0
+real,846,university,yes,yes,female,alone,68,1,2,24,0,0,3,32,3,0,1,3,300,13,no,0.7
+real,875,no,no,no,male,alone,0,2,0,0,0,0,0,2,0,0,0,1,90,15,no,0
+real,658,university,yes,yes,male,alone,19,1,3,34,4,0,2,3,1,0,0,4,382,33,yes,0.6
+real,875,university,yes,yes,male,alone,0,76,8,37,0,0,0,0,10,15,1,0,24,0,no,0.9
+real,673,high school,yes,yes,female,alone,0,2,1,34,6,2,21,15,16,7,0,470,556,47,yes,0.3
+real,875,university,yes,yes,female,alone,7,1,2,90,1,1,15,44,20,1,4,0,977,11,yes,0.6
+real,143,university,yes,no,male,married,4,0,2,12,1,0,0,0,0,0,0,0,26,1,no,1
+real,255,university,yes,no,male,alone,6,7,1,1,2,0,6,4,4,0,0,1,116,8,no,0.5
+real,875,no,yes,no,male,complicate,24,16,15,17,1,0,0,0,0,0,0,0,16,12,yes,0.5
+real,257,university,yes,yes,male,alone,0,3,1,8,1,1,3,3,2,1,11,0,198,29,no,0.5
+real,875,university,yes,yes,male,alone,96,11,7,30,3,10,42,14,15,12,4,0,518,19,yes,0.5
+real,875,university,yes,yes,male,alone,42,12,4,2,1,4,4,5,5,1,1,4,921,21,no,1
+real,651,university,yes,no,male,complicate,241,146,11,0,1,0,23,11,1,2,0,1,178,34,yes,0
+real,1373,university,yes,no,female,alone,4,28,1,39,4,1,11,3,2,4,2,16,1021,76,no,0.5
+real,510,university,yes,no,male,alone,5,3,7,42,2,0,1,1,3,0,0,23,469,21,no,0.3
+real,432,university,yes,yes,male,alone,20,56,0,0,2,10,86,49,4,7,22,2,1247,4,yes,0.5
+real,875,university,no,yes,female, ,136,273,3,96,1,0,8,2,4,5,16,16,1194,74,yes,0.3
+real,431,no,yes,yes,male,alone,16,100,3,19,0,0,7,0,1,2,2,1,360,5,no,0.5
+real,432,high school,yes,no,male,alone,0,36,2,19,37,73,16,0,11,2,0,2,910,38,no,0.5
+real,420,high school,yes,no,male,alone,1,211,6,9,4,4,13,1,4,0,19,5,487,22,no,0.1
+real,704,university,no,yes,male,alone,4,12,3,59,0,0,4,1,1,0,1,0,134,14,no,0.7
+real,421,university,yes,yes,male,alone,36,40,2,12,0,0,4,1,1,2,4,1,450,12,no,0
+real,553,no,no,yes,female, ,0,284,6,188,0,1,6,2,5,2,0,34,939,130,yes,0.3
+real,621,university,no,yes,male,alone,9,22,6,33,2,3,11,9,2,1,0,0,403,37,yes,0.4
+real,479,university,yes,yes,male,complicate,0,160,4,36,2,6,2,2,1,1,0,1,125,0,no,0.2
+real,112,no,no,no,male,complicate,0,16,7,1,5,0,0,0,0,0,0,1,69,22,no,0.3
+real,858,university,no,no,female, ,0,121,9,48,3,1,39,14,6,1,0,21,493,11,yes,0.3
+real,234,university,no,no,male,alone,44,92,2,47,0,23,72,15,51,3,8,1,663,11,no,0.4
+real,354,no,no,yes,female,alone,20,3,1,26,0,0,4,0,9,0,0,4,271,5,no,0.2
+real,1381,university,no,yes,female,alone,20,45,4,54,3,1,45,11,15,14,3,1,999,46,no,0.3
+real,1110,high school,no,yes,male,alone,8,120,8,43,1,0,1,3,1,3,0,0,153,18,yes,0.3
+real,873,university,yes,yes,female,alone,6,16,15,0,1,3,181,104,6,2,2,12,3710,13,yes,0
+real,985,university,no,yes,male,alone,2,13,1,29,4,2,5,8,1,1,0,3,219,35,yes,0.5
+real,591,university,no,no,male,complicate,0,1,6,0,0,3,1,0,1,0,0,0,82,27,no,0.5
+real,237,university,yes,yes,male,alone,0,32,1,17,0,0,2,3,3,1,0,0,147,6,no,0.2
+real,369,university,no,no,female,alone,16,20,1,18,0,0,7,1,1,1,0,1,83,3,no,0.2
+real,559,university,no,no,male,alone,16,20,5,76,1,1,2,0,2,0,0,1,118,7,yes,0.4
+real,1072,university,no,yes,male,alone,16,0,2,54,2,0,3,1,2,0,0,0,263,38,no,1
+real,229,university,yes,no,male,alone,1,7,6,6,0,0,2,2,0,0,0,0,7,3,no,0.4
+real,793,high school,no,no,male,complicate,0,44,19,87,0,1,5,2,1,0,0,0,96,27,no,0.1
+real,857,university,no,no,female,complicate,15,124,28,15,0,0,1,0,4,0,0,1,136,0,yes,0
+real,766,university,yes,yes,female,alone,128,340,3,89,2,0,30,12,17,5,0,34,1242,28,no,0.3
+real,1239,university,no,yes,male,alone,56,128,1,0,0,0,12,23,2,1,0,0,287,21,no,0.1
+real,956,university,yes,yes,female,alone,48,176,10,17,1,1,9,4,10,0,1,0,302,40,no,0.4
+real,1093,university,no,yes,male,complicate,3,8,12,42,4,0,27,2,2,2,2,0,693,19,yes,0.7
+real,687,university,no,yes,male,alone,8,12,6,37,0,0,1,0,0,0,0,1,148,13,no,0.9
+real,88,high school,no,no,male,alone,0,21,3,3,0,0,0,0,1,0,0,0,16,0,no,0.4
+real,439,high school,yes,yes,male,alone,7,6,0,49,2,1,2,2,1,10,0,0,95,8,yes,0.5
+real,423,no,no,no,male,complicate,8,16,4,43,2,4,0,2,0,0,0,0,4,18,no,0
+real,530,university,yes,yes,male,alone,56,64,21,16,0,0,2,0,0,0,0,1,41,13,no,0.6
+real,558,university,no,no,male,alone,7,6,5,13,2,2,4,0,1,1,0,1,247,9,no,0.5
+real,1487,university,no,yes,male,alone,60,40,6,8,1,1,0,0,0,0,0,0,63,16,no,0.4
+real,342,university,yes,yes,male,alone,96,120,18,17,0,0,1,0,0,0,1,0,43,12,no,0.4
+real,816,university,yes,yes,male,alone,16,56,1,83,15,42,24,16,58,1,12,8,2247,42,no,0.8
+real,1385,high school,yes,no,male,alone,16,64,1,10,4,14,16,5,3,0,23,0,722,78,no,0.8
+real,487,no,no,no,male,alone,7,36,1,18,2,1,0,0,0,0,0,0,52,4,yes,0.8
+real,671,high school,no,yes,female,alone,2,2,1,34,6,2,21,15,18,7,0,0,570,46,no,0.5
+real,1345,university,no,no,male,alone,7,16,2,54,0,0,6,0,1,0,1,0,453,46,no,0.2
+real,412,high school,no,yes,male,alone,8,42,3,105,8,12,2,0,2,0,0,0,669,38,no,0.4
+real,220,no,no,no,female,alone,4,60,2,14,0,0,0,0,3,0,0,0,21,3,no,0.8
+real,2592,university,no,yes,male,complicate,0,116,8,26,2,4,17,78,38,1,1,0,515,106,no,0.3
+real,731,university,no,yes,female,alone,4,4,0,81,4,0,1,0,10,2,11,2,500,15,no,0
+real,620,no,no,yes,male,alone,1,121,10,12,1,4,4,2,4,1,2,0,154,0,no,0.3
+real,588,university,no,no,male,alone,7,20,2,8,1,0,10,1,0,0,0,0,851,11,no,0.5
+real,726,university,no,yes,male,alone,7,16,7,34,0,0,2,2,2,1,0,0,206,19,yes,0
+real,680,university,no,yes,female,alone,4,2,1,16,0,0,1,1,2,3,0,0,155,6,no,0
+real,259,university,no,no,female,complicate,12,64,3,65,0,0,11,21,22,4,0,0,311,11,yes,0.4
+real,1270,high school,yes,no,male,married,0,216,20,57,6,0,12,4,3,0,5,0,1015,264,no,0.4
+real,238,no,no,no,male,complicate,32,84,1,16,0,0,6,0,2,0,1,0,71,11,no,0.6
+real,341,university,no,yes,male,alone,56,32,1,40,0,0,0,0,0,0,0,0,142,2,yes,0.3
+real,1081,university,no,no,male,alone,24,18,10,63,8,0,8,40,53,23,18,0,2326,121,yes,0.4
+real,1275,university,yes,yes,male,complicate,36,248,4,138,2,3,20,60,20,13,1,7,379,34,yes,0.1
+real,1011,high school,yes,yes,male,alone,0,144,10,57,2,1,87,10,50,12,2,0,8,57,no,0.4
+real,634,university,yes,yes,male,alone,21,208,10,17,10,38,8,4,4,1,1,4,556,58,no,0.5
+real,356,high school,no,no,male,complicate,16,4,4,18,0,0,8,81,1,0,0,2,76,6,no,1
+real,462,university,no,no,male,complicate,36,40,4,17,0,0,0,0,0,0,0,1,787,25,no,0.1
+real,288,university,no,yes,female,alone,48,0,2,13,0,0,0,1,1,1,1,0,81,12,no,1
+real,327,no,no,no,male,alone,0,264,15,4,3,0,0,0,0,0,0,0,2,6,no,0.2
+real,207,university,no,yes,male,alone,36,3,2,79,0,0,0,2,1,1,0,0,44,5,no,0.1
+real,383,high school,no,no,female,complicate,160,273,2,67,0,0,1,0,0,0,0,0,52,5,no,0.2
+real,340,university,no,no,male,complicate,4,20,1,4,0,0,0,0,0,0,0,0,30,3,no,0.1
+real,472,university,yes,no,male,alone,24,39,4,38,20,29,39,18,0,1,13,7,1384,36,no,0.5
+real,294,no,yes,yes,female,alone,18,268,0,94,3,2,53,2,1,22,2,14,2492,68,no,0.3
+real,580,university,no,yes,male,alone,1,0,1,4,1,0,4,5,0,0,0,0,124,4,yes,0
+real,295,university,yes,yes,female,alone,128,180,1,10,0,0,15,14,12,0,4,1,482,4,no,0.5
+real,898,university,no,yes,female, ,51,164,8,216,3,0,26,22,18,5,7,26,948,45,yes,0.1
+real,763,university,no,no,male,alone,0,1,0,12,203,249,28,24,58,26,18,12,3494,150,no,0
+real,477,university,no,yes,male,alone,4,2,10,22,3,0,3,13,8,3,4,1,275,21,yes,0
+real,393,no,no,yes,male,alone,0,4,0,0,7,6,5,0,2,0,0,2,143,5,no,0.7
+real,457,high school,no,no,male,alone,16,3,10,42,5,5,2,1,1,0,1,0,189,25,yes,0
+real,727,university,no,no,female,alone,72,1,3,36,1,2,0,0,2,1,0,0,200,14,yes,0.8
+real,1882,no,yes,yes,male,alone,39,96,10,345,10,25,37,12,17,0,0,5,1304,125,yes,0.5
+real,671,university,no,yes,female,alone,268,140,4,144,0,0,0,0,0,0,0,0,52,19,yes,0.8
+real,530,university,no,yes,male,complicate,0,3,0,28,1,0,0,1,5,0,3,92,1,9,no,0.7
+real,2451,university,no,yes,male,alone,0,47,12,41,2,0,3,2,1,0,0,2,431,85,no,0.6
+real,315,university,yes,yes,male,alone,24,1,0,8,5,10,2,7,5,5,0,0,257,3,no,0.3
+real,326,no,no,no,female,married,0,20,4,66,0,0,1,0,0,0,0,0,25,14,no,0.1
+real,501,university,no,no,male,alone,8,8,0,3,0,0,1,0,2,0,0,0,63,2,no,0
+real,180,university,yes,yes,female,married,0,56,0,15,2,1,0,0,5,7,0,0,110,12,no,0.1
+real,1000,university,no,yes,female,alone,64,128,6,48,11,0,4,0,7,0,0,0,431,49,no,0.7
+real,3343,university,yes,yes,female,complicate,76,480,20,34,2,1,0,0,2,4,0,0,469,112,no,0.2
+real,613,university,yes,no,female, ,4,135,8,62,1,1,113,61,11,26,6,0,1182,35,no,0.4
+real,473,no,no,yes,female,alone,12,32,1,15,0,0,0,0,0,1,0,0,83,7,no,0.9
+real,993,university,no,no,female,alone,12,62,0,26,5,0,0,12,3,4,0,0,386,98,no,0.9
+real,451,no,no,no,female,complicate,4,4,1,26,0,0,2,2,0,0,3,0,245,21,yes,0.7
+real,445,university,no,yes,female,alone,8,28,1,35,0,0,15,34,14,15,1,0,900,9,no,0.5
+real,329,university,yes,no,female,alone,32,96,5,4,0,0,0,0,0,0,2,0,377,56,no,0.9
+real,530,university,no,yes,female,alone,1,4,4,22,0,0,0,0,0,0,0,0,1,19,no,0
+real,344,university,no,no,female,alone,0,2,0,3,16,0,18,11,16,0,0,3,466,25,no,0
+real,284,no,no,no,female,alone,16,48,0,6,0,0,0,0,2,0,0,0,91,2,no,0.6
+real,490,no,yes,no,female,alone,12,42,9,4,2,0,0,0,5,1,0,0,138,8,no,0.3
+real,2263,high school,yes,no,female,complicate,0,16,4,8,1,0,0,0,4,1,2,0,142,28,no,0.7
+real,59,no,no,no,female,alone,3,1,0,0,0,0,0,0,1,0,0,0,1,0,no,0.2
+real,239,university,no,no,female,alone,1,3,2,1,0,0,1,0,0,0,0,1,59,2,no,0.4
+real,239,no,no,no,female,alone,3,4,1,0,0,0,0,0,0,0,0,0,15,14,no,0.6
+real,1089,university,no,yes,female,alone,0,10,8,4,0,0,3,0,2,0,0,1,102,25,no,0.4
+real,394,no,no,no,female,alone,3,29,8,0,0,0,0,0,0,0,0,0,30,12,no,0.8
+real,1000,university,no,yes,female,alone,20,48,13,56,5,0,15,1,4,0,0,0,706,73,yes,0.6
+real,600,university,yes,yes,female,alone,8,45,17,3,1,0,15,2,4,1,0,0,255,6,no,0.1
+real,651,no,no,no,female,alone,28,112,12,30,4,0,4,1,0,0,0,0,121,29,no,0.5
+real,540,no,no,yes,female,alone,12,4,0,6,16,24,0,0,0,0,37,7,1137,45,no,0.4
+real,995,no,no,yes,female,alone,2,136,17,59,2,1,55,38,33,21,10,0,2089,52,yes,0.2
+real,478,no,no,yes,female,alone,0,8,0,16,0,16,10,3,13,3,0,2,574,46,no,0
+real,930,no,no,no,female,alone,1,2,0,0,4,3,0,0,0,0,0,0,82,0,no,0
+real,571,university,no,yes,female,alone,0,4,2,60,0,4,14,3,5,13,0,14,1175,47,no,0.6
+real,512,university,no,yes,female,alone,96,116,0,11,0,0,0,0,0,0,0,0,56,16,no,0.2
+real,379,no,no,no,female,alone,4,3,0,37,0,0,16,2,3,5,0,0,785,31,yes,0
+real,3602,university,no,yes,female,complicate,160,160,336,49,120,1,2,0,0,1,0,0,725,131,yes,0.2
+real,550,university,no,yes,female,alone,0,16,12,3,4,10,0,0,0,0,0,0,112,114,yes,0.3
+real,450,university,no,yes,female,alone,8,28,6,11,7,12,10,0,0,1,1,0,421,57,no,0.2
+real,730,university,no,yes,female,alone,4,92,14,111,1,1,51,0,2,10,0,0,1551,6,yes,0.6
+real,2110,high school,yes,no,female,alone,12,60,0,4,0,0,1,1,0,0,1,0,665,65,no,0.7
+real,420,no,no,no,female,alone,48,48,0,40,4,0,3,0,0,0,0,0,207,6,no,0.9
+real,356,university,no,no,female,alone,0,8,6,11,1,1,6,3,0,0,0,0,208,7,no,0.6
+real,798,no,no,no,female,alone,0,12,3,8,1,0,0,0,0,0,0,0,47,0,no,0.3
+real,232,no,no,yes,female,complicate,204,120,48,171,0,0,0,2,3,2,0,5,312,28,yes,0.1
+real,281,no,no,no,female,alone,4,8,7,19,2,0,11,5,0,1,0,6,555,15,no,0.5
+real,344,university,no,yes,female,alone,2,2,1,28,0,0,63,6,13,6,0,2,397,6,no,0.5
+real,299,high school,no,no,female,alone,16,4,2,39,4,16,12,0,2,2,0,0,172,11,no,0.3
+real,318,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,16,3,no,0
+real,520,no,no,no,female,alone,0,0,0,11,0,0,0,0,0,0,0,0,21,3,no,0
+real,135,high school,no,no,female,alone,0,1,1,1,0,0,0,0,0,0,0,0,15,1,no,0
+real,130,no,no,no,female,alone,0,3,0,0,0,0,6,0,3,2,0,0,173,23,no,0.3
+real,353,no,no,no,female,alone,1,0,0,5,0,0,1,0,0,2,0,1,96,2,no,1
+real,907,university,no,no,male,complicate,11,8,4,43,0,3,7,1,0,0,0,4,383,35,yes,0.5
+real,4982,high school,yes,yes,male,complicate,20,120,5,57,5,5,0,0,0,1,0,0,1134,48,no,0.3
+fake,676,no,no,no,female,alone,0,8,0,0,0,0,0,0,0,0,0,0,51,0,no,1
+fake,4998,university,yes,no,male,alone,0,11,0,47,0,0,0,0,0,0,0,0,197,234,no,0.3
+fake,49,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,159,high school,yes,no,male,alone,0,0,0,1,0,0,0,1,0,0,5,0,178,17,no,1
+fake,82,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,42,no,no,no,female,alone,134,0,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,375,no,no,no,female,alone,2,0,0,0,0,0,0,0,0,0,0,0,19,0,no,0
+fake,595,no,yes,no,male,alone,0,5,0,1,0,0,0,0,0,0,0,0,15,23,no,0
+fake,722,university,yes,no,female,alone,0,1,0,1,0,0,0,0,0,0,0,0,15,2,no,1
+fake,5,high school,no,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,0,0,no,0
+fake,485,university,yes,no,female,alone,6,5,0,1,0,0,0,0,0,0,0,0,12,37,no,0
+fake,463,high school,yes,no,female,alone,0,6,0,3,0,0,0,1,1,0,0,0,257,68,no,0.8
+fake,1160,university,yes,no,female,complicate,2,240,0,1,0,0,0,0,0,0,0,0,49,118,no,0.7
+fake,136,no,yes,no,male,alone,0,1,0,0,0,0,0,0,0,0,0,0,6,0,no,0.8
+fake,4717,high school,yes,no,male,alone,0,10,1,20,3,0,1,0,0,0,0,0,774,427,no,0.2
+fake,431,university,yes,no,female,alone,9,12,1,12,0,0,1,0,0,0,0,0,183,87,no,0.5
+fake,3332,university,yes,no,female,complicate,0,576,0,0,0,0,0,0,0,0,0,0,137,38,no,0
+fake,4390,no,yes,no,male,alone,0,21,0,12,0,0,0,0,0,0,0,0,223,88,no,0.9
+fake,4841,no,no,no,female,alone,4,0,0,4,0,0,0,0,0,0,0,0,56,55,no,0.6
+fake,3215,no,no,no,female,alone,0,100,0,20,0,0,4,0,0,0,1,0,559,186,no,1
+fake,519,high school,yes,no,male,alone,0,1,0,1,0,0,0,0,0,0,0,0,46,29,no,0.5
+fake,231,no,yes,no,male,alone,0,0,0,0,0,0,0,0,0,0,2,0,21,0,no,1
+fake,1491,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,89,0,no,1
+fake,710,no,no,no,male,alone,0,0,0,0,0,0,0,0,0,0,0,0,29,1,no,1
+fake,825,no,yes,no,male,alone,0,1,0,0,0,0,2,0,0,0,9,0,570,1,no,1
+fake,1452,no,no,no,male,alone,0,0,0,0,0,0,0,0,0,1,0,0,88,75,no,1
+fake,1895,no,yes,no,male,alone,0,127,0,0,0,0,0,0,0,0,0,0,105,35,no,1
+fake,2464,no,yes,no,male,alone,0,0,0,9,0,0,1,0,0,0,4,0,140,69,no,1
+fake,2609,no,no,no,male,alone,0,421,0,0,0,0,0,0,0,0,1,0,41,6,no,1
+fake,1478,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,79,47,no,1
+fake,1524,no,yes,no,female,complicate,1,0,0,0,0,0,0,0,0,0,0,0,4,0,no,1
+fake,1241,no,yes,no,female,alone,0,0,0,7,0,0,0,1,0,0,0,0,34,65,no,1
+fake,2134,no,yes,no,female,alone,0,0,0,0,0,0,1,0,0,0,0,0,140,69,no,1
+fake,1214,no,yes,no,female,alone,0,96,0,0,0,0,0,0,0,0,0,0,0,59,no,1
+fake,2354,no,yes,no,male,alone,0,0,0,1,0,5,0,0,0,0,0,7,450,29,no,1
+fake,1792,university,yes,no,male,alone,2,0,1,11,0,0,0,0,0,0,8,1,357,1941,no,1
+fake,160,high school,yes,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,11,1,no,1
+fake,847,university,yes,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,23,1,no,1
+fake,189,high school,yes,no,male,alone,0,0,0,0,0,0,0,0,1,0,4,0,16,0,no,1
+fake,1452,high school,yes,no,female,alone,0,1008,0,0,0,0,0,0,0,0,0,0,125,25,no,0.3
+fake,765,no,yes,no,female,alone,0,0,0,0,0,0,3,0,0,0,0,0,80,21,no,1
+fake,1846,no,no,no,female,alone,0,0,1,2,0,0,2,0,0,0,0,0,62,22,no,1
+fake,24,no,no,no,male,alone,0,0,0,0,0,0,0,0,0,0,0,0,1,0,no,1
+fake,2784,high school,yes,no,female,alone,3,132,0,0,0,0,72,9,10,0,0,0,1032,1572,no,0.8
+fake,502,university,yes,no,female,alone,0,7,0,0,0,0,0,1,0,0,0,0,40,11,no,0
+fake,130,no,yes,no,female,alone,0,1,0,0,0,0,2,0,0,0,0,1,91,1,no,0
+fake,140,high school,yes,no,male,alone,0,1,0,0,0,0,0,0,1,1,0,1,46,0,no,0
+fake,23,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,0,0,no,1
+fake,4821,no,yes,no,male,complicate,0,248,2,4,0,0,0,0,0,0,0,0,768,176,no,0
+fake,2245,no,yes,no,male,alone,0,27,0,28,0,0,0,0,0,0,1,0,476,445,no,0
+fake,2872,no,no,no,male,alone,0,9,0,0,0,0,0,0,0,0,0,0,404,25,no,0
+fake,169,no,yes,no,female,alone,0,0,0,0,0,0,0,0,0,17,0,0,0,240,no,0
+fake,4448,no,yes,no,female,alone,1,1,0,25,3,0,0,0,0,0,0,0,507,20,no,1
+fake,4529,no,yes,no,female,alone,0,2128,0,68,0,0,0,0,0,0,0,0,422,181,no,0.2
+fake,4732,no,yes,no,male,alone,1,400,0,43,0,0,0,0,0,0,2,0,446,238,no,0.1
+fake,386,no,no,no,female,alone,1,1,0,4,0,0,0,1,0,0,0,0,179,317,no,0
+fake,510,no,yes,no,female,alone,0,6,0,0,0,0,0,0,0,4,0,0,98,2,no,0.6
+fake,207,no,yes,no,female,alone,0,4,0,0,0,0,0,0,0,0,0,0,32,4,no,0.9
+fake,545,no,no,no,female,alone,0,0,0,0,0,0,1,0,0,1,0,0,112,0,no,1
+fake,413,no,yes,no,female,alone,1,0,0,0,0,0,0,0,1,0,0,0,210,3,no,1
+fake,323,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,56,0,no,1
+fake,475,no,no,no,female,alone,102,0,0,0,0,0,0,0,0,0,0,0,122,1,no,1
+fake,299,no,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,64,1,no,1
+fake,378,no,no,no,female,alone,0,2,0,0,0,0,0,1,0,0,0,0,76,0,no,1
+fake,524,no,no,no,male,alone,0,0,0,0,0,0,0,1,0,0,0,0,98,1,no,1
+fake,447,no,no,no,female,alone,0,0,0,0,0,0,0,1,0,0,0,0,112,0,no,1
+fake,459,no,no,no,female,alone,0,8,0,0,0,0,0,1,0,0,0,0,84,5,yes,1
+fake,24,no,yes,no,female,alone,0,0,0,0,0,0,0,1,0,0,0,0,28,1,yes,1
+fake,14,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,42,1,yes,1
+fake,331,no,no,no,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,42,1,no,1
+fake,421,no,yes,yes,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,74,4,no,1
+fake,467,no,no,yes,female,alone,0,1,0,0,0,0,0,1,1,0,0,0,70,1,no,1
+fake,825,no,no,yes,female,alone,0,12,0,0,0,0,0,0,0,0,0,0,114,5,no,1
+fake,397,no,no,yes,female,alone,0,0,0,0,0,0,0,1,0,0,0,0,70,1,no,1
+fake,336,no,no,yes,male,alone,0,9,0,0,0,0,0,1,1,0,0,0,50,3,no,0.9
+fake,302,no,yes,yes,male,alone,0,1,0,0,0,0,0,0,0,0,0,0,52,4,no,1
+fake,331,high school,yes,yes,female,alone,0,0,0,0,0,0,0,0,0,0,0,0,47,1,no,1
+fake,589,no,yes,yes,female,alone,0,9,0,0,0,0,0,0,2,1,0,0,98,6,no,0.8
+fake,575,no,yes,no,female,alone,0,1,0,0,0,0,0,0,1,1,0,0,92,3,no,1
+fake,151,no,yes,no,female,alone,0,1,0,0,0,0,0,0,1,0,0,0,10,0,no,0
+fake,312,no,yes,no,female,alone,0,1,0,0,0,0,0,0,0,1,0,0,61,3,no,1
+fake,403,secondary school,yes,no,female,alone,0,1,0,0,0,0,0,1,0,0,0,0,81,3,no,1
+fake,441,no,yes,no,female,alone,0,2,0,0,0,0,0,1,1,1,0,0,85,2,no,1
+fake,406,no,yes,no,female,alone,0,1,0,0,0,0,0,0,1,1,0,0,76,1,no,1
+fake,396,no,yes,no,female,alone,0,2,0,0,0,0,0,1,0,1,1,0,76,2,no,1
+fake,482,no,yes,no,female,alone,0,1,0,0,0,0,0,1,1,1,0,0,72,0,no,1
+fake,479,no,no,no,female,alone,0,2,0,0,0,0,0,0,0,3,0,0,22,0,yes,0.8
+fake,502,high school,yes,no,female,alone,0,8,0,0,0,0,0,0,1,0,4,0,154,1,no,0.8
+fake,278,no,yes,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,14,0,no,0.9
+fake,451,university,yes,no,female,alone,0,0,1,0,0,0,0,2,2,2,0,0,196,7,no,1
+fake,1475,no,yes,no,female,alone,0,19,0,0,0,0,0,1,3,0,0,0,140,1,no,0.9
+fake,280,no,yes,no,male,alone,0,0,0,0,0,0,0,1,0,4,0,0,138,0,no,0.9
+fake,465,secondary school,yes,no,male,alone,0,10,0,0,0,0,0,2,0,3,1,0,168,1,no,0.8
+fake,1721,no,yes,no,female,alone,0,14,0,1,0,0,9,1,0,1,1,0,143,1,no,0.6
+fake,488,no,yes,no,female,alone,0,15,0,0,0,0,0,1,1,0,0,0,77,3,no,0.7
+fake,346,no,yes,no,male,alone,0,2,0,1,0,0,0,1,2,0,0,0,98,1,no,0.9
+fake,372,no,yes,no,female,alone,0,3,0,0,0,0,0,1,2,0,0,0,162,6,no,0.9
+fake,923,secondary school,yes,no,female,alone,0,10,0,1,0,0,0,2,3,0,0,0,162,1,no,0.7
+fake,84,university,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,9,3,no,0.8
+fake,216,no,yes,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,13,3,no,0.8
+fake,988,high school,yes,no,female,alone,0,3,0,0,0,0,0,1,0,0,0,0,70,13,no,0.6
+fake,1022,high school,yes,no,female,alone,0,6,0,1,0,0,0,1,0,0,0,0,68,23,no,0.7
+fake,562,high school,yes,no,female,alone,0,6,0,1,0,0,0,1,0,0,0,0,50,14,no,0.5
+fake,528,university,yes,no,male,alone,0,4,0,0,0,0,0,1,0,0,0,0,36,7,no,0.4
+fake,165,no,yes,yes,male,alone,2,2,0,0,3,0,0,0,3,3,0,0,260,5,no,0.7
+fake,387,university,yes,no,male,alone,0,3,0,0,0,0,0,1,0,0,0,0,36,5,no,0.8
+fake,1143,university,yes,no,female,alone,0,3,0,2,0,0,0,0,0,1,0,0,90,17,no,0.6
+fake,769,university,yes,no,male,alone,0,5,1,0,0,0,0,1,0,0,0,0,58,10,no,0.6
+fake,649,university,yes,no,female,alone,0,6,0,0,0,0,0,1,0,0,0,0,41,13,no,0.5
+fake,723,university,yes,no,male,alone,0,7,0,1,1,0,0,1,0,0,0,0,54,6,no,0.5
+fake,371,no,yes,no,male,alone,0,2,0,1,0,0,0,2,3,0,0,0,174,1,no,0.9
+fake,283,university,yes,no,male,alone,0,2,0,0,0,0,0,1,2,0,0,0,78,1,no,0.9
+fake,1824,no,yes,no,female,alone,0,2,0,0,0,0,0,1,2,0,0,0,70,2,no,0.9
+fake,291,university,yes,no,female,alone,0,2,0,0,0,0,0,1,1,0,0,0,98,3,no,0.9
+fake,14,no,no,no,female,alone,0,0,0,0,,0,0,0,0,0,0,0,15,0,no,0
+fake,46,no,no,no,female,alone,0,6,0,0,0,0,0,0,0,0,0,0,0,0,no,0
+fake,5,no,no,no,male,alone,0,2,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,20,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,10,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,0,0,no,0
+fake,12,no,no,no,female,alone,0,3,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,2,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,91,0,0,0,0,no,0
+fake,35,no,no,no,female,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,21,no,no,no,female,alone,0,2,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,1,no,no,no,male,alone,0,3,0,0,0,42,0,0,0,0,0,0,1,0,no,0
+fake,9,no,no,no,female,alone,0,1,0,2,3,4,0,0,9,0,0,117,1,0,no,1
+fake,13,no,no,no,male,alone,0,1,0,0,0,0,0,0,0,0,0,0,1,0,no,0
+fake,241,high school,yes,no,female,alone,0,5,2,0,0,0,0,0,0,0,1,0,56,0,no,0.9
+fake,324,university,yes,no,female,alone,7,2,2,0,0,0,0,0,0,0,1,0,64,0,no,0.9
+fake,281,no,no,no,female,alone,5,1,2,0,0,0,0,0,0,0,1,0,60,0,no,0.9
+fake,338,no,yes,no,female,alone,1,3,2,0,0,0,0,0,0,0,1,0,64,0,no,0.8
+fake,257,no,yes,no,female,alone,2,6,2,0,0,0,0,0,0,0,1,0,65,0,no,0.9
+fake,214,no,no,no,female,alone,1,1,2,0,0,0,0,0,0,0,1,0,59,0,no,0.8
+fake,204,no,yes,no,female,alone,0,1,2,0,0,0,0,0,0,0,1,0,64,0,no,0.9
+fake,259,no,yes,no,female,alone,0,2,2,0,0,0,0,0,0,0,1,0,60,0,no,0.9
+fake,356,university,yes,no,male,alone,0,5,2,0,0,0,0,0,0,0,1,0,79,2,no,0.3
+fake,218,no,no,no,male,alone,0,1,2,0,0,0,0,0,0,0,1,0,60,0,no,0.9
+fake,469,university,yes,no,female,alone,1,7,0,0,0,0,1,0,0,0,2,0,78,0,no,0.6
+fake,574,high school,yes,no,female,alone,14,8,2,0,0,0,1,0,0,0,1,0,82,0,yes,0.7
+fake,271,no,no,yes,female,alone,4,6,1,1,0,0,0,0,0,0,1,0,67,0,no,0.9
+fake,226,high school,yes,yes,female,alone,2,2,0,1,0,0,0,0,0,0,1,0,55,0,no,0.9
+fake,230,no,no,yes,male,alone,0,2,3,0,0,0,0,0,0,0,1,0,57,0,no,0.9
+fake,250,high school,yes,yes,female,alone,0,1,2,0,0,0,0,0,0,0,0,0,54,0,no,0.8
+fake,210,no,no,yes,female,alone,2,4,2,0,0,442,0,0,0,0,1,0,30,0,no,0.6
+fake,191,university,yes,yes,male, ,2,3,2,0,0,0,0,0,0,0,1,0,38,0,no,0.6
+fake,230,no,yes,yes,male,alone,5,3,2,0,0,0,0,0,0,0,1,0,34,0,no,0.6
+fake,187,no,yes,no,female,alone,0,0,2,0,0,0,0,0,0,0,1,0,28,0,no,0.6
+fake,186,no,yes,no,male,alone,4,2,3,0,0,0,0,0,0,0,1,0,432,0,no,0.6
+fake,206,no,yes,no,male,alone,0,4,3,0,0,0,0,0,0,0,1,0,30,0,no,0.5
+fake,183,no,yes,no,male,alone,1,5,2,0,0,0,0,0,0,0,1,0,28,0,no,0.5
+fake,183,no,yes,no,female,alone,0,2,2,0,0,0,0,1,0,3,1,0,29,0,no,0.5
+fake,201,university,yes,no,male,alone,0,2,2,0,0,0,0,0,0,0,1,0,26,0,no,0.5
+fake,171,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,26,0,no,0.6
+fake,81,no,yes,no,female,alone,0,5,0,0,0,0,0,0,0,0,1,0,17,0,no,0.4
+fake,157,no,yes,no,male,alone,1194,4,2,0,0,0,0,0,0,0,1,0,22,0,no,0.5
+fake,213,no,yes,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,1114,0,no,0.7
+fake,139,no,yes,no,female,alone,0,4,0,0,0,0,0,0,0,0,1,0,22,0,no,0.5
+fake,66,university,yes,no,male,complicate,0,5,0,0,0,0,0,0,0,0,1,0,27,0,no,0.5
+fake,140,university,yes,no,male,alone,0,4,0,0,0,4,0,1,0,0,1,0,25,0,no,0.5
+fake,153,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,0,0,20,0,no,0.5
+fake,156,no,yes,no,male,alone,0,2,0,0,0,0,0,0,0,0,1,0,23,0,no,0.9
+fake,139,no,no,no,male,alone,0,4,0,0,0,0,0,0,0,0,1,0,21,0,no,0.7
+fake,46,no,no,no,female,alone,0,5,0,0,0,0,0,0,0,0,1,0,4,0,no,0.4
+fake,126,no,no,no,male,alone,0,2,0,1,0,0,0,0,0,0,1,0,21,0,no,0.5
+fake,123,no,no,no,male,alone,0,3,0,1,0,0,0,0,0,0,1,0,23,0,no,0.5
+fake,131,no,no,no,female,alone,0,8,0,0,0,0,0,0,0,0,1,0,18,0,no,0.5
+fake,118,high school,yes,no,female,alone,0,8,0,0,0,0,0,0,0,0,1,0,21,0,no,0.2
+fake,3,no,no,no,male,alone,0,3,0,0,0,0,0,0,0,0,1,0,4,0,no,0.3
+fake,10,no,no,no,male,alone,0,2,0,0,0,0,0,0,0,0,1,0,6,0,no,0.7
+fake,305,university,yes,no,male,alone,0,28,2,0,0,0,0,0,1,0,3,0,154,3,no,0.1
+fake,31,no,yes,no,female,alone,0,4,0,0,0,0,0,0,0,0,0,0,0,2,no,0
+fake,1362,no,yes,no,female,alone,1,20,1,2,0,0,0,1,0,0,1,0,195,16,no,0.5
+fake,473,no,no,no,female,alone,0,76,3,1,0,0,2,0,3,0,2,0,586,3,no,0
+fake,215,no,no,no,female,alone,0,2,0,0,0,0,0,1,1,0,1,0,43,2,no,0.1
+fake,133,no,no,yes,male,alone,0,7,2,0,0,0,0,1,1,0,1,0,75,2,no,0
+fake,346,no,no,yes,female,alone,0,7,0,0,0,0,0,1,1,0,0,0,60,2,no,0
+fake,214,no,no,no,female,alone,0,2,2,0,0,0,1,1,0,1,1,0,57,3,no,0
+fake,234,university,yes,no,female,alone,0,2,1,0,0,0,0,1,1,0,0,0,41,0,no,0
+fake,230,no,no,no,female,alone,0,2,3,0,1,0,0,1,2,0,1,0,125,1,no,0.1
+fake,183,no,no,no,male,alone,0,4,1,0,0,0,0,1,1,0,1,0,54,0,no,0
+fake,372,university,yes,no,male,alone,1,4,0,0,0,0,0,1,0,0,0,0,72,0,no,0
+fake,313,no,yes,no,male,complicate,0,0,0,0,1,0,0,1,0,0,1,0,49,2,no,0
+fake,257,no,no,no,female,alone,0,2,0,0,0,0,0,0,0,0,1,0,45,0,yes,0
+fake,629,no,yes,no,female,alone,0,2,0,0,0,0,1,0,0,0,1,0,94,3,no,0.7
+fake,524,high school,yes,no,female,complicate,94,4,2,0,1,6,0,0,3,0,3,4,311,1,no,0.9
+fake,431,high school,yes,no,female,alone,0,3,2,1,0,0,1,0,1,0,0,0,79,0,no,0.8

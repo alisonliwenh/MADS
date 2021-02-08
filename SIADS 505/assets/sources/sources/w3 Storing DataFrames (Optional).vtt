@@ -1,0 +1,1864 @@
+WEBVTT
+
+1
+00:00:05.870 --> 00:00:09.090
+This lecture might seem
+a bit backwards to some.
+
+2
+00:00:09.090 --> 00:00:11.370
+You've already learned how
+to manipulate DataFrames,
+
+3
+00:00:11.370 --> 00:00:14.235
+loading data from structured
+formats such as CSVs.
+
+4
+00:00:14.235 --> 00:00:16.540
+But there's many more
+common data formats,
+
+5
+00:00:16.540 --> 00:00:18.030
+the pandas can help you with.
+
+6
+00:00:18.030 --> 00:00:19.800
+I think it's important
+to have a bit more of
+
+7
+00:00:19.800 --> 00:00:22.185
+a comprehensive look
+at data storage.
+
+8
+00:00:22.185 --> 00:00:23.670
+So here we're going to expand
+
+9
+00:00:23.670 --> 00:00:26.490
+our investigation to
+other data formats.
+
+10
+00:00:26.490 --> 00:00:28.845
+Let's import the pandas library.
+
+11
+00:00:28.845 --> 00:00:31.935
+So import pandas as pd.
+
+12
+00:00:31.935 --> 00:00:34.960
+All right. Let's talk
+about CSVs first.
+
+13
+00:00:34.960 --> 00:00:37.670
+One of the most common and
+easiest files to work with is
+
+14
+00:00:37.670 --> 00:00:40.510
+a CSV file or comma
+separated text file.
+
+15
+00:00:40.510 --> 00:00:43.370
+Loading, reading and
+writing CSV files
+
+16
+00:00:43.370 --> 00:00:46.955
+is a key skill to master
+for any data scientist.
+
+17
+00:00:46.955 --> 00:00:50.210
+To review, a CSV file
+is a text file where
+
+18
+00:00:50.210 --> 00:00:53.150
+values or columns are
+separated by commas.
+
+19
+00:00:53.150 --> 00:00:55.070
+CSV is quick to read
+
+20
+00:00:55.070 --> 00:00:57.170
+and it's compatible
+with most platforms,
+
+21
+00:00:57.170 --> 00:00:59.000
+and you can even open
+a CSV file within
+
+22
+00:00:59.000 --> 00:01:01.465
+the text editor
+built into Jupyter.
+
+23
+00:01:01.465 --> 00:01:04.420
+While CSV is very easy to load,
+
+24
+00:01:04.420 --> 00:01:06.470
+real-world data rarely contains
+
+25
+00:01:06.470 --> 00:01:08.509
+clean data in these cases,
+
+26
+00:01:08.509 --> 00:01:11.030
+and there's a few different
+pandas functions that can
+
+27
+00:01:11.030 --> 00:01:13.985
+help with messy data here.
+
+28
+00:01:13.985 --> 00:01:17.090
+This is an example of
+a CSV file I pulled from
+
+29
+00:01:17.090 --> 00:01:20.315
+Google containing data
+on national education.
+
+30
+00:01:20.315 --> 00:01:24.860
+So we'll say df equals
+pd.read_csv datasets,
+
+31
+00:01:24.860 --> 00:01:27.995
+and it's called National-2018.
+
+32
+00:01:27.995 --> 00:01:30.440
+Let's look at the head of that.
+
+33
+00:01:30.440 --> 00:01:32.720
+So we can summarize the values of
+
+34
+00:01:32.720 --> 00:01:35.030
+unique values for
+a specific column.
+
+35
+00:01:35.030 --> 00:01:36.170
+So the most frequently
+
+36
+00:01:36.170 --> 00:01:37.850
+occurring element
+and how much they
+
+37
+00:01:37.850 --> 00:01:40.805
+occur using this
+value_counts function.
+
+38
+00:01:40.805 --> 00:01:45.125
+So df_qualification.value_counts.
+
+39
+00:01:45.125 --> 00:01:48.455
+So we see that our DataFrame
+was printed out first.
+
+40
+00:01:48.455 --> 00:01:50.000
+So we get all of the columns or
+
+41
+00:01:50.000 --> 00:01:51.600
+rather the head of
+the DataFrame was,
+
+42
+00:01:51.600 --> 00:01:55.255
+and then we can see some summary
+information as well.
+
+43
+00:01:55.255 --> 00:01:57.620
+When you load a CSV file,
+
+44
+00:01:57.620 --> 00:02:00.890
+Python knows that the values
+will be separated by commas,
+
+45
+00:02:00.890 --> 00:02:02.915
+but CSV values don't
+
+46
+00:02:02.915 --> 00:02:05.840
+contain any type of
+information for the data.
+
+47
+00:02:05.840 --> 00:02:08.270
+So pandas infers
+the datatypes unless you
+
+48
+00:02:08.270 --> 00:02:09.890
+specify the value type for
+
+49
+00:02:09.890 --> 00:02:12.035
+columns with a dtype parameter.
+
+50
+00:02:12.035 --> 00:02:14.810
+We can quickly see
+the datatype inferred by
+
+51
+00:02:14.810 --> 00:02:18.290
+pandas using the
+DataFrame.dtypes attributes.
+
+52
+00:02:18.290 --> 00:02:20.525
+So let's just say df.dtypes,
+
+53
+00:02:20.525 --> 00:02:21.800
+we can see here all of
+
+54
+00:02:21.800 --> 00:02:23.960
+the columns and all
+of the datatypes.
+
+55
+00:02:23.960 --> 00:02:26.660
+In this case because it
+was lowered from the CSV,
+
+56
+00:02:26.660 --> 00:02:29.080
+these were inferred by pandas.
+
+57
+00:02:29.080 --> 00:02:30.920
+Usually, the first row in
+
+58
+00:02:30.920 --> 00:02:32.300
+a CSV file contains
+
+59
+00:02:32.300 --> 00:02:34.090
+the names of the columns
+for the data,
+
+60
+00:02:34.090 --> 00:02:35.510
+and when it doesn't, you can
+
+61
+00:02:35.510 --> 00:02:37.190
+either specify columns yourself
+
+62
+00:02:37.190 --> 00:02:40.685
+or let pandas insert an
+auto-incrementing number instead.
+
+63
+00:02:40.685 --> 00:02:43.820
+A handy option is to
+actually use the index of
+
+64
+00:02:43.820 --> 00:02:47.330
+the DataFrame to be one of
+the columns as well on load.
+
+65
+00:02:47.330 --> 00:02:48.800
+So I'll regularly do this.
+
+66
+00:02:48.800 --> 00:02:50.690
+So pd.read_csv.
+
+67
+00:02:50.690 --> 00:02:53.075
+I'll bring in National CSV,
+
+68
+00:02:53.075 --> 00:02:55.895
+and I'll just say
+index col equals one.
+
+69
+00:02:55.895 --> 00:02:58.205
+So I wanted it be
+the second item.
+
+70
+00:02:58.205 --> 00:03:00.590
+Then let's look at
+the head of this.
+
+71
+00:03:00.590 --> 00:03:04.550
+So here we see that
+qualification was picked up.
+
+72
+00:03:04.550 --> 00:03:06.950
+You can also insert a multi index
+
+73
+00:03:06.950 --> 00:03:08.270
+by just providing a list,
+
+74
+00:03:08.270 --> 00:03:10.160
+and you can use
+the column names as inferred
+
+75
+00:03:10.160 --> 00:03:12.215
+from the first row
+instead of a number.
+
+76
+00:03:12.215 --> 00:03:14.975
+So here we'll just pd.read_csv,
+
+77
+00:03:14.975 --> 00:03:19.220
+bring in the CSV file
+and set our index call.
+
+78
+00:03:19.220 --> 00:03:21.275
+Here we'll just set
+it to be a list of
+
+79
+00:03:21.275 --> 00:03:23.480
+year level and academic gear,
+
+80
+00:03:23.480 --> 00:03:24.830
+and look at the head of that.
+
+81
+00:03:24.830 --> 00:03:26.975
+We see here it's a multi index,
+
+82
+00:03:26.975 --> 00:03:29.060
+year level is
+the outermost index and
+
+83
+00:03:29.060 --> 00:03:31.835
+academic year and next.
+
+84
+00:03:31.835 --> 00:03:34.370
+Sometimes the formatting
+issue can occur,
+
+85
+00:03:34.370 --> 00:03:36.695
+preventing you from working
+with your data at all.
+
+86
+00:03:36.695 --> 00:03:38.480
+While you should always
+ensure that you're
+
+87
+00:03:38.480 --> 00:03:40.400
+working with the data
+that you want to,
+
+88
+00:03:40.400 --> 00:03:41.840
+it's sometimes useful to skip
+
+89
+00:03:41.840 --> 00:03:44.495
+troublesome rows for
+data exploration.
+
+90
+00:03:44.495 --> 00:03:47.420
+In truth, I do this quite
+a bit for exploration,
+
+91
+00:03:47.420 --> 00:03:48.935
+but it really is
+important to make
+
+92
+00:03:48.935 --> 00:03:50.915
+sure you understand why you have
+
+93
+00:03:50.915 --> 00:03:54.730
+to skip data when it comes
+to reporting some result.
+
+94
+00:03:54.730 --> 00:03:58.725
+So pd.read_csv,
+bringing the CSV file,
+
+95
+00:03:58.725 --> 00:04:01.010
+and then you can just say
+which rows you want to skip.
+
+96
+00:04:01.010 --> 00:04:03.665
+So skip rows equals
+one, two, three.
+
+97
+00:04:03.665 --> 00:04:05.345
+Then let's look at
+the head of this.
+
+98
+00:04:05.345 --> 00:04:08.720
+We can see that we skipped
+a number of those rows.
+
+99
+00:04:08.720 --> 00:04:12.060
+Sometimes you're dealing
+with large CSVs and
+
+100
+00:04:12.060 --> 00:04:14.900
+reading them in in
+one operation is intractable.
+
+101
+00:04:14.900 --> 00:04:18.140
+To help deal with this, you
+can give pandas a chunk size,
+
+102
+00:04:18.140 --> 00:04:20.045
+then iterate over the DataFrames
+
+103
+00:04:20.045 --> 00:04:21.935
+in a chunk by chunk manner.
+
+104
+00:04:21.935 --> 00:04:23.240
+So here's an example.
+
+105
+00:04:23.240 --> 00:04:26.509
+We'll create a new
+chunking iterator,
+
+106
+00:04:26.509 --> 00:04:28.805
+and the key is it's in iterator.
+
+107
+00:04:28.805 --> 00:04:31.760
+Then pd.read_csv, bring in
+
+108
+00:04:31.760 --> 00:04:34.720
+our data sets and say chunk size,
+
+109
+00:04:34.720 --> 00:04:37.895
+and we'll just say it's
+equal to 13 lines.
+
+110
+00:04:37.895 --> 00:04:40.745
+So now we've got
+this iterable item.
+
+111
+00:04:40.745 --> 00:04:43.985
+So we say i equals zero
+for piece and chunker.
+
+112
+00:04:43.985 --> 00:04:45.380
+Let's just print out.
+
+113
+00:04:45.380 --> 00:04:47.959
+Chunk has some rows,
+
+114
+00:04:47.959 --> 00:04:51.320
+and we'll pass in our chunk
+information and the length of
+
+115
+00:04:51.320 --> 00:04:55.690
+the number of rows and
+increment i, and run that.
+
+116
+00:04:55.690 --> 00:04:59.510
+So I use this when I've fairly
+extensive data cleaning or
+
+117
+00:04:59.510 --> 00:05:01.250
+processing routine that I want to
+
+118
+00:05:01.250 --> 00:05:03.019
+run on large data files,
+
+119
+00:05:03.019 --> 00:05:05.540
+and I wanted both reduce
+overall memory usage
+
+120
+00:05:05.540 --> 00:05:08.390
+as well as improved
+CPU utilization.
+
+121
+00:05:08.390 --> 00:05:11.960
+Now, this isn't particularly
+important for this class,
+
+122
+00:05:11.960 --> 00:05:14.195
+but as you progress
+as a data scientist,
+
+123
+00:05:14.195 --> 00:05:16.100
+there will come a time
+when you need to load
+
+124
+00:05:16.100 --> 00:05:18.515
+data and to work
+with biggish data,
+
+125
+00:05:18.515 --> 00:05:20.390
+and data that you
+should be able to work
+
+126
+00:05:20.390 --> 00:05:22.325
+with on a laptop, but can't.
+
+127
+00:05:22.325 --> 00:05:24.410
+Knowing that there's
+places to investigate
+
+128
+00:05:24.410 --> 00:05:27.100
+further is actually
+really important.
+
+129
+00:05:27.100 --> 00:05:30.615
+Something you should be aware,
+with chunking, however,
+
+130
+00:05:30.615 --> 00:05:32.570
+is that the pandas type inference
+
+131
+00:05:32.570 --> 00:05:34.760
+works on a chunk by chunk size.
+
+132
+00:05:34.760 --> 00:05:38.585
+So your types might end up
+being a bit unpredictable.
+
+133
+00:05:38.585 --> 00:05:39.950
+In the above example,
+
+134
+00:05:39.950 --> 00:05:41.030
+there's one cell in
+
+135
+00:05:41.030 --> 00:05:43.970
+the academic year column
+which has a non-number.
+
+136
+00:05:43.970 --> 00:05:46.160
+When we read in
+the whole DataFrame,
+
+137
+00:05:46.160 --> 00:05:48.425
+this is red and
+the type of object.
+
+138
+00:05:48.425 --> 00:05:50.180
+But when we read it in chunks,
+
+139
+00:05:50.180 --> 00:05:53.320
+we see that this is only
+an object for one chunk.
+
+140
+00:05:53.320 --> 00:05:56.515
+So for piece in pd.read_csv,
+
+141
+00:05:56.515 --> 00:05:59.630
+and we'll set our chunk size
+again to Lucky 13.
+
+142
+00:05:59.630 --> 00:06:02.075
+Then we're actually
+just going to print out
+
+143
+00:06:02.075 --> 00:06:06.095
+P_academic year and what
+its data type was inferred as,
+
+144
+00:06:06.095 --> 00:06:07.960
+and we'll increment i.
+
+145
+00:06:07.960 --> 00:06:10.340
+Here we can see that one of
+
+146
+00:06:10.340 --> 00:06:13.865
+those chunks is
+different than the rest.
+
+147
+00:06:13.865 --> 00:06:17.120
+So it's actually
+an appropriate Int64,
+
+148
+00:06:17.120 --> 00:06:20.580
+and most places but
+an object in others.
+
+149
+00:06:21.730 --> 00:06:24.575
+Perhaps even more ubiquitous than
+
+150
+00:06:24.575 --> 00:06:27.600
+CSV files in the corporate
+world or Excel files.
+
+151
+00:06:27.600 --> 00:06:29.770
+You'll find that much
+of the data created or
+
+152
+00:06:29.770 --> 00:06:32.435
+given to you might be
+trapped in this format.
+
+153
+00:06:32.435 --> 00:06:35.750
+Using the excellent xlrd library,
+
+154
+00:06:35.750 --> 00:06:37.520
+pandas is able to read this
+
+155
+00:06:37.520 --> 00:06:40.655
+almost as seamlessly
+as CSV files.
+
+156
+00:06:40.655 --> 00:06:43.640
+Important difference
+from CSV files is that
+
+157
+00:06:43.640 --> 00:06:46.985
+a single Excel workbook
+might contain many sheets.
+
+158
+00:06:46.985 --> 00:06:49.295
+Each is analogous to a DataFrame.
+
+159
+00:06:49.295 --> 00:06:51.815
+So let's load some data
+from a report card on
+
+160
+00:06:51.815 --> 00:06:55.220
+elementary districts
+from 2016 and 2017.
+
+161
+00:06:55.220 --> 00:06:57.020
+Here I'll just look
+at the one sheet,
+
+162
+00:06:57.020 --> 00:06:58.895
+the primary class sizes.
+
+163
+00:06:58.895 --> 00:07:01.280
+So we say pd.read_excel,
+
+164
+00:07:01.280 --> 00:07:03.620
+actually read_ is great just
+
+165
+00:07:03.620 --> 00:07:06.395
+to explore all of the
+different options available.
+
+166
+00:07:06.395 --> 00:07:10.700
+I will pulling datasets
+classsizes.xlsx.
+
+167
+00:07:10.700 --> 00:07:14.720
+I will set the sheet name
+to primary class sizes,
+
+168
+00:07:14.720 --> 00:07:16.830
+and let's look at
+the head of that.
+
+169
+00:07:17.170 --> 00:07:20.300
+Our table doesn't actually
+look very useful.
+
+170
+00:07:20.300 --> 00:07:22.805
+So let's take a look at what
+this looks like in Excel.
+
+171
+00:07:22.805 --> 00:07:25.070
+So here, I'll just
+load a picture of what
+
+172
+00:07:25.070 --> 00:07:28.130
+this looks like in Excel.
+
+173
+00:07:28.130 --> 00:07:31.160
+Okay. So this is a pretty typical
+
+174
+00:07:31.160 --> 00:07:33.815
+data file you might be
+handed to work with.
+
+175
+00:07:33.815 --> 00:07:35.090
+We see that a number of
+
+176
+00:07:35.090 --> 00:07:37.130
+different rows being
+taken up with graphics,
+
+177
+00:07:37.130 --> 00:07:39.695
+and then like colors
+being used for headers,
+
+178
+00:07:39.695 --> 00:07:41.270
+and that there are
+at least two different
+
+179
+00:07:41.270 --> 00:07:43.150
+DataFrames on this page.
+
+180
+00:07:43.150 --> 00:07:44.510
+To deal with this, you're going
+
+181
+00:07:44.510 --> 00:07:45.740
+to want to use a number of
+
+182
+00:07:45.740 --> 00:07:48.950
+different options in
+the read_excel function.
+
+183
+00:07:48.950 --> 00:07:52.655
+Excel numbers, it's row
+starting at one, but we don't.
+
+184
+00:07:52.655 --> 00:07:55.810
+We start at zero. Excel has
+columns starting with A,
+
+185
+00:07:55.810 --> 00:07:58.290
+but with pandas, we use
+numbers instead of letters.
+
+186
+00:07:58.290 --> 00:07:59.850
+Again, starting at zero.
+
+187
+00:07:59.850 --> 00:08:03.035
+So let's grab that top table
+into a DataFrame.
+
+188
+00:08:03.035 --> 00:08:06.245
+So I'm going to say df
+equals pd.read_excel.
+
+189
+00:08:06.245 --> 00:08:10.595
+I give it the path to
+the Excel file classsizes.xlsx.
+
+190
+00:08:10.595 --> 00:08:13.325
+I set the sheet name
+that I'm interested in,
+
+191
+00:08:13.325 --> 00:08:14.300
+and then I'm going to
+
+192
+00:08:14.300 --> 00:08:16.370
+parameterize a bunch
+of other things.
+
+193
+00:08:16.370 --> 00:08:17.460
+So I'm going to say the header,
+
+194
+00:08:17.460 --> 00:08:19.960
+we actually want Row 7.
+
+195
+00:08:19.960 --> 00:08:22.625
+We're going to skip
+the footer at 19.
+
+196
+00:08:22.625 --> 00:08:24.980
+We want the index
+column to be zero,
+
+197
+00:08:24.980 --> 00:08:26.975
+and we're going to
+set a dtype here.
+
+198
+00:08:26.975 --> 00:08:29.150
+We're going to say that
+the average class size
+
+199
+00:08:29.150 --> 00:08:30.800
+is going to be of type string.
+
+200
+00:08:30.800 --> 00:08:33.215
+Let's look at the head
+of that DataFrame.
+
+201
+00:08:33.215 --> 00:08:36.980
+So that's pretty handy to
+be able to do in Excel,
+
+202
+00:08:36.980 --> 00:08:40.745
+to actually quickly pull that
+into a pandas DataFrame.
+
+203
+00:08:40.745 --> 00:08:41.840
+In the corporate world when
+
+204
+00:08:41.840 --> 00:08:43.310
+somebody gives you an Excel file,
+
+205
+00:08:43.310 --> 00:08:45.230
+they often don't want to be
+changing that Excel file,
+
+206
+00:08:45.230 --> 00:08:48.680
+maybe the data values
+change in it over time.
+
+207
+00:08:48.680 --> 00:08:51.710
+They might not know how
+to export it as a CSV.
+
+208
+00:08:51.710 --> 00:08:54.665
+So being able to take and
+work with the Excel file
+
+209
+00:08:54.665 --> 00:08:56.450
+quickly and to write
+
+210
+00:08:56.450 --> 00:08:59.700
+some code to do that
+is really quite handy.
+
+211
+00:09:00.570 --> 00:09:04.435
+The easiest way to store
+data in a binary format is
+
+212
+00:09:04.435 --> 00:09:07.660
+using Python's built-in
+pickles serialization.
+
+213
+00:09:07.660 --> 00:09:10.300
+Now, this isn't actually
+a Pandas library,
+
+214
+00:09:10.300 --> 00:09:12.460
+this is built into
+the language itself.
+
+215
+00:09:12.460 --> 00:09:15.250
+It's quick and easy to
+dump an object like
+
+216
+00:09:15.250 --> 00:09:18.595
+a dataframe to a file to
+use it for later use.
+
+217
+00:09:18.595 --> 00:09:21.550
+There's lots of caveats to
+doing this and I wouldn't
+
+218
+00:09:21.550 --> 00:09:22.660
+recommend it over some of
+
+219
+00:09:22.660 --> 00:09:24.400
+the other formats
+we'll talk about.
+
+220
+00:09:24.400 --> 00:09:27.130
+But if you're working mostly
+with Python developers,
+
+221
+00:09:27.130 --> 00:09:29.950
+you will undoubtedly
+need to use it.
+
+222
+00:09:29.950 --> 00:09:33.850
+One of the most useful parts
+of pickle versus some of
+
+223
+00:09:33.850 --> 00:09:35.455
+the other formats
+we've talked about
+
+224
+00:09:35.455 --> 00:09:37.390
+is that data types are preserved,
+
+225
+00:09:37.390 --> 00:09:39.610
+so you could do all your
+cleaning and typing in
+
+226
+00:09:39.610 --> 00:09:42.940
+one file and then share
+the object with others.
+
+227
+00:09:42.940 --> 00:09:45.610
+So first let's import
+the pickle library
+
+228
+00:09:45.610 --> 00:09:48.400
+that's built into Python
+so import pickle,
+
+229
+00:09:48.400 --> 00:09:49.840
+and now we're going to create
+
+230
+00:09:49.840 --> 00:09:52.210
+the pickle file that we
+actually want to write to.
+
+231
+00:09:52.210 --> 00:09:54.730
+So we do this with
+the file just with open.
+
+232
+00:09:54.730 --> 00:09:56.740
+I'll call it dataframe.pickle,
+
+233
+00:09:56.740 --> 00:10:00.490
+and WB stands for
+"write binary" as f,
+
+234
+00:10:00.490 --> 00:10:03.580
+so now we have a file handle
+with f. Now we just tell
+
+235
+00:10:03.580 --> 00:10:05.290
+Python to dump our dataframe from
+
+236
+00:10:05.290 --> 00:10:07.585
+the previous example
+into this pickle file.
+
+237
+00:10:07.585 --> 00:10:11.785
+So pickle.dump df and we
+want it to go into f,
+
+238
+00:10:11.785 --> 00:10:14.320
+and then when we finish
+the with statement,
+
+239
+00:10:14.320 --> 00:10:18.430
+we automatically close
+all of our file handles.
+
+240
+00:10:18.430 --> 00:10:20.260
+When we want to read it in again,
+
+241
+00:10:20.260 --> 00:10:21.520
+we can do so pretty easily.
+
+242
+00:10:21.520 --> 00:10:24.820
+So similar thing with
+open dataframe.pickle,
+
+243
+00:10:24.820 --> 00:10:28.150
+here I'll say read
+binary, rb as f,
+
+244
+00:10:28.150 --> 00:10:30.925
+and we'll create some new
+variable our_old_dataframe
+
+245
+00:10:30.925 --> 00:10:32.770
+equals pickled.load f,
+
+246
+00:10:32.770 --> 00:10:35.350
+and then let's look
+at our_old_dataframe,
+
+247
+00:10:35.350 --> 00:10:38.020
+and we see our
+old_dataframe is there.
+
+248
+00:10:38.020 --> 00:10:39.850
+Pickle files are a quick and
+
+249
+00:10:39.850 --> 00:10:41.515
+easy way to store dataframes,
+
+250
+00:10:41.515 --> 00:10:44.140
+and I find that sometimes
+I use them when I
+
+251
+00:10:44.140 --> 00:10:46.900
+need to save intermediate
+dataframes in particular.
+
+252
+00:10:46.900 --> 00:10:48.160
+For instance, when
+I'm working with
+
+253
+00:10:48.160 --> 00:10:49.870
+large dataframes on a machine
+
+254
+00:10:49.870 --> 00:10:51.445
+with a limited amount of memory,
+
+255
+00:10:51.445 --> 00:10:53.530
+or when I need to
+distribute portions of
+
+256
+00:10:53.530 --> 00:10:56.395
+a dataframe to different
+processes or machines.
+
+257
+00:10:56.395 --> 00:10:59.920
+I also use these regularly
+for intermediate work,
+
+258
+00:10:59.920 --> 00:11:01.585
+and so I'll be working,
+
+259
+00:11:01.585 --> 00:11:03.430
+I'll do a lot of manipulation
+
+260
+00:11:03.430 --> 00:11:05.470
+on a dataframe that
+takes some time,
+
+261
+00:11:05.470 --> 00:11:07.075
+then I'll want to dump that,
+
+262
+00:11:07.075 --> 00:11:08.380
+and then I can start to work from
+
+263
+00:11:08.380 --> 00:11:11.090
+that the next day
+when I come back.
+
+264
+00:11:12.240 --> 00:11:14.830
+HDF5 is used when you're
+
+265
+00:11:14.830 --> 00:11:17.005
+working with very large datasets,
+
+266
+00:11:17.005 --> 00:11:18.490
+and it's especially useful for
+
+267
+00:11:18.490 --> 00:11:20.845
+datasets that won't
+fit into memory.
+
+268
+00:11:20.845 --> 00:11:23.815
+HDF stands for
+Hierarchical Data Format
+
+269
+00:11:23.815 --> 00:11:25.600
+and each HDF5 file
+
+270
+00:11:25.600 --> 00:11:27.730
+can store multiple
+datasets as well as
+
+271
+00:11:27.730 --> 00:11:30.715
+supporting metadata like
+column information.
+
+272
+00:11:30.715 --> 00:11:33.850
+HDF5 supports on
+the fly compression
+
+273
+00:11:33.850 --> 00:11:35.740
+with a variety of
+compression modes,
+
+274
+00:11:35.740 --> 00:11:37.840
+enabling data with
+repeated patterns
+
+275
+00:11:37.840 --> 00:11:39.715
+to be stored more efficiently.
+
+276
+00:11:39.715 --> 00:11:41.830
+So let's bring in
+the numpy library.
+
+277
+00:11:41.830 --> 00:11:44.035
+So import numpy as np,
+
+278
+00:11:44.035 --> 00:11:46.030
+and then you use HDF5,
+
+279
+00:11:46.030 --> 00:11:48.370
+we first create
+our data stores or files,
+
+280
+00:11:48.370 --> 00:11:51.220
+so I'll create
+a variable store is equal to
+
+281
+00:11:51.220 --> 00:11:55.790
+pd.HDFStore and we'll
+just call it mydata.h5.
+
+282
+00:11:55.950 --> 00:11:58.630
+Then we can insert
+into that store
+
+283
+00:11:58.630 --> 00:12:01.450
+different dataframes or
+even portions of dataframes.
+
+284
+00:12:01.450 --> 00:12:06.370
+So I can say store
+subclass_sizes equals dataframe,
+
+285
+00:12:06.370 --> 00:12:13.135
+or I can say store subclass_size
+2009 equals DF sub 2009,
+
+286
+00:12:13.135 --> 00:12:16.525
+I'm just project a column
+into that dataframe.
+
+287
+00:12:16.525 --> 00:12:19.430
+Let's take a look
+at what store is.
+
+288
+00:12:19.980 --> 00:12:23.140
+So you can see
+what keys are available
+
+289
+00:12:23.140 --> 00:12:25.600
+in the HDFStore with.keys.
+
+290
+00:12:25.600 --> 00:12:28.180
+So store.keys, and we can see
+
+291
+00:12:28.180 --> 00:12:31.165
+that we've got five
+different keys in this one.
+
+292
+00:12:31.165 --> 00:12:35.140
+Objects contained in
+the HDF5 file can then be
+
+293
+00:12:35.140 --> 00:12:39.340
+retrieved using the same
+dict-like API, the selector.
+
+294
+00:12:39.340 --> 00:12:42.940
+So store
+subclass_sizes.head pulls
+
+295
+00:12:42.940 --> 00:12:45.970
+out for us the class
+sizes dataframe.
+
+296
+00:12:45.970 --> 00:12:48.730
+But where HDF5 really shines is
+
+297
+00:12:48.730 --> 00:12:51.565
+when you save an object
+of type table.
+
+298
+00:12:51.565 --> 00:12:53.815
+So here we can say store.put,
+
+299
+00:12:53.815 --> 00:12:55.480
+a new class size,
+
+300
+00:12:55.480 --> 00:12:57.070
+we'll call that, we'll put
+
+301
+00:12:57.070 --> 00:13:00.175
+the dataframe in and we'll
+format this as a table.
+
+302
+00:13:00.175 --> 00:13:03.550
+Let's look at the store.keys now.
+
+303
+00:13:03.550 --> 00:13:07.210
+When you do this, you
+can retrieve portions of
+
+304
+00:13:07.210 --> 00:13:09.070
+your dataframe from disk without
+
+305
+00:13:09.070 --> 00:13:11.530
+having to read the whole
+dataframe into memory.
+
+306
+00:13:11.530 --> 00:13:14.365
+So in this way, it's actually
+a lot like a database.
+
+307
+00:13:14.365 --> 00:13:16.015
+So to do that, we would do
+
+308
+00:13:16.015 --> 00:13:19.150
+store.select and then we
+would say a new class size,
+
+309
+00:13:19.150 --> 00:13:21.025
+and then we can add
+a where clause,
+
+310
+00:13:21.025 --> 00:13:23.230
+so where the index equals prep,
+
+311
+00:13:23.230 --> 00:13:27.955
+and we want to return
+the columns 2009 and 2010.
+
+312
+00:13:27.955 --> 00:13:30.775
+We can run that and we
+see that we actually get
+
+313
+00:13:30.775 --> 00:13:34.600
+just that row and
+just those columns.
+
+314
+00:13:34.600 --> 00:13:36.400
+So you can see that we can store
+
+315
+00:13:36.400 --> 00:13:38.590
+the data on disk and we
+don't actually have to
+
+316
+00:13:38.590 --> 00:13:43.225
+read it all into memory
+to begin to work with it.
+
+317
+00:13:43.225 --> 00:13:45.040
+A deeper investigation of
+
+318
+00:13:45.040 --> 00:13:47.590
+HDF5 is outside the scope
+of this lecture,
+
+319
+00:13:47.590 --> 00:13:49.300
+but I would encourage
+you to check it out
+
+320
+00:13:49.300 --> 00:13:51.205
+in the online docs and
+play with it a bit,
+
+321
+00:13:51.205 --> 00:13:54.520
+especially the novel
+hierarchical nature of the data.
+
+322
+00:13:54.520 --> 00:13:56.230
+Where it is used most commonly
+
+323
+00:13:56.230 --> 00:13:58.074
+is large scientific datasets
+
+324
+00:13:58.074 --> 00:13:59.500
+which are collected once but
+
+325
+00:13:59.500 --> 00:14:01.690
+actually read many many times.
+
+326
+00:14:01.690 --> 00:14:03.445
+A more common alternative,
+
+327
+00:14:03.445 --> 00:14:05.020
+which we won't cover
+in this course due
+
+328
+00:14:05.020 --> 00:14:06.700
+to the size and complexity of it,
+
+329
+00:14:06.700 --> 00:14:08.440
+are relational databases, and
+
+330
+00:14:08.440 --> 00:14:10.090
+there's several ways
+of interacting with
+
+331
+00:14:10.090 --> 00:14:14.360
+these data sources from
+within Python and pandas.
+
+332
+00:14:15.630 --> 00:14:18.100
+The last data file format I'll
+
+333
+00:14:18.100 --> 00:14:19.765
+talk about here is pyarrow,
+
+334
+00:14:19.765 --> 00:14:21.250
+and the feather format.
+
+335
+00:14:21.250 --> 00:14:22.540
+The feather format is
+
+336
+00:14:22.540 --> 00:14:24.820
+an open-source
+columnar storage data,
+
+337
+00:14:24.820 --> 00:14:26.530
+so a dataframe format,
+
+338
+00:14:26.530 --> 00:14:27.880
+which is intended to be
+
+339
+00:14:27.880 --> 00:14:30.385
+a replacement for CSV
+files and is both
+
+340
+00:14:30.385 --> 00:14:32.620
+faster to read and write as
+
+341
+00:14:32.620 --> 00:14:35.425
+well as preserves
+metadata about columns.
+
+342
+00:14:35.425 --> 00:14:37.990
+So let's do some time
+comparisons reading in
+
+343
+00:14:37.990 --> 00:14:41.560
+the same dataframe from
+both CSV and feather formats.
+
+344
+00:14:41.560 --> 00:14:43.375
+So I'll use the magic cell,
+
+345
+00:14:43.375 --> 00:14:47.005
+time it here, so I'm going
+to run this cell 10 times.
+
+346
+00:14:47.005 --> 00:14:49.345
+First, let's test
+the CSV reading,
+
+347
+00:14:49.345 --> 00:14:56.109
+so we'll work just df_csv
+equals pd read_csv datasets,
+
+348
+00:14:56.109 --> 00:15:02.440
+and here we'll read in
+these house_prices.csv.
+
+349
+00:15:02.440 --> 00:15:04.135
+Now, let's try it with feather.
+
+350
+00:15:04.135 --> 00:15:06.865
+So time it n 10,
+
+351
+00:15:06.865 --> 00:15:08.800
+now we'll try with the feather
+
+352
+00:15:08.800 --> 00:15:11.905
+and df_feather equals
+pd.read_feather.
+
+353
+00:15:11.905 --> 00:15:14.080
+It looks the same, we
+just give it a link
+
+354
+00:15:14.080 --> 00:15:17.360
+to the feather file,
+house_prices.feather.
+
+355
+00:15:17.790 --> 00:15:21.670
+So we see that feather reading
+is moderately faster.
+
+356
+00:15:21.670 --> 00:15:24.640
+Let's look at the dataframe
+types and compare them.
+
+357
+00:15:24.640 --> 00:15:28.660
+So we'll load our CSV file
+from the dataset,
+
+358
+00:15:28.660 --> 00:15:31.180
+and we'll print out
+the types in there,
+
+359
+00:15:31.180 --> 00:15:32.740
+and we'll load the feather file,
+
+360
+00:15:32.740 --> 00:15:33.925
+and we'll print out the types.
+
+361
+00:15:33.925 --> 00:15:35.695
+Let's compare these.
+
+362
+00:15:35.695 --> 00:15:39.415
+One difference we can see is
+that the sale date field is
+
+363
+00:15:39.415 --> 00:15:43.300
+correctly set to a date_time
+64 in the feather dataframe,
+
+364
+00:15:43.300 --> 00:15:45.010
+but was just interpreted as
+
+365
+00:15:45.010 --> 00:15:48.085
+a generic object in
+the CSV and dataframe.
+
+366
+00:15:48.085 --> 00:15:50.620
+Now, we could probably
+further tweaks some of
+
+367
+00:15:50.620 --> 00:15:52.090
+these other datatypes to increase
+
+368
+00:15:52.090 --> 00:15:53.860
+speed a little bit
+if we want to do,
+
+369
+00:15:53.860 --> 00:15:56.950
+dropping the integer
+and float sizes.
+
+370
+00:15:56.950 --> 00:15:59.710
+But I don't want to give you
+the thought that you should
+
+371
+00:15:59.710 --> 00:16:02.005
+pivot and start using
+feather for everything.
+
+372
+00:16:02.005 --> 00:16:04.960
+It's very much under
+active development and there are
+
+373
+00:16:04.960 --> 00:16:06.370
+some potential catches or
+
+374
+00:16:06.370 --> 00:16:08.845
+defaults that you might
+not be expecting.
+
+375
+00:16:08.845 --> 00:16:10.840
+For instance, I
+thought preserving
+
+376
+00:16:10.840 --> 00:16:13.525
+a multi index would
+work, but it doesn't.
+
+377
+00:16:13.525 --> 00:16:16.930
+So if I take df _feather
+and I set the index to
+
+378
+00:16:16.930 --> 00:16:18.580
+state and city and then I
+
+379
+00:16:18.580 --> 00:16:20.980
+try and write this
+to a feather file,
+
+380
+00:16:20.980 --> 00:16:22.390
+I get an error.
+
+381
+00:16:22.390 --> 00:16:24.655
+The error is helpful but
+
+382
+00:16:24.655 --> 00:16:28.150
+the default behavior for CSVs
+is actually different and
+
+383
+00:16:28.150 --> 00:16:29.590
+the two CSV function just
+
+384
+00:16:29.590 --> 00:16:31.510
+writes the columns
+although of course not as
+
+385
+00:16:31.510 --> 00:16:32.560
+an index because there's
+
+386
+00:16:32.560 --> 00:16:35.950
+no metadata,
+just regular columns.
+
+387
+00:16:35.950 --> 00:16:39.130
+Regardless, the feather is
+a great format to watch
+
+388
+00:16:39.130 --> 00:16:41.995
+evolved and the bindings
+across programming languages
+
+389
+00:16:41.995 --> 00:16:43.630
+means that there's potential for
+
+390
+00:16:43.630 --> 00:16:46.240
+high interoperability
+and high-performance
+
+391
+00:16:46.240 --> 00:16:48.920
+of dataframe data structures.
+
+392
+00:16:50.790 --> 00:16:53.350
+In this lecture, we
+covered a range of
+
+393
+00:16:53.350 --> 00:16:55.390
+data file formats for dataframes.
+
+394
+00:16:55.390 --> 00:16:58.075
+By far, the most
+common is the CSV.
+
+395
+00:16:58.075 --> 00:17:00.610
+But it's useful to know that
+there are other formats that
+
+396
+00:17:00.610 --> 00:17:03.445
+you have to work with and
+the pandas supports them.
+
+397
+00:17:03.445 --> 00:17:06.970
+Excel files are very common
+in large organizations,
+
+398
+00:17:06.970 --> 00:17:08.980
+pickle files are
+quick to move between
+
+399
+00:17:08.980 --> 00:17:10.855
+Python processes and capture
+
+400
+00:17:10.855 --> 00:17:13.315
+all of the nuance of
+the dataframe object.
+
+401
+00:17:13.315 --> 00:17:15.940
+An HDF5 and feather files have
+
+402
+00:17:15.940 --> 00:17:19.490
+their uses in more
+specialized circumstances.

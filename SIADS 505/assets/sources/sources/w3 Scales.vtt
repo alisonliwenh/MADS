@@ -1,0 +1,1255 @@
+WEBVTT
+
+1
+00:00:05.240 --> 00:00:08.610
+Now that we've covered many
+of the mechanics of pandas,
+
+2
+00:00:08.610 --> 00:00:09.810
+I want to stop and talk for
+
+3
+00:00:09.810 --> 00:00:12.135
+a moment about data
+types and scales.
+
+4
+00:00:12.135 --> 00:00:14.580
+We've already seen that
+pandas supports a number of
+
+5
+00:00:14.580 --> 00:00:17.640
+different computational
+data types such as strings,
+
+6
+00:00:17.640 --> 00:00:19.785
+integers, floating point numbers.
+
+7
+00:00:19.785 --> 00:00:21.630
+What this doesn't capture is what
+
+8
+00:00:21.630 --> 00:00:23.835
+we call the scale of the data.
+
+9
+00:00:23.835 --> 00:00:26.430
+Let's say that we have got
+a DataFrame of students and
+
+10
+00:00:26.430 --> 00:00:28.830
+their academic levels such
+as being in grade one,
+
+11
+00:00:28.830 --> 00:00:30.615
+grade two, and grade three.
+
+12
+00:00:30.615 --> 00:00:32.850
+Is the difference
+between a student in
+
+13
+00:00:32.850 --> 00:00:34.710
+grade one and a student in grade
+
+14
+00:00:34.710 --> 00:00:36.780
+two the same as
+the difference between
+
+15
+00:00:36.780 --> 00:00:39.555
+a student in grade eight
+and one grade nine?
+
+16
+00:00:39.555 --> 00:00:41.130
+Or maybe let's think about
+
+17
+00:00:41.130 --> 00:00:42.800
+final exam scores these students
+
+18
+00:00:42.800 --> 00:00:44.165
+might get on assignments.
+
+19
+00:00:44.165 --> 00:00:47.435
+Is the difference between
+an A and an A- the
+
+20
+00:00:47.435 --> 00:00:51.095
+same as the difference between
+an A minus and a B plus?
+
+21
+00:00:51.095 --> 00:00:53.600
+So the University
+of Michigan, at least,
+
+22
+00:00:53.600 --> 00:00:55.280
+the answer is often no,
+
+23
+00:00:55.280 --> 00:00:56.990
+at least not when
+you're converting
+
+24
+00:00:56.990 --> 00:00:59.720
+this to a percentage-based scale.
+
+25
+00:00:59.720 --> 00:01:02.660
+We've intuitively seen
+some different scales.
+
+26
+00:01:02.660 --> 00:01:04.850
+As we move through
+data cleaning and into
+
+27
+00:01:04.850 --> 00:01:07.370
+statistical analysis
+and machine learning,
+
+28
+00:01:07.370 --> 00:01:10.810
+it's important to clarify
+our knowledge and terminology.
+
+29
+00:01:10.810 --> 00:01:12.210
+As a data scientist,
+
+30
+00:01:12.210 --> 00:01:13.940
+there's at least four
+different scales
+
+31
+00:01:13.940 --> 00:01:14.960
+that's worth knowing about,
+
+32
+00:01:14.960 --> 00:01:16.715
+and I want to talk
+about those now.
+
+33
+00:01:16.715 --> 00:01:18.815
+The first is the ratio scale.
+
+34
+00:01:18.815 --> 00:01:21.905
+In the ratio scale, the
+measurement units are equally
+
+35
+00:01:21.905 --> 00:01:24.904
+spaced and mathematical
+operations such as subtraction,
+
+36
+00:01:24.904 --> 00:01:27.650
+division, and multiplication
+are all valid.
+
+37
+00:01:27.650 --> 00:01:29.600
+Good examples of the ratio scale
+
+38
+00:01:29.600 --> 00:01:31.610
+might be height and weight.
+
+39
+00:01:31.610 --> 00:01:34.175
+The next scale is
+the interval scale.
+
+40
+00:01:34.175 --> 00:01:35.300
+In the interval scale,
+
+41
+00:01:35.300 --> 00:01:37.355
+the measurement units
+are equally spaced,
+
+42
+00:01:37.355 --> 00:01:38.570
+like the ratio scale,
+
+43
+00:01:38.570 --> 00:01:41.180
+but there's no clear
+absence of value.
+
+44
+00:01:41.180 --> 00:01:43.460
+That is, there isn't a true zero,
+
+45
+00:01:43.460 --> 00:01:44.720
+and so operations such as
+
+46
+00:01:44.720 --> 00:01:47.290
+multiplication and
+division are not valid.
+
+47
+00:01:47.290 --> 00:01:49.190
+An example of the interval scale
+
+48
+00:01:49.190 --> 00:01:50.900
+might be the temperature
+as measured in
+
+49
+00:01:50.900 --> 00:01:52.820
+Celsius or Fahrenheit
+since there's
+
+50
+00:01:52.820 --> 00:01:55.040
+never an absence of temperature,
+
+51
+00:01:55.040 --> 00:01:58.775
+and zero degrees is actually
+a meaningful value itself.
+
+52
+00:01:58.775 --> 00:02:01.580
+The direction on a compass
+might be another good example,
+
+53
+00:02:01.580 --> 00:02:03.110
+where zero degrees on the compass
+
+54
+00:02:03.110 --> 00:02:05.210
+doesn't indicate
+a lack of direction,
+
+55
+00:02:05.210 --> 00:02:08.600
+but instead describes
+a direction itself.
+
+56
+00:02:08.600 --> 00:02:10.220
+For most of the work that
+
+57
+00:02:10.220 --> 00:02:11.510
+you'll be doing with data mining,
+
+58
+00:02:11.510 --> 00:02:12.800
+the differences between the ratio
+
+59
+00:02:12.800 --> 00:02:14.240
+and interval scales might not be
+
+60
+00:02:14.240 --> 00:02:16.130
+clearly apparent or important
+
+61
+00:02:16.130 --> 00:02:18.005
+to the algorithm that
+you'll apply,
+
+62
+00:02:18.005 --> 00:02:20.330
+but it's important to have
+this distinction clear in
+
+63
+00:02:20.330 --> 00:02:23.620
+your mind when applying
+advanced statistical tests.
+
+64
+00:02:23.620 --> 00:02:26.845
+The next scale to understand
+is the ordinal scale.
+
+65
+00:02:26.845 --> 00:02:28.180
+In the ordinal scale,
+
+66
+00:02:28.180 --> 00:02:30.145
+the order of values is important,
+
+67
+00:02:30.145 --> 00:02:31.480
+but the differences between
+
+68
+00:02:31.480 --> 00:02:33.695
+the values are not
+equally spaced.
+
+69
+00:02:33.695 --> 00:02:35.620
+Here the grading method
+that is used in
+
+70
+00:02:35.620 --> 00:02:37.390
+many classes at
+the University of Michigan
+
+71
+00:02:37.390 --> 00:02:38.740
+is a great example,
+
+72
+00:02:38.740 --> 00:02:41.610
+where letter grades are given
+with pluses and minuses,
+
+73
+00:02:41.610 --> 00:02:43.900
+but when you compare this
+to a percentage value,
+
+74
+00:02:43.900 --> 00:02:45.820
+you see that a letter
+by itself covers
+
+75
+00:02:45.820 --> 00:02:48.220
+four percent of
+the available grades,
+
+76
+00:02:48.220 --> 00:02:50.230
+and then a letter with
+a plus or minus is
+
+77
+00:02:50.230 --> 00:02:53.225
+usually just three percent
+of the available grades.
+
+78
+00:02:53.225 --> 00:02:55.320
+Based on this, it would be odd if
+
+79
+00:02:55.320 --> 00:02:57.120
+there were as many
+students who received
+
+80
+00:02:57.120 --> 00:02:58.565
+an A plus or an A minus
+
+81
+00:02:58.565 --> 00:03:00.820
+as there was who
+received a straight A,
+
+82
+00:03:00.820 --> 00:03:02.365
+assuming, of course,
+that we expect
+
+83
+00:03:02.365 --> 00:03:04.000
+each percentage point
+in a course to
+
+84
+00:03:04.000 --> 00:03:06.265
+be uniformly likely to occur.
+
+85
+00:03:06.265 --> 00:03:08.590
+Ordinal data is very common in
+
+86
+00:03:08.590 --> 00:03:10.120
+machine learning
+and sometimes can
+
+87
+00:03:10.120 --> 00:03:12.295
+be a bit of a challenge
+to work with.
+
+88
+00:03:12.295 --> 00:03:15.609
+The last scale I'll mention
+is the nominal scale,
+
+89
+00:03:15.609 --> 00:03:18.040
+which is often just
+called categorical data.
+
+90
+00:03:18.040 --> 00:03:19.750
+Here the names of teams in
+
+91
+00:03:19.750 --> 00:03:21.580
+a sport might be a good example.
+
+92
+00:03:21.580 --> 00:03:23.020
+There are a limited
+number of teams,
+
+93
+00:03:23.020 --> 00:03:24.730
+but changing their
+order or applying
+
+94
+00:03:24.730 --> 00:03:27.355
+mathematical functions
+to them is meaningless.
+
+95
+00:03:27.355 --> 00:03:29.470
+Categorical values are very
+
+96
+00:03:29.470 --> 00:03:31.300
+common and we generally refer to
+
+97
+00:03:31.300 --> 00:03:32.470
+categories where there are
+
+98
+00:03:32.470 --> 00:03:35.735
+only two possible values
+as binary categories.
+
+99
+00:03:35.735 --> 00:03:37.900
+So why did I stop talking about
+
+100
+00:03:37.900 --> 00:03:40.315
+pandas and jump into
+this discussion of scale?
+
+101
+00:03:40.315 --> 00:03:42.070
+Well, given how
+important they are
+
+102
+00:03:42.070 --> 00:03:43.690
+in statistics and
+machine learning,
+
+103
+00:03:43.690 --> 00:03:45.910
+pandas has a number of
+interesting functions to
+
+104
+00:03:45.910 --> 00:03:49.085
+deal with converting
+between measurement scales.
+
+105
+00:03:49.085 --> 00:03:51.825
+Let's start first
+with nominal data,
+
+106
+00:03:51.825 --> 00:03:54.560
+which in pandas is
+called categorical data.
+
+107
+00:03:54.560 --> 00:03:57.935
+Pandas actually has a built-in
+type for categorical data,
+
+108
+00:03:57.935 --> 00:03:59.990
+and you could set
+a column of your data to
+
+109
+00:03:59.990 --> 00:04:02.935
+categorical simply by
+using the astype method.
+
+110
+00:04:02.935 --> 00:04:05.900
+Astype tries to change the
+underlying type of your data,
+
+111
+00:04:05.900 --> 00:04:08.525
+in this case, to category data,
+
+112
+00:04:08.525 --> 00:04:10.280
+and you can further
+change this to
+
+113
+00:04:10.280 --> 00:04:11.780
+ordinal data by passing in
+
+114
+00:04:11.780 --> 00:04:13.730
+an ordered flag set to true and
+
+115
+00:04:13.730 --> 00:04:16.330
+passing in the categories
+in an ordered fashion.
+
+116
+00:04:16.330 --> 00:04:19.640
+So let's take a look at
+an example of this in pandas.
+
+117
+00:04:19.640 --> 00:04:21.620
+So let's bring in
+pandas as normal.
+
+118
+00:04:21.620 --> 00:04:23.810
+So we'll just import
+pandas as pd.
+
+119
+00:04:23.810 --> 00:04:25.390
+So here's an example,
+
+120
+00:04:25.390 --> 00:04:26.750
+let's create a DataFrame of
+
+121
+00:04:26.750 --> 00:04:28.595
+letter grades in
+descending order.
+
+122
+00:04:28.595 --> 00:04:30.200
+We can also set an index value,
+
+123
+00:04:30.200 --> 00:04:31.460
+and here we'll just
+make it some human
+
+124
+00:04:31.460 --> 00:04:32.980
+judgment of how
+good a student was.
+
+125
+00:04:32.980 --> 00:04:34.000
+So I just made these up,
+
+126
+00:04:34.000 --> 00:04:35.855
+like excellent or good.
+
+127
+00:04:35.855 --> 00:04:38.000
+So we just create
+our new DataFrame and
+
+128
+00:04:38.000 --> 00:04:40.100
+parse in all of
+our different letter grades,
+
+129
+00:04:40.100 --> 00:04:41.600
+and then we set our index as
+
+130
+00:04:41.600 --> 00:04:44.450
+normal to align with
+those letter grades,
+
+131
+00:04:44.450 --> 00:04:47.330
+and then to just say what
+we want it to be called.
+
+132
+00:04:47.330 --> 00:04:50.510
+Let's take a look
+at that. Now, if
+
+133
+00:04:50.510 --> 00:04:52.250
+we check the data type
+of this column,
+
+134
+00:04:52.250 --> 00:04:53.780
+we'll see that it's
+just an object
+
+135
+00:04:53.780 --> 00:04:55.175
+since we set string values.
+
+136
+00:04:55.175 --> 00:04:56.960
+So if we do df.dtypes,
+
+137
+00:04:56.960 --> 00:04:58.445
+we see that it's an object.
+
+138
+00:04:58.445 --> 00:05:01.370
+We can, however, tell pandas
+that we want to change
+
+139
+00:05:01.370 --> 00:05:04.355
+the type to category using
+the astype function.
+
+140
+00:05:04.355 --> 00:05:06.530
+So the way we do this is we just
+
+141
+00:05:06.530 --> 00:05:08.690
+put category in quotes to astype.
+
+142
+00:05:08.690 --> 00:05:10.670
+It's a special string.
+
+143
+00:05:10.670 --> 00:05:13.250
+So we'll do
+df["Grades"].astype("category").
+
+144
+00:05:13.250 --> 00:05:15.070
+Let's take a look at
+the head of that.
+
+145
+00:05:15.070 --> 00:05:17.870
+Now, we see that
+there's 11 categories,
+
+146
+00:05:17.870 --> 00:05:20.825
+and pandas is aware of
+what those categories are.
+
+147
+00:05:20.825 --> 00:05:22.715
+More interesting though
+is that our data
+
+148
+00:05:22.715 --> 00:05:24.470
+isn't just categorical
+in this case,
+
+149
+00:05:24.470 --> 00:05:26.290
+but it's actually ordered.
+
+150
+00:05:26.290 --> 00:05:29.115
+That is, an A minus
+comes after a B plus,
+
+151
+00:05:29.115 --> 00:05:31.710
+and a B comes before a B pus.
+
+152
+00:05:31.710 --> 00:05:33.590
+We can tell pandas that the data
+
+153
+00:05:33.590 --> 00:05:35.120
+is ordered by first creating
+
+154
+00:05:35.120 --> 00:05:36.890
+a new categorical data type with
+
+155
+00:05:36.890 --> 00:05:39.140
+the list of categories in order,
+
+156
+00:05:39.140 --> 00:05:41.125
+and the ordered equals true flag.
+
+157
+00:05:41.125 --> 00:05:43.455
+So I'll create a new
+variable, my_categories,
+
+158
+00:05:43.455 --> 00:05:46.700
+and then we're going to use
+pd.CategoricalDtype So this
+
+159
+00:05:46.700 --> 00:05:47.975
+is going to create
+a new data type
+
+160
+00:05:47.975 --> 00:05:49.970
+object and then category.
+
+161
+00:05:49.970 --> 00:05:52.715
+So I'm going to pass in
+the list of categories,
+
+162
+00:05:52.715 --> 00:05:55.760
+and then I'm going to say
+that it's ordered as true.
+
+163
+00:05:55.760 --> 00:05:57.680
+So now we can just pass this to
+
+164
+00:05:57.680 --> 00:06:00.770
+the astype function
+instead of that string.
+
+165
+00:06:00.770 --> 00:06:04.910
+So grades=df["Grades"].astype,
+
+166
+00:06:04.910 --> 00:06:06.080
+and now we're just
+going to pass in
+
+167
+00:06:06.080 --> 00:06:07.730
+our new categorical dtype.
+
+168
+00:06:07.730 --> 00:06:10.325
+Let's take a look at
+the head of grades.
+
+169
+00:06:10.325 --> 00:06:12.770
+So now we see that
+pandas is not only
+
+170
+00:06:12.770 --> 00:06:14.750
+aware that there
+are 11 categories,
+
+171
+00:06:14.750 --> 00:06:17.900
+but it's also aware of the
+order of those categories.
+
+172
+00:06:17.900 --> 00:06:19.550
+So what can you do with this?
+
+173
+00:06:19.550 --> 00:06:21.390
+Well, because
+there's an ordering,
+
+174
+00:06:21.390 --> 00:06:24.395
+this can help with some
+comparisons and Boolean masking.
+
+175
+00:06:24.395 --> 00:06:26.360
+For instance, if
+we have a list of
+
+176
+00:06:26.360 --> 00:06:28.400
+our grades and we
+compare them to a C,
+
+177
+00:06:28.400 --> 00:06:31.010
+we can see that
+lexicographical comparisons,
+
+178
+00:06:31.010 --> 00:06:32.510
+which is the default for strings,
+
+179
+00:06:32.510 --> 00:06:34.805
+return results that
+we're not intending.
+
+180
+00:06:34.805 --> 00:06:38.060
+So let's take our DataFrame
+and df subgrades.
+
+181
+00:06:38.060 --> 00:06:40.415
+Remember, this is the one
+that isn't categorical data,
+
+182
+00:06:40.415 --> 00:06:41.885
+these are just objects.
+
+183
+00:06:41.885 --> 00:06:45.200
+We want a Boolean mask where
+the grades are greater than
+
+184
+00:06:45.200 --> 00:06:48.330
+a C. So a C plus
+
+185
+00:06:48.330 --> 00:06:49.530
+is greater than a C but
+
+186
+00:06:49.530 --> 00:06:52.095
+a C minus and a D
+are certainly not.
+
+187
+00:06:52.095 --> 00:06:54.590
+However, if we broadcast
+over the DataFrame which
+
+188
+00:06:54.590 --> 00:06:57.110
+has the type set to
+ordered categorical,
+
+189
+00:06:57.110 --> 00:06:59.390
+we get the results
+we might expect.
+
+190
+00:06:59.390 --> 00:07:02.900
+Here are the grades
+DataFrame which is set with
+
+191
+00:07:02.900 --> 00:07:06.620
+the correct categorical type
+and grades greater than
+
+192
+00:07:06.620 --> 00:07:08.600
+C. We see that
+
+193
+00:07:08.600 --> 00:07:11.090
+the operator works as
+we would expect here.
+
+194
+00:07:11.090 --> 00:07:13.880
+We can then use a certain set
+of mathematical operators,
+
+195
+00:07:13.880 --> 00:07:15.755
+like minimum, maximum, etc,
+
+196
+00:07:15.755 --> 00:07:17.390
+on this ordinal data.
+
+197
+00:07:17.390 --> 00:07:19.190
+Sometimes it's useful to
+
+198
+00:07:19.190 --> 00:07:21.410
+represent categorical
+values as each
+
+199
+00:07:21.410 --> 00:07:22.880
+being a column with a true or
+
+200
+00:07:22.880 --> 00:07:25.310
+false as to whether
+the category applies.
+
+201
+00:07:25.310 --> 00:07:28.000
+This is especially common
+in feature extraction,
+
+202
+00:07:28.000 --> 00:07:30.160
+which is a topic in
+the data mining course.
+
+203
+00:07:30.160 --> 00:07:31.925
+Variables with a Boolean value
+
+204
+00:07:31.925 --> 00:07:33.740
+are typically called
+dummy variables,
+
+205
+00:07:33.740 --> 00:07:37.040
+and pandas has built-in
+function called get dummies,
+
+206
+00:07:37.040 --> 00:07:39.140
+which will convert the values
+of a single column
+
+207
+00:07:39.140 --> 00:07:41.510
+into multiple columns
+of zeros and ones,
+
+208
+00:07:41.510 --> 00:07:43.835
+indicating the presence
+of a dummy variable.
+
+209
+00:07:43.835 --> 00:07:46.930
+I rarely use it, but when
+I do, it's very handy.
+
+210
+00:07:46.930 --> 00:07:49.670
+There's one more common
+scale-based operation
+
+211
+00:07:49.670 --> 00:07:51.110
+that I'd like to talk about,
+
+212
+00:07:51.110 --> 00:07:52.655
+and that's on
+converting a scale from
+
+213
+00:07:52.655 --> 00:07:54.920
+something that is on
+the interval or ratio scale,
+
+214
+00:07:54.920 --> 00:07:56.045
+like a numeric grade,
+
+215
+00:07:56.045 --> 00:07:57.985
+into one which is categorical.
+
+216
+00:07:57.985 --> 00:08:00.450
+Now, this might seem a bit
+counter intuitive to
+
+217
+00:08:00.450 --> 00:08:03.140
+you since you're losing
+information about the value,
+
+218
+00:08:03.140 --> 00:08:05.615
+but it's commonly done
+in a couple of places.
+
+219
+00:08:05.615 --> 00:08:07.580
+For instance, if
+you're visualizing
+
+220
+00:08:07.580 --> 00:08:09.140
+the frequencies of categories,
+
+221
+00:08:09.140 --> 00:08:11.310
+this can be an extremely
+useful approach,
+
+222
+00:08:11.310 --> 00:08:13.370
+and histograms are regularly used
+
+223
+00:08:13.370 --> 00:08:15.935
+with converted interval
+or ratio data.
+
+224
+00:08:15.935 --> 00:08:18.260
+In addition, if you're
+using a machine learning
+
+225
+00:08:18.260 --> 00:08:20.270
+classification approach on data,
+
+226
+00:08:20.270 --> 00:08:22.340
+you'll need to be using
+categorical data.
+
+227
+00:08:22.340 --> 00:08:24.470
+So reducing dimensionality may be
+
+228
+00:08:24.470 --> 00:08:27.155
+useful just to apply
+a given technique.
+
+229
+00:08:27.155 --> 00:08:30.425
+Pandas has a function called
+cut which takes an argument,
+
+230
+00:08:30.425 --> 00:08:31.940
+some array-like structure like
+
+231
+00:08:31.940 --> 00:08:34.250
+a column of a DataFrame
+or a series.
+
+232
+00:08:34.250 --> 00:08:36.545
+It also takes a number
+of bins to be used
+
+233
+00:08:36.545 --> 00:08:39.155
+and all bins are kept
+at equal spacing.
+
+234
+00:08:39.155 --> 00:08:42.365
+So let's go back to
+some census data as an example.
+
+235
+00:08:42.365 --> 00:08:45.200
+We saw that we could group by
+state and then aggregate to
+
+236
+00:08:45.200 --> 00:08:48.275
+get a list of the average
+county size by state.
+
+237
+00:08:48.275 --> 00:08:51.755
+If we further apply cut to
+this with, say, 10 bins,
+
+238
+00:08:51.755 --> 00:08:53.570
+we could see that
+the states listed as
+
+239
+00:08:53.570 --> 00:08:56.735
+categoricals using
+the average county size.
+
+240
+00:08:56.735 --> 00:08:58.460
+So let's bring in NumPy.
+
+241
+00:08:58.460 --> 00:09:01.070
+So import numpy as np.
+
+242
+00:09:01.070 --> 00:09:02.810
+Now, we'll read in our data set.
+
+243
+00:09:02.810 --> 00:09:07.180
+So this is in dataset/census.csv,
+
+244
+00:09:07.180 --> 00:09:11.460
+and we'll reduce this
+to county-level data.
+
+245
+00:09:11.590 --> 00:09:14.180
+We just want to take
+the sum level equals
+
+246
+00:09:14.180 --> 00:09:17.460
+50 and for a few groups.
+
+247
+00:09:17.460 --> 00:09:19.740
+So we'll set the index
+to state name,
+
+248
+00:09:19.740 --> 00:09:21.600
+we'll groupby level equals 0,
+
+249
+00:09:21.600 --> 00:09:24.630
+and we'll look at just this
+census 2010 population.
+
+250
+00:09:24.630 --> 00:09:27.320
+Let's look at
+the average values there.
+
+251
+00:09:27.320 --> 00:09:29.820
+Let's look at the head of this.
+
+252
+00:09:30.860 --> 00:09:34.100
+Now, if we just want to
+make bins of each of these,
+
+253
+00:09:34.100 --> 00:09:35.420
+we can use cut.
+
+254
+00:09:35.420 --> 00:09:37.460
+So you can say pd.cut we
+
+255
+00:09:37.460 --> 00:09:40.025
+parse in the DataFrame
+that we've created,
+
+256
+00:09:40.025 --> 00:09:42.660
+and let's say we want 10 bins.
+
+257
+00:09:43.840 --> 00:09:47.030
+So here we see that
+states like Alabama and
+
+258
+00:09:47.030 --> 00:09:49.370
+Alaska fall into
+the same category,
+
+259
+00:09:49.370 --> 00:09:51.730
+while California and
+the District of Columbia
+
+260
+00:09:51.730 --> 00:09:53.980
+fall into very
+different categories.
+
+261
+00:09:53.980 --> 00:09:56.030
+Now, cutting is just one way
+
+262
+00:09:56.030 --> 00:09:57.860
+to build categoricals
+from your data,
+
+263
+00:09:57.860 --> 00:09:59.345
+and there's many other methods.
+
+264
+00:09:59.345 --> 00:10:01.280
+For instance, cut gives
+you interval data,
+
+265
+00:10:01.280 --> 00:10:04.345
+where the spacing between
+each category is equally sized,
+
+266
+00:10:04.345 --> 00:10:05.540
+but sometimes you want to form
+
+267
+00:10:05.540 --> 00:10:07.355
+categories based on frequency.
+
+268
+00:10:07.355 --> 00:10:09.545
+You want the number of
+items in each bin to be the
+
+269
+00:10:09.545 --> 00:10:12.185
+same and instead of
+spacing between the bins.
+
+270
+00:10:12.185 --> 00:10:15.115
+So it really depends
+on what your data is,
+
+271
+00:10:15.115 --> 00:10:17.640
+and what you're
+planning to do with it.

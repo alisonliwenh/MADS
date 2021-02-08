@@ -1,0 +1,260 @@
+WEBVTT
+
+1
+00:00:06.262 --> 00:00:10.695
+This week, we're going to deepen our
+investigation into how Python can be used
+
+2
+00:00:10.695 --> 00:00:15.075
+to manipulate, clean, and query data
+by looking at the pandas data toolkit.
+
+3
+00:00:15.075 --> 00:00:17.951
+Pandas was created by
+Wes McKinney in 2008.
+
+4
+00:00:17.951 --> 00:00:21.476
+It is an open source project
+under a permissive license.
+
+5
+00:00:21.476 --> 00:00:24.657
+As an open source project,
+it has a strong community,
+
+6
+00:00:24.657 --> 00:00:29.586
+with more than a 100 software developers
+committing code to help make it better.
+
+7
+00:00:29.586 --> 00:00:33.960
+Now, you should use the tools within
+the course to engage with the instructor,
+
+8
+00:00:33.960 --> 00:00:37.957
+the course assistants, and your peers
+in order to get help with pandas.
+
+9
+00:00:37.957 --> 00:00:41.905
+But I also want to encourage you to go
+beyond this, and frankly, you'll probably
+
+10
+00:00:41.905 --> 00:00:46.200
+have to, and use question and
+answering sites such as Stack Overflow.
+
+11
+00:00:46.200 --> 00:00:50.211
+Stack Overflow is used broadly within
+the software development community to post
+
+12
+00:00:50.211 --> 00:00:54.470
+questions about programming, programming
+languages, and programming toolkits.
+
+13
+00:00:54.470 --> 00:00:58.268
+What's special about Stack Overflow
+is that it's heavily curated by
+
+14
+00:00:58.268 --> 00:00:59.177
+the community.
+
+15
+00:00:59.177 --> 00:01:03.910
+And the pandas community in particular
+uses it as their number one resource for
+
+16
+00:01:03.910 --> 00:01:05.280
+helping new members.
+
+17
+00:01:05.280 --> 00:01:09.065
+It's quite possible, if you post
+a question to Stack Overflow and
+
+18
+00:01:09.065 --> 00:01:10.485
+tag it as being pandas and
+
+19
+00:01:10.485 --> 00:01:14.829
+Python related, that the pandas
+developer will respond to your question.
+
+20
+00:01:14.829 --> 00:01:18.465
+In addition to posting questions,
+Stack Overflow is a great
+
+21
+00:01:18.465 --> 00:01:22.613
+place to see what issues people
+are having and how they can be solved.
+
+22
+00:01:22.613 --> 00:01:25.328
+A second resource you might
+want to consider are books.
+
+23
+00:01:25.328 --> 00:01:30.316
+In 2012, Wes McKinney wrote the definitive
+pandas reference book called Python for
+
+24
+00:01:30.316 --> 00:01:32.921
+Data Analysis, and published by O'Reilly.
+
+25
+00:01:32.921 --> 00:01:36.500
+And this was updated in
+2017 to the second edition.
+
+26
+00:01:36.500 --> 00:01:39.504
+I consider this the go-to textbook for
+the class and
+
+27
+00:01:39.504 --> 00:01:42.924
+an important resource in
+understanding how pandas works.
+
+28
+00:01:42.924 --> 00:01:45.525
+But I also appreciate the more brief book,
+
+29
+00:01:45.525 --> 00:01:48.423
+Learning the Pandas Library
+by Matt Harrison.
+
+30
+00:01:48.423 --> 00:01:51.821
+It's not a comprehensive book
+on data analysis and statistics.
+
+31
+00:01:51.821 --> 00:01:56.202
+But if you just want to learn the basics
+of pandas and want to do it quickly,
+
+32
+00:01:56.202 --> 00:01:58.479
+I think it's a well laid out volume.
+
+33
+00:01:58.479 --> 00:02:01.979
+The field of data science is rapidly
+changing, there's new toolkits and
+
+34
+00:02:01.979 --> 00:02:03.623
+methods being created every day.
+
+35
+00:02:03.623 --> 00:02:06.376
+It can be tough to stay
+on top of all of this.
+
+36
+00:02:06.376 --> 00:02:07.637
+Marco Rodriguez and
+
+37
+00:02:07.637 --> 00:02:12.464
+Tim Golden maintain a wonderful blog
+aggregator site called Planet Python.
+
+38
+00:02:12.464 --> 00:02:16.309
+You can visit visit the webpage at
+planetpython.org, subscribe with
+
+39
+00:02:16.309 --> 00:02:20.617
+an RSS reader, or get the latest articles
+from the Planet Python Twitter feed.
+
+40
+00:02:20.617 --> 00:02:24.346
+There are lots of regular Python
+data science contributors,
+
+41
+00:02:24.346 --> 00:02:28.445
+and I highly recommend that you
+follow it if you're into RSS feeds.
+
+42
+00:02:28.445 --> 00:02:33.122
+Similarly, if you're into podcasts,
+I like Python Bytes by Michael Kennedy and
+
+43
+00:02:33.122 --> 00:02:33.951
+Brian Okken.
+
+44
+00:02:33.951 --> 00:02:37.651
+Their episodes are short and
+more Python news related, and
+
+45
+00:02:37.651 --> 00:02:42.546
+this is a great way to keep up with some
+of the activity in the python ecosystem.
+
+46
+00:02:42.546 --> 00:02:45.697
+All right, here's my last plug
+on how to deepen your learning.
+
+47
+00:02:45.697 --> 00:02:49.491
+Kyle Polich runs an excellent
+podcast called Data Skeptic.
+
+48
+00:02:49.491 --> 00:02:53.070
+And while it isn't Python-based per se,
+it is well produced and
+
+49
+00:02:53.070 --> 00:02:56.649
+has a wonderful mixture of interviews
+with experts in the field,
+
+50
+00:02:56.649 --> 00:02:58.812
+as well as short educational lessons.
+
+51
+00:02:58.812 --> 00:03:02.754
+Much of the work he describes is
+specific to machine learning methods and
+
+52
+00:03:02.754 --> 00:03:05.220
+will serve you well
+throughout this degree.
+
+53
+00:03:05.220 --> 00:03:06.532
+With all of this in hand,
+
+54
+00:03:06.532 --> 00:03:11.100
+let's jump into learning more about the
+Python data manipulation toolkit, pandas.

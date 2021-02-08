@@ -1,0 +1,1451 @@
+WEBVTT
+
+1
+00:00:05.713 --> 00:00:08.486
+Sometimes we want to select
+database on groups and
+
+2
+00:00:08.486 --> 00:00:11.262
+understand aggregated
+data at the group level.
+
+3
+00:00:11.262 --> 00:00:15.767
+We've seen that even though Pandas allows
+us to iterate every row in a data frame,
+
+4
+00:00:15.767 --> 00:00:17.871
+it's generally very slow to do this.
+
+5
+00:00:17.871 --> 00:00:22.031
+Fortunately pandas has a group by
+function to speed up such tasks.
+
+6
+00:00:22.031 --> 00:00:25.876
+The idea behind group by is that it
+takes some data frame, splits it into
+
+7
+00:00:25.876 --> 00:00:30.300
+chunks based on some key values and then
+applies computation on those chunks, and
+
+8
+00:00:30.300 --> 00:00:33.848
+then combines the result back
+together into another data frame.
+
+9
+00:00:33.848 --> 00:00:39.283
+In Pandas this is referred to as
+the split-apply-combine pattern.
+
+10
+00:00:39.283 --> 00:00:40.902
+So let's take a look at an example.
+
+11
+00:00:40.902 --> 00:00:44.562
+First, we'll bring in our pandas and
+numpy libraries,
+
+12
+00:00:44.562 --> 00:00:49.535
+we'll import pandas and import numpy and
+let's look at some US Census Data.
+
+13
+00:00:49.535 --> 00:00:54.242
+So we'll read this data from datasets
+/senses.csv, and we're going to
+
+14
+00:00:54.242 --> 00:00:59.187
+exclude state level summarizations,
+which I have a some level value of 40.
+
+15
+00:00:59.187 --> 00:01:02.688
+So we just want to keep those
+that have a some level value 50,
+
+16
+00:01:02.688 --> 00:01:07.153
+it turns out there's only two some
+levels in this data file 40 and 50, and
+
+17
+00:01:07.153 --> 00:01:09.020
+let's look at the head of that.
+
+18
+00:01:09.020 --> 00:01:11.968
+Okay, so that's the data that
+we're going to work with.
+
+19
+00:01:11.968 --> 00:01:15.720
+In the first example for
+group I want to use this census date.
+
+20
+00:01:15.720 --> 00:01:19.538
+Let's get a list of all the unique
+states then we can iterate over all of
+
+21
+00:01:19.538 --> 00:01:20.388
+those states.
+
+22
+00:01:20.388 --> 00:01:24.769
+For each state we can reduce the data
+frame and calculate the average.
+
+23
+00:01:24.769 --> 00:01:28.769
+So let's run such a task for
+three times and time it, and for
+
+24
+00:01:28.769 --> 00:01:32.855
+this we're going to use this
+cell magic function %%timeit.
+
+25
+00:01:32.855 --> 00:01:35.672
+So I'll say %%timeit -n3.
+
+26
+00:01:35.672 --> 00:01:38.673
+So I'm going to run this
+cell three times and
+
+27
+00:01:38.673 --> 00:01:42.454
+Jupyter will present me
+some of the average values.
+
+28
+00:01:42.454 --> 00:01:46.442
+So for state in df sub STNAME.unique.
+
+29
+00:01:46.442 --> 00:01:49.785
+So this projects the data frame
+state name and then a list of
+
+30
+00:01:49.785 --> 00:01:53.894
+all the unique values in there and
+we're just going to iterate over that.
+
+31
+00:01:53.894 --> 00:01:57.635
+We're just going to calculate the average
+using numpy for this particular state.
+
+32
+00:01:57.635 --> 00:02:00.623
+So the average equals mp.average and
+
+33
+00:02:00.623 --> 00:02:05.301
+then we'll do df.where,
+df sub STNAME is equal to state.
+
+34
+00:02:05.301 --> 00:02:08.451
+So we want to exclude
+those that aren't and
+
+35
+00:02:08.451 --> 00:02:11.961
+we'll use a Boolean mask here .drop in a,
+and
+
+36
+00:02:11.961 --> 00:02:17.822
+we just want to project the census 2010
+pop and pass that all into average.
+
+37
+00:02:17.822 --> 00:02:19.406
+And then we're going to
+print it to the screen.
+
+38
+00:02:19.406 --> 00:02:22.036
+So we're going to print counties and
+state,
+
+39
+00:02:22.036 --> 00:02:26.432
+state have an average population of and
+then we'll print the average.
+
+40
+00:02:28.378 --> 00:02:32.583
+We see that gets up and running.
+
+41
+00:02:32.583 --> 00:02:35.175
+So if you scroll down to
+the bottom of that output,
+
+42
+00:02:35.175 --> 00:02:37.850
+you can see it takes a fair
+bit of time to finish.
+
+43
+00:02:37.850 --> 00:02:43.828
+Now let's try another approach using group by,
+so again, we're going to say timeit -n 3.
+
+44
+00:02:43.828 --> 00:02:47.395
+For this method, we're going to start
+by telling Pandas we're interested
+
+45
+00:02:47.395 --> 00:02:50.111
+in grouping the state by name,
+and so this is our split.
+
+46
+00:02:50.111 --> 00:02:54.530
+So for group, frame in df.groupby STNAME.
+
+47
+00:02:54.530 --> 00:02:57.801
+So we're saying that we want
+to split on the state name.
+
+48
+00:02:57.801 --> 00:03:00.383
+You'll notice that there are two
+values that we set here.
+
+49
+00:03:00.383 --> 00:03:04.313
+Group by actually returns a tuple
+where the first value is the value of
+
+50
+00:03:04.313 --> 00:03:08.596
+the key that we're trying to group by,
+in this case a specific state name.
+
+51
+00:03:08.596 --> 00:03:12.763
+And the second one is the projected data
+frame that was found for this group.
+
+52
+00:03:12.763 --> 00:03:16.096
+So we add  a tuple back from group by.
+
+53
+00:03:16.096 --> 00:03:18.620
+Now, we include our logic
+in the apply step and
+
+54
+00:03:18.620 --> 00:03:22.204
+that's just to calculate
+an average of the census 2010 pop.
+
+55
+00:03:22.204 --> 00:03:26.588
+So here it's easy, we just say
+the average is equal to mp.average and
+
+56
+00:03:26.588 --> 00:03:31.813
+we just project from the frame the one
+column we're interested in census 2010 pop.
+
+57
+00:03:31.813 --> 00:03:35.080
+And we don't have to do any further
+reduction here because we know it's
+
+58
+00:03:35.080 --> 00:03:38.031
+all for a given state, and
+then we're going to print the results.
+
+59
+00:03:38.031 --> 00:03:42.711
+And so this looks the same print
+Counties in state group have
+
+60
+00:03:42.711 --> 00:03:47.683
+an average population of whatever
+the string of the average is.
+
+61
+00:03:47.683 --> 00:03:51.578
+We don't have to worry about the combined
+step in this case because all of our data
+
+62
+00:03:51.578 --> 00:03:54.284
+transformation is actually
+printing out our results.
+
+63
+00:03:54.284 --> 00:03:55.306
+Now, let's run this.
+
+64
+00:04:02.802 --> 00:04:08.888
+So that's a huge difference in speed and
+improvement of roughly by two factors.
+
+65
+00:04:08.888 --> 00:04:13.489
+Now 99% of the time you'll use group
+by on one or more columns, but you
+
+66
+00:04:13.489 --> 00:04:18.330
+cannot also provide a function to group
+by and use that to segment your data.
+
+67
+00:04:18.330 --> 00:04:20.671
+So this is a bit of a fabricated example,
+but
+
+68
+00:04:20.671 --> 00:04:24.153
+let's say that you have a big batch
+job with lots of processing and
+
+69
+00:04:24.153 --> 00:04:27.531
+you want to work only on a third or
+so of the states at a given time.
+
+70
+00:04:27.531 --> 00:04:31.244
+We could create some function which
+returns a number between 0 and
+
+71
+00:04:31.244 --> 00:04:34.028
+2 based on the first
+character of the state name,
+
+72
+00:04:34.028 --> 00:04:38.024
+then we can tell group by to use this
+function to split up our data frame.
+
+73
+00:04:38.024 --> 00:04:41.348
+It's important to note that in
+order to do this you need to
+
+74
+00:04:41.348 --> 00:04:45.799
+set the index of the data frame to be the
+column that you want to group by first.
+
+75
+00:04:45.799 --> 00:04:49.486
+So we'll create some new function
+called set batch number, and
+
+76
+00:04:49.486 --> 00:04:53.444
+if the first number the parameter is
+the capital M it will return a 0,
+
+77
+00:04:53.444 --> 00:04:57.878
+if it's a capital Q it will return a 1 and
+otherwise, it will return a 2, and
+
+78
+00:04:57.878 --> 00:05:00.770
+then we'll pass this
+function to the data frame.
+
+79
+00:05:00.770 --> 00:05:07.114
+So df = df.set_index STNAME and
+then here's our function.
+
+80
+00:05:07.114 --> 00:05:10.045
+So we'll define set batch,
+
+81
+00:05:10.045 --> 00:05:15.429
+if items Sub 0 is less than
+M then we'll return a 0.
+
+82
+00:05:15.429 --> 00:05:19.731
+If it's less than Q then it's in
+our second batch will return 1.
+
+83
+00:05:19.731 --> 00:05:23.679
+Otherwise, we'll just lump it into our
+last batch and we're returning to.
+
+84
+00:05:23.679 --> 00:05:27.960
+So the data frame is supposed to be
+grouped by according to the batch number.
+
+85
+00:05:27.960 --> 00:05:29.932
+We're going to loop
+through each batch group.
+
+86
+00:05:29.932 --> 00:05:33.187
+So for a group and frame in tf.groupby and
+
+87
+00:05:33.187 --> 00:05:37.558
+we just pass in our function
+to the set batch number, and
+
+88
+00:05:37.558 --> 00:05:42.673
+then we'll print out there are,
+let's say the length of the data
+
+89
+00:05:42.673 --> 00:05:48.257
+frame the number of records in group and
+the group name for processing.
+
+90
+00:05:48.257 --> 00:05:52.266
+Notice at this time, I didn't pass
+in a column name to group by,
+
+91
+00:05:52.266 --> 00:05:55.629
+instead I set the index of
+the data frame to be STNAME.
+
+92
+00:05:55.629 --> 00:06:01.521
+And if no column identifiers pass, group
+by I will automatically use that index.
+
+93
+00:06:01.521 --> 00:06:04.782
+Let's take one more look at an example
+of how we might group data.
+
+94
+00:06:04.782 --> 00:06:08.865
+In this example I want to use
+a dataset of housing from Airbnb.
+
+95
+00:06:08.865 --> 00:06:11.900
+In this dataset there's
+two columns of interest,
+
+96
+00:06:11.900 --> 00:06:16.217
+one is the cancellation policy and
+the other is the review scores value.
+
+97
+00:06:16.217 --> 00:06:20.453
+So we'll bring this in
+df=pd.read_csv from datasets and
+
+98
+00:06:20.453 --> 00:06:25.448
+we'll bring in listings.csv, and
+let's print out the head of that.
+
+99
+00:06:29.002 --> 00:06:32.139
+So how would I group by
+both of these columns?
+
+100
+00:06:32.139 --> 00:06:35.311
+Our first approach might be to
+promote them to a multi index and
+
+101
+00:06:35.311 --> 00:06:36.599
+then just call group by.
+
+102
+00:06:36.599 --> 00:06:39.719
+So here I'll just say df=df.set_index and
+
+103
+00:06:39.719 --> 00:06:44.841
+I just say I want the cancellation policy
+there and the review scores value.
+
+104
+00:06:44.841 --> 00:06:49.577
+When we have a multi index we need to pass
+in the levels that were interested in
+
+105
+00:06:49.577 --> 00:06:50.469
+grouping by.
+
+106
+00:06:50.469 --> 00:06:52.998
+By default group by does not know and
+
+107
+00:06:52.998 --> 00:06:56.717
+does not assume that you
+want to group by all levels.
+
+108
+00:06:56.717 --> 00:07:01.288
+So here we just say for group and
+for frame in df.groupby and
+
+109
+00:07:01.288 --> 00:07:05.781
+then we say we want level 0 and
+1 and let's print that out.
+
+110
+00:07:05.781 --> 00:07:10.335
+And so there we can see that
+we get lots of different
+
+111
+00:07:10.335 --> 00:07:14.465
+groups by both levels
+that we're interested in.
+
+112
+00:07:14.465 --> 00:07:18.886
+So this seems to work out okay, but what
+if we want to group by the cancellation
+
+113
+00:07:18.886 --> 00:07:23.397
+policy and review scores but separate
+all of the 10s from those under 10.
+
+114
+00:07:23.397 --> 00:07:27.370
+In this case, we could use
+a function to manage the groupings.
+
+115
+00:07:27.370 --> 00:07:31.345
+So we'll define some function called
+groupingfun and pass in an item,
+
+116
+00:07:31.345 --> 00:07:34.934
+we'll check that the review scores
+value portion of the index.
+
+117
+00:07:34.934 --> 00:07:39.913
+Item is in the format of cancellation
+policy and review scores value, so
+
+118
+00:07:39.913 --> 00:07:40.982
+it's a tuple.
+
+119
+00:07:40.982 --> 00:07:45.759
+So if item sub 1 = 10,
+then we're going to return item sub 0 and
+
+120
+00:07:45.759 --> 00:07:49.840
+10.0, so
+we'll leave that one basically alone.
+
+121
+00:07:49.840 --> 00:07:54.923
+Otherwise, we're going to return item
+sub 0 and just the string not 10 by 0,
+
+122
+00:07:54.923 --> 00:07:58.709
+because we just care about
+breaking them into two groups.
+
+123
+00:07:58.709 --> 00:08:03.338
+And then for group and frame in
+df.groupby we pass in our
+
+124
+00:08:03.338 --> 00:08:08.267
+function grouping_fun, and
+let's print out the groups.
+
+125
+00:08:08.267 --> 00:08:13.060
+Okay, so there we see that we've
+grouped by either things that have
+
+126
+00:08:13.060 --> 00:08:17.014
+some cancellation policy
+flexible moderate strict and
+
+127
+00:08:17.014 --> 00:08:21.237
+super strict,
+and/or some score either 10 or not 10.
+
+128
+00:08:21.237 --> 00:08:24.020
+Let's look at the head of our data frame.
+
+129
+00:08:24.020 --> 00:08:26.894
+All right, so
+that's what our data frame looks like.
+
+130
+00:08:26.894 --> 00:08:27.869
+So to this point,
+
+131
+00:08:27.869 --> 00:08:32.484
+we've applied very simple processing to
+our data after splitting, really just out
+
+132
+00:08:32.484 --> 00:08:36.458
+putting some print statements to
+demonstrate how the splitting works.
+
+133
+00:08:36.458 --> 00:08:41.294
+The Pandas developers have three broad
+categories of data processing to happen
+
+134
+00:08:41.294 --> 00:08:42.746
+during the apply step.
+
+135
+00:08:42.746 --> 00:08:46.853
+Aggregation of grouped data,
+transformation of group data, and
+
+136
+00:08:46.853 --> 00:08:48.551
+filtration of group data.
+
+137
+00:08:50.629 --> 00:08:54.674
+So the most straightforward apply
+step is the aggregation of data and
+
+138
+00:08:54.674 --> 00:08:57.681
+this uses a method called
+agg()  on the group by object.
+
+139
+00:08:57.681 --> 00:09:00.820
+Thus far we've only iterated
+through the group by object,
+
+140
+00:09:00.820 --> 00:09:03.843
+unpacking it into a label
+the group name and a data frame.
+
+141
+00:09:03.843 --> 00:09:07.048
+But with agg() we can pass in
+a dictionary of the columns.
+
+142
+00:09:07.048 --> 00:09:11.274
+We're interested in aggregating along with
+the function that we're looking to apply.
+
+143
+00:09:11.274 --> 00:09:14.388
+So let's reset the index for
+our Airbnb data.
+
+144
+00:09:14.388 --> 00:09:19.381
+So df = df.reset_index, and
+remember you have to assign this to
+
+145
+00:09:19.381 --> 00:09:23.406
+the data frame or
+you have to use in place equals true?
+
+146
+00:09:23.406 --> 00:09:27.833
+That catches me up quite a bit still so
+keep that in mind.
+
+147
+00:09:27.833 --> 00:09:30.805
+So now let's group by
+the cancellation policy and
+
+148
+00:09:30.805 --> 00:09:33.646
+find the average review
+scores value by group.
+
+149
+00:09:33.646 --> 00:09:37.950
+So we want df.groupby cancellation policy.
+
+150
+00:09:37.950 --> 00:09:42.483
+So that's as it was before but now on
+that group by object that gets returned,
+
+151
+00:09:42.483 --> 00:09:43.681
+we want to call .agg().
+
+152
+00:09:43.681 --> 00:09:46.503
+And to .agg() we give it a dictionary and
+
+153
+00:09:46.503 --> 00:09:51.237
+the dictionary is the column
+were interested in targeting and
+
+154
+00:09:51.237 --> 00:09:55.525
+the operation or
+the function that we're interested.
+
+155
+00:09:55.525 --> 00:10:03.072
+So here I'll pass in review scores value
+and np.average and that's just on numpy.
+
+156
+00:10:03.072 --> 00:10:06.934
+So that didn't seem to work at all,
+just a bunch of not a numbers.
+
+157
+00:10:06.934 --> 00:10:10.525
+The issue is actually in the function
+that we sent to aggregate, and
+
+158
+00:10:10.525 --> 00:10:14.499
+this is me just showing a mistake that
+I did as I was preparing this lecture.
+
+159
+00:10:14.499 --> 00:10:18.111
+Np.average does not ignore not a numbers.
+
+160
+00:10:18.111 --> 00:10:20.697
+However, there is a function
+that we can use for this.
+
+161
+00:10:20.697 --> 00:10:24.717
+So actually I want to write the statement
+all over again just the same as it was.
+
+162
+00:10:24.717 --> 00:10:27.733
+So do you have to group by
+cancellation policy .agg().
+
+163
+00:10:27.733 --> 00:10:33.413
+But now in there I want to pass the
+function np.nan_mean, and this just called
+
+164
+00:10:33.413 --> 00:10:38.936
+gets the mean values the average but
+excludes not a number values from that.
+
+165
+00:10:40.483 --> 00:10:45.695
+Okay, so there we can see that we actually
+have our review scores values for
+
+166
+00:10:45.695 --> 00:10:48.437
+each category in nice aggregate form.
+
+167
+00:10:48.437 --> 00:10:51.837
+And you can see how simple and
+readable that was to write 
+
+168
+00:10:51.837 --> 00:10:56.176
+We could just extend this dictionary
+aggregate by multiple functions if we want
+
+169
+00:10:56.176 --> 00:10:57.547
+to or multiple columns.
+
+170
+00:10:57.547 --> 00:11:02.076
+So df.groupby cancellation policy call agg,
+and now in our dictionary,
+
+171
+00:11:02.076 --> 00:11:05.071
+we just pass in all of
+the different functions and
+
+172
+00:11:05.071 --> 00:11:08.372
+columns that were looking
+to create from that value.
+
+173
+00:11:08.372 --> 00:11:13.848
+So we'll pass in review scores value,
+I'm going to send in a tuple here,
+
+174
+00:11:13.848 --> 00:11:19.509
+numpy is not a number mean and numpy
+is not a number of standard deviation,
+
+175
+00:11:19.509 --> 00:11:25.381
+and then reviews per month and here I'll
+pass in the numpy not a number mean.
+
+176
+00:11:25.381 --> 00:11:29.704
+So take a moment to make sure you
+understand the previous cell,
+
+177
+00:11:29.704 --> 00:11:31.915
+since it's somewhat complex.
+
+178
+00:11:31.915 --> 00:11:36.538
+First, we're doing a group by on the data
+frame object by the column cancellation
+
+179
+00:11:36.538 --> 00:11:37.075
+policy.
+
+180
+00:11:37.075 --> 00:11:39.634
+This creates a new group by object.
+
+181
+00:11:39.634 --> 00:11:43.401
+Then we're invoking the ag
+function on that object.
+
+182
+00:11:43.401 --> 00:11:47.936
+The ag function is going to apply one or
+more functions that we specify to
+
+183
+00:11:47.936 --> 00:11:52.333
+the group data frames and
+return a single row for DataFrame/group.
+
+184
+00:11:52.333 --> 00:11:56.687
+When we call this function we sent it
+two dictionary entries each with the key
+
+185
+00:11:56.687 --> 00:12:00.033
+indicating which column we
+wanted functions applied to.
+
+186
+00:12:00.033 --> 00:12:04.172
+For the first column we actually
+supplied a tuple of two functions.
+
+187
+00:12:04.172 --> 00:12:09.349
+Note that these are not functioning
+indications like mp.nan_mean with
+
+188
+00:12:09.349 --> 00:12:14.789
+parentheses after it or function names
+like nan_mean in quotes in a string.
+
+189
+00:12:14.789 --> 00:12:19.202
+They're actually references to functions
+which will return single values.
+
+190
+00:12:19.202 --> 00:12:22.483
+The group by object will
+recognize the tuple and
+
+191
+00:12:22.483 --> 00:12:25.773
+call each function in
+order on the same column.
+
+192
+00:12:25.773 --> 00:12:28.916
+The results will then be
+in a hierarchical index but
+
+193
+00:12:28.916 --> 00:12:33.739
+since our columns they don't show up as
+an index per say, then we indicated that
+
+194
+00:12:33.739 --> 00:12:37.998
+another column in a single function
+we wanted to be run should be run.
+
+195
+00:12:37.998 --> 00:12:42.687
+So this is really important that you
+understand what's happened here and
+
+196
+00:12:42.687 --> 00:12:44.813
+how that statement was created.
+
+197
+00:12:44.813 --> 00:12:47.944
+If you understand that
+you're flying that's great.
+
+198
+00:12:47.944 --> 00:12:52.502
+If not, you really should go back and
+review that statement and
+
+199
+00:12:52.502 --> 00:12:57.318
+this taxed or this part of the video
+to understand better how this is
+
+200
+00:12:57.318 --> 00:12:59.297
+being called underneath.
+
+201
+00:12:59.297 --> 00:13:02.852
+So transformation is different
+from aggregation where agg
+
+202
+00:13:02.852 --> 00:13:05.033
+returns a single value per column.
+
+203
+00:13:05.033 --> 00:13:11.235
+So one row per group, transform returns an
+object that is the same size as the group.
+
+204
+00:13:11.235 --> 00:13:16.005
+Essentially it broadcasts the function
+you supply over the group dataframe
+
+205
+00:13:16.005 --> 00:13:17.802
+returning a new dataframe.
+
+206
+00:13:17.802 --> 00:13:20.787
+This makes combining
+data later quite easy.
+
+207
+00:13:20.787 --> 00:13:25.393
+So for instance suppose, we wanted to
+include the average rating values in
+
+208
+00:13:25.393 --> 00:13:27.812
+a given group by cancellation policy.
+
+209
+00:13:27.812 --> 00:13:32.756
+But preserve the data frame shape so that
+we could generate a difference between
+
+210
+00:13:32.756 --> 00:13:35.284
+an individual observation and the sum.
+
+211
+00:13:35.284 --> 00:13:39.523
+So first, let's just define some subset
+of the columns that we're interested in.
+
+212
+00:13:39.523 --> 00:13:41.953
+So here I'm just going to
+make a variable calls and
+
+213
+00:13:41.953 --> 00:13:46.045
+say we're interested in the cancellation
+policy and the review scores value.
+
+214
+00:13:46.045 --> 00:13:49.544
+This just makes it a little
+cleaner as I'm typing it in.
+
+215
+00:13:49.544 --> 00:13:53.179
+Now, let's transform, I'm going to
+store this in its own data frame.
+
+216
+00:13:53.179 --> 00:13:58.640
+So transform df = df sub
+cols.groupby cancellation
+
+217
+00:13:58.640 --> 00:14:03.618
+policy.transform and
+I want np.nan_mean and
+
+218
+00:14:03.618 --> 00:14:08.608
+let's take a look at
+the head of this data frame.
+
+219
+00:14:08.608 --> 00:14:12.843
+So we can see that the index here is
+actually the same as the original data
+
+220
+00:14:12.843 --> 00:14:15.040
+frame, so let's just join this in.
+
+221
+00:14:15.040 --> 00:14:19.158
+Before we do that let's rename
+the column in the transform version.
+
+222
+00:14:19.158 --> 00:14:23.336
+So I'm going to say transform df.rename
+and I'm going to take the review scores
+
+223
+00:14:23.336 --> 00:14:27.123
+value because it's not actually
+the review scores value anymore and
+
+224
+00:14:27.123 --> 00:14:29.163
+rename it to the mean review scores.
+
+225
+00:14:29.163 --> 00:14:33.914
+I want this axis equals columns,
+and in place equals true,
+
+226
+00:14:33.914 --> 00:14:37.727
+and then I'm just going to
+merge the data frames.
+
+227
+00:14:37.727 --> 00:14:43.322
+And so df = df.merge, I pass in transform
+df as the other one, and I want to
+
+228
+00:14:43.322 --> 00:14:49.570
+merge on the indexes because the index is
+between our two data frames are the same.
+
+229
+00:14:49.570 --> 00:14:52.858
+And let's take a look at
+the new df that we've created.
+
+230
+00:14:55.475 --> 00:14:59.795
+So great, we consider our new columns and
+place the mean review scores.
+
+231
+00:14:59.795 --> 00:15:04.231
+So now we could create for instance
+the difference between a given row and
+
+232
+00:15:04.231 --> 00:15:07.007
+it's group the cancellation policy means.
+
+233
+00:15:07.007 --> 00:15:11.190
+So we do that just by df sub mean_diff,
+so that's the new column we're
+
+234
+00:15:11.190 --> 00:15:13.970
+creating and assign this to np.absolute.
+
+235
+00:15:13.970 --> 00:15:18.700
+So I want to take the absolute value
+of the review scores value minus
+
+236
+00:15:18.700 --> 00:15:20.512
+the mean review scores.
+
+237
+00:15:20.512 --> 00:15:23.776
+And so here you can see that there's
+a number of things going on.
+
+238
+00:15:23.776 --> 00:15:27.109
+I'm taking our review scores value.
+
+239
+00:15:27.109 --> 00:15:30.463
+I'm vectorized passing the subtract
+
+240
+00:15:30.463 --> 00:15:35.395
+operator across that with
+the df_mean review scores.
+
+241
+00:15:35.395 --> 00:15:38.763
+So we're we're making
+the difference there, and
+
+242
+00:15:38.763 --> 00:15:43.307
+then I'm calling the absolute value
+also vectorized across that and
+
+243
+00:15:43.307 --> 00:15:47.323
+sending it back to the mean df,
+and let's take a look ahead.
+
+244
+00:15:49.283 --> 00:15:53.350
+So the group by object has built-in
+support for filtering groups as well.
+
+245
+00:15:53.350 --> 00:15:56.752
+It's often that you'll want to group
+by some features then make some
+
+246
+00:15:56.752 --> 00:15:58.423
+transformations to the groups,
+
+247
+00:15:58.423 --> 00:16:01.421
+then drop certain groups as
+part of your cleaning routine.
+
+248
+00:16:01.421 --> 00:16:03.667
+The filter function takes in a function,
+
+249
+00:16:03.667 --> 00:16:07.773
+which it applies to each group data frame
+and returns either a true or false,
+
+250
+00:16:07.773 --> 00:16:11.444
+depending on whether that group
+should be included in the results.
+
+251
+00:16:11.444 --> 00:16:16.273
+For instance if we wanted to only those
+groups which have a mean rating above 9
+
+252
+00:16:16.273 --> 00:16:17.917
+included in our results.
+
+253
+00:16:17.917 --> 00:16:21.328
+We'd say df.groupby,
+the cancellation policy,
+
+254
+00:16:21.328 --> 00:16:25.446
+then we'd say .filter, and
+here we would pass in a function.
+
+255
+00:16:25.446 --> 00:16:30.896
+So Lambda X and we just want to
+take a look at the mean of X.
+
+256
+00:16:30.896 --> 00:16:35.866
+Again, remember we have to use nan_mean
+because we have nans in there and
+
+257
+00:16:35.866 --> 00:16:41.091
+we just want the means where the review
+score values are greater than 9.2.
+
+258
+00:16:41.091 --> 00:16:45.891
+Notice that the results are still indexed
+but that any of the results which
+
+259
+00:16:45.891 --> 00:16:49.454
+were in the group with a mean
+review score of less than or
+
+260
+00:16:49.454 --> 00:16:54.266
+equal to 9.2 were not copied over
+because of how we did our projection.
+
+261
+00:16:54.266 --> 00:17:00.119
+By far the most common operation I invoke
+on group by objects is the apply function.
+
+262
+00:17:00.119 --> 00:17:04.050
+This allows you to apply an arbitrary
+function to each group and
+
+263
+00:17:04.050 --> 00:17:06.350
+stitch the results back together for
+
+264
+00:17:06.350 --> 00:17:10.446
+each apply into a single data frame
+where the index is preserved.
+
+265
+00:17:10.446 --> 00:17:14.045
+So let's look at an example
+using our Airbnb data.
+
+266
+00:17:14.045 --> 00:17:16.226
+I'm going to get a clean
+copy of that data frame.
+
+267
+00:17:16.226 --> 00:17:20.179
+So we'll just load that from the csv,
+listings.csv, and
+
+268
+00:17:20.179 --> 00:17:25.331
+let's just include some of the columns
+that were interested in previously.
+
+269
+00:17:25.331 --> 00:17:29.436
+So I'm going to drop those columns
+except for cancellation policy and
+
+270
+00:17:29.436 --> 00:17:32.180
+review scores value and
+let's look at that.
+
+271
+00:17:32.180 --> 00:17:36.644
+In previous work we wanted to find
+the average review score of a listing and
+
+272
+00:17:36.644 --> 00:17:40.902
+it's deviation from the group mean,
+and this was a two step process.
+
+273
+00:17:40.902 --> 00:17:43.692
+First, we use transform on
+the group by object and
+
+274
+00:17:43.692 --> 00:17:46.356
+then we had to broadcast
+to create a new column.
+
+275
+00:17:46.356 --> 00:17:50.026
+With apply we could wrap
+this logic in one place.
+
+276
+00:17:50.026 --> 00:17:55.130
+So I'm going to write a function def calc
+mean_review_scores and pass in a group.
+
+277
+00:17:55.130 --> 00:17:56.848
+So this is working on a data frame.
+
+278
+00:17:56.848 --> 00:18:00.968
+So group is a data frame just of
+whatever we've grouped in this case
+
+279
+00:18:00.968 --> 00:18:02.673
+the cancellation policy.
+
+280
+00:18:02.673 --> 00:18:06.453
+So we can treat this as the complete
+data frame that we're operating in, so
+
+281
+00:18:06.453 --> 00:18:07.836
+it's a bit of a mind shift.
+
+282
+00:18:07.836 --> 00:18:10.898
+Here, I want to create an average value,
+so
+
+283
+00:18:10.898 --> 00:18:16.438
+that's just equal to numpy nan_mean
+of the group review_scores_value.
+
+284
+00:18:16.438 --> 00:18:20.425
+And then now we want to broadcast
+our formula and create a new group.
+
+285
+00:18:20.425 --> 00:18:26.547
+So group sub review scores mean
+equals np.abs, our absolute value,
+
+286
+00:18:26.547 --> 00:18:33.512
+the minus the group sub review scores
+value, and then we'll return the group.
+
+287
+00:18:33.512 --> 00:18:35.991
+So now we just want to apply
+this to all of the groups.
+
+288
+00:18:35.991 --> 00:18:40.954
+So df.groupby cancellation_policy.apply
+send in our function that we want
+
+289
+00:18:40.954 --> 00:18:45.101
+to work on all of the groups
+the calc_mean_review_scores, and
+
+290
+00:18:45.101 --> 00:18:47.110
+let's look at the head of this.
+
+291
+00:18:47.110 --> 00:18:51.685
+Using apply can be slower than using
+some of the specialized functions,
+
+292
+00:18:51.685 --> 00:18:52.739
+especially agg().
+
+293
+00:18:52.739 --> 00:18:56.929
+But if your data frames are not huge,
+it's a solid general-purpose approach.
+
+294
+00:18:59.547 --> 00:19:04.528
+Groupby is a powerful and commonly used
+tool for data cleaning and data analysis.
+
+295
+00:19:04.528 --> 00:19:06.819
+Once you group the data by some category,
+
+296
+00:19:06.819 --> 00:19:09.371
+you have a data frame of
+just those values, and
+
+297
+00:19:09.371 --> 00:19:13.841
+you can conduct aggregate analysis on
+the segments that you're interested in.
+
+298
+00:19:13.841 --> 00:19:18.221
+The group by function follows
+a split apply combined approach.
+
+299
+00:19:18.221 --> 00:19:20.306
+First, the data split into some groups,
+
+300
+00:19:20.306 --> 00:19:23.538
+then you apply some transformation
+filtering or aggregation.
+
+301
+00:19:23.538 --> 00:19:27.548
+And then the results are automatically
+combined for you by Pandas.

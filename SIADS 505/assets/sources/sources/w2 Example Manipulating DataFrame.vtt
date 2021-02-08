@@ -1,0 +1,695 @@
+WEBVTT
+
+1
+00:00:06.476 --> 00:00:10.652
+In this lecture, I'm going to walk through
+a basic data cleaning process with you and
+
+2
+00:00:10.652 --> 00:00:14.000
+introduce you to a few
+more pandas API functions.
+
+3
+00:00:14.000 --> 00:00:15.400
+Let's start by bringing in pandas.
+
+4
+00:00:15.400 --> 00:00:18.655
+So import pandas as pd and
+let's load our data set.
+
+5
+00:00:18.655 --> 00:00:21.736
+We're going to be cleaning the list
+of presidents in the US that I got
+
+6
+00:00:21.736 --> 00:00:22.556
+from Wikipedia.
+
+7
+00:00:22.556 --> 00:00:28.490
+So df=pd.read CSV and we'll bring
+in data sets / presidents.CSV and
+
+8
+00:00:28.490 --> 00:00:33.167
+let's just take a look at
+some of the data, so df.head.
+
+9
+00:00:33.167 --> 00:00:36.102
+Okay, so we have some presidents,
+some dates.
+
+10
+00:00:36.102 --> 00:00:39.957
+I see a bunch of footnotes in the born
+column which may cause issues.
+
+11
+00:00:39.957 --> 00:00:44.089
+So let's start with cleaning up that
+name into first name and last name,
+
+12
+00:00:44.089 --> 00:00:46.400
+I'm going to tackle this with a regex.
+
+13
+00:00:46.400 --> 00:00:48.100
+So I want to create two new columns and
+
+14
+00:00:48.100 --> 00:00:52.000
+apply a regex to the projection
+of the president column.
+
+15
+00:00:52.000 --> 00:00:53.200
+So here's one solution.
+
+16
+00:00:53.200 --> 00:00:55.550
+We could make a copy of
+the president column.
+
+17
+00:00:55.550 --> 00:01:00.323
+So I'll say df sub first that creates
+a new column equals df sub president and
+
+18
+00:01:00.323 --> 00:01:05.243
+then we can call replace and we just have
+a pattern that matches the last name and
+
+19
+00:01:05.243 --> 00:01:06.975
+sets it to an empty string.
+
+20
+00:01:06.975 --> 00:01:11.385
+So df sub first equals df sub
+first.replace and then the regex pattern
+
+21
+00:01:11.385 --> 00:01:15.944
+might be a whitespace character followed
+by any number of characters 
+
+22
+00:01:15.944 --> 00:01:17.830
+we just want to null this out.
+
+23
+00:01:17.830 --> 00:01:22.377
+So the next value is just an empty
+string and we say reg x equals true
+
+24
+00:01:22.377 --> 00:01:27.438
+remember to use replace and
+now let's take a look at this, so df.head.
+
+25
+00:01:27.438 --> 00:01:31.822
+So that works but it's kind of gross and
+it's slow since we had to make a full copy
+
+26
+00:01:31.822 --> 00:01:34.775
+of the column and
+then go through and update strings.
+
+27
+00:01:34.775 --> 00:01:37.600
+There are a few other ways
+that we can deal this.
+
+28
+00:01:37.600 --> 00:01:41.900
+Let me show you the most general one
+first and that's the apply function.
+
+29
+00:01:41.900 --> 00:01:43.600
+So let's drop the column we just made.
+
+30
+00:01:43.600 --> 00:01:47.868
+So we'll just remember del df
+sub first should drop the column
+
+31
+00:01:47.868 --> 00:01:49.516
+immediately in place.
+
+32
+00:01:49.516 --> 00:01:51.695
+No copy of a data frame being returned.
+
+33
+00:01:51.695 --> 00:01:56.213
+So the apply function on a data frame will
+take some arbitrary function you have
+
+34
+00:01:56.213 --> 00:01:59.567
+written and apply it to either a series,
+a single column or
+
+35
+00:01:59.567 --> 00:02:01.906
+a data frame across all rows or columns.
+
+36
+00:02:01.906 --> 00:02:05.948
+Let's write a function which just splits
+a string into two pieces using a single
+
+37
+00:02:05.948 --> 00:02:06.622
+row of data.
+
+38
+00:02:06.622 --> 00:02:12.500
+So we'll call this def split name and
+we pass in a parameters the row.
+
+39
+00:02:12.500 --> 00:02:17.500
+So the row is a single series object which
+is a single row indexed by column values.
+
+40
+00:02:17.500 --> 00:02:22.200
+So let's extract the first name and
+create a new entry into the series.
+
+41
+00:02:22.200 --> 00:02:27.063
+So DF sub first equals
+row sub president.split on space and
+
+42
+00:02:27.063 --> 00:02:29.691
+we'll just take the first item.
+
+43
+00:02:29.691 --> 00:02:34.459
+And so remember here when you're doing
+this that the row that comes into this is
+
+44
+00:02:34.459 --> 00:02:36.638
+whatever data frame we apply it to.
+
+45
+00:02:36.638 --> 00:02:41.190
+So we're going to use the data frame
+above but you could potentially reuse
+
+46
+00:02:41.190 --> 00:02:45.386
+this with function with any data
+frame that has a president column.
+
+47
+00:02:45.386 --> 00:02:50.043
+So let's do the same with the last
+word in the string to so row sub last
+
+48
+00:02:50.043 --> 00:02:54.800
+equals row sub president.split and
+then we'll just take minus 1.
+
+49
+00:02:54.800 --> 00:02:57.428
+Remember when you're indexing into a list
+
+50
+00:02:57.428 --> 00:03:01.445
+if you index negatively that counts
+from the back end of the list.
+
+51
+00:03:01.445 --> 00:03:03.584
+So this is a handy way
+to get the last item and
+
+52
+00:03:03.584 --> 00:03:07.700
+that way we don't have to worry about
+any middle names or initials in there.
+
+53
+00:03:07.700 --> 00:03:09.400
+And so now we just return the row and
+
+54
+00:03:09.400 --> 00:03:13.600
+the pandas.apply will take care of merging
+them back together into the data frame.
+
+55
+00:03:13.600 --> 00:03:15.470
+So this function will just return row.
+
+56
+00:03:15.470 --> 00:03:19.470
+And so now if we apply this to the
+dataframe indicating that we want to apply
+
+57
+00:03:19.470 --> 00:03:22.200
+it across columns,
+we should get our result.
+
+58
+00:03:22.200 --> 00:03:26.812
+So DF equals df dot apply,
+we say which function we're interested in
+
+59
+00:03:26.812 --> 00:03:31.838
+applying split name and then we say
+axes equals columns and then df.head.
+
+60
+00:03:31.838 --> 00:03:35.524
+So it's pretty questionable as to
+whether that's less gross but it
+
+61
+00:03:35.524 --> 00:03:39.933
+achieves the result and I find that I use
+the apply function regularly in my work.
+
+62
+00:03:39.933 --> 00:03:45.250
+The panda series has a couple of other
+nice convenience functions though and
+
+63
+00:03:45.250 --> 00:03:48.500
+next I'd like to touch
+on one called extract.
+
+64
+00:03:48.500 --> 00:03:50.400
+So let's drop our first name and
+last name.
+
+65
+00:03:50.400 --> 00:03:52.858
+So we'll del both first and last.
+
+66
+00:03:52.858 --> 00:03:57.688
+So extract takes a regular expression as
+input and specifically requires you to set
+
+67
+00:03:57.688 --> 00:04:02.242
+capture groups that correspond to
+the output columns that you're interested
+
+68
+00:04:02.242 --> 00:04:06.178
+in and this is a great place for
+you to pause in the video and reflect.
+
+69
+00:04:06.178 --> 00:04:10.469
+If you were going to write a regular
+expression that returned groups and
+
+70
+00:04:10.469 --> 00:04:14.700
+had just the first name and last name
+in it, what would that look like?
+
+71
+00:04:16.500 --> 00:04:19.651
+So here's my solution where we
+would match three groups, but
+
+72
+00:04:19.651 --> 00:04:22.083
+only return to the first name and
+the last name.
+
+73
+00:04:22.083 --> 00:04:26.049
+So the pattern remember the groups
+are always in parentheses.
+
+74
+00:04:26.049 --> 00:04:28.570
+So I'm going to have three
+sets of parentheses.
+
+75
+00:04:28.570 --> 00:04:33.913
+And the first one I want anchored to the
+beginning of the string any characters or
+
+76
+00:04:33.913 --> 00:04:36.300
+digits, any number of those.
+
+77
+00:04:36.300 --> 00:04:41.700
+The second one is question mark colon
+because I want this group not to
+
+78
+00:04:41.700 --> 00:04:47.000
+be returned and I want any number of
+characters followed by a white space and
+
+79
+00:04:47.000 --> 00:04:49.700
+then the last one I want any
+number of characters, but
+
+80
+00:04:49.700 --> 00:04:53.100
+I want to anchor this to
+the back of the string.
+
+81
+00:04:54.300 --> 00:04:59.000
+So now the extract function is built into
+the str attribute of the series object so
+
+82
+00:04:59.000 --> 00:05:03.600
+we can call it using
+Series.str.extract sub pattern.
+
+83
+00:05:03.600 --> 00:05:06.192
+So in this case we say df sub president.
+
+84
+00:05:06.192 --> 00:05:11.442
+Remember when you've got a single
+column that you're taking out of a data
+
+85
+00:05:11.442 --> 00:05:17.042
+frame it's projected as a series,
+.str.extract and then pass in a pattern.
+
+86
+00:05:17.042 --> 00:05:20.298
+The pattern we're interested in,
+we'll take a look at the head of this.
+
+87
+00:05:20.298 --> 00:05:24.300
+So that looks pretty nice
+other than the column names.
+
+88
+00:05:24.300 --> 00:05:27.200
+But if we name the groups
+we get column names out.
+
+89
+00:05:27.200 --> 00:05:30.071
+So I'm just going to
+update this pattern and
+
+90
+00:05:30.071 --> 00:05:32.875
+remember that we can create named groups.
+
+91
+00:05:32.875 --> 00:05:36.734
+So we just say question mark capital P and
+then within the less-than and
+
+92
+00:05:36.734 --> 00:05:40.913
+greater-than signs, we put the name of
+the group we want so we'll say one for
+
+93
+00:05:40.913 --> 00:05:45.223
+first and then of course the middle one,
+we're not interested in capturing and
+
+94
+00:05:45.223 --> 00:05:47.700
+returning and
+the last one we'll call last.
+
+95
+00:05:47.700 --> 00:05:50.000
+So now we'll call extract.
+
+96
+00:05:50.000 --> 00:05:54.952
+So again names equals df sub
+president.str.extract sub
+
+97
+00:05:54.952 --> 00:05:58.000
+pattern.head and we'll print out names.
+
+98
+00:05:59.900 --> 00:06:03.640
+And we could just copy these into
+our main data frame if we want to so
+
+99
+00:06:03.640 --> 00:06:06.428
+we could say df sub first
+equals name sub first and
+
+100
+00:06:06.428 --> 00:06:09.908
+df sub last equals name sub last and
+print out the data frame.
+
+101
+00:06:09.908 --> 00:06:14.046
+So it's worth looking at the pandas
+Str module for other functions,
+
+102
+00:06:14.046 --> 00:06:18.755
+which we've been written specifically
+to clean up strings and data frames and
+
+103
+00:06:18.755 --> 00:06:22.274
+you can find that in the docs
+in working with text section.
+
+104
+00:06:22.274 --> 00:06:24.370
+And here's a URL to that.
+
+105
+00:06:24.370 --> 00:06:28.516
+Now, let's move on to
+clean up the born column.
+
+106
+00:06:28.516 --> 00:06:31.887
+First, let's get rid of anything that
+isn't in the pattern of day, month, year.
+
+107
+00:06:31.887 --> 00:06:34.166
+So here I'm going to do this.
+
+108
+00:06:34.166 --> 00:06:38.270
+I'm going to do df sub born
+equals df sub born.str.extract so
+
+109
+00:06:38.270 --> 00:06:43.933
+I'm going to use capture groups again, but
+I'm only going to have one capture group.
+
+110
+00:06:43.933 --> 00:06:48.415
+So it's a little bit cheating maybe and
+I'm going to match any number of
+
+111
+00:06:48.415 --> 00:06:51.255
+characters three times
+followed by a space,
+
+112
+00:06:51.255 --> 00:06:55.905
+followed by any number of characters
+somewhere in that one to two length.
+
+113
+00:06:55.905 --> 00:07:00.178
+Followed by a space and then one to two
+length is really because I want to capture
+
+114
+00:07:00.178 --> 00:07:05.164
+a single digits like first, second, third
+as well as double digits like 10th, 11th,
+
+115
+00:07:05.164 --> 00:07:05.717
+12th.
+
+116
+00:07:05.717 --> 00:07:10.455
+And then any number of characters for
+time to get that last bit and
+
+117
+00:07:10.455 --> 00:07:12.487
+let's print out the head.
+
+118
+00:07:12.487 --> 00:07:18.600
+So that cleans up the date format, but
+I want to foreshadow something else here.
+
+119
+00:07:18.600 --> 00:07:21.700
+The type of this column
+is actually an object and
+
+120
+00:07:21.700 --> 00:07:25.700
+we know that's what pandas uses
+when it's dealing with strings but
+
+121
+00:07:25.700 --> 00:07:29.600
+pandas actually has really
+interesting date-time features.
+
+122
+00:07:29.600 --> 00:07:32.300
+In fact,
+one of the reasons West McKinney put his
+
+123
+00:07:32.300 --> 00:07:36.700
+efforts into the library was to
+deal with financial transactions.
+
+124
+00:07:36.700 --> 00:07:38.632
+So if I were building this out further,
+
+125
+00:07:38.632 --> 00:07:41.924
+I would actually update this column
+to write the data type as well.
+
+126
+00:07:41.924 --> 00:07:45.146
+So to do that,
+I would say df sub born equals and
+
+127
+00:07:45.146 --> 00:07:48.962
+then I would call on the top
+level of the pandas module.
+
+128
+00:07:48.962 --> 00:07:53.577
+There's a function called to date time and
+I would just pass it df sub born.
+
+129
+00:07:53.577 --> 00:07:57.600
+So I would pass it the whole series and
+let's take a look at what that looks like.
+
+130
+00:07:58.800 --> 00:08:03.818
+So this would make subsequent processing
+on the dataframe around days
+
+131
+00:08:03.818 --> 00:08:09.364
+such as getting every president who was
+born in a given time span much easier.
+
+132
+00:08:09.364 --> 00:08:13.077
+Now most of the other columns in this data
+set I would clean up in a similar fashion
+
+133
+00:08:13.077 --> 00:08:15.469
+and this should be good
+practice activity for you.
+
+134
+00:08:15.469 --> 00:08:19.026
+So I recommend that you pause this video,
+open up a notebook for yourself for
+
+135
+00:08:19.026 --> 00:08:19.900
+the lecture.
+
+136
+00:08:19.900 --> 00:08:21.839
+If you don't already have
+it opened of course and
+
+137
+00:08:21.839 --> 00:08:23.458
+then finish cleaning up the data frame.
+
+138
+00:08:23.458 --> 00:08:26.297
+In this lecture I introduced
+you to the str module,
+
+139
+00:08:26.297 --> 00:08:30.665
+which has a number of important functions
+for cleaning panda's dataframes.
+
+140
+00:08:30.665 --> 00:08:32.305
+You don't have to use these.
+
+141
+00:08:32.305 --> 00:08:36.538
+I actually use applied quite a bit myself,
+especially if I don't need high level
+
+142
+00:08:36.538 --> 00:08:39.972
+performance data cleaning because
+my data set is usually small.
+
+143
+00:08:39.972 --> 00:08:42.429
+But the str functions
+are incredibly useful and
+
+144
+00:08:42.429 --> 00:08:45.809
+they build on your existing
+knowledge of regular expressions and
+
+145
+00:08:45.809 --> 00:08:49.690
+because they're vectorized they're
+very efficient to be using as well.

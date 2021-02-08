@@ -1,0 +1,2894 @@
+WEBVTT
+
+1
+00:00:05.210 --> 00:00:07.710
+In this lecture, we're
+going to talk about
+
+2
+00:00:07.710 --> 00:00:10.815
+pattern matching in strings
+using regular expressions.
+
+3
+00:00:10.815 --> 00:00:13.139
+Regular expressions or regexes
+
+4
+00:00:13.139 --> 00:00:15.825
+are written in a condensed
+formatting language.
+
+5
+00:00:15.825 --> 00:00:17.220
+In general, you can think of
+
+6
+00:00:17.220 --> 00:00:19.080
+regular expression
+as a pattern which
+
+7
+00:00:19.080 --> 00:00:22.515
+you give to a regex processor
+with some source data.
+
+8
+00:00:22.515 --> 00:00:24.420
+The processor then parses that
+
+9
+00:00:24.420 --> 00:00:26.940
+source data using the
+pattern and returns chunks
+
+10
+00:00:26.940 --> 00:00:29.040
+of texts back to
+the data scientist
+
+11
+00:00:29.040 --> 00:00:31.665
+or programmer for
+further manipulation.
+
+12
+00:00:31.665 --> 00:00:33.630
+There's really three main reasons
+
+13
+00:00:33.630 --> 00:00:34.920
+you should want to do this.
+
+14
+00:00:34.920 --> 00:00:36.240
+To check whether a pattern
+
+15
+00:00:36.240 --> 00:00:38.490
+exists within some source data,
+
+16
+00:00:38.490 --> 00:00:40.050
+to get all instances of
+
+17
+00:00:40.050 --> 00:00:42.590
+a complex pattern from
+some source data,
+
+18
+00:00:42.590 --> 00:00:44.660
+or to clean
+your source data using
+
+19
+00:00:44.660 --> 00:00:47.395
+a pattern generally
+through strings splitting.
+
+20
+00:00:47.395 --> 00:00:49.705
+Regexes are not
+trivial but they are
+
+21
+00:00:49.705 --> 00:00:51.350
+foundational technique for data
+
+22
+00:00:51.350 --> 00:00:53.540
+cleaning in data
+science applications.
+
+23
+00:00:53.540 --> 00:00:54.860
+A solid understanding of
+
+24
+00:00:54.860 --> 00:00:56.570
+regexes will help you quickly and
+
+25
+00:00:56.570 --> 00:00:58.775
+efficiently manipulate text data
+
+26
+00:00:58.775 --> 00:01:01.375
+for further data
+science application.
+
+27
+00:01:01.375 --> 00:01:03.720
+Now, you could teach
+a whole course
+
+28
+00:01:03.720 --> 00:01:05.685
+on regular expressions alone,
+
+29
+00:01:05.685 --> 00:01:07.580
+especially if you
+wanted to demystify
+
+30
+00:01:07.580 --> 00:01:08.780
+how the regex parsing
+
+31
+00:01:08.780 --> 00:01:12.290
+Engine works and efficient
+mechanisms for parsing text.
+
+32
+00:01:12.290 --> 00:01:13.910
+In this lecture, I
+want to give you
+
+33
+00:01:13.910 --> 00:01:16.385
+a basic understanding
+of how regex works.
+
+34
+00:01:16.385 --> 00:01:19.720
+Enough knowledge that, with
+a little directed sleuthing,
+
+35
+00:01:19.720 --> 00:01:21.140
+you'll be able to make sense of
+
+36
+00:01:21.140 --> 00:01:23.375
+the regex patterns
+you see others using,
+
+37
+00:01:23.375 --> 00:01:25.910
+and you can build up
+your own practical knowledge of
+
+38
+00:01:25.910 --> 00:01:29.110
+how to use regexes to
+improve your data cleaning.
+
+39
+00:01:29.110 --> 00:01:30.940
+By the end of this lecture,
+
+40
+00:01:30.940 --> 00:01:32.030
+you'll be able to understand
+
+41
+00:01:32.030 --> 00:01:33.965
+the basics of
+regular expressions.
+
+42
+00:01:33.965 --> 00:01:35.945
+How to define patterns
+for matching,
+
+43
+00:01:35.945 --> 00:01:38.450
+how to apply these
+patterns to strings,
+
+44
+00:01:38.450 --> 00:01:40.010
+and how to use those strings for
+
+45
+00:01:40.010 --> 00:01:42.365
+those patterns in
+data processing.
+
+46
+00:01:42.365 --> 00:01:44.195
+Finally, and note that,
+
+47
+00:01:44.195 --> 00:01:46.040
+in order to best learn regexes,
+
+48
+00:01:46.040 --> 00:01:47.705
+you need to write regexes.
+
+49
+00:01:47.705 --> 00:01:50.210
+I encourage you to stop
+the video at any time and
+
+50
+00:01:50.210 --> 00:01:53.515
+try out new patterns
+or syntaxes you learn.
+
+51
+00:01:53.515 --> 00:01:56.780
+So first, we'll import
+the re module which is
+
+52
+00:01:56.780 --> 00:01:59.405
+where the Python stores
+regular expression libraries.
+
+53
+00:01:59.405 --> 00:02:01.675
+So import RE.
+
+54
+00:02:01.675 --> 00:02:04.460
+There are several main
+processing functions
+
+55
+00:02:04.460 --> 00:02:05.990
+and read that you might use.
+
+56
+00:02:05.990 --> 00:02:08.720
+The first, Match, checks
+for a string match
+
+57
+00:02:08.720 --> 00:02:09.770
+that is at the beginning of
+
+58
+00:02:09.770 --> 00:02:11.900
+the string and returns a Boolean.
+
+59
+00:02:11.900 --> 00:02:14.255
+Similarly, Search,
+checks for a match
+
+60
+00:02:14.255 --> 00:02:16.880
+anywhere in the string
+and returns a Boolean.
+
+61
+00:02:16.880 --> 00:02:19.295
+Let's create some texts
+for an example.
+
+62
+00:02:19.295 --> 00:02:21.920
+So text, "This is a good day."
+
+63
+00:02:21.920 --> 00:02:24.305
+Now, let's see if it's
+a good day or not.
+
+64
+00:02:24.305 --> 00:02:27.155
+So we can do if re.search,
+
+65
+00:02:27.155 --> 00:02:28.670
+look for good, text,
+
+66
+00:02:28.670 --> 00:02:30.800
+and the first parameter
+here is the pattern.
+
+67
+00:02:30.800 --> 00:02:32.644
+Then we'll print, wonderful,
+
+68
+00:02:32.644 --> 00:02:37.285
+if good's there, else will
+print alas and a frowny face.
+
+69
+00:02:37.285 --> 00:02:40.605
+So in addition to checking
+for conditionals,
+
+70
+00:02:40.605 --> 00:02:42.435
+we can segment a string.
+
+71
+00:02:42.435 --> 00:02:45.590
+The work that regex does
+here is called tokenizing,
+
+72
+00:02:45.590 --> 00:02:47.305
+where this string
+is separated into
+
+73
+00:02:47.305 --> 00:02:49.480
+substrings based on patterns.
+
+74
+00:02:49.480 --> 00:02:51.880
+Tokenizing is a core activity in
+
+75
+00:02:51.880 --> 00:02:54.070
+natural language processing
+which we won't
+
+76
+00:02:54.070 --> 00:02:57.440
+talk much about here but
+you'll study in the future.
+
+77
+00:02:57.440 --> 00:03:00.130
+The Findall and
+Split functions will
+
+78
+00:03:00.130 --> 00:03:02.665
+parse the string for
+us and return chunks.
+
+79
+00:03:02.665 --> 00:03:04.390
+Let's try an example.
+
+80
+00:03:04.390 --> 00:03:07.210
+So text, "Amy works diligently.
+
+81
+00:03:07.210 --> 00:03:08.905
+Amy gets good grades.
+
+82
+00:03:08.905 --> 00:03:11.185
+Our student Amy is successful."
+
+83
+00:03:11.185 --> 00:03:13.540
+It sounds like
+a very positive thing.
+
+84
+00:03:13.540 --> 00:03:16.195
+So this is a bit of
+a fabricated example,
+
+85
+00:03:16.195 --> 00:03:19.720
+but let's split on this
+all instances of Amy.
+
+86
+00:03:19.720 --> 00:03:23.525
+So re.split, Amy as the pattern
+where we want to match,
+
+87
+00:03:23.525 --> 00:03:25.630
+and text as our text.
+
+88
+00:03:25.630 --> 00:03:28.100
+You'll notice that
+Split has returned
+
+89
+00:03:28.100 --> 00:03:29.720
+an empty string followed by
+
+90
+00:03:29.720 --> 00:03:31.550
+a number of statements about Amy,
+
+91
+00:03:31.550 --> 00:03:33.500
+all its elements of a list.
+
+92
+00:03:33.500 --> 00:03:35.330
+If we wanted to count how many
+
+93
+00:03:35.330 --> 00:03:36.980
+times we've talked about Amy,
+
+94
+00:03:36.980 --> 00:03:38.675
+we could use Findall.
+
+95
+00:03:38.675 --> 00:03:43.285
+So re.findall, Amy and text.
+
+96
+00:03:43.285 --> 00:03:45.630
+Okay, so we've seen that
+
+97
+00:03:45.630 --> 00:03:47.840
+Search looks for some
+pattern and returns
+
+98
+00:03:47.840 --> 00:03:50.090
+a Boolean that Split will use
+
+99
+00:03:50.090 --> 00:03:52.955
+a pattern for creating
+a list of substrings,
+
+100
+00:03:52.955 --> 00:03:54.650
+and that Findall will look for
+
+101
+00:03:54.650 --> 00:03:57.750
+a pattern and pull
+out all occurrences.
+
+102
+00:03:57.890 --> 00:04:01.920
+Now, we know how
+the Python RegEx API works.
+
+103
+00:04:01.920 --> 00:04:04.970
+Let's talk a little bit more
+about complex patterns.
+
+104
+00:04:04.970 --> 00:04:07.760
+The regex specification
+standard defines
+
+105
+00:04:07.760 --> 00:04:11.030
+a markup language to
+describe patterns in text.
+
+106
+00:04:11.030 --> 00:04:12.800
+Let's start with anchors.
+
+107
+00:04:12.800 --> 00:04:15.065
+Anchors specify the start
+
+108
+00:04:15.065 --> 00:04:17.600
+and/or end of the string
+that you're trying to match.
+
+109
+00:04:17.600 --> 00:04:20.615
+The caret character means Start,
+
+110
+00:04:20.615 --> 00:04:23.320
+and the dollar sign
+character means End.
+
+111
+00:04:23.320 --> 00:04:25.395
+If you put caret before a string,
+
+112
+00:04:25.395 --> 00:04:27.620
+it means that the texts
+that the regex processor
+
+113
+00:04:27.620 --> 00:04:30.545
+retrieves must start with
+the string you specify.
+
+114
+00:04:30.545 --> 00:04:32.420
+For ending, you have to put
+
+115
+00:04:32.420 --> 00:04:34.820
+the dollar sign character
+after the string.
+
+116
+00:04:34.820 --> 00:04:36.860
+It means that the texts regex
+
+117
+00:04:36.860 --> 00:04:39.940
+retrieves must end with
+a string you specified.
+
+118
+00:04:39.940 --> 00:04:44.565
+Here's an example. So text,
+"Amy works diligently.
+
+119
+00:04:44.565 --> 00:04:45.945
+Amy gets good grades,
+
+120
+00:04:45.945 --> 00:04:48.790
+and our student Amy
+is successful."
+
+121
+00:04:48.790 --> 00:04:51.860
+Let's see if this
+begins with Amy.
+
+122
+00:04:51.860 --> 00:04:54.620
+So we could do re.search
+and then inside
+
+123
+00:04:54.620 --> 00:04:57.710
+quotes as our pattern
+and we'll put caret Amy.
+
+124
+00:04:57.710 --> 00:05:01.600
+So we want to match Amy at
+the beginning and then text.
+
+125
+00:05:01.600 --> 00:05:05.410
+Notice that re.search
+actually returned to us
+
+126
+00:05:05.410 --> 00:05:08.810
+a new object called
+an re.Match object.
+
+127
+00:05:08.810 --> 00:05:11.190
+An re.Match object, always has
+
+128
+00:05:11.190 --> 00:05:13.885
+a Boolean value of true
+as something was found.
+
+129
+00:05:13.885 --> 00:05:15.790
+So you can always evaluate it in
+
+130
+00:05:15.790 --> 00:05:18.280
+an If statement like
+we did earlier.
+
+131
+00:05:18.280 --> 00:05:20.470
+The rendering of the match object
+
+132
+00:05:20.470 --> 00:05:22.900
+also tells you what
+pattern was matched,
+
+133
+00:05:22.900 --> 00:05:24.685
+in this case, the word Amy,
+
+134
+00:05:24.685 --> 00:05:28.580
+and the location of the match
+was in as in the span.
+
+135
+00:05:31.230 --> 00:05:33.835
+Let's talk more about patterns
+
+136
+00:05:33.835 --> 00:05:35.830
+and start with character classes.
+
+137
+00:05:35.830 --> 00:05:38.620
+Let's create a string of
+single learners grades over
+
+138
+00:05:38.620 --> 00:05:41.830
+a semester in one course across
+all of their assignments.
+
+139
+00:05:41.830 --> 00:05:43.750
+So grades equals,
+and I'll just put
+
+140
+00:05:43.750 --> 00:05:46.690
+a string of As, Bs and Cs.
+
+141
+00:05:46.690 --> 00:05:48.830
+No Ds for this student.
+
+142
+00:05:48.830 --> 00:05:51.990
+If we want to answer
+the question,
+
+143
+00:05:51.990 --> 00:05:54.270
+How many Bs were
+in the grade list,
+
+144
+00:05:54.270 --> 00:05:56.625
+we could just use
+B as our pattern.
+
+145
+00:05:56.625 --> 00:05:59.685
+So re.findall B and grades,
+
+146
+00:05:59.685 --> 00:06:01.725
+and we see that
+there's three here.
+
+147
+00:06:01.725 --> 00:06:05.190
+If we wanted to count the
+number of As or Bs in the list,
+
+148
+00:06:05.190 --> 00:06:08.060
+we can't use A and
+B since this is
+
+149
+00:06:08.060 --> 00:06:11.435
+used to match all As
+followed immediately by a B.
+
+150
+00:06:11.435 --> 00:06:13.460
+Instead, we put the characters A
+
+151
+00:06:13.460 --> 00:06:15.455
+and B inside square brackets.
+
+152
+00:06:15.455 --> 00:06:17.870
+So we do re.findall
+and then we do
+
+153
+00:06:17.870 --> 00:06:22.975
+square brackets AB and
+then passing grades.
+
+154
+00:06:22.975 --> 00:06:25.110
+Here, we can see the whole list
+
+155
+00:06:25.110 --> 00:06:27.240
+of As and Bs that are found.
+
+156
+00:06:27.240 --> 00:06:29.545
+This is called The Set Operator.
+
+157
+00:06:29.545 --> 00:06:31.340
+You can also include a range of
+
+158
+00:06:31.340 --> 00:06:34.070
+characters which are
+ordered Alpha numerically.
+
+159
+00:06:34.070 --> 00:06:35.900
+For instance, if we want to refer
+
+160
+00:06:35.900 --> 00:06:37.610
+to all lowercase characters,
+
+161
+00:06:37.610 --> 00:06:42.335
+we could use A-Z in
+the square brackets.
+
+162
+00:06:42.335 --> 00:06:44.855
+Let's build a simple
+regex to parse out
+
+163
+00:06:44.855 --> 00:06:47.780
+all instances where
+the student received an A
+
+164
+00:06:47.780 --> 00:06:53.375
+followed by a B or a C. So
+re.findall and then we'll use
+
+165
+00:06:53.375 --> 00:06:56.300
+the set operator with
+A and the set operator
+
+166
+00:06:56.300 --> 00:07:01.830
+with E-C and parse in the grades.
+
+167
+00:07:02.120 --> 00:07:06.020
+Notice how the AB pattern
+describes the set of
+
+168
+00:07:06.020 --> 00:07:09.830
+possible characters which
+could be either A or
+
+169
+00:07:09.830 --> 00:07:12.560
+B while the A and
+then followed by
+
+170
+00:07:12.560 --> 00:07:15.230
+the B-C pattern denotes two sets
+
+171
+00:07:15.230 --> 00:07:18.215
+of characters which must have
+been matched back to back.
+
+172
+00:07:18.215 --> 00:07:20.210
+You can write this
+pattern by using
+
+173
+00:07:20.210 --> 00:07:22.805
+the pipe operator which means OR.
+
+174
+00:07:22.805 --> 00:07:26.360
+So we could do re.findall AB
+
+175
+00:07:26.360 --> 00:07:31.590
+or AC in quotes directly as
+our pattern with grades.
+
+176
+00:07:31.830 --> 00:07:34.060
+We can use the caret with
+
+177
+00:07:34.060 --> 00:07:37.060
+the set operator to
+negate our results.
+
+178
+00:07:37.060 --> 00:07:38.965
+For instance, if we
+wanted to parse out
+
+179
+00:07:38.965 --> 00:07:41.545
+only the grades
+which were not A's,
+
+180
+00:07:41.545 --> 00:07:44.110
+we would do re.findall,
+
+181
+00:07:44.110 --> 00:07:46.030
+and then we'd use
+the set operator,
+
+182
+00:07:46.030 --> 00:07:49.975
+this is important
+caret A and grades.
+
+183
+00:07:49.975 --> 00:07:52.915
+Here we only have B's and C's.
+
+184
+00:07:52.915 --> 00:07:54.820
+So note this carefully,
+
+185
+00:07:54.820 --> 00:07:56.830
+the caret was previously
+
+186
+00:07:56.830 --> 00:07:59.860
+matched to the beginning of
+a string as an anchor point.
+
+187
+00:07:59.860 --> 00:08:01.900
+But inside of the set operator,
+
+188
+00:08:01.900 --> 00:08:03.220
+the caret and its other
+
+189
+00:08:03.220 --> 00:08:05.320
+special characters
+we'll be talking about,
+
+190
+00:08:05.320 --> 00:08:06.985
+they lose their meaning.
+
+191
+00:08:06.985 --> 00:08:09.340
+This can be a bit confusing.
+
+192
+00:08:09.340 --> 00:08:12.190
+What do you think the result
+of this operation would be?
+
+193
+00:08:12.190 --> 00:08:14.140
+So we'll do re.findall,
+
+194
+00:08:14.140 --> 00:08:18.520
+caret set operator, then
+another caret A, and grades.
+
+195
+00:08:18.520 --> 00:08:19.990
+Just take a minute, look at that,
+
+196
+00:08:19.990 --> 00:08:22.705
+and reflect on what
+we just talked about.
+
+197
+00:08:22.705 --> 00:08:25.310
+What do you think it would be?
+
+198
+00:08:25.470 --> 00:08:27.970
+So it's an empty list, because
+
+199
+00:08:27.970 --> 00:08:29.635
+the regex is saying
+we want to match
+
+200
+00:08:29.635 --> 00:08:31.180
+any value at the beginning of
+
+201
+00:08:31.180 --> 00:08:33.490
+the string which is not an A,
+
+202
+00:08:33.490 --> 00:08:34.930
+and our string starts with an A,
+
+203
+00:08:34.930 --> 00:08:36.580
+so there's no match found.
+
+204
+00:08:36.580 --> 00:08:39.010
+Remember, when you're
+using the set operator,
+
+205
+00:08:39.010 --> 00:08:41.500
+you're doing character
+based matching.
+
+206
+00:08:41.500 --> 00:08:45.160
+So you're matching individual
+characters in an or method.
+
+207
+00:08:45.160 --> 00:08:47.755
+Okay. So we talked about anchors,
+
+208
+00:08:47.755 --> 00:08:49.105
+and matching to the beginning,
+
+209
+00:08:49.105 --> 00:08:50.365
+and end of patterns.
+
+210
+00:08:50.365 --> 00:08:51.955
+We've talked about characters
+
+211
+00:08:51.955 --> 00:08:54.385
+using sets with the set notation.
+
+212
+00:08:54.385 --> 00:08:56.500
+We've talked about
+character negation
+
+213
+00:08:56.500 --> 00:08:58.540
+and how the pipe of character,
+
+214
+00:08:58.540 --> 00:09:01.765
+allows us to use or
+in our operations.
+
+215
+00:09:01.765 --> 00:09:04.015
+Let's move on to quantifiers.
+
+216
+00:09:04.015 --> 00:09:05.980
+Quantifiers are the number
+
+217
+00:09:05.980 --> 00:09:07.480
+of times you want to pattern to
+
+218
+00:09:07.480 --> 00:09:10.600
+be matched in order to
+actually count as a match.
+
+219
+00:09:10.600 --> 00:09:12.595
+The most basic quantifiers,
+
+220
+00:09:12.595 --> 00:09:14.230
+the expression of E,
+
+221
+00:09:14.230 --> 00:09:16.990
+curly brace M, N curly brace,
+
+222
+00:09:16.990 --> 00:09:19.794
+where E is the expression or
+character we're matching,
+
+223
+00:09:19.794 --> 00:09:21.280
+M is the minimum number
+
+224
+00:09:21.280 --> 00:09:22.810
+of times you want
+it to be matched,
+
+225
+00:09:22.810 --> 00:09:24.610
+and N is the maximum number of
+
+226
+00:09:24.610 --> 00:09:27.145
+times the item could be matched.
+
+227
+00:09:27.145 --> 00:09:29.590
+Let's use these grades
+as an example.
+
+228
+00:09:29.590 --> 00:09:31.690
+How many times has
+this student been on
+
+229
+00:09:31.690 --> 00:09:34.405
+a back-to-back A streak?
+
+230
+00:09:34.405 --> 00:09:36.880
+So we do this with re.findall
+
+231
+00:09:36.880 --> 00:09:39.715
+where the character we're
+interested in is A,
+
+232
+00:09:39.715 --> 00:09:42.790
+so that takes the place
+of E, curly brace,
+
+233
+00:09:42.790 --> 00:09:44.560
+we want to have at
+least two of them,
+
+234
+00:09:44.560 --> 00:09:46.225
+so that's our m value of two,
+
+235
+00:09:46.225 --> 00:09:47.950
+and we'll just have
+some big value.
+
+236
+00:09:47.950 --> 00:09:49.360
+We use ten here,
+
+237
+00:09:49.360 --> 00:09:51.610
+and we'll pass this
+in as our grade.
+
+238
+00:09:51.610 --> 00:09:55.030
+So we're using two as
+our mean, but ten is our max.
+
+239
+00:09:55.030 --> 00:09:57.850
+So we see that there
+were two streaks;
+
+240
+00:09:57.850 --> 00:09:59.545
+one where the student
+had four A's,
+
+241
+00:09:59.545 --> 00:10:02.210
+and one where they
+only had two A's.
+
+242
+00:10:02.210 --> 00:10:05.820
+We might try and do this
+using single values,
+
+243
+00:10:05.820 --> 00:10:07.500
+and just repeating the pattern.
+
+244
+00:10:07.500 --> 00:10:09.885
+So we might try re.findall,
+
+245
+00:10:09.885 --> 00:10:12.240
+and then we've got a capital A,
+
+246
+00:10:12.240 --> 00:10:16.170
+and we want a minimax match
+of one for those capital A,
+
+247
+00:10:16.170 --> 00:10:19.850
+minimax match of one
+for those all grades.
+
+248
+00:10:19.850 --> 00:10:23.575
+As you can see, this is different
+than the first example.
+
+249
+00:10:23.575 --> 00:10:25.030
+The first pattern is looking for
+
+250
+00:10:25.030 --> 00:10:26.635
+a combination of two A's,
+
+251
+00:10:26.635 --> 00:10:28.390
+up to ten A's in a row,
+
+252
+00:10:28.390 --> 00:10:31.360
+so it sees four A's
+as a single streak.
+
+253
+00:10:31.360 --> 00:10:34.870
+The second pattern is looking
+for two A's back-to-back,
+
+254
+00:10:34.870 --> 00:10:38.725
+so it sees two A's followed
+immediately by two more A's.
+
+255
+00:10:38.725 --> 00:10:40.960
+We say that the regex processor
+
+256
+00:10:40.960 --> 00:10:43.030
+begins at the start
+of the string,
+
+257
+00:10:43.030 --> 00:10:44.740
+and it consumes variables
+
+258
+00:10:44.740 --> 00:10:47.395
+which match patterns as it does.
+
+259
+00:10:47.395 --> 00:10:49.540
+It's important to note that
+
+260
+00:10:49.540 --> 00:10:52.420
+the regex quantifier's
+syntax does not
+
+261
+00:10:52.420 --> 00:10:55.780
+allow you to deviate
+from the MN pattern.
+
+262
+00:10:55.780 --> 00:10:58.420
+In particular, if you've
+got an extra space in
+
+263
+00:10:58.420 --> 00:11:01.075
+between the braces you'll
+get an empty result.
+
+264
+00:11:01.075 --> 00:11:07.210
+So re.findall, A, a brace
+two comma space two,
+
+265
+00:11:07.210 --> 00:11:10.195
+we see that that's
+an empty result.
+
+266
+00:11:10.195 --> 00:11:12.850
+As we've already seen,
+if we don't include
+
+267
+00:11:12.850 --> 00:11:16.540
+a quantifier when
+the default is 1 1.
+
+268
+00:11:16.540 --> 00:11:18.880
+So re.findall, we can just
+
+269
+00:11:18.880 --> 00:11:22.160
+use A A if we just
+want to match one.
+
+270
+00:11:23.040 --> 00:11:25.870
+If you have one
+number in the braces,
+
+271
+00:11:25.870 --> 00:11:29.650
+it's considered to be
+both the M and the N value.
+
+272
+00:11:29.650 --> 00:11:33.340
+So re.findall A brace two,
+
+273
+00:11:33.340 --> 00:11:36.710
+two is the min and the max.
+
+274
+00:11:36.840 --> 00:11:39.400
+So using this we could find
+
+275
+00:11:39.400 --> 00:11:42.415
+a decreasing trend in the
+students grades for instance.
+
+276
+00:11:42.415 --> 00:11:47.290
+So re.findall, and we'll look
+for A's, any number of A's,
+
+277
+00:11:47.290 --> 00:11:51.280
+we'll use ten as the max here
+as well, B's any number,
+
+278
+00:11:51.280 --> 00:11:52.900
+C's any number, and
+
+279
+00:11:52.900 --> 00:11:56.320
+then we'll pass in
+grades as our string.
+
+280
+00:11:56.320 --> 00:11:59.260
+Now, that's a bit of
+a hack because we included
+
+281
+00:11:59.260 --> 00:12:02.080
+a maximum that was just
+arbitrarily large.
+
+282
+00:12:02.080 --> 00:12:03.910
+There are three other quantifiers
+
+283
+00:12:03.910 --> 00:12:05.289
+there used to shorthand,
+
+284
+00:12:05.289 --> 00:12:07.075
+that we could think
+about using here.
+
+285
+00:12:07.075 --> 00:12:10.465
+An asterix is used to
+match zero or more times,
+
+286
+00:12:10.465 --> 00:12:13.555
+a question mark to match
+one or more times,
+
+287
+00:12:13.555 --> 00:12:16.390
+or a plus sign to match
+one or more times.
+
+288
+00:12:16.390 --> 00:12:18.865
+Let's look at
+a more complex example,
+
+289
+00:12:18.865 --> 00:12:21.610
+and load some data
+scraped from Wikipedia.
+
+290
+00:12:21.610 --> 00:12:26.530
+So we'll open a dataset
+called ferpa.txt.
+
+291
+00:12:26.530 --> 00:12:30.130
+This is the ferpa article
+on Wikipedia as a file.
+
+292
+00:12:30.130 --> 00:12:33.950
+We'll read this into
+a variable called Wiki.
+
+293
+00:12:34.020 --> 00:12:37.940
+Let's just print this
+out to the screen.
+
+294
+00:12:38.700 --> 00:12:41.395
+So scanning through
+this document,
+
+295
+00:12:41.395 --> 00:12:43.990
+one of the things we notice
+is that the headers all have
+
+296
+00:12:43.990 --> 00:12:47.020
+the word edit and
+braces behind them,
+
+297
+00:12:47.020 --> 00:12:49.090
+or rather square
+brackets behind them,
+
+298
+00:12:49.090 --> 00:12:51.250
+followed by a new line character.
+
+299
+00:12:51.250 --> 00:12:52.660
+So if we wanted to get a list of
+
+300
+00:12:52.660 --> 00:12:54.070
+all the headers in this article,
+
+301
+00:12:54.070 --> 00:12:56.815
+we could do so using re.findall.
+
+302
+00:12:56.815 --> 00:13:00.070
+So re.findall, and
+then we can say here,
+
+303
+00:13:00.070 --> 00:13:00.910
+well we're interested in
+
+304
+00:13:00.910 --> 00:13:02.860
+all characters that
+are lowercase,
+
+305
+00:13:02.860 --> 00:13:05.890
+A through Z or
+a capital case A through Z.
+
+306
+00:13:05.890 --> 00:13:07.300
+We're interested in somewhere
+
+307
+00:13:07.300 --> 00:13:10.075
+between 1-100 of
+those characters,
+
+308
+00:13:10.075 --> 00:13:13.300
+as long as they're
+followed by Edit.
+
+309
+00:13:13.300 --> 00:13:17.620
+We have to escape the square
+braces here unfortunately,
+
+310
+00:13:17.620 --> 00:13:19.240
+which makes it a
+little bit messier,
+
+311
+00:13:19.240 --> 00:13:22.825
+but we don't want to move
+into the set notation.
+
+312
+00:13:22.825 --> 00:13:25.165
+Okay. So that didn't quite work.
+
+313
+00:13:25.165 --> 00:13:26.410
+It got out the headers,
+
+314
+00:13:26.410 --> 00:13:29.080
+but only the last
+word of the header,
+
+315
+00:13:29.080 --> 00:13:31.105
+and it really was quite clunky.
+
+316
+00:13:31.105 --> 00:13:33.430
+So let's iteratively
+improve on this.
+
+317
+00:13:33.430 --> 00:13:37.315
+First, we can use slash
+W to match any letter,
+
+318
+00:13:37.315 --> 00:13:39.565
+including digits and numbers.
+
+319
+00:13:39.565 --> 00:13:41.980
+So if we do re.findall,
+
+320
+00:13:41.980 --> 00:13:44.350
+and then we want a character,
+
+321
+00:13:44.350 --> 00:13:47.650
+and we want to match slash W.
+So we're not going to worry
+
+322
+00:13:47.650 --> 00:13:50.920
+about the A through Z's and
+the lowercase capital case,
+
+323
+00:13:50.920 --> 00:13:52.750
+we just want any word character,
+
+324
+00:13:52.750 --> 00:13:57.805
+and somewhere between 1-100
+of those followed by edit.
+
+325
+00:13:57.805 --> 00:14:00.070
+So this is something new.
+
+326
+00:14:00.070 --> 00:14:02.170
+Slash W is a metacharacter,
+
+327
+00:14:02.170 --> 00:14:04.210
+and it indicates
+a special pattern
+
+328
+00:14:04.210 --> 00:14:05.950
+of any letter or digit.
+
+329
+00:14:05.950 --> 00:14:07.450
+There are actually a number of
+
+330
+00:14:07.450 --> 00:14:10.210
+different metacharacters
+listed in the documentation.
+
+331
+00:14:10.210 --> 00:14:14.570
+For instance, slash S matches
+any whitespace character.
+
+332
+00:14:15.060 --> 00:14:18.430
+Next, there are three other
+quantifiers that we can
+
+333
+00:14:18.430 --> 00:14:21.280
+use which shorten up
+the curly brace syntax.
+
+334
+00:14:21.280 --> 00:14:24.400
+We can use the asterix to
+match 0 or more times,
+
+335
+00:14:24.400 --> 00:14:25.780
+so let's try that.
+
+336
+00:14:25.780 --> 00:14:28.270
+So re.findall, we want to
+
+337
+00:14:28.270 --> 00:14:31.390
+match any word character
+any number of times,
+
+338
+00:14:31.390 --> 00:14:32.770
+so we'll just use an asterisk.
+
+339
+00:14:32.770 --> 00:14:36.860
+So this removes our top 100
+limit followed by edit.
+
+340
+00:14:36.900 --> 00:14:39.295
+Now that we've
+shortened the regex,
+
+341
+00:14:39.295 --> 00:14:40.945
+let's improve it a little bit.
+
+342
+00:14:40.945 --> 00:14:44.020
+We can add in spaces using
+the space character.
+
+343
+00:14:44.020 --> 00:14:45.910
+So we could do re.findall,
+
+344
+00:14:45.910 --> 00:14:47.560
+and in our set
+notation we want to
+
+345
+00:14:47.560 --> 00:14:49.645
+match either word characters or
+
+346
+00:14:49.645 --> 00:14:54.535
+space characters any number
+of times, followed by edit.
+
+347
+00:14:54.535 --> 00:14:57.085
+Okay. So this gets us a list of
+
+348
+00:14:57.085 --> 00:14:59.515
+section titles in
+the Wikipedia page.
+
+349
+00:14:59.515 --> 00:15:02.080
+You can now create
+a list of titles by
+
+350
+00:15:02.080 --> 00:15:05.685
+iterating through this and
+applying another regex.
+
+351
+00:15:05.685 --> 00:15:07.200
+So it's quite common to do,
+
+352
+00:15:07.200 --> 00:15:10.280
+for instance for
+title and re.findall,
+
+353
+00:15:10.280 --> 00:15:13.685
+we put in our regex which is
+matching all of the titles,
+
+354
+00:15:13.685 --> 00:15:15.950
+now we're going to take
+the intermediate result
+
+355
+00:15:15.950 --> 00:15:17.780
+and split on the square bracket,
+
+356
+00:15:17.780 --> 00:15:19.595
+and just take the first result.
+
+357
+00:15:19.595 --> 00:15:23.630
+So I'll just print re.split,
+and then we'll search,
+
+358
+00:15:23.630 --> 00:15:26.240
+and the character we're looking
+for is a square bracket,
+
+359
+00:15:26.240 --> 00:15:27.250
+so we have to escape it,
+
+360
+00:15:27.250 --> 00:15:28.950
+so it looks a little nasty.
+
+361
+00:15:28.950 --> 00:15:31.445
+Then we just want to
+take the first value of
+
+362
+00:15:31.445 --> 00:15:35.705
+this list which will
+be the actual title.
+
+363
+00:15:35.705 --> 00:15:39.200
+Okay. This works but
+it's a bit of a pain.
+
+364
+00:15:39.200 --> 00:15:41.030
+To this point, we've
+been talking about
+
+365
+00:15:41.030 --> 00:15:43.470
+regex as a single pattern
+which is matched,
+
+366
+00:15:43.470 --> 00:15:44.870
+but you can actually match
+
+367
+00:15:44.870 --> 00:15:48.065
+different patterns called
+groups at the same time,
+
+368
+00:15:48.065 --> 00:15:51.450
+and then refer to these
+groups later as you want to.
+
+369
+00:15:51.450 --> 00:15:54.420
+To group patterns
+together use parentheses,
+
+370
+00:15:54.420 --> 00:15:56.450
+which is actually pretty natural.
+
+371
+00:15:56.450 --> 00:15:59.390
+So let's rewrite our find
+all using groups.
+
+372
+00:15:59.390 --> 00:16:04.385
+So re.findall, and then we
+start a pattern string,
+
+373
+00:16:04.385 --> 00:16:07.070
+and we want the first group,
+
+374
+00:16:07.070 --> 00:16:08.810
+so first parenthesis will
+
+375
+00:16:08.810 --> 00:16:10.240
+be the first part of our pattern,
+
+376
+00:16:10.240 --> 00:16:12.710
+so that would be
+any word character
+
+377
+00:16:12.710 --> 00:16:14.700
+or space any number of times.
+
+378
+00:16:14.700 --> 00:16:16.640
+The second group will
+actually just be
+
+379
+00:16:16.640 --> 00:16:21.170
+this edit tag that denotes
+to us that it's a header.
+
+380
+00:16:21.170 --> 00:16:23.150
+Nice. We see that
+
+381
+00:16:23.150 --> 00:16:24.710
+the Python RE module
+
+382
+00:16:24.710 --> 00:16:27.040
+breaks out the result
+group by group,
+
+383
+00:16:27.040 --> 00:16:29.180
+and we can actually
+refer to groups by
+
+384
+00:16:29.180 --> 00:16:30.350
+the number as well with
+
+385
+00:16:30.350 --> 00:16:32.465
+the match objects
+that are returned.
+
+386
+00:16:32.465 --> 00:16:36.235
+But how do we get back
+a list of match objects?
+
+387
+00:16:36.235 --> 00:16:39.230
+Thus far, we've seen that
+find all returns strings,
+
+388
+00:16:39.230 --> 00:16:42.605
+and search and match return
+individual match objects,
+
+389
+00:16:42.605 --> 00:16:46.015
+but what do we do if we want
+a list of match objects?
+
+390
+00:16:46.015 --> 00:16:49.630
+In this case, we use
+the function finditer.
+
+391
+00:16:49.630 --> 00:16:53.350
+So for item in re.finditer,
+
+392
+00:16:53.350 --> 00:16:55.820
+and then we pass
+it in this pattern
+
+393
+00:16:55.820 --> 00:16:57.230
+that we're interested in.
+
+394
+00:16:57.230 --> 00:17:00.200
+Then we can print item.groups.
+
+395
+00:17:00.200 --> 00:17:04.340
+So this is the groups for
+a specific match item,
+
+396
+00:17:04.340 --> 00:17:06.620
+and we're iterating
+over all of them.
+
+397
+00:17:06.620 --> 00:17:08.540
+So we see here that
+
+398
+00:17:08.540 --> 00:17:11.340
+the groups method returns
+a tuple of the group.
+
+399
+00:17:11.340 --> 00:17:14.510
+We can get an individual group
+using groups of number,
+
+400
+00:17:14.510 --> 00:17:17.530
+where group subzero
+is the whole match,
+
+401
+00:17:17.530 --> 00:17:18.830
+and the other number is
+
+402
+00:17:18.830 --> 00:17:21.455
+the portion of the match
+where we're interested in.
+
+403
+00:17:21.455 --> 00:17:23.910
+In this case, we want
+to group sub one.
+
+404
+00:17:23.910 --> 00:17:25.200
+So we don't want the whole match,
+
+405
+00:17:25.200 --> 00:17:27.770
+we want the first item
+in the match.
+
+406
+00:17:27.770 --> 00:17:30.595
+So for item and re.finditer,
+
+407
+00:17:30.595 --> 00:17:33.335
+so we'll pass in
+our whitespace or
+
+408
+00:17:33.335 --> 00:17:36.350
+word character any number of
+times as the first group,
+
+409
+00:17:36.350 --> 00:17:37.970
+and edit as the second group,
+
+410
+00:17:37.970 --> 00:17:42.705
+and we'll just print out
+item.group and parameter 1.
+
+411
+00:17:42.705 --> 00:17:46.490
+One more piece to regex groups
+that I rarely use but
+
+412
+00:17:46.490 --> 00:17:49.910
+it's a good idea is
+labeling or naming groups.
+
+413
+00:17:49.910 --> 00:17:51.470
+In the previous example,
+
+414
+00:17:51.470 --> 00:17:54.105
+I showed you how you can use
+the position of the group,
+
+415
+00:17:54.105 --> 00:17:55.760
+but giving them a label and
+
+416
+00:17:55.760 --> 00:17:57.455
+looking at the results
+as a dictionary,
+
+417
+00:17:57.455 --> 00:17:59.055
+is actually pretty useful.
+
+418
+00:17:59.055 --> 00:18:01.160
+For that we use this syntax,
+
+419
+00:18:01.160 --> 00:18:03.605
+where we have a parenthesis,
+
+420
+00:18:03.605 --> 00:18:06.305
+then a question mark,
+a capital P,
+
+421
+00:18:06.305 --> 00:18:10.985
+and then the name inside
+of these angle brackets.
+
+422
+00:18:10.985 --> 00:18:13.505
+Where the parenthesis
+starts the group,
+
+423
+00:18:13.505 --> 00:18:15.530
+the question mark, capital P,
+
+424
+00:18:15.530 --> 00:18:18.800
+indicates that this is
+an extension to basic regexes,
+
+425
+00:18:18.800 --> 00:18:20.060
+and the name and
+
+426
+00:18:20.060 --> 00:18:23.155
+the angle brackets is
+the dictionary key that we use,
+
+427
+00:18:23.155 --> 00:18:25.855
+and it's wrapped in
+those angle brackets.
+
+428
+00:18:25.855 --> 00:18:29.635
+So for item in re.finditer,
+
+429
+00:18:29.635 --> 00:18:32.740
+we could use as our pattern,
+our first group,
+
+430
+00:18:32.740 --> 00:18:35.455
+so parentheses, we
+want to name it,
+
+431
+00:18:35.455 --> 00:18:37.975
+so question mark P.
+I'll name this title,
+
+432
+00:18:37.975 --> 00:18:40.540
+so you see that we keep
+these angle brackets.
+
+433
+00:18:40.540 --> 00:18:42.545
+Then we actually
+put our patterns.
+
+434
+00:18:42.545 --> 00:18:44.585
+So we want the set operator,
+
+435
+00:18:44.585 --> 00:18:46.745
+which indicates
+character matching,
+
+436
+00:18:46.745 --> 00:18:48.985
+and we want to do any words,
+
+437
+00:18:48.985 --> 00:18:51.945
+so slash W any word character,
+
+438
+00:18:51.945 --> 00:18:53.180
+as well as spaces.
+
+439
+00:18:53.180 --> 00:18:55.440
+So we'll put space in
+there any number of times,
+
+440
+00:18:55.440 --> 00:18:57.275
+so we've got announced
+tricks for that.
+
+441
+00:18:57.275 --> 00:18:58.910
+Then the second group,
+
+442
+00:18:58.910 --> 00:19:02.060
+we want to name this as
+well, question mark P,
+
+443
+00:19:02.060 --> 00:19:04.040
+and we'll call this edit_ link,
+
+444
+00:19:04.040 --> 00:19:05.870
+for lack of a better word,
+
+445
+00:19:05.870 --> 00:19:08.300
+and then our pattern
+here which we
+
+446
+00:19:08.300 --> 00:19:10.940
+have to escape
+the square brackets.
+
+447
+00:19:10.940 --> 00:19:13.340
+So we can get the
+dictionary returned for
+
+448
+00:19:13.340 --> 00:19:15.725
+the item using the.groupdict.
+
+449
+00:19:15.725 --> 00:19:19.550
+So print item.groupdict,
+this is a dictionary,
+
+450
+00:19:19.550 --> 00:19:22.720
+so we can just do subtitle
+which is our key.
+
+451
+00:19:22.720 --> 00:19:25.980
+Of course, we can print out
+the whole dictionary for
+
+452
+00:19:25.980 --> 00:19:27.270
+the item too and see that
+
+453
+00:19:27.270 --> 00:19:28.835
+the edit string is
+still in there.
+
+454
+00:19:28.835 --> 00:19:31.985
+So here's the dictionary kept
+for the very last match.
+
+455
+00:19:31.985 --> 00:19:34.115
+So print item.groupdict.
+
+456
+00:19:34.115 --> 00:19:36.935
+There's our actual
+full dictionary.
+
+457
+00:19:36.935 --> 00:19:39.225
+Okay. So we've seen
+how we can match
+
+458
+00:19:39.225 --> 00:19:42.155
+individual character patterns
+with the set operator,
+
+459
+00:19:42.155 --> 00:19:45.405
+how we can group matches
+together using parenthesis.
+
+460
+00:19:45.405 --> 00:19:48.270
+Now, we can use quantifiers
+such as asterisks,
+
+461
+00:19:48.270 --> 00:19:53.060
+question mark or m{n}
+to describe patterns.
+
+462
+00:19:53.060 --> 00:19:56.700
+Something I glossed over on
+the previous example was \w,
+
+463
+00:19:56.700 --> 00:19:58.590
+which stands for
+any word character.
+
+464
+00:19:58.590 --> 00:20:00.020
+So there are a number of
+
+465
+00:20:00.020 --> 00:20:02.190
+short hands that can be
+used with regexes for
+
+466
+00:20:02.190 --> 00:20:03.765
+different kinds of characters
+
+467
+00:20:03.765 --> 00:20:06.720
+including a period for
+any single character,
+
+468
+00:20:06.720 --> 00:20:08.280
+which is not a new line,
+
+469
+00:20:08.280 --> 00:20:10.829
+a \d for any digit,
+
+470
+00:20:10.829 --> 00:20:15.075
+and \s for any whitespace
+character like spaces and tabs.
+
+471
+00:20:15.075 --> 00:20:17.105
+There are more and
+a full list can be found in
+
+472
+00:20:17.105 --> 00:20:20.260
+the Python documentation
+for regexes.
+
+473
+00:20:20.880 --> 00:20:23.770
+One more concept to
+be familiar with is
+
+474
+00:20:23.770 --> 00:20:26.160
+called lookahead and
+lookbehind matching.
+
+475
+00:20:26.160 --> 00:20:28.260
+In this case, the
+pattern being matched to
+
+476
+00:20:28.260 --> 00:20:30.180
+the regex engine is for
+
+477
+00:20:30.180 --> 00:20:32.130
+the text either before or after
+
+478
+00:20:32.130 --> 00:20:34.620
+the text that we're
+actually trying to isolate.
+
+479
+00:20:34.620 --> 00:20:36.335
+For example, in our headers,
+
+480
+00:20:36.335 --> 00:20:37.835
+we want to isolate the text which
+
+481
+00:20:37.835 --> 00:20:40.095
+comes before the edit rendering,
+
+482
+00:20:40.095 --> 00:20:43.595
+but we actually don't care
+about the edit text itself.
+
+483
+00:20:43.595 --> 00:20:46.080
+Thus far, we've been
+throwing the edit away.
+
+484
+00:20:46.080 --> 00:20:47.640
+But if we want to use them to
+
+485
+00:20:47.640 --> 00:20:49.260
+match but don't want
+to capture them,
+
+486
+00:20:49.260 --> 00:20:51.390
+we could put them in
+a group and use lookahead
+
+487
+00:20:51.390 --> 00:20:54.905
+instead with the "?=" syntax.
+
+488
+00:20:54.905 --> 00:20:57.015
+So let's see an example of this.
+
+489
+00:20:57.015 --> 00:20:59.525
+For item in re.finditer,
+
+490
+00:20:59.525 --> 00:21:01.800
+we're going to match two groups.
+
+491
+00:21:01.800 --> 00:21:03.210
+The first group is going to be
+
+492
+00:21:03.210 --> 00:21:04.800
+a named group called title.
+
+493
+00:21:04.800 --> 00:21:06.645
+We're just copying
+that from before.
+
+494
+00:21:06.645 --> 00:21:08.760
+But the second group
+is actually one of
+
+495
+00:21:08.760 --> 00:21:13.080
+these throwaway groups
+that is lookahead.
+
+496
+00:21:13.080 --> 00:21:15.090
+So we're just looking for edit,
+
+497
+00:21:15.090 --> 00:21:16.950
+but we're actually
+not matching on it.
+
+498
+00:21:16.950 --> 00:21:20.355
+So what this regex says
+is to match two groups.
+
+499
+00:21:20.355 --> 00:21:22.610
+The first will be named
+and called title,
+
+500
+00:21:22.610 --> 00:21:23.855
+and we'll have any amount of
+
+501
+00:21:23.855 --> 00:21:25.730
+whitespace or regular
+word characters.
+
+502
+00:21:25.730 --> 00:21:27.450
+The second will be
+the characters edit,
+
+503
+00:21:27.450 --> 00:21:29.080
+but we don't actually
+want this item
+
+504
+00:21:29.080 --> 00:21:31.320
+put in our output match objects.
+
+505
+00:21:31.320 --> 00:21:33.365
+So we can print that item.
+
+506
+00:21:33.365 --> 00:21:36.705
+We see that we have
+three match objects there,
+
+507
+00:21:36.705 --> 00:21:40.350
+their spans, and the actual
+values that they matched.
+
+508
+00:21:40.350 --> 00:21:42.975
+Let's look at
+some more Wikipedia data.
+
+509
+00:21:42.975 --> 00:21:44.760
+Here's some data
+on universities in
+
+510
+00:21:44.760 --> 00:21:46.635
+the US which are Buddhist-based.
+
+511
+00:21:46.635 --> 00:21:49.515
+So with open from data sets,
+
+512
+00:21:49.515 --> 00:21:51.555
+a buddhist.txt as file,
+
+513
+00:21:51.555 --> 00:21:54.540
+and we'll read this into
+a variable called wiki.
+
+514
+00:21:54.540 --> 00:21:56.190
+For good measure,
+let's print this
+
+515
+00:21:56.190 --> 00:21:59.080
+variable output to the screen.
+
+516
+00:21:59.620 --> 00:22:02.660
+We can see that
+each university follows
+
+517
+00:22:02.660 --> 00:22:04.700
+a fairly similar pattern with
+
+518
+00:22:04.700 --> 00:22:07.085
+the name followed by an em dash.
+
+519
+00:22:07.085 --> 00:22:08.960
+Then, the words "located
+
+520
+00:22:08.960 --> 00:22:11.995
+in" followed by the
+city and the state.
+
+521
+00:22:11.995 --> 00:22:14.430
+I'm actually going to use
+this example to show you
+
+522
+00:22:14.430 --> 00:22:17.175
+the verbose mode
+of Python regexes.
+
+523
+00:22:17.175 --> 00:22:19.835
+The verbose mode
+allows you to write
+
+524
+00:22:19.835 --> 00:22:23.255
+multi-line regexes and
+increases readability.
+
+525
+00:22:23.255 --> 00:22:25.440
+For this mode, we
+have to explicitly
+
+526
+00:22:25.440 --> 00:22:27.899
+indicate all
+whitespace characters,
+
+527
+00:22:27.899 --> 00:22:29.340
+either by prepending them with
+
+528
+00:22:29.340 --> 00:22:32.835
+a slash or by using
+the \s special value.
+
+529
+00:22:32.835 --> 00:22:34.620
+However, this means that we can
+
+530
+00:22:34.620 --> 00:22:36.120
+write our regex a bit more
+
+531
+00:22:36.120 --> 00:22:37.560
+like code and we can even
+
+532
+00:22:37.560 --> 00:22:39.765
+include comments
+with the pound sign.
+
+533
+00:22:39.765 --> 00:22:41.550
+So pattern equals, and we'll
+
+534
+00:22:41.550 --> 00:22:43.050
+use this triple-quoted string,
+
+535
+00:22:43.050 --> 00:22:45.300
+which means we can go
+on multiple lines.
+
+536
+00:22:45.300 --> 00:22:48.215
+So the first group we want
+to match is the title.
+
+537
+00:22:48.215 --> 00:22:49.890
+So here, I'm going to
+
+538
+00:22:49.890 --> 00:22:54.110
+say I want it to be
+a named group called title,
+
+539
+00:22:54.110 --> 00:22:56.100
+and I want any number
+of characters,
+
+540
+00:22:56.100 --> 00:22:59.070
+so I'll just use ".*".
+
+541
+00:22:59.070 --> 00:23:01.450
+We'll add a comment,
+the university title.
+
+542
+00:23:01.450 --> 00:23:04.780
+The next group is
+going to be a space,
+
+543
+00:23:04.780 --> 00:23:07.005
+sorry, the em dash
+followed by a space.
+
+544
+00:23:07.005 --> 00:23:09.065
+So I'm escaping
+that, in this case,
+
+545
+00:23:09.065 --> 00:23:12.165
+located space in space.
+
+546
+00:23:12.165 --> 00:23:14.895
+So this is just some indicator
+of the location.
+
+547
+00:23:14.895 --> 00:23:17.705
+I don't care about this, so
+I'm not naming this group.
+
+548
+00:23:17.705 --> 00:23:21.245
+The next one we'll make
+is the named group city,
+
+549
+00:23:21.245 --> 00:23:25.065
+and this is any number
+of word characters.
+
+550
+00:23:25.065 --> 00:23:28.035
+So this is the city that
+the university is in.
+
+551
+00:23:28.035 --> 00:23:30.615
+Then, we have
+some separator, comma,
+
+552
+00:23:30.615 --> 00:23:33.765
+space, that we see
+is a common pattern.
+
+553
+00:23:33.765 --> 00:23:36.300
+I don't care about this, so
+I won't name this group.
+
+554
+00:23:36.300 --> 00:23:39.450
+Then, we'll name
+another group, the state.
+
+555
+00:23:39.450 --> 00:23:43.005
+It's just like city, any
+number of word characters.
+
+556
+00:23:43.005 --> 00:23:45.270
+So the state, the city is in.
+
+557
+00:23:45.270 --> 00:23:47.645
+Then, we'll end
+the triple-quoted string.
+
+558
+00:23:47.645 --> 00:23:50.144
+So now, when we call finditer,
+
+559
+00:23:50.144 --> 00:23:54.780
+we just pass the re.VERBOSE
+flag as the last parameter.
+
+560
+00:23:54.780 --> 00:23:58.640
+This makes it much easier to
+understand large regexes.
+
+561
+00:23:58.640 --> 00:24:00.720
+So we just use this
+like previous.
+
+562
+00:24:00.720 --> 00:24:03.585
+We say for item in re.finditer,
+
+563
+00:24:03.585 --> 00:24:04.860
+we pass in the pattern,
+
+564
+00:24:04.860 --> 00:24:06.450
+we pass in our source text,
+
+565
+00:24:06.450 --> 00:24:09.675
+but because it's
+this multi-line verbose mode,
+
+566
+00:24:09.675 --> 00:24:13.680
+we say re.VERBOSE to
+let the processor know.
+
+567
+00:24:13.680 --> 00:24:15.815
+We can get the
+dictionary returned to
+
+568
+00:24:15.815 --> 00:24:19.350
+us for the item with
+the.groupdict value.
+
+569
+00:24:19.350 --> 00:24:22.550
+So we print item.groupdict.
+
+570
+00:24:22.970 --> 00:24:26.535
+So there we see our output is
+
+571
+00:24:26.535 --> 00:24:30.265
+a set of universities,
+their cities,
+
+572
+00:24:30.265 --> 00:24:32.550
+and their states, and all
+of the groups that we
+
+573
+00:24:32.550 --> 00:24:35.025
+didn't name they're matched,
+
+574
+00:24:35.025 --> 00:24:36.690
+so they're consumed by
+
+575
+00:24:36.690 --> 00:24:38.595
+the processor, but
+they're thrown away.
+
+576
+00:24:38.595 --> 00:24:41.105
+Here's another example
+from the New York Times
+
+577
+00:24:41.105 --> 00:24:43.665
+which covers health
+tweets on news items.
+
+578
+00:24:43.665 --> 00:24:45.360
+This data came out of the UC
+
+579
+00:24:45.360 --> 00:24:47.130
+Irvine Machine
+Learning Repository,
+
+580
+00:24:47.130 --> 00:24:49.725
+which is a great source of
+different kinds of data.
+
+581
+00:24:49.725 --> 00:24:55.320
+So with open
+datasets/nytimeshealth.txt as file,
+
+582
+00:24:55.320 --> 00:24:57.210
+and we'll read everything
+into a variable,
+
+583
+00:24:57.210 --> 00:24:58.305
+and take a look at it.
+
+584
+00:24:58.305 --> 00:25:00.815
+So health equals file.read.
+
+585
+00:25:00.815 --> 00:25:06.375
+We'll look at health.
+That's a lot of tweet data.
+
+586
+00:25:06.375 --> 00:25:09.030
+So here, we can see
+there are tweets
+
+587
+00:25:09.030 --> 00:25:11.385
+and the fields are
+separated by pipes.
+
+588
+00:25:11.385 --> 00:25:13.290
+Let's try and get
+a list of all of
+
+589
+00:25:13.290 --> 00:25:16.395
+the hashtags that are
+included in this data.
+
+590
+00:25:16.395 --> 00:25:19.930
+Now, in Twitter, a hashtag
+begins with a pound sign,
+
+591
+00:25:19.930 --> 00:25:21.060
+or the hash mark,
+
+592
+00:25:21.060 --> 00:25:24.105
+and continues until
+some whitespace is found.
+
+593
+00:25:24.105 --> 00:25:26.235
+So let's create a pattern.
+
+594
+00:25:26.235 --> 00:25:28.635
+We want to include
+the hash sign first,
+
+595
+00:25:28.635 --> 00:25:31.425
+then any number of
+alphanumeric characters,
+
+596
+00:25:31.425 --> 00:25:33.825
+and we end when we
+see some whitespace.
+
+597
+00:25:33.825 --> 00:25:37.835
+So a pattern is equal to
+the hash mark followed
+
+598
+00:25:37.835 --> 00:25:42.740
+by word characters or
+digits and an asterisk,
+
+599
+00:25:42.740 --> 00:25:44.040
+any number of those.
+
+600
+00:25:44.040 --> 00:25:45.810
+Then, we'll use a lookahead
+
+601
+00:25:45.810 --> 00:25:47.970
+just looking for any whitespace.
+
+602
+00:25:47.970 --> 00:25:50.010
+So we use \s in this case.
+
+603
+00:25:50.010 --> 00:25:51.605
+We could've used a space if we
+
+604
+00:25:51.605 --> 00:25:54.560
+weren't worried about
+tabs and so forth.
+
+605
+00:25:54.590 --> 00:25:57.990
+Notice that the ending is
+lookahead because we're not
+
+606
+00:25:57.990 --> 00:25:59.280
+actually interested in matching
+
+607
+00:25:59.280 --> 00:26:01.290
+this whitespace and
+returning the value.
+
+608
+00:26:01.290 --> 00:26:02.490
+Also, notice that I used
+
+609
+00:26:02.490 --> 00:26:04.845
+an asterisk instead of
+the plus for matching of
+
+610
+00:26:04.845 --> 00:26:06.855
+alphabetical characters or digits
+
+611
+00:26:06.855 --> 00:26:09.905
+because a plus would require
+at least one of each.
+
+612
+00:26:09.905 --> 00:26:13.245
+So let's search and display
+all of the hashtags.
+
+613
+00:26:13.245 --> 00:26:17.440
+So re.findall pattern and health.
+
+614
+00:26:21.320 --> 00:26:24.720
+So we can see that here
+there are lots of Ebola
+
+615
+00:26:24.720 --> 00:26:28.170
+related tweets in
+this particular dataset.
+
+616
+00:26:28.170 --> 00:26:31.850
+This lecture has been an
+overview of regular expressions.
+
+617
+00:26:31.850 --> 00:26:33.360
+Really, we've just scratched
+
+618
+00:26:33.360 --> 00:26:35.430
+the surface of what you can do.
+
+619
+00:26:35.430 --> 00:26:38.595
+Now, I actually find
+regexes really frustrating.
+
+620
+00:26:38.595 --> 00:26:40.110
+They're incredibly powerful.
+
+621
+00:26:40.110 --> 00:26:41.850
+But if you don't use
+them for a while,
+
+622
+00:26:41.850 --> 00:26:44.970
+you're left grasping for
+memory of some of the details,
+
+623
+00:26:44.970 --> 00:26:47.990
+especially named groups
+and lookahead searches.
+
+624
+00:26:47.990 --> 00:26:49.410
+But there are lots of great
+
+625
+00:26:49.410 --> 00:26:50.880
+examples and reference guides on
+
+626
+00:26:50.880 --> 00:26:54.245
+the web including the Python
+documentation for regex.
+
+627
+00:26:54.245 --> 00:26:56.250
+With these in hand, you
+should be able to write
+
+628
+00:26:56.250 --> 00:26:59.850
+concise and readable code
+which performs well too.
+
+629
+00:26:59.850 --> 00:27:02.340
+Having basic regex literacy is
+
+630
+00:27:02.340 --> 00:27:05.500
+a core skill for
+applied data scientists.
