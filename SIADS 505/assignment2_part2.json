@@ -1,0 +1,184 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "description": "",
+    "editable": false,
+    "license": "",
+    "mentor_academy_cell_type": "question_description",
+    "nbgrader": {
+     "checksum": "958257f2c3a7b31c21d7e68de0b3c99b",
+     "grade": false,
+     "grade_id": "cell-981daf51637e447a",
+     "locked": true,
+     "schema_version": 1,
+     "solution": false
+    },
+    "partlist_id": "bvjtfllw",
+    "publish_status": "unpublished",
+    "question_id": "pwjzvgre",
+    "submit": "submit",
+    "type": "prologue"
+   },
+   "source": [
+    "# Assignment 2 - Part 2\n",
+    "For this assignment you'll be looking at 2017 data on immunizations from the CDC. Your datafile for this assignment is in [assets/NISPUF17.csv](assets/NISPUF17.csv). A data users guide for this, which you'll need to map the variables in the data to the questions being asked, is available at [assets/NIS-PUF17-DUG.pdf](assets/NIS-PUF17-DUG.pdf). **Note: you may have to go to your Jupyter tree (click on the Coursera image) and navigate to the assignment 2 assets folder to see this PDF file).**\n",
+    "\n",
+    "You can also use hint provided for this particular questions by clicking **\"Show Hint\"** button."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "mentor_academy_cell_type": "part_description",
+    "nbgrader": {
+     "checksum": "8b132394c3f13acd14686a7a98019f67",
+     "grade": false,
+     "grade_id": "cell-6ddbb6924abcebe7",
+     "locked": true,
+     "schema_version": 1,
+     "solution": false
+    },
+    "part_id": "kdofirfc",
+    "part_order": 1,
+    "type": "stub"
+   },
+   "source": [
+    "## Question 2\n",
+    "It would be interesting to see if there is any evidence of a link between vaccine effectiveness and sex of the child. Calculate the ratio of the number of children who contracted chickenpox but were vaccinated against it (at least one varicella dose) versus those who were vaccinated but did not contract chicken pox. Return results by sex. \n",
+    "\n",
+    "*This function should return a dictionary in the form of (use the correct numbers):* \n",
+    "```\n",
+    "    {\"male\":0.2,\n",
+    "    \"female\":0.4}\n",
+    "```\n",
+    "\n",
+    "Note: To aid in verification, the `chickenpox_by_sex()['female']` value the autograder is looking for starts with the digits `0.00779`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "deletable": false,
+    "if_hint": true,
+    "mentor_academy_cell_type": "part_student_solution_code",
+    "nbgrader": {
+     "checksum": "866688f1e3301165ceeed0bad6bda2c5",
+     "grade": false,
+     "grade_id": "cell-a603756a0b57e192",
+     "locked": false,
+     "schema_version": 1,
+     "solution": true
+    },
+    "part_id": "kdofirfc",
+    "part_order": 1,
+    "type": "stub"
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.0077918259335489565"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "\n",
+    "df = pd.read_csv('assets/NISPUF17.csv', index_col=0)\n",
+    "\n",
+    "def chickenpox_by_sex():\n",
+    "    chc_sex = df[df['HAD_CPOX'].lt(3) & df['P_NUMVRC'].gt(0)].loc[:,['HAD_CPOX','SEX']]\n",
+    "    # HAD_CPOX: 1-Y; 2-N\n",
+    "    # SEX: 1-M; 2-F\n",
+    "    chc_1 = len(chc_sex[(chc_sex['HAD_CPOX'] == 1) & (chc_sex['SEX'] == 1)])\n",
+    "    chc_2 = len(chc_sex[(chc_sex['HAD_CPOX'] == 1) & (chc_sex['SEX'] == 2)])\n",
+    "    chn_1 = len(chc_sex[(chc_sex['HAD_CPOX'] == 2) & (chc_sex['SEX'] == 1)])\n",
+    "    chn_2 = len(chc_sex[(chc_sex['HAD_CPOX'] == 2) & (chc_sex['SEX'] == 2)])\n",
+    "    # chc_1: the number of male children who contracted chickenpox\n",
+    "    # chc_2: the number of female children who contracted chickenpox\n",
+    "    # chn_1: the number of male children who didn't contracted chickenpox\n",
+    "    # chn_2: the number of female children who didn't contracted chickenpox\n",
+    "    \n",
+    "    ratio_chc = {'male': 0,\n",
+    "                'female': 0}\n",
+    "    \n",
+    "    ratio_chc['male'] = chc_1/chn_1\n",
+    "    ratio_chc['female'] = chc_2/chn_2\n",
+    "    return ratio_chc\n",
+    "    \n",
+    "chickenpox_by_sex()['female']\n",
+    "    # YOUR CODE HERE\n",
+    "    # raise NotImplementedError()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "mentor_academy_cell_type": "part_sample_solution_code",
+    "nbgrader": {
+     "checksum": "1c4b27e4931c119a528acc9abd462201",
+     "grade": true,
+     "grade_id": "cell-1dfe3f8ae42b9647",
+     "locked": true,
+     "points": 1,
+     "schema_version": 1,
+     "solution": false
+    },
+    "part_id": "kdofirfc",
+    "part_order": 1,
+    "solution": "True",
+    "type": "stub"
+   },
+   "outputs": [],
+   "source": [
+    "assert len(chickenpox_by_sex())==2, \"Return a dictionary with two items, the first for males and the second for females.\"\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  },
+  "michigan": {
+   "schema_names": [
+    "mads_data_manipulation_v2_assignment2_part2"
+   ]
+  },
+  "umich": {
+   "id": "Assignment 2",
+   "submit": "yes",
+   "version": "1.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}

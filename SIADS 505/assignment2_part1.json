@@ -1,0 +1,170 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "description": "SIADS505_assignment2_part1",
+    "editable": false,
+    "license": "",
+    "mentor_academy_cell_type": "question_description",
+    "nbgrader": {
+     "checksum": "b0a1594a21107802e80e6fe7cd8d8ac1",
+     "grade": false,
+     "grade_id": "cell-7c5b71655c34b174",
+     "locked": true,
+     "schema_version": 1,
+     "solution": false
+    },
+    "partlist_id": "prujhqbj",
+    "publish_status": "unpublished",
+    "question_id": "ljmmckym",
+    "type": "prologue"
+   },
+   "source": [
+    "# Assignment 2 - Part 1\n",
+    "For this assignment you'll be looking at 2017 data on immunizations from the CDC. Your datafile for this assignment is in [assets/NISPUF17.csv](assets/NISPUF17.csv). A data users guide for this, which you'll need to map the variables in the data to the questions being asked, is available at [assets/NIS-PUF17-DUG.pdf](assets/NIS-PUF17-DUG.pdf). **Note: you may have to go to your Jupyter tree (click on the Coursera image) and navigate to the assignment 2 assets folder to see this PDF file).**\n",
+    "\n",
+    "You can also use hint provided for this particular questions by clicking **\"Show Hint\"** button."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "mentor_academy_cell_type": "part_description",
+    "nbgrader": {
+     "checksum": "2fc6799fba65af3fc04bf73fcaccf6eb",
+     "grade": false,
+     "grade_id": "cell-760daff1ce054ad8",
+     "locked": true,
+     "schema_version": 1,
+     "solution": false
+    },
+    "part_id": "rmcrdodq",
+    "part_order": 1,
+    "type": "stub"
+   },
+   "source": [
+    "## Question 1\n",
+    "Write a function called `proportion_of_education` which returns the proportion of children in the dataset who had a mother with the education levels equal to less than high school (<12), high school (12), more than high school but not a college graduate (>12) and college degree.\n",
+    "\n",
+    "*This function should return a dictionary in the form of (use the correct numbers, do not round numbers):* \n",
+    "```\n",
+    "    {\"less than high school\":0.2,\n",
+    "    \"high school\":0.4,\n",
+    "    \"more than high school but not college\":0.2,\n",
+    "    \"college\":0.2}\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "deletable": false,
+    "if_hint": true,
+    "mentor_academy_cell_type": "part_student_solution_code",
+    "nbgrader": {
+     "checksum": "ea7ffdbe9255dc09e9bcc4a9856b33f0",
+     "grade": false,
+     "grade_id": "cell-07525984167f9641",
+     "locked": false,
+     "schema_version": 1,
+     "solution": true
+    },
+    "part_id": "rmcrdodq",
+    "part_order": 1,
+    "type": "stub"
+   },
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "df = pd.read_csv('assets/NISPUF17.csv', index_col = 0)\n",
+    "def proportion_of_education():\n",
+    "    edu = df['EDUC1']\n",
+    "    mum_edu = np.sort(edu.values)\n",
+    "    prop_edu = {\"less than high school\" : 0,\n",
+    "               \"high school\" : 0,\n",
+    "               \"more than high school but not college\" : 0,\n",
+    "               \"college\" : 0}\n",
+    "    yr = len(mum_edu)\n",
+    "    prop_edu[\"less than high school\"] = np.sum(mum_edu == 1)/yr\n",
+    "    prop_edu[\"high school\"] = np.sum(mum_edu == 2)/yr\n",
+    "    prop_edu[\"more than high school but not college\"] = np.sum(mum_edu == 3)/yr\n",
+    "    prop_edu[\"college\"] = np.sum(mum_edu == 4)/yr\n",
+    "    return prop_edu\n",
+    "\n",
+    "    # your code goes here\n",
+    "    # YOUR CODE HERE\n",
+    "    # raise NotImplementedError()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "mentor_academy_cell_type": "part_sample_solution_code",
+    "nbgrader": {
+     "checksum": "7622bb388b8242dc80cbb876e348fe49",
+     "grade": true,
+     "grade_id": "cell-376b0a53f023c0b4",
+     "locked": true,
+     "points": 1,
+     "schema_version": 1,
+     "solution": false
+    },
+    "part_id": "rmcrdodq",
+    "part_order": 1,
+    "solution": "True",
+    "type": "stub"
+   },
+   "outputs": [],
+   "source": [
+    "assert type(proportion_of_education())==type({}), \"You must return a dictionary.\"\n",
+    "assert len(proportion_of_education()) == 4, \"You have not returned a dictionary with four items in it.\"\n",
+    "assert \"less than high school\" in proportion_of_education().keys(), \"You have not returned a dictionary with the correct keys.\"\n",
+    "assert \"high school\" in proportion_of_education().keys(), \"You have not returned a dictionary with the correct keys.\"\n",
+    "assert \"more than high school but not college\" in proportion_of_education().keys(), \"You have not returned a dictionary with the correct keys.\"\n",
+    "assert \"college\" in proportion_of_education().keys(), \"You have not returned a dictionary with the correct keys.\"\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "coursera": {
+   "schema_names": [
+    "mads_data_manipulation_v2_assignment2_part1"
+   ]
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  },
+  "umich": {
+   "id": "Assignment 2",
+   "submit": "yes",
+   "version": "1.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
