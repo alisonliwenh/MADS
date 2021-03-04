@@ -6,18 +6,25 @@ B.S. in Entrepreneurship
 ### Professional Experiences
 * Customer Service Manager (2019 May - 2020 Nov)
   *Sincere Students Service*
-  * Resolving customer complaints quickly and efficiently. 
-  * Building and maintaining profitable relationships with key customers. 
-  * Building and developing a CRM system by JIRA, Confluence, and Trello. 
-  * Keeping customers updated on the latest products to increase sales. 
-  * Meeting with managers in the organization to plan strategically. 
-  * Expanding the customer base by upselling and cross-selling. 
-  * Understanding key customer individual needs and addressing these. 
 
 * Combat Medic Speicalization (2016 May - Present)
   *US Army*
-  * Administer emergency medical treatment to battlefield casualties.
-  * Assist with outpatient and inpatient care and treatment.
-  * Instruct Soldier's on Combat Lifesaver/First Responder training course.
-  * Manage Soldier's medical readiness, medical supplies, and equipment.
 
+## MADS Course review:
+### SIADS 501: Being a Data Scientist
+* Medium workload
+* Reading intensive
+* Writing intensive
+
+### SIADS 505: Data Manipulation
+* Medium/heavey worklaod
+* Coding intensive
+
+### SIADS 502 Math Method for Data Science
+* Light/medium workload
+* Light coding 
+* Disordered course schedule and structure with many mistakes and errors in lectures and materials. The instructor doesn't really know what students' academic mathematical level. The lectures for profound math background students are too shallow, but for limited math background students are too difficult. Four assignments are not related to Python coding two writing assignments are confused without effective grade criterias. It is impossible to have the only math course to satisfy all aspects of academic needs.
+
+### SIADS 522 Information Visualization I
+* Heavy workload
+* Coding intensive
