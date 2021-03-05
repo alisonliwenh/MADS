@@ -8,8 +8,8 @@ Master of Applied Data Science by University of Michigan
 - [MADS Course review](#MADS-Course-review)
   * [SIADS 501: Being a Data Scientist](#SIADS-501:-Being-a-Data-Scientist)
   * [SIADS 505: Data Manipulation](#SIADS-505:-Data-Manipulation)
-  * [SIADS 502 Math Method for Data Science](#SIADS-502:-Math-Method-for-Data-Science)
-  * [SIADS 522 Information Visualization I](#SIADS-522:-Information-Visualization-I)
+  * [SIADS 502: Math Method for Data Science](#SIADS-502:-Math-Method-for-Data-Science)
+  * [SIADS 522: Information Visualization I](#SIADS-522:-Information-Visualization-I)
 
 ## Personal Background:
 ### Education
