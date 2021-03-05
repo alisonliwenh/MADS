@@ -2,7 +2,14 @@
 Master of Applied Data Science by University of Michigan
 
 # Table of Contents
--[Personal Background](#Personal-Background)
+- [Personal Background](#Personal-Background)
+  * [Edcuation](#Education)
+  * [Professional Experiences](#Professional-Experiences)
+- [MADS Course review](#MADS-Course-review)
+  * [SIADS 501: Being a Data Scientist](#SIADS-501:-Being-a-Data-Scientist)
+  * [SIADS 505: Data Manipulation](#SIADS-505:-Data-Manipulation)
+  * [SIADS 502 Math Method for Data Science](#SIADS-502:-Math-Method-for-Data-Science)
+  * [SIADS 522 Information Visualization I](#SIADS-522:-Information-Visualization-I)
 
 ## Personal Background:
 ### Education
@@ -28,13 +35,13 @@ B.S. in Entrepreneurship
 * Medium/heavey worklaod
 * Coding intensive (Python; pandas)
 
-### SIADS 502 Math Method for Data Science
+### SIADS 502: Math Method for Data Science
 * Light/medium workload
 * Light reading and writing
 * Light coding (Python; numPy)
 * Linear Algebra and Statistics
 * Disordered course structure with many mistakes and errors in lectures and materials. The instructor doesn't really know what students' academic mathematical level. The lectures for profound math background students are too shallow, but for limited math background students are too difficult. Four assignments are not related to Python coding and two writing assignments are confused without effective grade criterias or samples. It is impossible to have the only math course to satisfy all aspects of academic needs. The female instructor just reads PPTs word by word which is unbearable at all.
 
-### SIADS 522 Information Visualization I
+### SIADS 522: Information Visualization I
 * Heavy workload
 * Coding intensive (Python; Altair; pandas)
