@@ -1,5 +1,9 @@
 # MADS
 Master of Applied Data Science by University of Michigan
+
+# Table of Contents
+[Heading](##Personal Background)
+
 ## Personal Background:
 ### Education
 University of North Carolina at Greensboro
