@@ -1,6 +1,7 @@
 # MADS
 Master of Applied Data Science by University of Michigan
-![University of Michigan](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.si.umich.edu%2Fprograms%2Fmaster-applied-data-science-online&psig=AOvVaw10xl4n-8tGuri300hpulBS&ust=1614994600604000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjAuvCBmO8CFQAAAAAdAAAAABAY)
+
+![University of Michigan](https://www.si.umich.edu/themes/custom/umsi/assets/images/logo-header.png)
 
 # Table of Contents
 - [Personal Background](#Personal-Background)
