@@ -2,7 +2,7 @@
 Master of Applied Data Science by University of Michigan
 
 # Table of Contents
--[Personal Background](#Personal Background)
+-[Personal Background](#Personal-Background)
 
 ## Personal Background:
 ### Education
