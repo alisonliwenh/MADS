@@ -21,7 +21,7 @@ B.S. in Entrepreneurship
 * Customer Service Manager (2019 May - 2020 Nov)
   *Sincere Students Service*
 
-* Combat Medic Speicalization (2016 May - Present)
+* Combat Medic Speicalist (EMT-B) (2016 May - Present)
   *US Army*
 
 ## MADS Course review:
