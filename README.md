@@ -17,6 +17,7 @@ B.S. in Entrepreneurship
 * Medium workload
 * Reading intensive
 * Writing intensive
+* Must-have course for the beginner of Data Science which provides a great deal of knowledge and common sense about Data Science in academic and professional espect. There're a plenty of readings, including articles, news, videos and podcasts, requiring you read and watch and reflect on them carefully and profoundly. It requires the student a high level of time management, critical thinking and problem-solving skills. It builds up the mindset structure of being a Data Scientist which is not just coding and coding. I have learned so much from readings and interviews and really love this course.
 
 ### SIADS 505: Data Manipulation
 * Medium/heavey worklaod
