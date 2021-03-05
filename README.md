@@ -41,7 +41,7 @@ B.S. in Entrepreneurship
 * Light reading and writing
 * Light coding (Python; numPy)
 * Linear Algebra and Statistics
-* Disordered course structure with many mistakes and errors in lectures and materials. The instructor doesn't really know what students' academic mathematical levels are. Since this is a non-math background data science program which means students have diverse math experiences/abilities. It is impossible to have the only math course to satisfy all aspects of academic needs for this program. The lectures for profound math background students are too shallow, but for limited math background students are too difficult. Four assignments are not related to Python coding and two writing assignments are confused without effective grade criterias or samples. The female instructor just reads PPTs word by word which is unbearable at all.
+* Disordered course structure with many mistakes and errors in lectures and materials. The instructor doesn't really know what students' academic mathematical levels are. Since this is a non-math background data science program which means students have diverse math experiences/abilities. It is impossible to have the only one-month math course to satisfy all aspects of academic needs for this program. The lectures for profound math background students are too shallow, but for limited math background students are too difficult. Four assignments are not related to Python coding and two writing assignments are confused without effective grade criterias or samples. The female instructor just reads PPTs word by word which is unbearable at all.
 
 ### SIADS 522 Information Visualization I
 * Heavy workload
