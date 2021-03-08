@@ -35,6 +35,7 @@ B.S. in Entrepreneurship
 ### SIADS 505 Data Manipulation
 * Medium/heavey worklaod
 * Coding intensive (Python; pandas)
+* Very general Python data cleaning course. You will use *Python for Data Analysis* as the textbook and learn some advanced pandas functions during coding assignments. Even though this is not a reading intensive course, I would like to recommend you read through the book from the beginning to the end if you want to enhance the ability of manipulating data. The lectures only taught some basic knowledge and simple examples as references. Keep in mind that these examples are just the opener. The student should be good at drawing inferences about other cases from one instance. Use slack group and Stack Overflow heavily and smartly. I have learned how to ask a "clear and good" question on Stack Overflow and it really helps you to improve the critical thinking and self-study skills.
 
 ### SIADS 502 Math Method for Data Science
 * Light/medium workload
