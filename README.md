@@ -2,6 +2,9 @@
 # MADS
 Master of Applied Data Science by University of Michigan
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alisongh/MADS/HEAD)
+
+
 # Table of Contents
 - [Personal Background](#Personal-Background)
   * [Edcuation](#Education)
