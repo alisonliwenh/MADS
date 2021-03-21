@@ -14,6 +14,7 @@ Master of Applied Data Science by University of Michigan
   * [SIADS 505 Data Manipulation](#SIADS-505-Data-Manipulation)
   * [SIADS 502 Math Method for Data Science](#SIADS-502-Math-Method-for-Data-Science)
   * [SIADS 522 Information Visualization I](#SIADS-522-Information-Visualization-I)
+  * [SIADS 521 Visual Exploration of Data](#SIADS-521-Visual-Exploration-of-Data)
 
 ## Personal Background:
 ### Education
