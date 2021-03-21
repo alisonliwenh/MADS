@@ -43,7 +43,7 @@ B.S. in Entrepreneurship
 ### SIADS 502 Math Method for Data Science
 * Light/medium workload
 * Light reading and writing
-* Light coding (Python; numPy)
+* Light coding load (Python; numPy)
 * Linear Algebra and Statistics
 * Disordered course structure with many mistakes and errors in lectures and materials. The instructor doesn't really know what students' academic mathematical levels are. Since this is a non-math background data science program which means students have diverse math experiences/abilities. It is impossible to have the only one-month math course to satisfy all aspects of academic needs for this program. The lectures for profound math background students are too shallow, but for limited math background students are too difficult. Four assignments are not related to Python coding and two writing assignments are confused without effective grade criterias or samples. The female instructor just reads PPTs word by word which is unbearable at all.
 
@@ -51,3 +51,8 @@ B.S. in Entrepreneurship
 * Heavy workload
 * Coding intensive (Python; Altair; pandas)
 * This is the Python course about visualization and it is time consuming because I never used Altair to create visualization before. It takes time to get familiar with Altair and handle it very skillfully. The professor provides a plenty of supplemental resources about creative visualization and videos about how to generate Altair transforms. Same as 505, it is required the student to go through the Altair documentation while doing assignments. Be aware of managing your schedule if you have full-time/part-time job because it is a time-consuming course and you might spend few hours to figure out 1 or 2 questions if you have no experience of Altair.
+
+### SIADS 521 Visual Exploration of Data
+* Light workload
+* Light reading and No writing
+* Medium coding load (Python; Matplotlib; Folium; Pandas; Plotly)
