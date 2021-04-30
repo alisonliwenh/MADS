@@ -44,16 +44,28 @@ B.S. in Entrepreneurship
 ### SIADS 502 Math Method for Data Science
 * Light/medium workload
 * Light reading and writing
-* Light coding load (Python; numPy)
+* Light coding load (Python; NumPy)
 * Linear Algebra and Statistics
 * Disordered course structure with many mistakes and errors in lectures and materials. The instructor doesn't really know what students' academic mathematical levels are. Since this is a non-math background data science program which means students have diverse math experiences/abilities. It is impossible to have the only one-month math course to satisfy all aspects of academic needs for this program. The lectures for profound math background students are too shallow, but for limited math background students are too difficult. Four assignments are not related to Python coding and two writing assignments are confused without effective grade criterias or samples. The female instructor just reads PPTs word by word which is unbearable at all.
 
 ### SIADS 522 Information Visualization I
 * Heavy workload
-* Coding intensive (Python; Altair; pandas)
+* Coding intensive (Python; Altair; Pandas)
 * This is the Python course about visualization and it is time consuming because I never used Altair to create visualization before. It takes time to get familiar with Altair and handle it very skillfully. The professor provides a plenty of supplemental resources about creative visualization and videos about how to generate Altair transforms. Same as 505, it is required the student to go through the Altair documentation while doing assignments. Be aware of managing your schedule if you have full-time/part-time job because it is a time-consuming course and you might spend few hours to figure out 1 or 2 questions if you have no experience of Altair.
 
 ### SIADS 521 Visual Exploration of Data
 * Light workload
 * Light reading and No writing
-* Medium coding load (Python; Matplotlib; Folium; Pandas; Plotly)
+* Light to medium coding load (Python; Matplotlib; Folium; Pandas; Plotly)
+* This course is about using visulization tool to present data. It depends on how your vis experiences and knowledge you've had. There's nothing difficult or time-consuming part of this course. 
+
+### SIADS 532 Data Mining I
+* Light to medium workload
+* Light reading and no writing
+* Light to medium coding load (Python; Pandas; Numpy)
+* This is a very interesting course and I enjoy it very much. The professor makes the whole course into several small parts and explains the knowledge and key points in every detail. I love the style of the way of teach. Even though the assignments are splited into segments which needs some time to get used to, it really reduce the workload for each assignment. I think the prof is very good at explaining Math.
+
+### SIADS 622 Information Visualization II
+* Medium to heavy workload
+* Coding intensive (Python; Altair; Pandas; NLTK)
+* This is a new course offering the fourth month of Win21. Prof Adar puts a lot of time, energy and enthusiasm to this course which make the course fatanstic and excellent. This course is not only about the visualization, generating charts, maps  and so on, but also about the pre-processing of text, NLTK. If you havn't learned anything about it, it will really help you to build the system of how to pre-processing text and represent it by Altair. Again, Prof. Adar is one of my favorite professors so far.
