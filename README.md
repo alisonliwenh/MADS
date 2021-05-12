@@ -17,6 +17,7 @@ Master of Applied Data Science by University of Michigan
   * [SIADS 521 Visual Exploration of Data](#SIADS-521-Visual-Exploration-of-Data)
   * [SIADS 532 Data Mining I](#SIADS-532-Data-Mining-I)
   * [SIADS 622 Information Visualization II](#SIADS-622-Information-Visualization-II)
+  * [SIADS 511 SQL and Database](#SIADS-511-SQL-and-Database)
 
 ## Personal Background:
 ### Education
@@ -71,3 +72,8 @@ B.S. in Entrepreneurship
 * Medium to heavy workload
 * Coding intensive (Python; Altair; Pandas; NLTK)
 * This is a new course offering the fourth month of Win21. Prof Adar puts a lot of time, energy and enthusiasm to this course which make the course fatanstic and well-organized.  The lecture, taught by Prof. Adar providing many kinds of visualization examples in the real world, looks not very related to the assignments, but it gives me a view of how the visualization is. Even thought most of those examples is out-dated, it's been designed on purpose because it only contains the essential parts of vis, which can highlight the critical knowledge and key points to you, without fancy but useless part, which is attracting too much attentions. This course is not only about the visualization, generating charts, maps  and so on, but also about the pre-processing of text, NLTK. If you havn't learned anything about it, it will really help you to build the system of how to pre-processing text and represent it by Altair. Again, Prof. Adar is one of my favorite professors so far.
+
+### SIADS 511 SQL and Database
+* Light workload
+* Light coding load (PostgreSQL)
+* This is a very entry-level SQL course. About five years ago, I have taken the *Excel to MySQL: Analytic Techniques for Business* specialization on Coursera. Somehow, I have a sort of experiences of MySQL, but I never use it since finished the certification. I regard 511 as a refresh course of SQL. However, the content of SQL by the course is too shallow. I have finished the whole course within two weeks by very slow paces. I don't believe this is a graduate level course, but a college freshman level course. I love the structure and curriculum of the course and the way of teaching by Prof. Anthony Whyte. 
