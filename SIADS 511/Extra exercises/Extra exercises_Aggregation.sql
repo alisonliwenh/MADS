@@ -44,3 +44,24 @@ select facid, extract(month from starttime) as month, sum(slots) as "Total Slots
 order by facid, month;
 
 -- Find the total number of members (including guests) who have made at least one booking.
+select count(memid) from cd.members
+where memid in (select memid from cd.bookings);
+
+-- Produce a list of facilities with more than 1000 slots booked. Produce an output table consisting of facility id and slots, sorted by facility id.
+select facid, sum(slots) as "Total Slots"
+  from cd.bookings
+  group by facid
+  having sum(slots) > 1000
+  order by facid
+
+-- Produce a list of facilities along with their total revenue. 
+-- The output table should consist of facility name and revenue, sorted by revenue. Remember that there's a different cost for guests and members!
+select facs.name, sum(slots * case
+			when memid = 0 then facs.guestcost
+			else facs.membercost
+		end) as revenue
+	from cd.bookings bks
+	inner join cd.facilities facs
+		on bks.facid = facs.facid
+	group by facs.name
+order by revenue;  
