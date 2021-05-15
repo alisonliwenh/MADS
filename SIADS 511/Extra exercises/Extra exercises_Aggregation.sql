@@ -65,3 +65,84 @@ select facs.name, sum(slots * case
 		on bks.facid = facs.facid
 	group by facs.name
 order by revenue;  
+
+-- Produce a list of facilities with a total revenue less than 1000. Produce an output table consisting of facility name and revenue, sorted by revenue. 
+-- Remember that there's a different cost for guests and members!
+select name, revenue from (
+	select facs.name, sum(case 
+				when memid = 0 then slots * facs.guestcost
+				else slots * membercost
+			end) as revenue
+		from cd.bookings bks
+		inner join cd.facilities facs
+			on bks.facid = facs.facid
+		group by facs.name
+	) as agg where revenue < 1000
+order by revenue; 
+
+-- Output the facility id that has the highest number of slots booked. 
+select facid, sum(slots) as "Total Slots"
+  from cd.bookings
+  group by facid
+order by sum(slots) desc
+limit 1;
+-- Alternative solution without LIMIT clause
+with sum as (select facid, sum(slots) as totalslots
+	from cd.bookings
+	group by facid
+)
+select facid, totalslots 
+	from sum
+	where totalslots = (select max(totalslots) from sum);
+
+-- Produce a list of the total number of slots booked per facility per month in the year of 2012. 
+-- In this version, include output rows containing totals for all months per facility, and a total for all months for all facilities. 
+-- The output table should consist of facility id, month and slots, sorted by the id and month. 
+-- When calculating the aggregated values for all months and all facids, return null values in the month and facid columns.
+select facid, extract(month from starttime) as "month", sum(slots) as "slots"
+  from cd.bookings
+  where
+    extract(year from starttime) = 2012
+  group by rollup(facid, month)
+order by facid, month;
+
+-- Produce a list of the total number of hours booked per facility, remembering that a slot lasts half an hour. 
+-- The output table should consist of the facility id, name, and hours booked, sorted by facility id. Try formatting the hours to two decimal places.
+select faci.facid, faci.name, trim(to_char(sum(bks.slots)/2.0, '9999999999999999D99')) as "Total Hours"
+-- The TO_CHAR function converts values to character strings.
+-- The TRIM() function removes the longest string that contains a specific character from a string.
+  from cd.bookings bks
+  inner join cd.facilities faci
+    on faci.facid=bks.facid
+  group by faci.facid, faci.name
+order by faci.facid;
+
+					   
+-- Produce a list of each member name, id, and their first booking after September 1st 2012. Order by member ID.
+select mems.surname, mems.firstname, mems.memid, min(bks.starttime) as starttime
+  from cd.bookings bks
+  inner join cd.members mems
+    on mems.memid=bks.memid
+  where starttime >= '2012=09=01'
+  group by mems.surname, mems.firstname, mems.memid
+order by mems.memid;
+  
+-- Produce a list of member names, with each row containing the total member count. Order by join date, and include guest members.
+select count(*) over(), firstname, surname
+from cd.members
+order by joindate;
+
+-- Produce a monotonically increasing numbered list of members (including guests), ordered by their date of joining. 
+-- Remember that member IDs are not guaranteed to be sequential.
+select row_number() over (order by memid), firstname, surname
+from cd.members
+order by joindate;
+
+-- Output the facility id that has the highest number of slots booked. Ensure that in the event of a tie, all tieing results get output.
+select facid, total from (
+	select facid, sum(slots) total, rank() over (order by sum(slots) desc) rank
+        	from cd.bookings
+		group by facid
+	) as ranked
+	where rank = 1   
+
