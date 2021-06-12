@@ -1,0 +1,1938 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "# Week 2: Iterators, Generators, Decorators, Caching and Memoization"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Iterators"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### What is iteration?\n",
+    "\n",
+    "Iteration is the process of traversing a series of objects, handling each one in turn until there are no more objects to deal with.\n",
+    "\n",
+    "For example, a for loop represents a type of iteration.\n",
+    "\n",
+    "In python, we often iterate through a list:\n",
+    "\n",
+    "```\n",
+    "numbers = [1,3,5,7,9]\n",
+    "for number in numbers:\n",
+    "    print(number)\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Iterable vs. iterator\n",
+    "\n",
+    "* in python, an iterable object is one that implements an `__iter__` method\n",
+    "* in python, an iterator is an object that implements a `__next__` method\n",
+    "\n",
+    "* iter() returns an iterator for an object\n",
+    "* next() returns the next element from an iterator (by invoking the underlying `__next__` method)\n",
+    "* usually the case that a class has both an ```__iter__``` and a ```__next__``` method"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1967\n",
+      "1974\n",
+      "1955\n",
+      "2029\n"
+     ]
+    },
+    {
+     "ename": "StopIteration",
+     "evalue": "",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mStopIteration\u001b[0m                             Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-2-5c0ab5f17b7b>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnext\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0myears_iter\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnext\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0myears_iter\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 7\u001b[0;31m \u001b[0mnext\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0myears_iter\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mStopIteration\u001b[0m: "
+     ]
+    }
+   ],
+   "source": [
+    "years = [1967, 1974, 1955, 2029]\n",
+    "years_iter = iter(years)\n",
+    "print(next(years_iter))\n",
+    "print(next(years_iter))\n",
+    "print(next(years_iter))\n",
+    "print(next(years_iter))\n",
+    "next(years_iter)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1967\n",
+      "1974\n",
+      "1955\n",
+      "2029\n"
+     ]
+    }
+   ],
+   "source": [
+    "for year in years:\n",
+    "    print(year)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Python's `for` loop is really a `while` loop with an iterator!\n",
+    "```\n",
+    "for x in some_iterable:\n",
+    "    do_something_with(x)\n",
+    "```\n",
+    "\n",
+    "is really\n",
+    "\n",
+    "```\n",
+    "iterator = iter(some_iterable)\n",
+    "while True:\n",
+    "    try:\n",
+    "        item = next(iterator)\n",
+    "    except StopIteration:\n",
+    "        break\n",
+    "    yield item\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Let's define a class that's iterable and that returns an iterator\n",
+    "(that is, one that returns an interator when ```__iter__``` is called)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "class Decades:\n",
+    "    def __init__(self, years):\n",
+    "        self.years = years\n",
+    "        self.index = 0\n",
+    "    def __iter__(self):\n",
+    "        return self # note that self has a __next__ method, so it's an iterator\n",
+    "    def __next__(self):\n",
+    "        if self.index >= len(self.years):\n",
+    "            raise StopIteration\n",
+    "        retval = self.years[self.index] // 10 * 10\n",
+    "        self.index += 1\n",
+    "        return retval\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "decades = Decades([1971,1982,2019])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "decades_iterator = iter(decades)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "ename": "StopIteration",
+     "evalue": "",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mStopIteration\u001b[0m                             Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-7-5ed5692b976c>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mnext\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdecades_iterator\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m<ipython-input-1-8b974da3b035>\u001b[0m in \u001b[0;36m__next__\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m      7\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m__next__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      8\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mindex\u001b[0m \u001b[0;34m>=\u001b[0m \u001b[0mlen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0myears\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 9\u001b[0;31m             \u001b[0;32mraise\u001b[0m \u001b[0mStopIteration\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     10\u001b[0m         \u001b[0mretval\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0myears\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mindex\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m//\u001b[0m \u001b[0;36m10\u001b[0m \u001b[0;34m*\u001b[0m \u001b[0;36m10\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     11\u001b[0m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mindex\u001b[0m \u001b[0;34m+=\u001b[0m \u001b[0;36m1\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mStopIteration\u001b[0m: "
+     ]
+    }
+   ],
+   "source": [
+    "next(decades_iterator)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Generators"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Generators are similar to functions, so let's start there:\n",
+    "\n",
+    "Let's look at a simple function that returns a list of n elements, each of which is a string containing \"Hello\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def Hello(n = 0):\n",
+    "    ret = []\n",
+    "    for i in range(n):\n",
+    "        ret.append(\"Hello\")\n",
+    "    return ret"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "hellos = Hello(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello\n",
+      "Hello\n",
+      "Hello\n",
+      "Hello\n",
+      "Hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "for hello in hellos:\n",
+    "    print(hello)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Our first generator\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def HelloGenerator(max = 0):\n",
+    "    x = 0\n",
+    "    while True:\n",
+    "        if x < max:\n",
+    "            yield \"Hello\"\n",
+    "            x = x+1\n",
+    "        else:\n",
+    "            break\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "hellos = HelloGenerator(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello\n",
+      "Hello\n",
+      "Hello\n",
+      "Hello\n",
+      "Hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "for hello in hellos:\n",
+    "    print(hello)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "source": [
+    "### Generators vs. Functions\n",
+    "* most important difference is that generators use the ```yield``` statement, whereas functions use ```return```\n",
+    "* ```yield``` returns a value, stops executing the code at that point and maintains state until it's called again\n",
+    "* when invoked, returns an object but doesn't start executing code\n",
+    "* implements ```__iter__``` and ```__next__``` automatically (hey, that's useful!)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### List comprehensions vs. generator expressions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Initialize the list, in this case with a list of years\n",
+    "year_list = [2018, 1776, 2020, 1977, 1980, 2009, 2019]\n",
+    "\n",
+    "# Find the decade corresponding to each of the years\n",
+    "decade_list = [x//10*10 for x in year_list]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# same thing with a generator\n",
+    "decade_generator = (x//10*10 for x in year_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2020"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "max(decade_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "min() arg is an empty sequence",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-12-6b137fdec3b9>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mmin\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdecade_generator\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m: min() arg is an empty sequence"
+     ]
+    }
+   ],
+   "source": [
+    "min(decade_generator)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Filtering"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "In the following code:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "decade_generator_filtered = (x//10*10 for x in year_list if x > 1900)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "source": [
+    "the parentheses ('()') create a generator expression"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "max() arg is an empty sequence",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-15-a11eb323d256>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mmax\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdecade_generator_filtered\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m: max() arg is an empty sequence"
+     ]
+    }
+   ],
+   "source": [
+    "max(decade_generator_filtered)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Memory size issues"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "import sys"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "sys.getsizeof(decade_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "sys.getsizeof(decade_generator)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "big_year_list = [x for x in range(1770,2020)]\n",
+    "big_decade_list = [x//10*10 for x in big_year_list]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "sys.getsizeof(big_decade_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "big_decade_generator = (x//10*10 for x in big_year_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "sys.getsizeof(big_decade_generator)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "source": [
+    "## A more complex example"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "def lines_words_chars(text):\n",
+    "    yield ('lines',len(text.splitlines()))\n",
+    "    yield ('words',len(text.split()))\n",
+    "    yield ('characters',len(text))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "a = lines_words_chars(\"This is a text\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "next(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "next(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "next(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "next(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "# skip all non-lowercased letters (including punctuation)\n",
+    "# append 1 if lowercase letter is \"o\"\n",
+    "# append 0 if lowercase letter is not \"o\"\n",
+    "out = []\n",
+    "for i in \"Hello. How Are You?\":\n",
+    "    if i.islower():\n",
+    "        out.append(1 if i is \"o\" else 0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "out"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# NOTE: this is not efficient because statistics.mean() will create a list from a generator\n",
+    "#       before proceeding with the calculation\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "from statistics import mean\n",
+    "out2 = mean(1 if char is 'o' else 0 for char in \"Hello. How Are You?\" if char.islower())\n",
+    "out2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Let's take a look at some python code:\n",
+    "\n",
+    "From https://github.com/python/cpython/blob/master/Lib/statistics.py"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "skip"
+    }
+   },
+   "source": [
+    "\n",
+    "```\n",
+    "# === Measures of central tendency (averages) ===\n",
+    "def mean(data):\n",
+    "    \"\"\"Return the sample arithmetic mean of data.\n",
+    "    >>> mean([1, 2, 3, 4, 4])\n",
+    "    2.8\n",
+    "    >>> from fractions import Fraction as F\n",
+    "    >>> mean([F(3, 7), F(1, 21), F(5, 3), F(1, 3)])\n",
+    "    Fraction(13, 21)\n",
+    "    >>> from decimal import Decimal as D\n",
+    "    >>> mean([D(\"0.5\"), D(\"0.75\"), D(\"0.625\"), D(\"0.375\")])\n",
+    "    Decimal('0.5625')\n",
+    "    If ``data`` is empty, StatisticsError will be raised.\n",
+    "    \"\"\"\n",
+    "    if iter(data) is data:\n",
+    "        data = list(data)\n",
+    "    n = len(data)\n",
+    "    if n < 1:\n",
+    "        raise StatisticsError('mean requires at least one data point')\n",
+    "    T, total, count = _sum(data)\n",
+    "    assert count == n\n",
+    "    return _convert(total/n, T)\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "data = [1,2,3]\n",
+    "idata = iter(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "idata"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "def dgen():\n",
+    "    yield 1\n",
+    "    yield 2\n",
+    "    yield 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "dg = dgen()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "dgi = iter(dg)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "dg"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "dgi"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "if data is not idata:\n",
+    "    print(1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "if iter(data) is data:\n",
+    "    print(\"yes\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false
+   },
+   "outputs": [],
+   "source": [
+    "iter(data)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Memoization"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "A common way to teach memoization is to use Fibonacci numbers, defined as \n",
+    "\n",
+    "$ F_{0}=0,\\quad F_{1}=1,$\n",
+    "\n",
+    "and \n",
+    "\n",
+    "$ F_{n}=F_{n-1}+F_{n-2},$\n",
+    "\n",
+    "for $n > 1$\n",
+    "\n",
+    "Thus, the first few Fibonacci numbers are:\n",
+    "0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55...\n",
+    "\n",
+    "Here's an implementation of the code to calculate Fibonacci numbers:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### LEARNING CHECK POSSIBILITY: GET THEM TO WRITE A FIBONACCI FUNCTION"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def fibonacci(n):\n",
+    "    if n == 0:\n",
+    "        return 0\n",
+    "    elif n == 1:\n",
+    "        return 1\n",
+    "    return fibonacci(n - 1) + fibonacci(n - 2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "fibonacci(35)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Important digression: Jupyter magic commands\n",
+    "* sometimes you'll see a line in a Jupyter notebook that starts with a '%'\n",
+    "* these are \"magic\" commands\n",
+    "* we'll deal with these in more detail in a later lecture, but for now we're going to introduce %timeit\n",
+    "* %timeit will tell you how much time a line takes to run\n",
+    "* %%timeit will tell you how much time a cell takes to run"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def fibonacci(n):\n",
+    "    if n == 0:\n",
+    "        return 0\n",
+    "    elif n == 1:\n",
+    "        return 1\n",
+    "    return fibonacci(n - 1) + fibonacci(n - 2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "%timeit fibonacci(32)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Caching\n",
+    "* typically done with web browsers and web pages\n",
+    "* let's take a look at a simple caching example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Memoization: a special form of caching\n",
+    "* caching is a more general approach: e.g. web pages\n",
+    "* memozation is caching of the output of a function given a specific set of parameters"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Memoization example: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def memoize(func):\n",
+    "    cache = dict()\n",
+    "\n",
+    "    def memoized_func(*args):\n",
+    "        if args in cache:\n",
+    "            return cache[args]\n",
+    "        result = func(*args)\n",
+    "        cache[args] = result\n",
+    "        return result\n",
+    "\n",
+    "    return memoized_func"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "memoized_fibonacci = memoize(fibonacci)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "%timeit memoized_fibonacci(32)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "%timeit memoized_fibonacci(30)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Note that the memoized version doesn't call the memoized verision when it recurses."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Important Digression: Decorators\n",
+    "* recall example from above where one function (memoized_fibonacci) returned another function (fibonacci)\n",
+    "* this is a specific form of a more general approach called decorators\n",
+    "* let's take a look at the simplest form of a decorator, the null decorator, which does nothing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def null_decorator(func):\n",
+    "    return func"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def hello():\n",
+    "    return \"Hello\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "hello()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "decorated_hello = null_decorator(hello)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "decorated_hello()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Now let's look at a slightly more complicated example that takes some function (assuming it returns a string) and wraps the output in ```<em>...</em>``` tags"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def emphasize(func):\n",
+    "    def wrapper():\n",
+    "        original_ret = func()\n",
+    "        modified_ret = \"<em>\" + original_ret + \"</em>\"\n",
+    "        return modified_ret\n",
+    "    return wrapper\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "emphasized_hello = emphasize(hello)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "emphasized_hello()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Using the @: wrapping functions simplified\n",
+    "* commonly referred to as \"syntactic sugar\", the @ command allows you to wrap a function with one line\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def emphasize(func):\n",
+    "    def wrapper():\n",
+    "        original_ret = func()\n",
+    "        modified_ret = \"<em>\" + original_ret + \"</em>\"\n",
+    "        return modified_ret\n",
+    "    return wrapper\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "@emphasize\n",
+    "def hello():\n",
+    "    return \"Hello\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "hello()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## A slightly more complicated example: decorating functions that take parameters\n",
+    "* let's say we have a function that returns \"Hello\" in some specified language:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def multilingual_hello(lang = 'en'):\n",
+    "    lookup = {'en':'Hello','fr':'Bonjour'}\n",
+    "    return lookup[lang]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "multilingual_hello('en')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "multilingual_hello('fr')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## And now let's say we want to decorate that function with our emphasize wrapper:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "@emphasize\n",
+    "def multilingual_hello(lang = 'en'):\n",
+    "    lookup = {'en':'Hello','fr':'Bonjour'}\n",
+    "    return lookup[lang]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "multilingual_hello()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "multilingual_hello('fr')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### Uh oh... what just happened?\n",
+    "* our wrapper isn't set up to take any paramters, but our underlying function expects one (optional) one\n",
+    "* we can change our decorator to accommodate the optional paramter by using ```*args``` and ```**kwargs```:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def emphasize_args(func):\n",
+    "    def wrapper(*args,**kwargs):\n",
+    "        original_ret = func(*args,**kwargs)\n",
+    "        modified_ret = \"<em>\" + original_ret + \"</em>\"\n",
+    "        return modified_ret\n",
+    "    return wrapper"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "@emphasize_args\n",
+    "def multilingual_hello(lang = 'en'):\n",
+    "    lookup = {'en':'Hello','fr':'Bonjour'}\n",
+    "    return lookup[lang]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "multilingual_hello('fr')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Ok, back to memoization\n",
+    "* but first, another digression: functools\n",
+    "* functools: https://docs.python.org/3/library/functools.html\n",
+    "* \"Higher-order functions and operations on callable objects\"\n",
+    "* of note, ``` @functools.lru_cache ```\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import functools\n",
+    "\n",
+    "@functools.lru_cache(maxsize=128)\n",
+    "def fibonacci(n):\n",
+    "    if n == 0:\n",
+    "        return 0\n",
+    "    elif n == 1:\n",
+    "        return 1\n",
+    "    return fibonacci(n - 1) + fibonacci(n - 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "Or equivalently:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "from functools import lru_cache\n",
+    "\n",
+    "@lru_cache(maxsize=128)\n",
+    "def fibonacci(n):\n",
+    "    if n == 0:\n",
+    "        return 0\n",
+    "    elif n == 1:\n",
+    "        return 1\n",
+    "    return fibonacci(n - 1) + fibonacci(n - 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "See also https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU) for LRU"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "%timeit fibonacci(10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "%timeit fibonacci(20)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "%timeit fibonacci(30)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hideCode": false,
+    "hidePrompt": false,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "%timeit fibonacci(40)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Slideshow",
+  "hide_code_all_hidden": false,
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
