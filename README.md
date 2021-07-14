@@ -25,10 +25,7 @@ Full Score: :star::star::star::star::star:
 
 ## Personal Background:
 ### Education
-University of North Carolina at Greensboro
 
-B.S. in Entrepreneurship 
-### Professional Experiences
 [LinkedIn](https://www.linkedin.com/in/alisonliwenhuang/)
 
 ### Background
