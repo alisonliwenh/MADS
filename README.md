@@ -29,7 +29,7 @@ University of North Carolina at Greensboro
 
 B.S. in Entrepreneurship 
 ### Professional Experiences
-[!LinkedIn](https://www.linkedin.com/in/alisonliwenhuang/)
+[LinkedIn](https://www.linkedin.com/in/alisonliwenhuang/)
 
 ### Background
 * Python: :star::star:
