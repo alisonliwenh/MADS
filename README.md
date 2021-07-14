@@ -29,15 +29,8 @@ University of North Carolina at Greensboro
 
 B.S. in Entrepreneurship 
 ### Professional Experiences
-* IT Intern (2021 June - 2021 Aug)
-  *BCBS Michigan*
+[!LinkedIn](https://www.linkedin.com/in/alisonliwenhuang/)
 
-* Customer Service Manager (2019 May - 2020 Nov)
-  *Sincere Students Service*
-
-* Combat Medic Speicalist (EMT-B) (2016 May - Present)
-  *US Army*
-  
 ### Background
 * Python: :star::star:
 * MySQL: :star::star:
