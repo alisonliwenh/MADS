@@ -36,6 +36,12 @@ B.S. in Entrepreneurship
 
 * Combat Medic Speicalist (EMT-B) (2016 May - Present)
   *US Army*
+  
+### Background
+* Python: :star::star:
+* MySQL: :star::star:
+* Math and Statistic: :star:
+* Other coding: :zero:
 
 ## MADS Course review:
 ### SIADS 501 Being a Data Scientist
