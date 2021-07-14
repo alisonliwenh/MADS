@@ -29,9 +29,10 @@ Full Score: :star::star::star::star::star:
 [LinkedIn](https://www.linkedin.com/in/alisonliwenhuang/)
 
 ### Background
-* Python: :star::star:
-* MySQL: :star::star:
-* Math and Statistic: :star:
+* Python: :snake::snake:
+* MySQL: :dolphin:
+:flipper:
+* Math and Statistic: :hatched_chick:
 * Other coding: :zero:
 
 ## MADS Course review:
