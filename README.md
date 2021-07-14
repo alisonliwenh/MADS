@@ -4,7 +4,8 @@ Master of Applied Data Science by University of Michigan
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alisongh/MADS/HEAD)
 
-### Overall Score:  :star::star::star: (Full Score: :star::star::star::star::star:)
+Full Score: :star::star::star::star::star:
+### Overall Score of the program:  :star::star::star: 
 
 
 # Table of Contents
