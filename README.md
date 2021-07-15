@@ -7,7 +7,9 @@ Master of Applied Data Science by University of Michigan
 Full Score: 🌟🌟🌟🌟🌟
 ### Overall Score of the program: 🌟🌟:star:
 ### Recommendation: 🌟🌟
-#### Tuition: 🌟🌟🌟🌟🌟; Structure: 🌟:star:; Completeness: 🌟:star:; Difficulty: 🌟🌟🌟:star:; Instructors: 🌟🌟🌟; TAs: 🌟🌟:star:
+#### Tuition: 🌟🌟🌟🌟🌟; Structure: 🌟:star:; Completeness: 🌟:star:
+
+#### Difficulty: 🌟🌟🌟:star:; Instructors: 🌟🌟🌟; TAs: 🌟🌟:star:
 
 
 # Table of Contents
