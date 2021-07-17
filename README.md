@@ -59,7 +59,7 @@ Full Score: 🌟🌟🌟🌟🌟
 * Light reading and writing
 * Light coding load (Python; NumPy)
 * Linear Algebra and Statistics
-* Score: **ZERO (A total disaster course, which I've ever taken, with a very shallow academic standard, lower than the one by those universities ranking 100+, delivered by an irresponsible instructor)**
+* Score: ❌ **ZERO (A total disaster course, which I've ever taken, with a very shallow academic standard, lower than the one by universities ranking 100+, delivered by an irresponsible instructor)**
 * This is a **disordered** course structure with **many mistakes and errors** in lectures and materials. The instructor does not know what students' academic mathematical levels are. Since this is a non-math background data science program which means students have diverse math experiences/abilities. It is impossible to have only a one-month math course to satisfy all academic needs for this program. The lectures for profound math background students are too shallow, but students' limited math background is too tricky. Four assignments are not related to Python coding, and two writing assignments are confused without practical grade criteria or samples. The female instructor reads PPTs word by word, which is unbearable at all.
 
 ### SIADS 522 Information Visualization I
