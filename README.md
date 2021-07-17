@@ -9,7 +9,7 @@ Full Score: 🌟🌟🌟🌟🌟
 ### Recommendation: 🌟🌟
 #### Tuition: 🌟🌟🌟🌟🌟; Structure: 🌟:star:; Completeness: 🌟:star:
 
-#### Difficulty: 🌟🌟🌟:star:; Instructors: 🌟🌟🌟; TAs: 🌟🌟:star:
+#### Difficulty: 🌟🌟🌟; Instructors: 🌟🌟🌟; TAs: 🌟🌟:star:
 
 
 # Table of Contents
